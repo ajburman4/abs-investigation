@@ -1,0 +1,1253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The ABS Edge Map</title>
+  <style>
+    :root {
+      --bg: #f7f4ed;
+      --panel: #ffffff;
+      --ink: #17202a;
+      --muted: #667085;
+      --line: #ddd3be;
+      --blue: #3fc2cc;
+      --red: #a71930;
+      --green: #008c95;
+      --sand: #e3d4ad;
+      --black: #090a0c;
+      --amber: #a16207;
+      --shadow: 0 10px 24px rgba(16, 24, 40, 0.07);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    header {
+      background: var(--black);
+      color: #fff;
+      padding: 22px 28px;
+      border-bottom: 5px solid var(--red);
+    }
+    header h1 {
+      margin: 0 0 6px;
+      font-size: clamp(24px, 3vw, 36px);
+      letter-spacing: 0;
+    }
+    header p {
+      margin: 0;
+      color: #d1d5db;
+      max-width: 980px;
+    }
+    .shell {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 20px 24px 40px;
+    }
+    .nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .nav button,
+    .control,
+    .table-sort {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 9px 12px;
+      font: inherit;
+    }
+    .nav button {
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .nav button.active {
+      border-color: var(--red);
+      background: var(--red);
+      color: #fff;
+    }
+    section.view { display: none; }
+    section.view.active { display: block; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+    h2 {
+      margin: 0 0 4px;
+      font-size: clamp(22px, 2.4vw, 30px);
+      letter-spacing: 0;
+    }
+    .purpose {
+      margin: 0;
+      color: var(--muted);
+      max-width: 860px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .panel.pad { padding: 16px; }
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+    .two-col {
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(160px, 1fr));
+      gap: 12px;
+      margin: 14px 0 16px;
+    }
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px 14px;
+    }
+    .metric .label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .metric .value {
+      margin-top: 5px;
+      font-size: 25px;
+      font-weight: 800;
+    }
+    .metric .note {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: end;
+      margin: 0 0 16px;
+    }
+    #zone-filters { display: block; }
+    .field {
+      display: grid;
+      gap: 4px;
+    }
+    .field label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    select.control,
+    input.control {
+      min-width: 140px;
+      height: 38px;
+    }
+    .insight {
+      border-left: 5px solid var(--red);
+      background: #fff8ea;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin-bottom: 14px;
+    }
+    .insight strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .insight ul {
+      margin: 6px 0 0;
+      padding-left: 20px;
+    }
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .status {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 11px;
+      background: #fff;
+    }
+    .status.ok { border-left: 4px solid var(--green); }
+    .status.warn { border-left: 4px solid var(--amber); }
+    .status .name {
+      font-weight: 800;
+      margin-bottom: 3px;
+    }
+    .status .message {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .heatmap-wrap {
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .zone-visual {
+      display: grid;
+      grid-template-columns: 72px minmax(560px, 1fr) 72px;
+      grid-template-rows: 48px auto 28px;
+      align-items: center;
+      gap: 6px;
+      min-width: 720px;
+    }
+    .field-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .view-label {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: start;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: 0;
+    }
+    .field-label.top { grid-column: 2; grid-row: 1; align-self: end; }
+    .field-label.bottom { grid-column: 2; grid-row: 3; }
+    .field-label.glove { grid-column: 1; grid-row: 2; writing-mode: vertical-rl; transform: rotate(180deg); justify-self: center; }
+    .field-label.arm { grid-column: 3; grid-row: 2; writing-mode: vertical-rl; justify-self: center; }
+    .zone-board {
+      grid-column: 2;
+      grid-row: 2;
+      display: grid;
+      grid-template-columns: repeat(7, minmax(68px, 1fr));
+      grid-template-rows: repeat(5, 88px);
+      gap: 7px;
+      position: relative;
+      background: #fff;
+      padding: 6px;
+      border-radius: 8px;
+    }
+    .zone-tile {
+      border-radius: 8px;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px;
+      font-weight: 900;
+      z-index: 1;
+      transition: transform 140ms ease, box-shadow 140ms ease;
+    }
+    .zone-tile:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(17, 24, 40, 0.12); }
+    .zone-tile .quiet {
+      display: block;
+      color: rgba(17, 24, 39, 0.64);
+      font-size: 11px;
+      font-weight: 800;
+      margin-top: 3px;
+    }
+    .strike-zone-outline {
+      grid-column: 3 / 6;
+      grid-row: 2 / 5;
+      border: 3px solid #111827;
+      border-radius: 6px;
+      z-index: 3;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.72);
+    }
+    .area-outline {
+      border: 4px solid var(--blue);
+      border-radius: 12px;
+      background: rgba(63, 194, 204, 0.12);
+      z-index: 4;
+      pointer-events: none;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.85);
+    }
+    .zone-tooltip {
+      position: fixed;
+      z-index: 40;
+      width: min(330px, calc(100vw - 28px));
+      background: #101828;
+      color: #f9fafb;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 8px;
+      box-shadow: 0 18px 40px rgba(16, 24, 40, 0.28);
+      padding: 14px 16px;
+      display: none;
+      pointer-events: none;
+    }
+    .zone-tooltip.active { display: block; }
+    .tooltip-title {
+      color: var(--sand);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .tooltip-row {
+      display: grid;
+      grid-template-columns: 128px 1fr;
+      gap: 12px;
+      border-top: 1px solid rgba(255,255,255,0.22);
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+    .tooltip-value {
+      color: var(--blue);
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .tooltip-copy {
+      color: #d1d5db;
+      font-size: 14px;
+    }
+    .zone-legend {
+      margin: 18px 0 2px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 10px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .zone-legend .left { text-align: left; }
+    .zone-legend .mid { text-align: center; }
+    .zone-legend .right { text-align: right; }
+    .gradient-legend {
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #e4544f 0%, #f8d8d4 28%, #f8fafc 50%, #dcefe0 72%, #3ca861 100%);
+      margin-top: 10px;
+    }
+    .legend-scale {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+    .legend-scale span:nth-child(2) { text-align: center; }
+    .legend-scale span:nth-child(3) { text-align: right; }
+    .trend-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 14px 0 16px;
+    }
+    .trend-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .trend-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background: var(--red);
+    }
+    .trend-card .kicker {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 5px;
+    }
+    .trend-card strong {
+      display: block;
+      font-size: 32px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .trend-card .mini-bar {
+      height: 9px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      overflow: hidden;
+      margin: 13px 0 9px;
+    }
+    .trend-card .mini-bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--red));
+      border-radius: inherit;
+    }
+    .rate-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 17px;
+      font-weight: 800;
+    }
+    .rate-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .rate-arrow .arrow {
+      color: var(--red);
+      font-size: 20px;
+      line-height: 1;
+    }
+    .area-panel { margin-top: 16px; }
+    .area-detail {
+      display: grid;
+      grid-template-columns: minmax(180px, 1fr) repeat(3, minmax(130px, 0.5fr));
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
+      margin-bottom: 12px;
+    }
+    .area-detail .label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .area-detail .value {
+      font-weight: 900;
+      font-size: 18px;
+    }
+    .area-row {
+      cursor: pointer;
+    }
+    .area-row.selected {
+      background: #fff4f4;
+    }
+    .area-chip {
+      display: inline-flex;
+      width: 13px;
+      height: 13px;
+      border-radius: 4px;
+      margin-right: 8px;
+      border: 1px solid rgba(17,24,39,0.14);
+      vertical-align: -1px;
+    }
+    .heatmap {
+      display: grid;
+      grid-template-columns: 82px repeat(7, minmax(82px, 1fr));
+      gap: 6px;
+      min-width: 720px;
+      align-items: stretch;
+    }
+    .cell,
+    .axis {
+      border-radius: 8px;
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px;
+      border: 1px solid rgba(17, 24, 39, 0.08);
+    }
+    .axis {
+      background: #f1f5f9;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .cell {
+      background: #f8fafc;
+      color: #111827;
+      font-weight: 800;
+      position: relative;
+    }
+    .cell .small {
+      display: block;
+      font-weight: 700;
+      font-size: 11px;
+      color: rgba(17, 24, 39, 0.7);
+      margin-top: 2px;
+    }
+    .legend {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 12px;
+    }
+    .swatch {
+      width: 38px;
+      height: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+    .swatch.loss { background: #fed7aa; }
+    .swatch.flat { background: #f8fafc; }
+    .swatch.gain { background: #bfdbfe; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th,
+    td {
+      padding: 10px 9px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+    }
+    th {
+      color: #475467;
+      background: #f8fafc;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      user-select: none;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+    }
+    .tag.positive { color: #0f766e; background: #ccfbf1; border-color: #99f6e4; }
+    .tag.negative { color: #b42318; background: #fee4e2; border-color: #fecdca; }
+    .tag.watch { color: #854d0e; background: #fef3c7; border-color: #fde68a; }
+    .tag.neutral { color: #344054; background: #f2f4f7; }
+    .takeaways {
+      margin-top: 16px;
+    }
+    .takeaways h3,
+    .panel h3 {
+      margin: 0 0 9px;
+      font-size: 16px;
+    }
+    .takeaways ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .muted { color: var(--muted); }
+    .empty {
+      padding: 20px;
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+    }
+    @media (max-width: 900px) {
+      .shell { padding: 16px; }
+      .two-col { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: repeat(2, minmax(150px, 1fr)); }
+      .section-head { grid-template-columns: 1fr; }
+      .status-grid { grid-template-columns: 1fr; }
+      .trend-row { grid-template-columns: 1fr; }
+      .area-detail { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      header { padding: 18px 16px; }
+      .metrics { grid-template-columns: 1fr; }
+      select.control,
+      input.control { width: 100%; min-width: 0; }
+      .field { width: 100%; }
+      .area-detail { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The ABS Edge Map</h1>
+    <p>Where the new zone is giving catchers strikes, taking them away, and changing the conversation behind the plate.</p>
+  </header>
+
+  <main class="shell">
+    <nav class="nav" aria-label="Dashboard sections">
+      <button class="active" data-view="zone">Zone Change</button>
+      <button data-view="overview">Catcher Overview</button>
+      <button data-view="report">Challenge Report Card</button>
+      <button data-view="evaluation">Catcher Evaluation</button>
+      <button data-view="data">Data Check</button>
+    </nav>
+
+    <section id="zone" class="view active">
+      <div class="section-head">
+        <div>
+          <h2>Zone Change</h2>
+          <p class="purpose">League view: what the ABS-era called-strike shape looks like compared with the prior human-zone window.</p>
+        </div>
+      </div>
+      <div class="filters" id="zone-filters"></div>
+      <div id="zone-content"></div>
+    </section>
+
+    <section id="overview" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Catcher Overview</h2>
+          <p class="purpose">Which catchers are creating or losing ABS challenge value from the pitching-team perspective.</p>
+        </div>
+      </div>
+      <div class="filters" id="overview-filters"></div>
+      <div id="overview-content"></div>
+    </section>
+
+    <section id="report" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Challenge Report Card</h2>
+          <p class="purpose">Decision feedback without treating success rate as the whole grade.</p>
+        </div>
+      </div>
+      <div class="filters" id="report-filters"></div>
+      <div id="report-content"></div>
+    </section>
+
+    <section id="evaluation" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Catcher Evaluation</h2>
+          <p class="purpose">A transparent ABS-era value summary using only the approved data sources.</p>
+        </div>
+      </div>
+      <div class="filters" id="evaluation-filters"></div>
+      <div id="evaluation-content"></div>
+    </section>
+
+    <section id="data" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Data Check</h2>
+          <p class="purpose">Source, schema, and join checks used to build this file.</p>
+        </div>
+      </div>
+      <div id="data-content"></div>
+    </section>
+  </main>
+
+  <script>
+    const DASHBOARD_DATA = {"generatedAt": "2026-04-25T11:29:01", "config": {"statcast2026Start": "2026-03-26", "statcast2026End": "2026-04-24", "statcast2025Start": "2025-03-27", "statcast2025End": "2025-04-25", "refreshStatcast": false}, "sourceStatus": {"statcast2026": {"season": 2026, "start_date": "2026-03-26", "end_date": "2026-04-24", "cache_path": "/Users/anthonyburman/Documents/baseball_projects/abs-investigation/data/cache/statcast_2026_2026-03-26_2026-04-24.csv.gz", "source": "cache", "message": "Loaded cached Statcast data for 2026.", "rows": 116772}, "statcast2025": {"season": 2025, "start_date": "2025-03-27", "end_date": "2025-04-25", "cache_path": "/Users/anthonyburman/Documents/baseball_projects/abs-investigation/data/cache/statcast_2025_2025-03-27_2025-04-25.csv.gz", "source": "cache", "message": "Loaded cached Statcast data for 2025.", "rows": 113291}, "catcherLookup": {"cache_path": "/Users/anthonyburman/Documents/baseball_projects/abs-investigation/data/cache/catcher_lookup.csv", "source": "cache", "message": "Loaded catcher ID lookup from cache.", "rows": 88}}, "validations": [{"name": "Catcher workbook schema", "ok": true, "message": "All required workbook columns are present."}, {"name": "Catcher workbook rows", "ok": true, "message": "Workbook contains 68 catcher rows."}, {"name": "2026 Statcast schema", "ok": true, "message": "All required Statcast columns are present."}, {"name": "2026 Statcast rows", "ok": true, "message": "2026 Statcast contains 116,772 pitch rows."}, {"name": "2025 Statcast schema", "ok": true, "message": "All required Statcast columns are present."}, {"name": "2025 Statcast rows", "ok": true, "message": "2025 Statcast contains 113,291 pitch rows."}, {"name": "Catcher join quality", "ok": true, "message": "Matched 51 of 68 workbook catchers. Unmatched examples: agustin ramirez, brandon valenzuela, carlos narvaez, christian vazquez, daniel susac, elias diaz, francisco alvarez, gary sanchez"}], "catchers": [{"name": "Cal Raleigh", "team": "SEA", "level": "MLB", "parentOrg": "SEA", "challenges": 20, "overturns": 12, "confirms": 8, "successRate": 0.6, "successPct": 60.0, "expectedSuccessRate": 0.460605145548369, "expectedSuccessPct": 46.0605145548369, "expectedOverturns": 9.21210291096738, "overturnsAboveExpected": 2.7878970890326205, "netFor": 5.62318431446845, "netAgainst": -6.95959168655902, "totalVsExpected": 12.5827760010274, "expectedChallengeDiff": -0.000669050301988362, "aggressionLabel": "Balanced", "valueLabel": "Positive", "executionValue": 5.62318431446845, "selectionValue": 6.95959168655895, "zoneAdaptation": 0.0, "overallValue": 12.5827760010274, "archetype": "Battery Captain", "executionGrade": "B", "selectionGrade": "B+", "nStrikeoutsFlip": 4, "nWalksFlip": 1}, {"name": "Victor Caratini", "team": "MIN", "level": "MLB", "parentOrg": "MIN", "challenges": 12, "overturns": 9, "confirms": 3, "successRate": 0.75, "successPct": 75.0, "expectedSuccessRate": 0.505956794740463, "expectedSuccessPct": 50.59567947404629, "expectedOverturns": 6.071481536885555, "overturnsAboveExpected": 2.928518463114445, "netFor": 5.88387543362569, "netAgainst": -5.63422979928628, "totalVsExpected": 11.5181052329119, "expectedChallengeDiff": 0.00499504248285651, "aggressionLabel": "Balanced", "valueLabel": "Positive", "executionValue": 5.88387543362569, "selectionValue": 5.63422979928621, "zoneAdaptation": 0.0, "overallValue": 11.5181052329119, "archetype": "Battery Captain", "executionGrade": "B+", "selectionGrade": "B+", "nStrikeoutsFlip": 2, "nWalksFlip": 1}, {"name": "Salvador Perez", "team": "KC", "level": "MLB", "parentOrg": "KC", "challenges": 24, "overturns": 19, "confirms": 5, "successRate": 0.791666666666666, "successPct": 79.1666666666666, "expectedSuccessRate": 0.528598129374479, "expectedSuccessPct": 52.859812937447906, "expectedOverturns": 12.686355104987497, "overturnsAboveExpected": 6.313644895012503, "netFor": 12.9121318371096, "netAgainst": 2.49764982323468, "totalVsExpected": 10.4144820138749, "expectedChallengeDiff": 0.00624070400697706, "aggressionLabel": "Too Aggressive", "valueLabel": "Positive", "executionValue": 12.9121318371096, "selectionValue": -2.497649823234699, "zoneAdaptation": 0.0, "overallValue": 10.4144820138749, "archetype": "Technician", "executionGrade": "B+", "selectionGrade": "A", "nStrikeoutsFlip": 2, "nWalksFlip": 3}, {"name": "Logan O'Hoppe", "team": "LAA", "level": "MLB", "parentOrg": "LAA", "challenges": 25, "overturns": 16, "confirms": 9, "successRate": 0.64, "successPct": 64.0, "expectedSuccessRate": 0.504775042044955, "expectedSuccessPct": 50.4775042044955, "expectedOverturns": 12.619376051123876, "overturnsAboveExpected": 3.3806239488761243, "netFor": 6.70511723656753, "netAgainst": -1.69257539720211, "totalVsExpected": 8.39769263376965, "expectedChallengeDiff": -0.00508874839154785, "aggressionLabel": "Too Passive", "valueLabel": "Positive", "executionValue": 6.70511723656753, "selectionValue": 1.6925753972021198, "zoneAdaptation": 0.0, "overallValue": 8.39769263376965, "archetype": "Passive Receiver", "executionGrade": "B", "selectionGrade": "B+", "nStrikeoutsFlip": 1, "nWalksFlip": 2}, {"name": "Carson Kelly", "team": "CHC", "level": "MLB", "parentOrg": "CHC", "challenges": 12, "overturns": 10, "confirms": 2, "successRate": 0.833333333333333, "successPct": 83.3333333333333, "expectedSuccessRate": 0.562679626220737, "expectedSuccessPct": 56.267962622073696, "expectedOverturns": 6.752155514648844, "overturnsAboveExpected": 3.2478444853511563, "netFor": 5.9357837898653, "netAgainst": -1.30978945952765, "totalVsExpected": 7.24557324939295, "expectedChallengeDiff": -0.00641724843641203, "aggressionLabel": "Too Passive", "valueLabel": "Positive", "executionValue": 5.9357837898653, "selectionValue": 1.30978945952765, "zoneAdaptation": 0.0, "overallValue": 7.24557324939295, "archetype": "Passive Receiver", "executionGrade": "B+", "selectionGrade": "B+", "nStrikeoutsFlip": 4, "nWalksFlip": 2}, {"name": "Hunter Goodman", "team": "COL", "level": "MLB", "parentOrg": "COL", "challenges": 20, "overturns": 16, "confirms": 4, "successRate": 0.8, "successPct": 80.0, "expectedSuccessRate": 0.498294309777205, "expectedSuccessPct": 49.8294309777205, "expectedOverturns": 9.965886195544101, "overturnsAboveExpected": 6.034113804455899, "netFor": 12.0532054917009, "netAgainst": 4.86066128554663, "totalVsExpected": 7.19254420615435, "expectedChallengeDiff": 0.00580175272170181, "aggressionLabel": "Too Aggressive", "valueLabel": "Positive", "executionValue": 12.0532054917009, "selectionValue": -4.86066128554655, "zoneAdaptation": 0.0, "overallValue": 7.19254420615435, "archetype": "Technician", "executionGrade": "B+", "selectionGrade": "A", "nStrikeoutsFlip": 6, "nWalksFlip": 2}, {"name": "Dillon Dingler", "team": "DET", "level": "MLB", "parentOrg": "DET", "challenges": 13, "overturns": 11, "confirms": 2, "successRate": 0.846153846153846, "successPct": 84.6153846153846, "expectedSuccessRate": 0.481951097848822, "expectedSuccessPct": 48.1951097848822, "expectedOverturns": 6.265364272034686, "overturnsAboveExpected": 4.734635727965314, "netFor": 9.70114286144506, "netAgainst": 2.51952335597727, "totalVsExpected": 7.18161950546778, "expectedChallengeDiff": -0.00777653912006272, "aggressionLabel": "Too Passive", "valueLabel": "Positive", "executionValue": 9.70114286144506, "selectionValue": -2.51952335597728, "zoneAdaptation": 0.0, "overallValue": 7.18161950546778, "archetype": "Passive Receiver", "executionGrade": "B+", "selectionGrade": "A", "nStrikeoutsFlip": 3, "nWalksFlip": 0}, {"name": "Yainer Diaz", "team": "HOU", "level": "MLB", "parentOrg": "HOU", "challenges": 19, "overturns": 13, "confirms": 6, "successRate": 0.684210526315789, "successPct": 68.4210526315789, "expectedSuccessRate": 0.541667391709258, "expectedSuccessPct": 54.1667391709258, "expectedOverturns": 10.291680442475903, "overturnsAboveExpected": 2.7083195575240975, "netFor": 5.11191603792304, "netAgainst": -2.01520596778998, "totalVsExpected": 7.12712200571302, "expectedChallengeDiff": -0.00389001414541736, "aggressionLabel": "Balanced", "valueLabel": "Positive", "executionValue": 5.11191603792304, "selectionValue": 2.0152059677899805, "zoneAdaptation": 0.0, "overallValue": 7.12712200571302, "archetype": "Battery Captain", "executionGrade": "B", "selectionGrade": "B+", "nStrikeoutsFlip": 3, "nWalksFlip": 0}, {"name": "Agustin Ramirez", "team": "MIA", "level": "MLB", "parentOrg": "MIA", "challenges": 24, "overturns": 17, "confirms": 7, "successRate": 0.708333333333333, "successPct": 70.8333333333333, "expectedSuccessRate": 0.576092840984193, "expectedSuccessPct": 57.6092840984193, "expectedOverturns": 13.826228183620632, "overturnsAboveExpected": 3.173771816379368, "netFor": 7.61622738059525, "netAgainst": 0.622661051925242, "totalVsExpected": 6.99356632867, "expectedChallengeDiff": 0.0127079571664392, "aggressionLabel": "Too Aggressive", "valueLabel": "Positive", "executionValue": 7.61622738059525, "selectionValue": -0.6226610519252498, "zoneAdaptation": 0.0, "overallValue": 6.99356632867, "archetype": "Technician", "executionGrade": "B", "selectionGrade": "B+", "nStrikeoutsFlip": 2, "nWalksFlip": 1}, {"name": "Luis Torrens", "team": "NYM", "level": "MLB", "parentOrg": "NYM", "challenges": 5, "overturns": 4, "confirms": 1, "successRate": 0.8, "successPct": 80.0, "expectedSuccessRate": 0.439174339803847, "expectedSuccessPct": 43.9174339803847, "expectedOverturns": 2.195871699019235, "overturnsAboveExpected": 1.8041283009807652, "netFor": 3.824879063334, "netAgainst": -1.72984715272024, "totalVsExpected": 5.55472621605425, "expectedChallengeDiff": -0.00556463497153974, "aggressionLabel": "Too Passive", "valueLabel": "Positive", "executionValue": 3.824879063334, "selectionValue": 1.7298471527202497, "zoneAdaptation": 0.0, "overallValue": 5.55472621605425, "archetype": "Passive Receiver", "executionGrade": "B+", "selectionGrade": "B+", "nStrikeoutsFlip": 1, "nWalksFlip": 0}, {"name": "Tyler Stephenson", "team": "CIN", "level": "MLB", "parentOrg": "CIN", "challenges": 13, "overturns": 8, "confirms": 5, "successRate": 0.615384615384615, "successPct": 61.5384615384615, "expectedSuccessRate": 0.455500473357887, "expectedSuccessPct": 45.550047335788705, "expectedOverturns": 5.9215061536525315, "overturnsAboveExpected": 2.0784938463474685, "netFor": 5.37282224511425, "netAgainst": 0.323579045814001, "totalVsExpected": 5.04924319930025, "expectedChallengeDiff": -0.0131105640158314, "aggressionLabel": "Too Passive", "valueLabel": "Positive", "executionValue": 5.37282224511425, "selectionValue": -0.3235790458140002, "zoneAdaptation": 0.0, "overallValue": 5.04924319930025, "archetype": "Passive Receiver", "executionGrade": "B", "selectionGrade": "B+", "nStrikeoutsFlip": 1, "nWalksFlip": 0}, {"name": "Luis Campusano", "team": "SD", "level": "MLB", "parentOrg": "SD", "challenges": 20, "overturns": 13, "confirms": 7, "successRate": 0.65, "successPct": 65.0, "expectedSuccessRate": 0.547063914180828, "expectedSuccessPct": 54.7063914180828, "expectedOverturns": 10.94127828361656, "overturnsAboveExpected": 2.05872171638344, "netFor": 4.46562714980833, "netAgainst": -0.440861065731041, "totalVsExpected": 4.90648821553937, "expectedChallengeDiff": 0.00585293013238301, "aggressionLabel": "Too Aggressive", "valueLabel": "Positive", "executionValue": 4.46562714980833, "selectionValue": 0.4408610657310401, "zoneAdaptation": 0.0, "overallValue": 4.90648821553937, "archetype": "Technician", "executionGrade": "B", "selectionGrade": "B+", "nStrikeoutsFlip": 2, "nWalksFlip": 1}, {"name": "J.T. Realmuto", "team": "PHI", "level": "MLB", "parentOrg": "PHI", "challenges": 7, "overturns": 6, "confirms": 1, "successRate": 0.857142857142857, "successPct": 85.7142857142857, "expectedSuccessRate": 0.530720067920876, "expectedSuccessPct": 53.0720067920876, "expectedOverturns": 3.715040475446132, "overturnsAboveExpected": 2.284959524553868, "netFor": 3.82299009065697, "netAgainst": -1.03560285746897, "totalVsExpected": 4.85859294812595, "expectedChallengeDiff": -0.013374059374066, "aggressionLabel": "Too Passive", "valueLabel": "Positive", "executionValue": 3.82299009065697, "selectionValue": 1.0356028574689802, "zoneAdaptation": 0.0, "overallValue": 4.85859294812595, "archetype": "Passive Receiver", "executionGrade": "A", "selectionGrade": "B+", "nStrikeoutsFlip": 1, "nWalksFlip": 2}, {"name": "Gary Sanchez", "team": "MIL", "level": "MLB", "parentOrg": "MIL", "challenges": 5, "overturns": 4, "confirms": 1, "successRate": 0.8, "successPct": 80.0, "expectedSuccessRate": 0.607329331600931, "expectedSuccessPct": 60.732933160093104, "expectedOverturns": 3.0366466580046554, "overturnsAboveExpected": 0.9633533419953446, "netFor": 1.69379400450918, "netAgainst": -2.75637435303506, "totalVsExpected": 4.45016835754425, "expectedChallengeDiff": -0.00441072116990233, "aggressionLabel": "Balanced", "valueLabel": "Positive", "executionValue": 1.69379400450918, "selectionValue": 2.7563743530350697, "zoneAdaptation": 0.0, "overallValue": 4.45016835754425, "archetype": "Technician", "executionGrade": "B+", "selectionGrade": "B", "nStrikeoutsFlip": 0, "nWalksFlip": 0}, {"name": "Ivan Herrera", "team": "STL", "level": "MLB", "parentOrg": "STL", "challenges": 6, "overturns": 5, "confirms": 1, "successRate": 0.833333333333333, "successPct": 83.3333333333333, "expectedSuccessRate": 0.444267876371197, "expectedSuccessPct": 44.4267876371197, "expectedOverturns": 2.6656072582271824, "overturnsAboveExpected": 2.3343927417728176, "netFor": 5.36592775011891, "netAgainst": 1.41057071324537, "totalVsExpected": 3.95535703687354, "expectedChallengeDiff": -0.0116252834549928, "aggressionLabel": "Too Passive", "valueLabel": "Positive", "executionValue": 5.36592775011891, "selectionValue": -1.4105707132453702, "zoneAdaptation": 0.0, "overallValue": 3.95535703687354, "archetype": "Passive Receiver", "executionGrade": "B+", "selectionGrade": "B+", "nStrikeoutsFlip": 1, "nWalksFlip": 1}, {"name": "P.J. Higgins", "team": "CIN", "level": "MLB", "parentOrg": "CIN", "challenges": 4, "overturns": 4, "confirms": 0, "successRate": 1.0, "successPct": 100.0, "expectedSuccessRate": 0.492704344052663, "expectedSuccessPct": 49.2704344052663, "expectedOverturns": 1.970817376210652, "overturnsAboveExpected": 2.0291826237893478, "netFor": 4.06819991134957, "netAgainst": 0.213886024494827, "totalVsExpected": 3.85431388685474, "expectedChallengeDiff": -0.00266406400591638, "aggressionLabel": "Balanced", "valueLabel": "Positive", "executionValue": 4.06819991134957, "selectionValue": -0.21388602449482974, "zoneAdaptation": 0.0, "overallValue": 3.85431388685474, "archetype": "Technician", "executionGrade": "A", "selectionGrade": "B+", "nStrikeoutsFlip": 2, "nWalksFlip": 1}, {"name": "James McCann", "team": "AZ", "level": "MLB", "parentOrg": "AZ", "challenges": 16, "overturns": 10, "confirms": 6, "successRate": 0.625, "successPct": 62.5, "expectedSuccessRate": 0.58083681124693, "expectedSuccessPct": 58.083681124693, "expectedOverturns": 9.29338897995088, "overturnsAboveExpected": 0.7066110200491202, "netFor": 2.33554079060275, "netAgainst": -1.45588734592497, "totalVsExpected": 3.79142813652773, "expectedChallengeDiff": 0.0127056102050767, "aggressionLabel": "Too Aggressive", "valueLabel": "Positive", "executionValue": 2.33554079060275, "selectionValue": 1.45588734592498, "zoneAdaptation": 0.0, "overallValue": 3.79142813652773, "archetype": "Technician", "executionGrade": "B", "selectionGrade": "B", "nStrikeoutsFlip": 3, "nWalksFlip": 1}, {"name": "Pedro Pages", "team": "STL", "level": "MLB", "parentOrg": "STL", "challenges": 18, "overturns": 11, "confirms": 7, "successRate": 0.611111111111111, "successPct": 61.11111111111111, "expectedSuccessRate": 0.538650073964292, "expectedSuccessPct": 53.8650073964292, "expectedOverturns": 9.695701331357256, "overturnsAboveExpected": 1.304298668642744, "netFor": 2.58969034867069, "netAgainst": -0.692969919568566, "totalVsExpected": 3.28266026823926, "expectedChallengeDiff": -0.000277315058282752, "aggressionLabel": "Balanced", "valueLabel": "Positive", "executionValue": 2.58969034867069, "selectionValue": 0.6929699195685699, "zoneAdaptation": 0.0, "overallValue": 3.28266026823926, "archetype": "Technician", "executionGrade": "B", "selectionGrade": "B", "nStrikeoutsFlip": 4, "nWalksFlip": 2}, {"name": "Alejandro Kirk", "team": "TOR", "level": "MLB", "parentOrg": "TOR", "challenges": 3, "overturns": 2, "confirms": 1, "successRate": 0.666666666666666, "successPct": 66.6666666666666, "expectedSuccessRate": 0.476763690682109, "expectedSuccessPct": 47.6763690682109, "expectedOverturns": 1.430291072046327, "overturnsAboveExpected": 0.5697089279536729, "netFor": 1.15945405769506, "netAgainst": -2.12155621627579, "totalVsExpected": 3.28101027397085, "expectedChallengeDiff": -0.00159092227015151, "aggressionLabel": "Balanced", "valueLabel": "Positive", "executionValue": 1.15945405769506, "selectionValue": 2.12155621627579, "zoneAdaptation": 0.0, "overallValue": 3.28101027397085, "archetype": "Technician", "executionGrade": "B", "selectionGrade": "B", "nStrikeoutsFlip": 2, "nWalksFlip": 0}, {"name": "Travis d'Arnaud", "team": "LAA", "level": "MLB", "parentOrg": "LAA", "challenges": 2, "overturns": 2, "confirms": 0, "successRate": 1.0, "successPct": 100.0, "expectedSuccessRate": 0.566125002291542, "expectedSuccessPct": 56.61250022915419, "expectedOverturns": 1.132250004583084, "overturnsAboveExpected": 0.8677499954169161, "netFor": 1.24642465137783, "netAgainst": -1.82158757378277, "totalVsExpected": 3.06801222516061, "expectedChallengeDiff": -0.0133505851243673, "aggressionLabel": "Too Passive", "valueLabel": "Positive", "executionValue": 1.24642465137783, "selectionValue": 1.82158757378278, "zoneAdaptation": 0.0, "overallValue": 3.06801222516061, "archetype": "Passive Receiver", "executionGrade": "A", "selectionGrade": "B", "nStrikeoutsFlip": 1, "nWalksFlip": 0}, {"name": "Will Smith", "team": "LAD", "level": "MLB", "parentOrg": "LAD", "challenges": 26, "overturns": 18, "confirms": 8, "successRate": 0.692307692307692, "successPct": 69.2307692307692, "expectedSuccessRate": 0.618568283766879, "expectedSuccessPct": 61.8568283766879, "expectedOverturns": 16.082775377938855, "overturnsAboveExpected": 1.9172246220611449, "netFor": 4.4669441706294, "netAgainst": 1.6395971116149, "totalVsExpected": 2.82734705901449, "expectedChallengeDiff": 0.00296028637247853, "aggressionLabel": "Balanced", "valueLabel": "Positive", "executionValue": 4.4669441706294, "selectionValue": -1.6395971116149104, "zoneAdaptation": 0.0, "overallValue": 2.82734705901449, "archetype": "Technician", "executionGrade": "B", "selectionGrade": "B+", "nStrikeoutsFlip": 4, "nWalksFlip": 2}, {"name": "Liam Hicks", "team": "MIA", "level": "MLB", "parentOrg": "MIA", "challenges": 22, "overturns": 12, "confirms": 10, "successRate": 0.545454545454545, "successPct": 54.5454545454545, "expectedSuccessRate": 0.594035771197646, "expectedSuccessPct": 59.40357711976459, "expectedOverturns": 13.068786966348211, "overturnsAboveExpected": -1.0687869663482115, "netFor": 0.0237447083876141, "netAgainst": -2.70635599736379, "totalVsExpected": 2.7301007057514, "expectedChallengeDiff": 0.0213209694439695, "aggressionLabel": "Too Aggressive", "valueLabel": "Positive", "executionValue": 0.0237447083876141, "selectionValue": 2.706355997363786, "zoneAdaptation": 0.0, "overallValue": 2.7301007057514, "archetype": "Technician", "executionGrade": "C", "selectionGrade": "C", "nStrikeoutsFlip": 2, "nWalksFlip": 1}, {"name": "Joey Bart", "team": "PIT", "level": "MLB", "parentOrg": "PIT", "challenges": 7, "overturns": 3, "confirms": 4, "successRate": 0.428571428571428, "successPct": 42.8571428571428, "expectedSuccessRate": 0.52711204395132, "expectedSuccessPct": 52.71120439513201, "expectedOverturns": 3.6897843076592403, "overturnsAboveExpected": -0.6897843076592403, "netFor": -1.48011544001714, "netAgainst": -4.12170441497904, "totalVsExpected": 2.64158897496189, "expectedChallengeDiff": -0.00382326468981869, "aggressionLabel": "Balanced", "valueLabel": "Positive", "executionValue": -1.48011544001714, "selectionValue": 4.12170441497903, "zoneAdaptation": 0.0, "overallValue": 2.6415889749618904, "archetype": "Technician", "executionGrade": "D", "selectionGrade": "B", "nStrikeoutsFlip": 0, "nWalksFlip": 0}, {"name": "Reese McGuire", "team": "CWS", "level": "MLB", "parentOrg": "CWS", "challenges": 7, "overturns": 5, "confirms": 2, "successRate": 0.714285714285714, "successPct": 71.4285714285714, "expectedSuccessRate": 0.574262618679712, "expectedSuccessPct": 57.42626186797119, "expectedOverturns": 4.019838330757984, "overturnsAboveExpected": 0.9801616692420163, "netFor": 1.5385072601559, "netAgainst": -0.960536651858408, "totalVsExpected": 2.49904391201431, "expectedChallengeDiff": -0.00574904788068253, "aggressionLabel": "Too Passive", "valueLabel": "Positive", "executionValue": 1.5385072601559, "selectionValue": 0.9605366518584102, "zoneAdaptation": 0.0, "overallValue": 2.49904391201431, "archetype": "Passive Receiver", "executionGrade": "B", "selectionGrade": "B", "nStrikeoutsFlip": 1, "nWalksFlip": 1}, {"name": "Adley Rutschman", "team": "BAL", "level": "MLB", "parentOrg": "BAL", "challenges": 3, "overturns": 2, "confirms": 1, "successRate": 0.666666666666666, "successPct": 66.6666666666666, "expectedSuccessRate": 0.415771664225705, "expectedSuccessPct": 41.5771664225705, "expectedOverturns": 1.247314992677115, "overturnsAboveExpected": 0.752685007322885, "netFor": 2.59927625644229, "netAgainst": 0.326098304019031, "totalVsExpected": 2.27317795242326, "expectedChallengeDiff": -0.0113724955805973, "aggressionLabel": "Too Passive", "valueLabel": "Positive", "executionValue": 2.59927625644229, "selectionValue": -0.3260983040190304, "zoneAdaptation": 0.0, "overallValue": 2.27317795242326, "archetype": "Passive Receiver", "executionGrade": "B", "selectionGrade": "B", "nStrikeoutsFlip": 0, "nWalksFlip": 1}, {"name": "Jake Rogers", "team": "DET", "level": "MLB", "parentOrg": "DET", "challenges": 3, "overturns": 2, "confirms": 1, "successRate": 0.666666666666666, "successPct": 66.6666666666666, "expectedSuccessRate": 0.500469641924209, "expectedSuccessPct": 50.046964192420894, "expectedOverturns": 1.5014089257726269, "overturnsAboveExpected": 0.49859107422737314, "netFor": 0.992524943049937, "netAgainst": -1.27534558643731, "totalVsExpected": 2.26787052948725, "expectedChallengeDiff": -0.0120345906433366, "aggressionLabel": "Too Passive", "valueLabel": "Positive", "executionValue": 0.992524943049937, "selectionValue": 1.2753455864373129, "zoneAdaptation": 0.0, "overallValue": 2.26787052948725, "archetype": "Passive Receiver", "executionGrade": "B", "selectionGrade": "B", "nStrikeoutsFlip": 0, "nWalksFlip": 1}, {"name": "Sam Huff", "team": "BAL", "level": "MLB", "parentOrg": "BAL", "challenges": 1, "overturns": 1, "confirms": 0, "successRate": 1.0, "successPct": 100.0, "expectedSuccessRate": 0.659159586691542, "expectedSuccessPct": 65.9159586691542, "expectedOverturns": 0.659159586691542, "overturnsAboveExpected": 0.34084041330845805, "netFor": 0.419613326802934, "netAgainst": -1.59902338143535, "totalVsExpected": 2.01863670823828, "expectedChallengeDiff": -0.00831601324743875, "aggressionLabel": "Too Passive", "valueLabel": "Positive", "executionValue": 0.419613326802934, "selectionValue": 1.5990233814353458, "zoneAdaptation": 0.0, "overallValue": 2.01863670823828, "archetype": "Passive Receiver", "executionGrade": "A", "selectionGrade": "B", "nStrikeoutsFlip": 1, "nWalksFlip": 0}, {"name": "Miguel Amaya", "team": "CHC", "level": "MLB", "parentOrg": "CHC", "challenges": 12, "overturns": 8, "confirms": 4, "successRate": 0.666666666666666, "successPct": 66.6666666666666, "expectedSuccessRate": 0.519501812457134, "expectedSuccessPct": 51.9501812457134, "expectedOverturns": 6.234021749485608, "overturnsAboveExpected": 1.765978250514392, "netFor": 3.57296048263955, "netAgainst": 1.78094286588826, "totalVsExpected": 1.79201761675129, "expectedChallengeDiff": 0.00197239480384914, "aggressionLabel": "Balanced", "valueLabel": "Neutral", "executionValue": 3.57296048263955, "selectionValue": -1.7809428658882598, "zoneAdaptation": 0.0, "overallValue": 1.79201761675129, "archetype": "Technician", "executionGrade": "B", "selectionGrade": "B+", "nStrikeoutsFlip": 1, "nWalksFlip": 0}, {"name": "Brett Sullivan", "team": "COL", "level": "MLB", "parentOrg": "COL", "challenges": 16, "overturns": 11, "confirms": 5, "successRate": 0.6875, "successPct": 68.75, "expectedSuccessRate": 0.597244923252407, "expectedSuccessPct": 59.724492325240696, "expectedOverturns": 9.555918772038511, "overturnsAboveExpected": 1.4440812279614885, "netFor": 3.91139076619305, "netAgainst": 2.1298360795178, "totalVsExpected": 1.78155468667524, "expectedChallengeDiff": 0.0110295358060246, "aggressionLabel": "Too Aggressive", "valueLabel": "Neutral", "executionValue": 3.91139076619305, "selectionValue": -2.1298360795178097, "zoneAdaptation": 0.0, "overallValue": 1.78155468667524, "archetype": "Technician", "executionGrade": "B", "selectionGrade": "B+", "nStrikeoutsFlip": 5, "nWalksFlip": 2}, {"name": "Brandon Valenzuela", "team": "TOR", "level": "MLB", "parentOrg": "TOR", "challenges": 8, "overturns": 4, "confirms": 4, "successRate": 0.5, "successPct": 50.0, "expectedSuccessRate": 0.374363104391239, "expectedSuccessPct": 37.4363104391239, "expectedOverturns": 2.994904835129912, "overturnsAboveExpected": 1.005095164870088, "netFor": 2.0432866805198, "netAgainst": 0.522709282923594, "totalVsExpected": 1.5205773975962, "expectedChallengeDiff": -0.000335150883102468, "aggressionLabel": "Balanced", "valueLabel": "Neutral", "executionValue": 2.0432866805198, "selectionValue": -0.5227092829235997, "zoneAdaptation": 0.0, "overallValue": 1.5205773975962, "archetype": "Technician", "executionGrade": "C", "selectionGrade": "B", "nStrikeoutsFlip": 1, "nWalksFlip": 0}, {"name": "Adrian Del Castillo", "team": "AZ", "level": "MLB", "parentOrg": "AZ", "challenges": 3, "overturns": 3, "confirms": 0, "successRate": 1.0, "successPct": 100.0, "expectedSuccessRate": 0.580053121744461, "expectedSuccessPct": 58.0053121744461, "expectedOverturns": 1.7401593652333829, "overturnsAboveExpected": 1.2598406347666171, "netFor": 2.24720190360866, "netAgainst": 0.934256867179984, "totalVsExpected": 1.31294503642867, "expectedChallengeDiff": -0.00635024612283591, "aggressionLabel": "Too Passive", "valueLabel": "Neutral", "executionValue": 2.24720190360866, "selectionValue": -0.9342568671799898, "zoneAdaptation": 0.0, "overallValue": 1.31294503642867, "archetype": "Technician", "executionGrade": "A", "selectionGrade": "B", "nStrikeoutsFlip": 0, "nWalksFlip": 0}, {"name": "Mitch Garver", "team": "SEA", "level": "MLB", "parentOrg": "SEA", "challenges": 10, "overturns": 9, "confirms": 1, "successRate": 0.9, "successPct": 90.0, "expectedSuccessRate": 0.544576572490404, "expectedSuccessPct": 54.4576572490404, "expectedOverturns": 5.4457657249040405, "overturnsAboveExpected": 3.5542342750959595, "netFor": 7.29141778985306, "netAgainst": 6.11029689334236, "totalVsExpected": 1.18112089651069, "expectedChallengeDiff": 0.00693269716671316, "aggressionLabel": "Too Aggressive", "valueLabel": "Neutral", "executionValue": 7.29141778985306, "selectionValue": -6.110296893342371, "zoneAdaptation": 0.0, "overallValue": 1.1811208965106896, "archetype": "Technician", "executionGrade": "A", "selectionGrade": "B+", "nStrikeoutsFlip": 1, "nWalksFlip": 0}, {"name": "Tyler Heineman", "team": "TOR", "level": "MLB", "parentOrg": "TOR", "challenges": 11, "overturns": 6, "confirms": 5, "successRate": 0.545454545454545, "successPct": 54.5454545454545, "expectedSuccessRate": 0.532052625659892, "expectedSuccessPct": 53.205262565989194, "expectedOverturns": 5.852578882258812, "overturnsAboveExpected": 0.14742111774118793, "netFor": 0.279829302150111, "netAgainst": -0.740137617633654, "totalVsExpected": 1.01996691978376, "expectedChallengeDiff": -0.000488918460374126, "aggressionLabel": "Balanced", "valueLabel": "Neutral", "executionValue": 0.279829302150111, "selectionValue": 0.7401376176336489, "zoneAdaptation": 0.0, "overallValue": 1.01996691978376, "archetype": "Technician", "executionGrade": "C", "selectionGrade": "B", "nStrikeoutsFlip": 3, "nWalksFlip": 0}, {"name": "Jeferson Quero", "team": "MIL", "level": "MLB", "parentOrg": "MIL", "challenges": 2, "overturns": 2, "confirms": 0, "successRate": 1.0, "successPct": 100.0, "expectedSuccessRate": 0.777172552738105, "expectedSuccessPct": 77.71725527381051, "expectedOverturns": 1.55434510547621, "overturnsAboveExpected": 0.4456548945237899, "netFor": 1.14572390467951, "netAgainst": 0.216217906530315, "totalVsExpected": 0.929505998149198, "expectedChallengeDiff": 0.0084989882027644, "aggressionLabel": "Too Aggressive", "valueLabel": "Neutral", "executionValue": 1.14572390467951, "selectionValue": -0.21621790653031203, "zoneAdaptation": 0.0, "overallValue": 0.929505998149198, "archetype": "Traditional Receiver", "executionGrade": "A", "selectionGrade": "B", "nStrikeoutsFlip": 1, "nWalksFlip": 0}, {"name": "Francisco Alvarez", "team": "NYM", "level": "MLB", "parentOrg": "NYM", "challenges": 15, "overturns": 10, "confirms": 5, "successRate": 0.666666666666666, "successPct": 66.6666666666666, "expectedSuccessRate": 0.606253990733009, "expectedSuccessPct": 60.6253990733009, "expectedOverturns": 9.093809860995135, "overturnsAboveExpected": 0.906190139004865, "netFor": 0.698399930531202, "netAgainst": -0.141365814238068, "totalVsExpected": 0.839765744769271, "expectedChallengeDiff": -0.0055005913616507, "aggressionLabel": "Too Passive", "valueLabel": "Neutral", "executionValue": 0.698399930531202, "selectionValue": 0.14136581423806904, "zoneAdaptation": 0.0, "overallValue": 0.839765744769271, "archetype": "Technician", "executionGrade": "B", "selectionGrade": "B", "nStrikeoutsFlip": 3, "nWalksFlip": 2}, {"name": "Nick Fortes", "team": "TB", "level": "MLB", "parentOrg": "TB", "challenges": 24, "overturns": 14, "confirms": 10, "successRate": 0.583333333333333, "successPct": 58.3333333333333, "expectedSuccessRate": 0.60281298326198, "expectedSuccessPct": 60.281298326198, "expectedOverturns": 14.467511598287519, "overturnsAboveExpected": -0.4675115982875191, "netFor": 0.787388735901668, "netAgainst": -0.0238256296763259, "totalVsExpected": 0.811214365577994, "expectedChallengeDiff": 0.0117316975229545, "aggressionLabel": "Too Aggressive", "valueLabel": "Neutral", "executionValue": 0.787388735901668, "selectionValue": 0.023825629676325955, "zoneAdaptation": 0.0, "overallValue": 0.811214365577994, "archetype": "Technician", "executionGrade": "C", "selectionGrade": "B", "nStrikeoutsFlip": 3, "nWalksFlip": 1}, {"name": "Rafael Marchan", "team": "PHI", "level": "MLB", "parentOrg": "PHI", "challenges": 11, "overturns": 7, "confirms": 4, "successRate": 0.636363636363636, "successPct": 63.636363636363605, "expectedSuccessRate": 0.658276056940471, "expectedSuccessPct": 65.8276056940471, "expectedOverturns": 7.24103662634518, "overturnsAboveExpected": -0.24103662634518042, "netFor": 0.203255954635264, "netAgainst": -0.568869635533469, "totalVsExpected": 0.772125590168733, "expectedChallengeDiff": 0.00525480744935345, "aggressionLabel": "Too Aggressive", "valueLabel": "Neutral", "executionValue": 0.203255954635264, "selectionValue": 0.5688696355334689, "zoneAdaptation": 0.0, "overallValue": 0.772125590168733, "archetype": "Technician", "executionGrade": "B", "selectionGrade": "B", "nStrikeoutsFlip": 3, "nWalksFlip": 3}, {"name": "Jose Trevino", "team": "CIN", "level": "MLB", "parentOrg": "CIN", "challenges": 1, "overturns": 0, "confirms": 1, "successRate": 0.0, "successPct": 0.0, "expectedSuccessRate": 0.440900731651051, "expectedSuccessPct": 44.090073165105096, "expectedOverturns": 0.440900731651051, "overturnsAboveExpected": -0.440900731651051, "netFor": -0.6616531856379, "netAgainst": -1.16820307221412, "totalVsExpected": 0.506549886576222, "expectedChallengeDiff": -0.0111528720785705, "aggressionLabel": "Too Passive", "valueLabel": "Neutral", "executionValue": -0.6616531856379, "selectionValue": 1.168203072214122, "zoneAdaptation": 0.0, "overallValue": 0.5065498865762219, "archetype": "Technician", "executionGrade": "D", "selectionGrade": "B", "nStrikeoutsFlip": 0, "nWalksFlip": 0}, {"name": "Austin Hedges", "team": "CLE", "level": "MLB", "parentOrg": "CLE", "challenges": 11, "overturns": 8, "confirms": 3, "successRate": 0.727272727272727, "successPct": 72.72727272727269, "expectedSuccessRate": 0.687493548609119, "expectedSuccessPct": 68.74935486091191, "expectedOverturns": 7.562429034700309, "overturnsAboveExpected": 0.43757096529969086, "netFor": 1.54394853723501, "netAgainst": 1.49151365959747, "totalVsExpected": 0.0524348776375442, "expectedChallengeDiff": 0.00368501167678208, "aggressionLabel": "Balanced", "valueLabel": "Neutral", "executionValue": 1.54394853723501, "selectionValue": -1.4915136595974656, "zoneAdaptation": 0.0, "overallValue": 0.052434877637544286, "archetype": "Traditional Receiver", "executionGrade": "B+", "selectionGrade": "B", "nStrikeoutsFlip": 3, "nWalksFlip": 1}, {"name": "Elias Diaz", "team": "KC", "level": "MLB", "parentOrg": "KC", "challenges": 1, "overturns": 0, "confirms": 1, "successRate": 0.0, "successPct": 0.0, "expectedSuccessRate": 0.0, "expectedSuccessPct": 0.0, "expectedOverturns": 0.0, "overturnsAboveExpected": 0.0, "netFor": -0.951029714339554, "netAgainst": -0.649770675541098, "totalVsExpected": -0.301259038798455, "expectedChallengeDiff": 0.020234674773182, "aggressionLabel": "Too Aggressive", "valueLabel": "Neutral", "executionValue": -0.951029714339554, "selectionValue": 0.649770675541099, "zoneAdaptation": 0.0, "overallValue": -0.30125903879845495, "archetype": "At-Risk Receiver", "executionGrade": "D", "selectionGrade": "B", "nStrikeoutsFlip": 0, "nWalksFlip": 0}, {"name": "Henry Davis", "team": "PIT", "level": "MLB", "parentOrg": "PIT", "challenges": 10, "overturns": 5, "confirms": 5, "successRate": 0.5, "successPct": 50.0, "expectedSuccessRate": 0.537800043975643, "expectedSuccessPct": 53.7800043975643, "expectedOverturns": 5.37800043975643, "overturnsAboveExpected": -0.3780004397564296, "netFor": -1.33750536058948, "netAgainst": -0.982549956232912, "totalVsExpected": -0.35495540435657, "expectedChallengeDiff": -0.00959083449723213, "aggressionLabel": "Too Passive", "valueLabel": "Neutral", "executionValue": -1.33750536058948, "selectionValue": 0.98254995623291, "zoneAdaptation": 0.0, "overallValue": -0.35495540435657, "archetype": "At-Risk Receiver", "executionGrade": "C", "selectionGrade": "B", "nStrikeoutsFlip": 2, "nWalksFlip": 2}, {"name": "Freddy Fermin", "team": "SD", "level": "MLB", "parentOrg": "SD", "challenges": 11, "overturns": 7, "confirms": 4, "successRate": 0.636363636363636, "successPct": 63.636363636363605, "expectedSuccessRate": 0.603194927552723, "expectedSuccessPct": 60.3194927552723, "expectedOverturns": 6.635144203079952, "overturnsAboveExpected": 0.36485579692004766, "netFor": 0.0703303024023083, "netAgainst": 0.627207990271739, "totalVsExpected": -0.556877687869431, "expectedChallengeDiff": -0.00486276077756909, "aggressionLabel": "Balanced", "valueLabel": "Neutral", "executionValue": 0.0703303024023083, "selectionValue": -0.6272079902717393, "zoneAdaptation": 0.0, "overallValue": -0.556877687869431, "archetype": "At-Risk Receiver", "executionGrade": "B", "selectionGrade": "B", "nStrikeoutsFlip": 3, "nWalksFlip": 0}, {"name": "William Contreras", "team": "MIL", "level": "MLB", "parentOrg": "MIL", "challenges": 28, "overturns": 15, "confirms": 13, "successRate": 0.535714285714285, "successPct": 53.571428571428505, "expectedSuccessRate": 0.500264242568665, "expectedSuccessPct": 50.0264242568665, "expectedOverturns": 14.007398791922618, "overturnsAboveExpected": 0.9926012080773816, "netFor": 1.99010183173435, "netAgainst": 2.57277635047859, "totalVsExpected": -0.582674518744239, "expectedChallengeDiff": 0.0111026084820862, "aggressionLabel": "Too Aggressive", "valueLabel": "Neutral", "executionValue": 1.99010183173435, "selectionValue": -2.572776350478589, "zoneAdaptation": 0.0, "overallValue": -0.582674518744239, "archetype": "At-Risk Receiver", "executionGrade": "C", "selectionGrade": "B", "nStrikeoutsFlip": 1, "nWalksFlip": 1}, {"name": "Yohel Pozo", "team": "STL", "level": "MLB", "parentOrg": "STL", "challenges": 1, "overturns": 1, "confirms": 0, "successRate": 1.0, "successPct": 100.0, "expectedSuccessRate": 0.624347387465586, "expectedSuccessPct": 62.43473874655861, "expectedOverturns": 0.624347387465586, "overturnsAboveExpected": 0.37565261253441395, "netFor": 0.600738891730356, "netAgainst": 1.19400993013256, "totalVsExpected": -0.593271038402204, "expectedChallengeDiff": -0.0163628703563449, "aggressionLabel": "Too Passive", "valueLabel": "Neutral", "executionValue": 0.600738891730356, "selectionValue": -1.19400993013256, "zoneAdaptation": 0.0, "overallValue": -0.593271038402204, "archetype": "Traditional Receiver", "executionGrade": "A", "selectionGrade": "B", "nStrikeoutsFlip": 0, "nWalksFlip": 0}, {"name": "Bo Naylor", "team": "CLE", "level": "MLB", "parentOrg": "CLE", "challenges": 8, "overturns": 3, "confirms": 5, "successRate": 0.375, "successPct": 37.5, "expectedSuccessRate": 0.382017179087108, "expectedSuccessPct": 38.201717908710805, "expectedOverturns": 3.056137432696864, "overturnsAboveExpected": -0.05613743269686422, "netFor": 1.40156253420048, "netAgainst": 2.16052543200347, "totalVsExpected": -0.758962897802993, "expectedChallengeDiff": -0.00833181721569089, "aggressionLabel": "Too Passive", "valueLabel": "Neutral", "executionValue": 1.40156253420048, "selectionValue": -2.160525432003473, "zoneAdaptation": 0.0, "overallValue": -0.7589628978029928, "archetype": "At-Risk Receiver", "executionGrade": "D", "selectionGrade": "B", "nStrikeoutsFlip": 2, "nWalksFlip": 0}, {"name": "Hunter Feduccia", "team": "TB", "level": "MLB", "parentOrg": "TB", "challenges": 9, "overturns": 3, "confirms": 6, "successRate": 0.333333333333333, "successPct": 33.3333333333333, "expectedSuccessRate": 0.462757842021825, "expectedSuccessPct": 46.2757842021825, "expectedOverturns": 4.164820578196425, "overturnsAboveExpected": -1.1648205781964247, "netFor": -2.42444783486294, "netAgainst": -1.26916709365243, "totalVsExpected": -1.15528074121051, "expectedChallengeDiff": 0.00293281297006825, "aggressionLabel": "Balanced", "valueLabel": "Neutral", "executionValue": -2.42444783486294, "selectionValue": 1.26916709365243, "zoneAdaptation": 0.0, "overallValue": -1.15528074121051, "archetype": "At-Risk Receiver", "executionGrade": "D", "selectionGrade": "C", "nStrikeoutsFlip": 0, "nWalksFlip": 0}, {"name": "Kyle Higashioka", "team": "TEX", "level": "MLB", "parentOrg": "TEX", "challenges": 8, "overturns": 4, "confirms": 4, "successRate": 0.5, "successPct": 50.0, "expectedSuccessRate": 0.46357612411968, "expectedSuccessPct": 46.357612411968, "expectedOverturns": 3.70860899295744, "overturnsAboveExpected": 0.2913910070425598, "netFor": 0.948947553497133, "netAgainst": 3.2602067733067, "totalVsExpected": -2.31125921980957, "expectedChallengeDiff": -0.0107632749841921, "aggressionLabel": "Too Passive", "valueLabel": "Negative", "executionValue": 0.948947553497133, "selectionValue": -3.260206773306703, "zoneAdaptation": 0.0, "overallValue": -2.31125921980957, "archetype": "At-Risk Receiver", "executionGrade": "C", "selectionGrade": "B", "nStrikeoutsFlip": 1, "nWalksFlip": 0}, {"name": "Carter Jensen", "team": "KC", "level": "MLB", "parentOrg": "KC", "challenges": 8, "overturns": 3, "confirms": 5, "successRate": 0.375, "successPct": 37.5, "expectedSuccessRate": 0.517760891912407, "expectedSuccessPct": 51.7760891912407, "expectedOverturns": 4.142087135299256, "overturnsAboveExpected": -1.1420871352992563, "netFor": -2.35017881367277, "netAgainst": 0.0491421165998627, "totalVsExpected": -2.39932093027263, "expectedChallengeDiff": -0.00365776120768218, "aggressionLabel": "Balanced", "valueLabel": "Negative", "executionValue": -2.35017881367277, "selectionValue": -0.049142116599859786, "zoneAdaptation": 0.0, "overallValue": -2.39932093027263, "archetype": "At-Risk Receiver", "executionGrade": "D", "selectionGrade": "C", "nStrikeoutsFlip": 1, "nWalksFlip": 0}, {"name": "David Fry", "team": "CLE", "level": "MLB", "parentOrg": "CLE", "challenges": 2, "overturns": 0, "confirms": 2, "successRate": 0.0, "successPct": 0.0, "expectedSuccessRate": 0.244748090237702, "expectedSuccessPct": 24.4748090237702, "expectedOverturns": 0.489496180475404, "overturnsAboveExpected": -0.489496180475404, "netFor": -1.06284951557279, "netAgainst": 1.35934799798028, "totalVsExpected": -2.42219751355307, "expectedChallengeDiff": 0.00152095852311507, "aggressionLabel": "Balanced", "valueLabel": "Negative", "executionValue": -1.06284951557279, "selectionValue": -1.35934799798028, "zoneAdaptation": 0.0, "overallValue": -2.42219751355307, "archetype": "At-Risk Receiver", "executionGrade": "D", "selectionGrade": "B", "nStrikeoutsFlip": 0, "nWalksFlip": 0}, {"name": "Danny Jansen", "team": "TEX", "level": "MLB", "parentOrg": "TEX", "challenges": 9, "overturns": 7, "confirms": 2, "successRate": 0.777777777777777, "successPct": 77.7777777777777, "expectedSuccessRate": 0.578915255674071, "expectedSuccessPct": 57.8915255674071, "expectedOverturns": 5.2102373010666385, "overturnsAboveExpected": 1.7897626989333615, "netFor": 2.06551403112293, "netAgainst": 4.61229491789534, "totalVsExpected": -2.54678088677241, "expectedChallengeDiff": -0.0120058079756514, "aggressionLabel": "Too Passive", "valueLabel": "Negative", "executionValue": 2.06551403112293, "selectionValue": -4.6122949178953405, "zoneAdaptation": 0.0, "overallValue": -2.5467808867724107, "archetype": "Traditional Receiver", "executionGrade": "B+", "selectionGrade": "B+", "nStrikeoutsFlip": 4, "nWalksFlip": 1}, {"name": "Jonah Heim", "team": "ATL", "level": "MLB", "parentOrg": "ATL", "challenges": 16, "overturns": 9, "confirms": 7, "successRate": 0.5625, "successPct": 56.25, "expectedSuccessRate": 0.534610057633225, "expectedSuccessPct": 53.4610057633225, "expectedOverturns": 8.5537609221316, "overturnsAboveExpected": 0.4462390778684, "netFor": 1.35334038851173, "netAgainst": 4.06706333524127, "totalVsExpected": -2.71372294672954, "expectedChallengeDiff": 0.0166448087741883, "aggressionLabel": "Too Aggressive", "valueLabel": "Negative", "executionValue": 1.35334038851173, "selectionValue": -4.06706333524127, "zoneAdaptation": 0.0, "overallValue": -2.7137229467295403, "archetype": "Gambler", "executionGrade": "C", "selectionGrade": "B", "nStrikeoutsFlip": 3, "nWalksFlip": 1}, {"name": "Connor Wong", "team": "BOS", "level": "MLB", "parentOrg": "BOS", "challenges": 4, "overturns": 3, "confirms": 1, "successRate": 0.75, "successPct": 75.0, "expectedSuccessRate": 0.458383915224222, "expectedSuccessPct": 45.8383915224222, "expectedOverturns": 1.833535660896888, "overturnsAboveExpected": 1.166464339103112, "netFor": 2.8610074609662, "netAgainst": 5.96991977456386, "totalVsExpected": -3.10891231359765, "expectedChallengeDiff": -0.0132456108050801, "aggressionLabel": "Too Passive", "valueLabel": "Negative", "executionValue": 2.8610074609662, "selectionValue": -5.96991977456385, "zoneAdaptation": 0.0, "overallValue": -3.10891231359765, "archetype": "Traditional Receiver", "executionGrade": "B+", "selectionGrade": "B", "nStrikeoutsFlip": 1, "nWalksFlip": 0}, {"name": "Austin Wells", "team": "NYY", "level": "MLB", "parentOrg": "NYY", "challenges": 16, "overturns": 10, "confirms": 6, "successRate": 0.625, "successPct": 62.5, "expectedSuccessRate": 0.424325391736877, "expectedSuccessPct": 42.4325391736877, "expectedOverturns": 6.789206267790032, "overturnsAboveExpected": 3.210793732209968, "netFor": 6.37837145538127, "netAgainst": 9.74781932194828, "totalVsExpected": -3.36944786656701, "expectedChallengeDiff": 0.000347793389743761, "aggressionLabel": "Balanced", "valueLabel": "Negative", "executionValue": 6.37837145538127, "selectionValue": -9.74781932194828, "zoneAdaptation": 0.0, "overallValue": -3.3694478665670093, "archetype": "At-Risk Receiver", "executionGrade": "B", "selectionGrade": "B+", "nStrikeoutsFlip": 3, "nWalksFlip": 1}, {"name": "Ryan Jeffers", "team": "MIN", "level": "MLB", "parentOrg": "MIN", "challenges": 23, "overturns": 13, "confirms": 10, "successRate": 0.565217391304347, "successPct": 56.5217391304347, "expectedSuccessRate": 0.572902234792962, "expectedSuccessPct": 57.2902234792962, "expectedOverturns": 13.176751400238125, "overturnsAboveExpected": -0.17675140023812475, "netFor": 0.578821484719671, "netAgainst": 4.06287000332394, "totalVsExpected": -3.48404851860427, "expectedChallengeDiff": 0.00834771070491866, "aggressionLabel": "Too Aggressive", "valueLabel": "Negative", "executionValue": 0.578821484719671, "selectionValue": -4.06287000332394, "zoneAdaptation": 0.0, "overallValue": -3.4840485186042693, "archetype": "Gambler", "executionGrade": "C", "selectionGrade": "B", "nStrikeoutsFlip": 8, "nWalksFlip": 0}, {"name": "Keibert Ruiz", "team": "WSH", "level": "MLB", "parentOrg": "WSH", "challenges": 8, "overturns": 2, "confirms": 6, "successRate": 0.25, "successPct": 25.0, "expectedSuccessRate": 0.45250971790428, "expectedSuccessPct": 45.250971790428004, "expectedOverturns": 3.62007774323424, "overturnsAboveExpected": -1.6200777432342401, "netFor": -2.70229528923931, "netAgainst": 0.81510414243626, "totalVsExpected": -3.51739943167557, "expectedChallengeDiff": -0.00831548433723282, "aggressionLabel": "Too Passive", "valueLabel": "Negative", "executionValue": -2.70229528923931, "selectionValue": -0.81510414243626, "zoneAdaptation": 0.0, "overallValue": -3.51739943167557, "archetype": "At-Risk Receiver", "executionGrade": "D", "selectionGrade": "C", "nStrikeoutsFlip": 0, "nWalksFlip": 0}, {"name": "Drake Baldwin", "team": "ATL", "level": "MLB", "parentOrg": "ATL", "challenges": 9, "overturns": 4, "confirms": 5, "successRate": 0.444444444444444, "successPct": 44.4444444444444, "expectedSuccessRate": 0.435815432753415, "expectedSuccessPct": 43.5815432753415, "expectedOverturns": 3.922338894780735, "overturnsAboveExpected": 0.07766110521926484, "netFor": 0.549051350791931, "netAgainst": 4.57392994150529, "totalVsExpected": -4.02487859071336, "expectedChallengeDiff": -0.0046755543119033, "aggressionLabel": "Balanced", "valueLabel": "Negative", "executionValue": 0.549051350791931, "selectionValue": -4.573929941505291, "zoneAdaptation": 0.0, "overallValue": -4.02487859071336, "archetype": "At-Risk Receiver", "executionGrade": "D", "selectionGrade": "B", "nStrikeoutsFlip": 2, "nWalksFlip": 2}, {"name": "Shea Langeliers", "team": "ATH", "level": "MLB", "parentOrg": "ATH", "challenges": 20, "overturns": 10, "confirms": 10, "successRate": 0.5, "successPct": 50.0, "expectedSuccessRate": 0.527408026129568, "expectedSuccessPct": 52.740802612956806, "expectedOverturns": 10.548160522591361, "overturnsAboveExpected": -0.5481605225913615, "netFor": -1.45207676190764, "netAgainst": 2.686788308513, "totalVsExpected": -4.13886507042065, "expectedChallengeDiff": -0.00642573422162547, "aggressionLabel": "Too Passive", "valueLabel": "Negative", "executionValue": -1.45207676190764, "selectionValue": -2.6867883085130098, "zoneAdaptation": 0.0, "overallValue": -4.13886507042065, "archetype": "At-Risk Receiver", "executionGrade": "C", "selectionGrade": "B", "nStrikeoutsFlip": 4, "nWalksFlip": 4}, {"name": "Samuel Basallo", "team": "BAL", "level": "MLB", "parentOrg": "BAL", "challenges": 13, "overturns": 4, "confirms": 9, "successRate": 0.307692307692307, "successPct": 30.7692307692307, "expectedSuccessRate": 0.516173317540021, "expectedSuccessPct": 51.6173317540021, "expectedOverturns": 6.710253128020273, "overturnsAboveExpected": -2.7102531280202733, "netFor": -5.48538324286952, "netAgainst": -1.30568080370354, "totalVsExpected": -4.17970243916597, "expectedChallengeDiff": -0.00295822953136745, "aggressionLabel": "Balanced", "valueLabel": "Negative", "executionValue": -5.48538324286952, "selectionValue": 1.3056808037035497, "zoneAdaptation": 0.0, "overallValue": -4.17970243916597, "archetype": "At-Risk Receiver", "executionGrade": "D", "selectionGrade": "C", "nStrikeoutsFlip": 2, "nWalksFlip": 1}, {"name": "Daniel Susac", "team": "SF", "level": "MLB", "parentOrg": "SF", "challenges": 5, "overturns": 2, "confirms": 3, "successRate": 0.4, "successPct": 40.0, "expectedSuccessRate": 0.34571577006243, "expectedSuccessPct": 34.571577006243, "expectedOverturns": 1.72857885031215, "overturnsAboveExpected": 0.27142114968785, "netFor": 0.412124578934625, "netAgainst": 4.87224406847317, "totalVsExpected": -4.46011948953854, "expectedChallengeDiff": 0.00157481902521795, "aggressionLabel": "Balanced", "valueLabel": "Negative", "executionValue": 0.412124578934625, "selectionValue": -4.872244068473165, "zoneAdaptation": 0.0, "overallValue": -4.46011948953854, "archetype": "At-Risk Receiver", "executionGrade": "D", "selectionGrade": "B", "nStrikeoutsFlip": 1, "nWalksFlip": 1}, {"name": "Drew Millas", "team": "WSH", "level": "MLB", "parentOrg": "WSH", "challenges": 13, "overturns": 5, "confirms": 8, "successRate": 0.384615384615384, "successPct": 38.4615384615384, "expectedSuccessRate": 0.363618051328765, "expectedSuccessPct": 36.3618051328765, "expectedOverturns": 4.727034667273945, "overturnsAboveExpected": 0.27296533272605483, "netFor": 0.457571756281758, "netAgainst": 4.9177672367263, "totalVsExpected": -4.46019548044455, "expectedChallengeDiff": 0.000484213998631643, "aggressionLabel": "Balanced", "valueLabel": "Negative", "executionValue": 0.457571756281758, "selectionValue": -4.9177672367263074, "zoneAdaptation": 0.0, "overallValue": -4.46019548044455, "archetype": "At-Risk Receiver", "executionGrade": "D", "selectionGrade": "B", "nStrikeoutsFlip": 0, "nWalksFlip": 0}, {"name": "J.C. Escarra", "team": "NYY", "level": "MLB", "parentOrg": "NYY", "challenges": 1, "overturns": 1, "confirms": 0, "successRate": 1.0, "successPct": 100.0, "expectedSuccessRate": 0.716700976608488, "expectedSuccessPct": 71.6700976608488, "expectedOverturns": 0.716700976608488, "overturnsAboveExpected": 0.28329902339151203, "netFor": -1.38426176309772, "netAgainst": 3.18428920400789, "totalVsExpected": -4.56855096710561, "expectedChallengeDiff": -0.0250070632456681, "aggressionLabel": "Too Passive", "valueLabel": "Negative", "executionValue": -1.38426176309772, "selectionValue": -3.18428920400789, "zoneAdaptation": 0.0, "overallValue": -4.56855096710561, "archetype": "Traditional Receiver", "executionGrade": "A", "selectionGrade": "B", "nStrikeoutsFlip": 0, "nWalksFlip": 0}, {"name": "Dalton Rushing", "team": "LAD", "level": "MLB", "parentOrg": "LAD", "challenges": 2, "overturns": 0, "confirms": 2, "successRate": 0.0, "successPct": 0.0, "expectedSuccessRate": 0.422611459976754, "expectedSuccessPct": 42.2611459976754, "expectedOverturns": 0.845222919953508, "overturnsAboveExpected": -0.845222919953508, "netFor": -1.1838944427963, "netAgainst": 3.52996121441966, "totalVsExpected": -4.71385565721597, "expectedChallengeDiff": -0.0125393885841029, "aggressionLabel": "Too Passive", "valueLabel": "Negative", "executionValue": -1.1838944427963, "selectionValue": -3.52996121441967, "zoneAdaptation": 0.0, "overallValue": -4.71385565721597, "archetype": "At-Risk Receiver", "executionGrade": "D", "selectionGrade": "B", "nStrikeoutsFlip": 0, "nWalksFlip": 0}, {"name": "Patrick Bailey", "team": "SF", "level": "MLB", "parentOrg": "SF", "challenges": 19, "overturns": 8, "confirms": 11, "successRate": 0.421052631578947, "successPct": 42.105263157894704, "expectedSuccessRate": 0.384633852518538, "expectedSuccessPct": 38.4633852518538, "expectedOverturns": 7.308043197852221, "overturnsAboveExpected": 0.6919568021477787, "netFor": 1.07856867667057, "netAgainst": 6.14002853939921, "totalVsExpected": -5.06145986272864, "expectedChallengeDiff": 0.00136430223272793, "aggressionLabel": "Balanced", "valueLabel": "Negative", "executionValue": 1.07856867667057, "selectionValue": -6.14002853939921, "zoneAdaptation": 0.0, "overallValue": -5.06145986272864, "archetype": "At-Risk Receiver", "executionGrade": "D", "selectionGrade": "B", "nStrikeoutsFlip": 2, "nWalksFlip": 0}, {"name": "Gabriel Moreno", "team": "AZ", "level": "MLB", "parentOrg": "AZ", "challenges": 7, "overturns": 5, "confirms": 2, "successRate": 0.714285714285714, "successPct": 71.4285714285714, "expectedSuccessRate": 0.654752775113064, "expectedSuccessPct": 65.4752775113064, "expectedOverturns": 4.583269425791448, "overturnsAboveExpected": 0.4167305742085521, "netFor": -0.253400578972605, "netAgainst": 4.86711795304139, "totalVsExpected": -5.120518532014, "expectedChallengeDiff": -0.00733112021328158, "aggressionLabel": "Too Passive", "valueLabel": "Negative", "executionValue": -0.253400578972605, "selectionValue": -4.867117953041395, "zoneAdaptation": 0.0, "overallValue": -5.120518532014, "archetype": "Traditional Receiver", "executionGrade": "B", "selectionGrade": "B", "nStrikeoutsFlip": 0, "nWalksFlip": 0}, {"name": "Christian Vazquez", "team": "HOU", "level": "MLB", "parentOrg": "HOU", "challenges": 10, "overturns": 3, "confirms": 7, "successRate": 0.3, "successPct": 30.0, "expectedSuccessRate": 0.36633839088697, "expectedSuccessPct": 36.633839088697, "expectedOverturns": 3.6633839088697, "overturnsAboveExpected": -0.6633839088697, "netFor": -1.61933619793481, "netAgainst": 4.63564703154794, "totalVsExpected": -6.25498322948275, "expectedChallengeDiff": 0.00216720167804389, "aggressionLabel": "Balanced", "valueLabel": "Negative", "executionValue": -1.61933619793481, "selectionValue": -4.63564703154794, "zoneAdaptation": 0.0, "overallValue": -6.25498322948275, "archetype": "At-Risk Receiver", "executionGrade": "D", "selectionGrade": "B", "nStrikeoutsFlip": 1, "nWalksFlip": 0}, {"name": "Austin Wynns", "team": "ATH", "level": "MLB", "parentOrg": "ATH", "challenges": 16, "overturns": 9, "confirms": 7, "successRate": 0.5625, "successPct": 56.25, "expectedSuccessRate": 0.686825183056464, "expectedSuccessPct": 68.6825183056464, "expectedOverturns": 10.989202928903424, "overturnsAboveExpected": -1.989202928903424, "netFor": -2.1342585101447, "netAgainst": 4.52529229382531, "totalVsExpected": -6.65955080397001, "expectedChallengeDiff": 0.0127203329975248, "aggressionLabel": "Too Aggressive", "valueLabel": "Negative", "executionValue": -2.1342585101447, "selectionValue": -4.52529229382531, "zoneAdaptation": 0.0, "overallValue": -6.65955080397001, "archetype": "Gambler", "executionGrade": "C", "selectionGrade": "C", "nStrikeoutsFlip": 3, "nWalksFlip": 1}, {"name": "Carlos Narvaez", "team": "BOS", "level": "MLB", "parentOrg": "BOS", "challenges": 9, "overturns": 3, "confirms": 6, "successRate": 0.333333333333333, "successPct": 33.3333333333333, "expectedSuccessRate": 0.518940457964196, "expectedSuccessPct": 51.8940457964196, "expectedOverturns": 4.670464121677764, "overturnsAboveExpected": -1.6704641216777638, "netFor": -3.6055449437405, "netAgainst": 7.53383958453653, "totalVsExpected": -11.139384528277, "expectedChallengeDiff": -0.00859223670585836, "aggressionLabel": "Too Passive", "valueLabel": "Negative", "executionValue": -3.6055449437405, "selectionValue": -7.5338395845365005, "zoneAdaptation": 0.0, "overallValue": -11.139384528277, "archetype": "At-Risk Receiver", "executionGrade": "D", "selectionGrade": "C", "nStrikeoutsFlip": 3, "nWalksFlip": 1}, {"name": "Edgar Quero", "team": "CWS", "level": "MLB", "parentOrg": "CWS", "challenges": 31, "overturns": 13, "confirms": 18, "successRate": 0.419354838709677, "successPct": 41.9354838709677, "expectedSuccessRate": 0.607827422247703, "expectedSuccessPct": 60.7827422247703, "expectedOverturns": 18.842650089678795, "overturnsAboveExpected": -5.842650089678795, "netFor": -9.06256646283788, "netAgainst": 8.77970873606837, "totalVsExpected": -17.8422751989062, "expectedChallengeDiff": 0.0153170270135552, "aggressionLabel": "Too Aggressive", "valueLabel": "Negative", "executionValue": -9.06256646283788, "selectionValue": -8.77970873606832, "zoneAdaptation": 0.0, "overallValue": -17.8422751989062, "archetype": "Gambler", "executionGrade": "D", "selectionGrade": "D", "nStrikeoutsFlip": 4, "nWalksFlip": 3}], "zoneRows": [{"season": 2025, "x_bin": 0, "z_bin": 0, "zone_region": "chase_bottom", "called_strikes": 0, "taken": 678, "swinging_strikes": 115, "pitches": 825}, {"season": 2025, "x_bin": 0, "z_bin": 1, "zone_region": "chase_glove_side", "called_strikes": 0, "taken": 652, "swinging_strikes": 68, "pitches": 784}, {"season": 2025, "x_bin": 0, "z_bin": 2, "zone_region": "chase_glove_side", "called_strikes": 0, "taken": 1600, "swinging_strikes": 102, "pitches": 1904}, {"season": 2025, "x_bin": 0, "z_bin": 3, "zone_region": "chase_glove_side", "called_strikes": 0, "taken": 690, "swinging_strikes": 12, "pitches": 770}, {"season": 2025, "x_bin": 0, "z_bin": 4, "zone_region": "chase_top", "called_strikes": 0, "taken": 761, "swinging_strikes": 9, "pitches": 857}, {"season": 2025, "x_bin": 1, "z_bin": 0, "zone_region": "chase_bottom", "called_strikes": 12, "taken": 961, "swinging_strikes": 248, "pitches": 1372}, {"season": 2025, "x_bin": 1, "z_bin": 1, "zone_region": "chase_glove_side", "called_strikes": 117, "taken": 819, "swinging_strikes": 179, "pitches": 1368}, {"season": 2025, "x_bin": 1, "z_bin": 2, "zone_region": "chase_glove_side", "called_strikes": 362, "taken": 2084, "swinging_strikes": 221, "pitches": 3634}, {"season": 2025, "x_bin": 1, "z_bin": 3, "zone_region": "chase_glove_side", "called_strikes": 78, "taken": 892, "swinging_strikes": 100, "pitches": 1330}, {"season": 2025, "x_bin": 1, "z_bin": 4, "zone_region": "chase_top", "called_strikes": 6, "taken": 1076, "swinging_strikes": 59, "pitches": 1274}, {"season": 2025, "x_bin": 2, "z_bin": 0, "zone_region": "chase_bottom", "called_strikes": 290, "taken": 1955, "swinging_strikes": 717, "pitches": 3516}, {"season": 2025, "x_bin": 2, "z_bin": 1, "zone_region": "shadow_bottom", "called_strikes": 1327, "taken": 1526, "swinging_strikes": 391, "pitches": 3687}, {"season": 2025, "x_bin": 2, "z_bin": 2, "zone_region": "shadow_glove_side", "called_strikes": 2734, "taken": 2926, "swinging_strikes": 640, "pitches": 8780}, {"season": 2025, "x_bin": 2, "z_bin": 3, "zone_region": "shadow_top", "called_strikes": 915, "taken": 1217, "swinging_strikes": 404, "pitches": 3303}, {"season": 2025, "x_bin": 2, "z_bin": 4, "zone_region": "chase_top", "called_strikes": 189, "taken": 1839, "swinging_strikes": 331, "pitches": 2788}, {"season": 2025, "x_bin": 3, "z_bin": 0, "zone_region": "chase_bottom", "called_strikes": 431, "taken": 2632, "swinging_strikes": 1004, "pitches": 5007}, {"season": 2025, "x_bin": 3, "z_bin": 1, "zone_region": "shadow_bottom", "called_strikes": 1615, "taken": 1685, "swinging_strikes": 490, "pitches": 4957}, {"season": 2025, "x_bin": 3, "z_bin": 2, "zone_region": "heart", "called_strikes": 2772, "taken": 2775, "swinging_strikes": 932, "pitches": 11353}, {"season": 2025, "x_bin": 3, "z_bin": 3, "zone_region": "shadow_top", "called_strikes": 946, "taken": 1023, "swinging_strikes": 512, "pitches": 3839}, {"season": 2025, "x_bin": 3, "z_bin": 4, "zone_region": "chase_top", "called_strikes": 240, "taken": 1706, "swinging_strikes": 583, "pitches": 3425}, {"season": 2025, "x_bin": 4, "z_bin": 0, "zone_region": "chase_bottom", "called_strikes": 311, "taken": 2736, "swinging_strikes": 940, "pitches": 4551}, {"season": 2025, "x_bin": 4, "z_bin": 1, "zone_region": "shadow_bottom", "called_strikes": 1494, "taken": 1770, "swinging_strikes": 449, "pitches": 4086}, {"season": 2025, "x_bin": 4, "z_bin": 2, "zone_region": "shadow_arm_side", "called_strikes": 2927, "taken": 3093, "swinging_strikes": 755, "pitches": 9045}, {"season": 2025, "x_bin": 4, "z_bin": 3, "zone_region": "shadow_top", "called_strikes": 832, "taken": 1068, "swinging_strikes": 378, "pitches": 2870}, {"season": 2025, "x_bin": 4, "z_bin": 4, "zone_region": "chase_top", "called_strikes": 156, "taken": 1474, "swinging_strikes": 265, "pitches": 2354}, {"season": 2025, "x_bin": 5, "z_bin": 0, "zone_region": "chase_bottom", "called_strikes": 15, "taken": 1652, "swinging_strikes": 484, "pitches": 2346}, {"season": 2025, "x_bin": 5, "z_bin": 1, "zone_region": "chase_arm_side", "called_strikes": 169, "taken": 1170, "swinging_strikes": 301, "pitches": 1911}, {"season": 2025, "x_bin": 5, "z_bin": 2, "zone_region": "chase_arm_side", "called_strikes": 554, "taken": 2236, "swinging_strikes": 337, "pitches": 3784}, {"season": 2025, "x_bin": 5, "z_bin": 3, "zone_region": "chase_arm_side", "called_strikes": 102, "taken": 726, "swinging_strikes": 79, "pitches": 1140}, {"season": 2025, "x_bin": 5, "z_bin": 4, "zone_region": "chase_top", "called_strikes": 6, "taken": 740, "swinging_strikes": 51, "pitches": 901}, {"season": 2025, "x_bin": 6, "z_bin": 0, "zone_region": "chase_bottom", "called_strikes": 0, "taken": 1485, "swinging_strikes": 249, "pitches": 1770}, {"season": 2025, "x_bin": 6, "z_bin": 1, "zone_region": "chase_arm_side", "called_strikes": 0, "taken": 1008, "swinging_strikes": 144, "pitches": 1240}, {"season": 2025, "x_bin": 6, "z_bin": 2, "zone_region": "chase_arm_side", "called_strikes": 0, "taken": 1560, "swinging_strikes": 172, "pitches": 1933}, {"season": 2025, "x_bin": 6, "z_bin": 3, "zone_region": "chase_arm_side", "called_strikes": 0, "taken": 492, "swinging_strikes": 14, "pitches": 558}, {"season": 2025, "x_bin": 6, "z_bin": 4, "zone_region": "chase_top", "called_strikes": 0, "taken": 391, "swinging_strikes": 8, "pitches": 428}, {"season": 2026, "x_bin": 0, "z_bin": 0, "zone_region": "chase_bottom", "called_strikes": 0, "taken": 735, "swinging_strikes": 116, "pitches": 893}, {"season": 2026, "x_bin": 0, "z_bin": 1, "zone_region": "chase_glove_side", "called_strikes": 0, "taken": 529, "swinging_strikes": 61, "pitches": 645}, {"season": 2026, "x_bin": 0, "z_bin": 2, "zone_region": "chase_glove_side", "called_strikes": 0, "taken": 1489, "swinging_strikes": 76, "pitches": 1743}, {"season": 2026, "x_bin": 0, "z_bin": 3, "zone_region": "chase_glove_side", "called_strikes": 0, "taken": 639, "swinging_strikes": 20, "pitches": 736}, {"season": 2026, "x_bin": 0, "z_bin": 4, "zone_region": "chase_top", "called_strikes": 0, "taken": 830, "swinging_strikes": 7, "pitches": 917}, {"season": 2026, "x_bin": 1, "z_bin": 0, "zone_region": "chase_bottom", "called_strikes": 14, "taken": 1058, "swinging_strikes": 244, "pitches": 1526}, {"season": 2026, "x_bin": 1, "z_bin": 1, "zone_region": "chase_glove_side", "called_strikes": 85, "taken": 825, "swinging_strikes": 154, "pitches": 1341}, {"season": 2026, "x_bin": 1, "z_bin": 2, "zone_region": "chase_glove_side", "called_strikes": 192, "taken": 1870, "swinging_strikes": 217, "pitches": 3229}, {"season": 2026, "x_bin": 1, "z_bin": 3, "zone_region": "chase_glove_side", "called_strikes": 48, "taken": 922, "swinging_strikes": 86, "pitches": 1385}, {"season": 2026, "x_bin": 1, "z_bin": 4, "zone_region": "chase_top", "called_strikes": 12, "taken": 1284, "swinging_strikes": 92, "pitches": 1595}, {"season": 2026, "x_bin": 2, "z_bin": 0, "zone_region": "chase_bottom", "called_strikes": 396, "taken": 2031, "swinging_strikes": 696, "pitches": 3751}, {"season": 2026, "x_bin": 2, "z_bin": 1, "zone_region": "shadow_bottom", "called_strikes": 1350, "taken": 1456, "swinging_strikes": 336, "pitches": 3462}, {"season": 2026, "x_bin": 2, "z_bin": 2, "zone_region": "shadow_glove_side", "called_strikes": 2637, "taken": 2840, "swinging_strikes": 581, "pitches": 8167}, {"season": 2026, "x_bin": 2, "z_bin": 3, "zone_region": "shadow_top", "called_strikes": 1107, "taken": 1322, "swinging_strikes": 333, "pitches": 3369}, {"season": 2026, "x_bin": 2, "z_bin": 4, "zone_region": "chase_top", "called_strikes": 344, "taken": 2098, "swinging_strikes": 427, "pitches": 3443}, {"season": 2026, "x_bin": 3, "z_bin": 0, "zone_region": "chase_bottom", "called_strikes": 566, "taken": 2556, "swinging_strikes": 1014, "pitches": 5418}, {"season": 2026, "x_bin": 3, "z_bin": 1, "zone_region": "shadow_bottom", "called_strikes": 1602, "taken": 1620, "swinging_strikes": 458, "pitches": 4735}, {"season": 2026, "x_bin": 3, "z_bin": 2, "zone_region": "heart", "called_strikes": 2834, "taken": 2834, "swinging_strikes": 790, "pitches": 10601}, {"season": 2026, "x_bin": 3, "z_bin": 3, "zone_region": "shadow_top", "called_strikes": 1111, "taken": 1125, "swinging_strikes": 508, "pitches": 4122}, {"season": 2026, "x_bin": 3, "z_bin": 4, "zone_region": "chase_top", "called_strikes": 464, "taken": 1751, "swinging_strikes": 644, "pitches": 3932}, {"season": 2026, "x_bin": 4, "z_bin": 0, "zone_region": "chase_bottom", "called_strikes": 441, "taken": 2709, "swinging_strikes": 1011, "pitches": 4901}, {"season": 2026, "x_bin": 4, "z_bin": 1, "zone_region": "shadow_bottom", "called_strikes": 1495, "taken": 1614, "swinging_strikes": 402, "pitches": 3861}, {"season": 2026, "x_bin": 4, "z_bin": 2, "zone_region": "shadow_arm_side", "called_strikes": 2815, "taken": 2920, "swinging_strikes": 682, "pitches": 8432}, {"season": 2026, "x_bin": 4, "z_bin": 3, "zone_region": "shadow_top", "called_strikes": 894, "taken": 988, "swinging_strikes": 328, "pitches": 2878}, {"season": 2026, "x_bin": 4, "z_bin": 4, "zone_region": "chase_top", "called_strikes": 246, "taken": 1494, "swinging_strikes": 378, "pitches": 2710}, {"season": 2026, "x_bin": 5, "z_bin": 0, "zone_region": "chase_bottom", "called_strikes": 18, "taken": 1669, "swinging_strikes": 514, "pitches": 2467}, {"season": 2026, "x_bin": 5, "z_bin": 1, "zone_region": "chase_arm_side", "called_strikes": 131, "taken": 1081, "swinging_strikes": 242, "pitches": 1777}, {"season": 2026, "x_bin": 5, "z_bin": 2, "zone_region": "chase_arm_side", "called_strikes": 323, "taken": 1775, "swinging_strikes": 263, "pitches": 3186}, {"season": 2026, "x_bin": 5, "z_bin": 3, "zone_region": "chase_arm_side", "called_strikes": 91, "taken": 703, "swinging_strikes": 93, "pitches": 1163}, {"season": 2026, "x_bin": 5, "z_bin": 4, "zone_region": "chase_top", "called_strikes": 12, "taken": 807, "swinging_strikes": 66, "pitches": 997}, {"season": 2026, "x_bin": 6, "z_bin": 0, "zone_region": "chase_bottom", "called_strikes": 0, "taken": 1382, "swinging_strikes": 222, "pitches": 1663}, {"season": 2026, "x_bin": 6, "z_bin": 1, "zone_region": "chase_arm_side", "called_strikes": 0, "taken": 766, "swinging_strikes": 151, "pitches": 985}, {"season": 2026, "x_bin": 6, "z_bin": 2, "zone_region": "chase_arm_side", "called_strikes": 0, "taken": 1345, "swinging_strikes": 117, "pitches": 1647}, {"season": 2026, "x_bin": 6, "z_bin": 3, "zone_region": "chase_arm_side", "called_strikes": 1, "taken": 464, "swinging_strikes": 11, "pitches": 521}, {"season": 2026, "x_bin": 6, "z_bin": 4, "zone_region": "chase_top", "called_strikes": 0, "taken": 475, "swinging_strikes": 9, "pitches": 528}], "zoneGrid": {"x_bins": [{"index": 0, "label": "Far third-base"}, {"index": 1, "label": "Third-base chase"}, {"index": 2, "label": "Third-base edge"}, {"index": 3, "label": "Middle"}, {"index": 4, "label": "First-base edge"}, {"index": 5, "label": "First-base chase"}, {"index": 6, "label": "Far first-base"}], "z_bins": [{"index": 0, "label": "Below"}, {"index": 1, "label": "Bottom"}, {"index": 2, "label": "Heart"}, {"index": 3, "label": "Top"}, {"index": 4, "label": "Above"}]}, "filters": {"teams": ["ATH", "ATL", "AZ", "BAL", "BOS", "CHC", "CIN", "CLE", "COL", "CWS", "DET", "HOU", "KC", "LAA", "LAD", "MIA", "MIL", "MIN", "NYM", "NYY", "PHI", "PIT", "SD", "SEA", "SF", "STL", "TB", "TEX", "TOR", "WSH"], "catchers": ["Adley Rutschman", "Adrian Del Castillo", "Agustin Ramirez", "Alejandro Kirk", "Austin Hedges", "Austin Wells", "Austin Wynns", "Bo Naylor", "Brandon Valenzuela", "Brett Sullivan", "Cal Raleigh", "Carlos Narvaez", "Carson Kelly", "Carter Jensen", "Christian Vazquez", "Connor Wong", "Dalton Rushing", "Daniel Susac", "Danny Jansen", "David Fry", "Dillon Dingler", "Drake Baldwin", "Drew Millas", "Edgar Quero", "Elias Diaz", "Francisco Alvarez", "Freddy Fermin", "Gabriel Moreno", "Gary Sanchez", "Henry Davis", "Hunter Feduccia", "Hunter Goodman", "Ivan Herrera", "J.C. Escarra", "J.T. Realmuto", "Jake Rogers", "James McCann", "Jeferson Quero", "Joey Bart", "Jonah Heim", "Jose Trevino", "Keibert Ruiz", "Kyle Higashioka", "Liam Hicks", "Logan O'Hoppe", "Luis Campusano", "Luis Torrens", "Miguel Amaya", "Mitch Garver", "Nick Fortes", "P.J. Higgins", "Patrick Bailey", "Pedro Pages", "Rafael Marchan", "Reese McGuire", "Ryan Jeffers", "Salvador Perez", "Sam Huff", "Samuel Basallo", "Shea Langeliers", "Travis d'Arnaud", "Tyler Heineman", "Tyler Stephenson", "Victor Caratini", "Will Smith", "William Contreras", "Yainer Diaz", "Yohel Pozo"], "zoneTeams": [], "zoneCatchers": [], "pitchers": [], "pitchTypes": [], "sides": []}};
+    const state = {
+      zone: { team: "All", catcher: "All", pitcher: "All", pitchType: "All", side: "All" },
+      overview: { team: "All", catcher: "All" },
+      report: { catcher: "" },
+      evaluation: { team: "All" },
+      sort: { key: "totalVsExpected", dir: -1 },
+      selectedAreas: new Set()
+    };
+
+    function fmtNumber(value, digits = 1) {
+      const number = Number(value || 0);
+      return number.toLocaleString(undefined, { minimumFractionDigits: digits, maximumFractionDigits: digits });
+    }
+
+    function fmtSignedNumber(value, digits = 1) {
+      const number = Number(value || 0);
+      return `${number > 0 ? "+" : ""}${fmtNumber(number, digits)}`;
+    }
+
+    function fmtInt(value) {
+      return Number(value || 0).toLocaleString();
+    }
+
+    function fmtPct(value, digits = 0) {
+      return `${fmtNumber(Number(value || 0) * 100, digits)}%`;
+    }
+
+    function fmtPctPoints(value, digits = 1) {
+      return `${value > 0 ? "+" : ""}${fmtNumber(Number(value || 0) * 100, digits)} pts`;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function tagClass(label) {
+      if (["Positive", "Battery Captain", "Technician", "Balanced"].includes(label)) return "positive";
+      if (["Negative", "Gambler", "At-Risk Receiver", "Too Aggressive"].includes(label)) return "negative";
+      if (["Too Passive", "Traditional Receiver", "Passive Receiver", "Watch"].includes(label)) return "watch";
+      return "neutral";
+    }
+
+    function options(values, current = "All") {
+      const unique = ["All", ...Array.from(new Set(values.filter(Boolean))).sort()];
+      return unique.map(value => `<option value="${escapeHtml(value)}" ${value === current ? "selected" : ""}>${escapeHtml(value)}</option>`).join("");
+    }
+
+    function setHtml(id, html) {
+      document.getElementById(id).innerHTML = html;
+    }
+
+    function buildSelect(label, id, values, current = "All") {
+      return `<div class="field"><label for="${id}">${label}</label><select class="control" id="${id}">${options(values, current)}</select></div>`;
+    }
+
+    function initNav() {
+      document.querySelectorAll(".nav button").forEach(button => {
+        button.addEventListener("click", () => {
+          document.querySelectorAll(".nav button").forEach(item => item.classList.remove("active"));
+          document.querySelectorAll("section.view").forEach(section => section.classList.remove("active"));
+          button.classList.add("active");
+          document.getElementById(button.dataset.view).classList.add("active");
+        });
+      });
+    }
+
+    function initFilters() {
+      setHtml("zone-filters", "");
+
+      setHtml("overview-filters", [
+        buildSelect("Team", "overview-team", DASHBOARD_DATA.filters.teams, state.overview.team),
+        buildSelect("Catcher", "overview-catcher", DASHBOARD_DATA.filters.catchers, state.overview.catcher)
+      ].join(""));
+      document.getElementById("overview-team").addEventListener("change", renderOverview);
+      document.getElementById("overview-catcher").addEventListener("change", renderOverview);
+
+      const firstCatcher = DASHBOARD_DATA.catchers[0] ? DASHBOARD_DATA.catchers[0].name : "";
+      state.report.catcher = firstCatcher;
+      setHtml("report-filters", buildSelect("Catcher", "report-catcher", DASHBOARD_DATA.filters.catchers, firstCatcher));
+      document.getElementById("report-catcher").addEventListener("change", renderReport);
+
+      setHtml("evaluation-filters", buildSelect("Team", "evaluation-team", DASHBOARD_DATA.filters.teams, state.evaluation.team));
+      document.getElementById("evaluation-team").addEventListener("change", renderEvaluation);
+    }
+
+    function filterZoneRows() {
+      const start = DASHBOARD_DATA.config.statcast2026Start;
+      const end = DASHBOARD_DATA.config.statcast2026End;
+      const start2025 = String(start).replace("2026", "2025");
+      const end2025 = String(end).replace("2026", "2025");
+      return DASHBOARD_DATA.zoneRows.filter(row => {
+        if (Number(row.season) === 2026 && (row.game_date < start || row.game_date > end)) return false;
+        if (Number(row.season) === 2025 && (row.game_date < start2025 || row.game_date > end2025)) return false;
+        return true;
+      });
+    }
+
+    function aggregateZone(rows) {
+      const map = new Map();
+      rows.forEach(row => {
+        const key = `${row.x_bin}|${row.z_bin}`;
+        if (!map.has(key)) {
+          map.set(key, { x: row.x_bin, z: row.z_bin, s2026: 0, t2026: 0, sw2026: 0, p2026: 0, s2025: 0, t2025: 0, sw2025: 0, p2025: 0 });
+        }
+        const item = map.get(key);
+        if (Number(row.season) === 2026) {
+          item.s2026 += Number(row.called_strikes || 0);
+          item.t2026 += Number(row.taken || 0);
+          item.sw2026 += Number(row.swinging_strikes || 0);
+          item.p2026 += Number(row.pitches || 0);
+        } else if (Number(row.season) === 2025) {
+          item.s2025 += Number(row.called_strikes || 0);
+          item.t2025 += Number(row.taken || 0);
+          item.sw2025 += Number(row.swinging_strikes || 0);
+          item.p2025 += Number(row.pitches || 0);
+        }
+      });
+      return map;
+    }
+
+    function diffColor(diff) {
+      const value = Math.max(-0.08, Math.min(0.08, diff || 0));
+      const strength = Math.abs(value) / 0.08;
+      if (value > 0) return `rgba(61, 168, 97, ${0.14 + strength * 0.62})`;
+      if (value < 0) return `rgba(228, 84, 79, ${0.14 + strength * 0.62})`;
+      return "#f8fafc";
+    }
+
+    const AREA_DEFS = [
+      { key: "top", label: "Top of the zone", cells: [[2,3],[3,3],[4,3],[2,4],[3,4],[4,4]], color: "#7da2f7" },
+      { key: "bottom", label: "Bottom of the zone", cells: [[2,1],[3,1],[4,1],[2,0],[3,0],[4,0]], color: "#8ecae6" },
+      { key: "glove", label: "Third-base side edge", cells: [[1,1],[1,2],[1,3],[2,1],[2,2],[2,3]], color: "#f4a261" },
+      { key: "arm", label: "First-base side edge", cells: [[4,1],[4,2],[4,3],[5,1],[5,2],[5,3]], color: "#2a9d8f" },
+      { key: "middle", label: "Middle of the plate", cells: [[3,1],[3,2],[3,3]], color: "#94a3b8" }
+    ];
+
+    function areaGuide(agg) {
+      return AREA_DEFS.map(area => {
+        const total = area.cells.reduce((acc, cell) => {
+          const item = agg.get(`${cell[0]}|${cell[1]}`) || { s2026: 0, t2026: 0, s2025: 0, t2025: 0 };
+          acc.s2026 += item.s2026 || 0;
+          acc.t2026 += item.t2026 || 0;
+          acc.s2025 += item.s2025 || 0;
+          acc.t2025 += item.t2025 || 0;
+          return acc;
+        }, { s2026: 0, t2026: 0, s2025: 0, t2025: 0 });
+        const rate2026 = total.t2026 ? total.s2026 / total.t2026 : 0;
+        const rate2025 = total.t2025 ? total.s2025 / total.t2025 : 0;
+        const diff = rate2026 - rate2025;
+        return { ...area, ...total, rate2026, rate2025, diff };
+      });
+    }
+
+    function leagueChallengeSummary() {
+      return DASHBOARD_DATA.catchers.reduce((acc, row) => {
+        acc.challenges += Number(row.challenges || 0);
+        acc.overturns += Number(row.overturns || 0);
+        acc.expectedOverturns += Number(row.expectedOverturns || 0);
+        acc.value += Number(row.totalVsExpected || 0);
+        acc.strikeoutFlips += Number(row.nStrikeoutsFlip || 0);
+        acc.walkFlips += Number(row.nWalksFlip || 0);
+        return acc;
+      }, { challenges: 0, overturns: 0, expectedOverturns: 0, value: 0, strikeoutFlips: 0, walkFlips: 0 });
+    }
+
+    function thesisStatement(areaMap) {
+      return "The early ABS zone is not just a cleaner version of the old human zone. It is rewarding vertical command more clearly, while the side edges are becoming less of a place to steal strikes and more of a place where catchers need conviction before asking for a challenge.";
+    }
+
+    function areaCells(areaKey) {
+      const area = AREA_DEFS.find(item => item.key === areaKey);
+      return area ? area.cells.map(cell => `${cell[0]}-${cell[1]}`) : [];
+    }
+
+    function addAreaOutline(area) {
+      const board = document.querySelector(".zone-board");
+      if (!board || !area) return;
+      const xs = area.cells.map(cell => cell[0]);
+      const zs = area.cells.map(cell => cell[1]);
+      const xMin = Math.min(...xs) + 1;
+      const xMax = Math.max(...xs) + 2;
+      const zMin = Math.min(...zs);
+      const zMax = Math.max(...zs);
+      const outline = document.createElement("div");
+      outline.className = "area-outline";
+      outline.style.gridColumn = `${xMin} / ${xMax}`;
+      outline.style.gridRow = `${5 - zMax} / ${6 - zMin}`;
+      board.appendChild(outline);
+    }
+
+    function selectedAreaSummary(areas) {
+      const selected = areas.filter(area => state.selectedAreas.has(area.key));
+      if (!selected.length) return null;
+      const selectedCellKeys = new Set();
+      selected.forEach(area => area.cells.forEach(cell => selectedCellKeys.add(`${cell[0]}|${cell[1]}`)));
+      const totals = { s2026: 0, t2026: 0, s2025: 0, t2025: 0 };
+      selectedCellKeys.forEach(key => {
+        const item = window.__zoneAgg.get(key) || { s2026: 0, t2026: 0, s2025: 0, t2025: 0 };
+        totals.s2026 += item.s2026 || 0;
+        totals.t2026 += item.t2026 || 0;
+        totals.s2025 += item.s2025 || 0;
+        totals.t2025 += item.t2025 || 0;
+      });
+      const rate2025 = totals.t2025 ? totals.s2025 / totals.t2025 : 0;
+      const rate2026 = totals.t2026 ? totals.s2026 / totals.t2026 : 0;
+      return {
+        label: selected.length === 1 ? selected[0].label : `${selected.length} areas selected`,
+        rate2025,
+        rate2026,
+        diff: rate2026 - rate2025,
+      };
+    }
+
+    function updateZoneAreaSelection(areas) {
+      document.querySelectorAll(".area-outline").forEach(item => item.remove());
+      areas.filter(area => state.selectedAreas.has(area.key)).forEach(addAreaOutline);
+      document.querySelectorAll(".area-row").forEach(row => {
+        row.classList.toggle("selected", state.selectedAreas.has(row.dataset.area));
+      });
+      const selected = selectedAreaSummary(areas);
+      if (!selected) {
+        clearZoneArea();
+        return;
+      }
+      setHtml("area-detail", `
+        <div><div class="label">Selected Area</div><div class="value">${escapeHtml(selected.label)}</div></div>
+        <div><div class="label">2025 Called Strike Rate</div><div class="value">${fmtPct(selected.rate2025, 1)}</div></div>
+        <div><div class="label">2026 Called Strike Rate</div><div class="value">${fmtPct(selected.rate2026, 1)}</div></div>
+        <div><div class="label">Change</div><div class="value">${fmtPctPoints(selected.diff)}</div></div>
+      `);
+    }
+
+    function clearZoneArea() {
+      state.selectedAreas.clear();
+      document.querySelectorAll(".area-outline").forEach(item => item.remove());
+      document.querySelectorAll(".area-row").forEach(row => row.classList.remove("selected"));
+      setHtml("area-detail", `
+        <div><div class="label">Selected Area</div><div class="value">Choose an area below</div></div>
+        <div><div class="label">2025 Called Strike Rate</div><div class="value">--</div></div>
+        <div><div class="label">2026 Called Strike Rate</div><div class="value">--</div></div>
+        <div><div class="label">Change</div><div class="value">--</div></div>
+      `);
+    }
+
+    function showZoneTooltip(event, tile) {
+      const tooltip = document.getElementById("zone-tooltip");
+      if (!tooltip) return;
+      tooltip.innerHTML = `
+        <div class="tooltip-title">Zone detail</div>
+        <div class="tooltip-row">
+          <div><div class="tooltip-value">${escapeHtml(tile.dataset.delta)}</div><div class="muted">called strike change</div></div>
+          <div class="tooltip-copy">Called Strike %<br><strong>${escapeHtml(tile.dataset.cs2025)} <span class="arrow">→</span> ${escapeHtml(tile.dataset.cs2026)}</strong></div>
+        </div>
+        <div class="tooltip-row">
+          <div><div class="tooltip-value">${escapeHtml(tile.dataset.swDelta)}</div><div class="muted">swing/miss change</div></div>
+          <div class="tooltip-copy">Swinging Strike %<br><strong>${escapeHtml(tile.dataset.sw2025)} <span class="arrow">→</span> ${escapeHtml(tile.dataset.sw2026)}</strong></div>
+        </div>
+      `;
+      tooltip.classList.add("active");
+      moveZoneTooltip(event);
+    }
+
+    function moveZoneTooltip(event) {
+      const tooltip = document.getElementById("zone-tooltip");
+      if (!tooltip || !tooltip.classList.contains("active")) return;
+      const pad = 14;
+      const rect = tooltip.getBoundingClientRect();
+      const x = Math.min(window.innerWidth - rect.width - pad, event.clientX + 18);
+      const y = Math.min(window.innerHeight - rect.height - pad, event.clientY + 18);
+      tooltip.style.left = `${Math.max(pad, x)}px`;
+      tooltip.style.top = `${Math.max(pad, y)}px`;
+    }
+
+    function hideZoneTooltip() {
+      const tooltip = document.getElementById("zone-tooltip");
+      if (tooltip) tooltip.classList.remove("active");
+    }
+
+    function renderZone() {
+      if (!DASHBOARD_DATA.zoneRows.length) {
+        const statusItems = Object.values(DASHBOARD_DATA.sourceStatus).map(item => `
+          <div class="status warn">
+            <div class="name">${escapeHtml(item.source || "missing")}</div>
+            <div class="message">${escapeHtml(item.message || "")}</div>
+          </div>`).join("");
+        setHtml("zone-content", `
+          <div class="empty">
+            <strong>Zone Change needs cached or pulled Statcast data.</strong>
+            <p>The workbook loaded, but no pitch-level Statcast cache is available yet. Install requirements, set <code>refresh_statcast</code> to <code>true</code>, and rebuild. The coach-facing dashboard will not show mock zone data.</p>
+            <div class="status-grid">${statusItems}</div>
+          </div>`);
+        return;
+      }
+
+      const rows = filterZoneRows();
+      const agg = aggregateZone(rows);
+      window.__zoneAgg = agg;
+      const xBins = DASHBOARD_DATA.zoneGrid.x_bins;
+      const zBins = [...DASHBOARD_DATA.zoneGrid.z_bins].sort((a, b) => b.index - a.index);
+      const areas = areaGuide(agg);
+      const areaMap = Object.fromEntries(areas.map(area => [area.key, area]));
+      const gained = [...areas].sort((a, b) => b.diff - a.diff)[0] || { label: "No clear gain", diff: 0 };
+      const lost = [...areas].sort((a, b) => a.diff - b.diff)[0] || { label: "No clear loss", diff: 0 };
+      let heatmap = `<div class="zone-visual">
+        <div class="view-label">Catcher's view</div>
+        <div class="field-label top">High pitches</div>
+        <div class="field-label glove">Third-base side</div>
+        <div class="field-label arm">First-base side</div>
+        <div class="field-label bottom">Low pitches</div>
+        <div class="zone-board">
+          <div class="strike-zone-outline"></div>`;
+      zBins.forEach((z, rowIndex) => {
+        xBins.forEach(x => {
+          const item = agg.get(`${x.index}|${z.index}`) || { s2026: 0, t2026: 0, s2025: 0, t2025: 0 };
+          const rate2026 = item.t2026 ? item.s2026 / item.t2026 : 0;
+          const rate2025 = item.t2025 ? item.s2025 / item.t2025 : 0;
+          const diff = rate2026 - rate2025;
+          const swstrRate2026 = item.p2026 ? item.sw2026 / item.p2026 : 0;
+          const swstrRate2025 = item.p2025 ? item.sw2025 / item.p2025 : 0;
+          const swstrDiff = swstrRate2026 - swstrRate2025;
+          const sample = item.t2026 + item.t2025;
+          heatmap += `<div class="zone-tile" data-cell="${x.index}-${z.index}" data-delta="${fmtPctPoints(diff)}" data-cs2025="${fmtPct(rate2025, 1)}" data-cs2026="${fmtPct(rate2026, 1)}" data-sw-delta="${fmtPctPoints(swstrDiff)}" data-sw2025="${fmtPct(swstrRate2025, 1)}" data-sw2026="${fmtPct(swstrRate2026, 1)}" style="grid-column:${x.index + 1}; grid-row:${rowIndex + 1}; background:${diffColor(diff)}">
+            <div>${sample ? fmtSignedNumber(diff * 100, 1) : ""}</div>
+          </div>`;
+        });
+      });
+      heatmap += `</div></div>`;
+
+      const tableRows = areas
+        .sort((a, b) => Math.abs(b.diff) - Math.abs(a.diff))
+        .map(item => `
+        <tr class="area-row" data-area="${item.key}">
+          <td><span class="area-chip" style="background:${item.color}"></span>${escapeHtml(item.label)}</td>
+          <td>${fmtPct(item.rate2025, 1)}</td>
+          <td>${fmtPct(item.rate2026, 1)}</td>
+          <td>${fmtPctPoints(item.diff)}</td>
+        </tr>`).join("");
+
+      setHtml("zone-content", `
+        <div class="insight">
+          <strong>What this page is saying</strong>
+          <p>${escapeHtml(thesisStatement(areaMap))}</p>
+        </div>
+        <div class="trend-row">
+          <div class="trend-card"><div class="kicker">Top zone</div><strong>${fmtPctPoints(areaMap.top.diff)}</strong><div class="mini-bar"><span style="width:${Math.min(100, Math.abs(areaMap.top.diff) / 0.10 * 100)}%"></span></div><div class="rate-arrow"><span class="rate-label">Called Strike %:</span> ${fmtPct(areaMap.top.rate2025, 1)} <span class="arrow">→</span> ${fmtPct(areaMap.top.rate2026, 1)}</div></div>
+          <div class="trend-card"><div class="kicker">Bottom zone</div><strong>${fmtPctPoints(areaMap.bottom.diff)}</strong><div class="mini-bar"><span style="width:${Math.min(100, Math.abs(areaMap.bottom.diff) / 0.10 * 100)}%"></span></div><div class="rate-arrow"><span class="rate-label">Called Strike %:</span> ${fmtPct(areaMap.bottom.rate2025, 1)} <span class="arrow">→</span> ${fmtPct(areaMap.bottom.rate2026, 1)}</div></div>
+          <div class="trend-card"><div class="kicker">Side edges</div><strong>${fmtPctPoints((areaMap.glove.diff + areaMap.arm.diff) / 2)}</strong><div class="mini-bar"><span style="width:${Math.min(100, Math.abs((areaMap.glove.diff + areaMap.arm.diff) / 2) / 0.10 * 100)}%"></span></div><div class="rate-arrow"><span class="rate-label">Called Strike %:</span> ${fmtPct((areaMap.glove.rate2025 + areaMap.arm.rate2025) / 2, 1)} <span class="arrow">→</span> ${fmtPct((areaMap.glove.rate2026 + areaMap.arm.rate2026) / 2, 1)}</div></div>
+        </div>
+        <div class="panel pad">
+          <h3>MLB Called-Strike Shape</h3>
+          <div class="heatmap-wrap">${heatmap}</div>
+          <div id="zone-tooltip" class="zone-tooltip"></div>
+          <div class="zone-legend">
+            <span class="left">Lost strikes</span>
+            <span class="mid">No change</span>
+            <span class="right">Gained strikes</span>
+          </div>
+          <div class="gradient-legend"></div>
+          <div class="legend-scale"><span>-8 pp</span><span>0</span><span>+8 pp</span></div>
+        </div>
+        <div class="panel pad area-panel">
+            <h3>Area Guide</h3>
+            <div id="area-detail" class="area-detail"></div>
+            <table>
+              <thead><tr><th>Area</th><th>2025 Called Strike Rate</th><th>2026 Called Strike Rate</th><th>Change</th></tr></thead>
+              <tbody>${tableRows || `<tr><td colspan="4" class="muted">No areas meet the minimum sample.</td></tr>`}</tbody>
+            </table>
+        </div>
+        `);
+      document.querySelectorAll(".zone-tile").forEach(tile => {
+        tile.addEventListener("mouseenter", event => showZoneTooltip(event, tile));
+        tile.addEventListener("mousemove", moveZoneTooltip);
+        tile.addEventListener("mouseleave", hideZoneTooltip);
+      });
+      document.querySelectorAll(".area-row").forEach(row => {
+        row.addEventListener("click", () => {
+          if (state.selectedAreas.has(row.dataset.area)) {
+            state.selectedAreas.delete(row.dataset.area);
+          } else {
+            state.selectedAreas.add(row.dataset.area);
+          }
+          updateZoneAreaSelection(areas);
+        });
+      });
+      clearZoneArea();
+    }
+
+    function currentCatcherRows() {
+      const team = document.getElementById("overview-team") ? document.getElementById("overview-team").value : "All";
+      const catcher = document.getElementById("overview-catcher") ? document.getElementById("overview-catcher").value : "All";
+      return DASHBOARD_DATA.catchers.filter(row => {
+        if (team !== "All" && row.team !== team) return false;
+        if (catcher !== "All" && row.name !== catcher) return false;
+        return true;
+      });
+    }
+
+    function sortableHeader(label, key) {
+      return `<th data-sort="${key}">${label}</th>`;
+    }
+
+    function renderOverview() {
+      const rows = currentCatcherRows().sort((a, b) => {
+        const dir = state.sort.dir;
+        const key = state.sort.key;
+        return (Number(a[key]) > Number(b[key]) ? 1 : -1) * dir;
+      });
+      const top = rows[0] || {};
+      const tableRows = rows.map(row => `
+        <tr>
+          <td><strong>${escapeHtml(row.name)}</strong><div class="muted">${escapeHtml(row.team)}</div></td>
+          <td>${fmtInt(row.challenges)}</td>
+          <td>${fmtInt(row.overturns)}</td>
+          <td>${fmtPct(row.successRate)}</td>
+          <td>${fmtNumber(row.totalVsExpected, 1)}</td>
+          <td>${fmtNumber(row.overturnsAboveExpected, 1)}</td>
+          <td><span class="tag ${tagClass(row.aggressionLabel)}">${escapeHtml(row.aggressionLabel)}</span></td>
+        </tr>`).join("");
+      setHtml("overview-content", `
+        <div class="metrics">
+          <div class="metric"><div class="label">Catchers Shown</div><div class="value">${fmtInt(rows.length)}</div><div class="note">Workbook rows</div></div>
+          <div class="metric"><div class="label">Top Value</div><div class="value">${fmtNumber(top.totalVsExpected || 0, 1)}</div><div class="note">${escapeHtml(top.name || "None")}</div></div>
+          <div class="metric"><div class="label">Top Success Rate</div><div class="value">${fmtPct(Math.max(...rows.map(r => r.successRate), 0))}</div><div class="note">Overturns per challenge</div></div>
+          <div class="metric"><div class="label">Too Passive Flags</div><div class="value">${fmtInt(rows.filter(r => r.aggressionLabel === "Too Passive").length)}</div><div class="note">Expected challenge rate signal</div></div>
+        </div>
+        <div class="panel pad">
+          <table>
+            <thead><tr>
+              ${sortableHeader("Catcher", "name")}
+              ${sortableHeader("Challenges", "challenges")}
+              ${sortableHeader("Overturns", "overturns")}
+              ${sortableHeader("Success", "successRate")}
+              ${sortableHeader("Value", "totalVsExpected")}
+              ${sortableHeader("Above Expected", "overturnsAboveExpected")}
+              <th>Aggression</th>
+            </tr></thead>
+            <tbody>${tableRows}</tbody>
+          </table>
+        </div>
+        <div class="panel pad takeaways">
+          <h3>Coach Takeaways</h3>
+          <ul>
+            <li>Do not grade only by success rate. Pair it with value and aggression.</li>
+            <li>Too Passive catchers may need encouragement even if their success rate is strong.</li>
+            <li>Too Aggressive catchers should review low-value challenge losses first.</li>
+          </ul>
+        </div>`);
+      document.querySelectorAll("#overview th[data-sort]").forEach(th => {
+        th.addEventListener("click", () => {
+          const key = th.dataset.sort;
+          state.sort.dir = state.sort.key === key ? state.sort.dir * -1 : -1;
+          state.sort.key = key;
+          renderOverview();
+        });
+      });
+    }
+
+    function renderReport() {
+      const selected = document.getElementById("report-catcher").value;
+      const row = DASHBOARD_DATA.catchers.find(item => item.name === selected) || DASHBOARD_DATA.catchers[0];
+      if (!row) {
+        setHtml("report-content", `<div class="empty">No catcher rows are available.</div>`);
+        return;
+      }
+      const categories = [
+        ["Challenge Execution", row.executionGrade, `${fmtPct(row.successRate)} success rate, ${fmtNumber(row.overturnsAboveExpected, 1)} overturns above expected.`],
+        ["Challenge Selection", row.selectionGrade, `${fmtNumber(row.totalVsExpected, 1)} total value versus expected.`],
+        ["Aggressiveness", row.aggressionLabel, `Expected challenge rate difference is ${fmtPctPoints(row.expectedChallengeDiff)}.`],
+        ["Zone Read", "Data Needed", "Requires pitch-level challenge linkage before grading missed opportunities."],
+        ["Battery Process", "Data Needed", "Requires internal charting fields."],
+        ["Overall ABS Value", row.valueLabel, `${fmtNumber(row.totalVsExpected, 1)} value versus expected.`]
+      ];
+      setHtml("report-content", `
+        <div class="metrics">
+          <div class="metric"><div class="label">Challenges Used</div><div class="value">${fmtInt(row.challenges)}</div><div class="note">${escapeHtml(row.team)}</div></div>
+          <div class="metric"><div class="label">Successful Challenges</div><div class="value">${fmtInt(row.overturns)}</div><div class="note">${fmtPct(row.successRate)} success</div></div>
+          <div class="metric"><div class="label">Net Challenge Value</div><div class="value">${fmtNumber(row.totalVsExpected, 1)}</div><div class="note">${escapeHtml(row.valueLabel)}</div></div>
+          <div class="metric"><div class="label">Above Expected</div><div class="value">${fmtNumber(row.overturnsAboveExpected, 1)}</div><div class="note">Overturns</div></div>
+        </div>
+        <div class="grid two-col">
+          <div class="panel pad">
+            <h3>${escapeHtml(row.name)} Report Card</h3>
+            <table>
+              <thead><tr><th>Category</th><th>Grade</th><th>Note</th></tr></thead>
+              <tbody>${categories.map(item => `<tr><td>${escapeHtml(item[0])}</td><td><span class="tag ${tagClass(item[1])}">${escapeHtml(item[1])}</span></td><td>${escapeHtml(item[2])}</td></tr>`).join("")}</tbody>
+            </table>
+          </div>
+          <div class="panel pad">
+            <h3>Decision Quality</h3>
+            <table>
+              <tbody>
+                <tr><td>Expected Success Rate</td><td>${fmtPct(row.expectedSuccessRate)}</td></tr>
+                <tr><td>Actual Success Rate</td><td>${fmtPct(row.successRate)}</td></tr>
+                <tr><td>Overturns Above Expected</td><td>${fmtNumber(row.overturnsAboveExpected, 1)}</td></tr>
+                <tr><td>Strikeouts Flipped</td><td>${fmtInt(row.nStrikeoutsFlip)}</td></tr>
+                <tr><td>Walks Flipped</td><td>${fmtInt(row.nWalksFlip)}</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel pad takeaways">
+          <h3>Coach Takeaways</h3>
+          <ul>
+            <li>Start the video review with the biggest wins and losses, not the full challenge list.</li>
+            <li>Use the aggression label to separate conviction problems from zone-read problems.</li>
+            <li>Keep zone-specific missed opportunity feedback out until challenge-level pitch linkage is available.</li>
+          </ul>
+        </div>`);
+    }
+
+    function renderEvaluation() {
+      const team = document.getElementById("evaluation-team").value;
+      const rows = DASHBOARD_DATA.catchers
+        .filter(row => team === "All" || row.team === team)
+        .sort((a, b) => b.overallValue - a.overallValue);
+      const tableRows = rows.map(row => `
+        <tr>
+          <td><strong>${escapeHtml(row.name)}</strong><div class="muted">${escapeHtml(row.team)}</div></td>
+          <td>${fmtNumber(row.executionValue, 1)}</td>
+          <td>${fmtNumber(row.selectionValue, 1)}</td>
+          <td>${fmtNumber(row.zoneAdaptation, 1)}</td>
+          <td>${fmtNumber(row.overallValue, 1)}</td>
+          <td><span class="tag ${tagClass(row.archetype)}">${escapeHtml(row.archetype)}</span></td>
+        </tr>`).join("");
+      setHtml("evaluation-content", `
+        <div class="insight">
+          <strong>Transparent MVP formula</strong>
+          ABS Catcher Value = Challenge Execution Value + Challenge Selection Value + Zone Adaptation Indicator.
+          Receiving value, battery process value, and true missed-opportunity value are held out until the needed data exists.
+        </div>
+        <div class="panel pad">
+          <table>
+            <thead><tr><th>Catcher</th><th>Execution</th><th>Selection</th><th>Zone Adaptation</th><th>Overall</th><th>Archetype</th></tr></thead>
+            <tbody>${tableRows}</tbody>
+          </table>
+        </div>
+        <div class="panel pad takeaways">
+          <h3>Coach Takeaways</h3>
+          <ul>
+            <li>Use the component table before debating the overall number.</li>
+            <li>Archetypes are coaching labels, not final player grades.</li>
+            <li>Zone adaptation is neutral until the Statcast zone-change cache is available.</li>
+          </ul>
+        </div>`);
+    }
+
+    function renderDataCheck() {
+      const validationRows = DASHBOARD_DATA.validations.map(item => `
+        <div class="status ${item.ok ? "ok" : "warn"}">
+          <div class="name">${escapeHtml(item.name)}</div>
+          <div class="message">${escapeHtml(item.message)}</div>
+        </div>`).join("");
+      const sourceRows = Object.entries(DASHBOARD_DATA.sourceStatus).map(([name, item]) => `
+        <tr><td>${escapeHtml(name)}</td><td>${escapeHtml(item.source)}</td><td>${fmtInt(item.rows)}</td><td>${escapeHtml(item.message)}</td></tr>`).join("");
+      setHtml("data-content", `
+        <div class="metrics">
+          <div class="metric"><div class="label">Generated</div><div class="value" style="font-size:18px">${escapeHtml(DASHBOARD_DATA.generatedAt)}</div><div class="note">Local build time</div></div>
+          <div class="metric"><div class="label">Catcher Rows</div><div class="value">${fmtInt(DASHBOARD_DATA.catchers.length)}</div><div class="note">Workbook</div></div>
+          <div class="metric"><div class="label">Zone Rows</div><div class="value">${fmtInt(DASHBOARD_DATA.zoneRows.length)}</div><div class="note">Aggregated Statcast</div></div>
+          <div class="metric"><div class="label">Statcast Refresh</div><div class="value">${DASHBOARD_DATA.config.refreshStatcast ? "On" : "Off"}</div><div class="note">Config setting</div></div>
+        </div>
+        <div class="grid two-col">
+          <div class="panel pad">
+            <h3>Validation</h3>
+            <div class="status-grid">${validationRows}</div>
+          </div>
+          <div class="panel pad">
+            <h3>Sources</h3>
+            <table><thead><tr><th>Source</th><th>Status</th><th>Rows</th><th>Message</th></tr></thead><tbody>${sourceRows}</tbody></table>
+          </div>
+        </div>`);
+    }
+
+    function init() {
+      initNav();
+      initFilters();
+      renderZone();
+      renderOverview();
+      renderReport();
+      renderEvaluation();
+      renderDataCheck();
+    }
+
+    init();
+  </script>
+</body>
+</html>

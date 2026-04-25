@@ -1,0 +1,1253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The ABS Edge Map</title>
+  <style>
+    :root {
+      --bg: #f7f4ed;
+      --panel: #ffffff;
+      --ink: #17202a;
+      --muted: #667085;
+      --line: #ddd3be;
+      --blue: #3fc2cc;
+      --red: #a71930;
+      --green: #008c95;
+      --sand: #e3d4ad;
+      --black: #090a0c;
+      --amber: #a16207;
+      --shadow: 0 10px 24px rgba(16, 24, 40, 0.07);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    header {
+      background: var(--black);
+      color: #fff;
+      padding: 22px 28px;
+      border-bottom: 5px solid var(--red);
+    }
+    header h1 {
+      margin: 0 0 6px;
+      font-size: clamp(24px, 3vw, 36px);
+      letter-spacing: 0;
+    }
+    header p {
+      margin: 0;
+      color: #d1d5db;
+      max-width: 980px;
+    }
+    .shell {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 20px 24px 40px;
+    }
+    .nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .nav button,
+    .control,
+    .table-sort {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 9px 12px;
+      font: inherit;
+    }
+    .nav button {
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .nav button.active {
+      border-color: var(--red);
+      background: var(--red);
+      color: #fff;
+    }
+    section.view { display: none; }
+    section.view.active { display: block; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+    h2 {
+      margin: 0 0 4px;
+      font-size: clamp(22px, 2.4vw, 30px);
+      letter-spacing: 0;
+    }
+    .purpose {
+      margin: 0;
+      color: var(--muted);
+      max-width: 860px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .panel.pad { padding: 16px; }
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+    .two-col {
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(160px, 1fr));
+      gap: 12px;
+      margin: 14px 0 16px;
+    }
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px 14px;
+    }
+    .metric .label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .metric .value {
+      margin-top: 5px;
+      font-size: 25px;
+      font-weight: 800;
+    }
+    .metric .note {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: end;
+      margin: 0 0 16px;
+    }
+    #zone-filters { display: block; }
+    .field {
+      display: grid;
+      gap: 4px;
+    }
+    .field label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    select.control,
+    input.control {
+      min-width: 140px;
+      height: 38px;
+    }
+    .insight {
+      border-left: 5px solid var(--red);
+      background: #fff8ea;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin-bottom: 14px;
+    }
+    .insight strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .insight ul {
+      margin: 6px 0 0;
+      padding-left: 20px;
+    }
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .status {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 11px;
+      background: #fff;
+    }
+    .status.ok { border-left: 4px solid var(--green); }
+    .status.warn { border-left: 4px solid var(--amber); }
+    .status .name {
+      font-weight: 800;
+      margin-bottom: 3px;
+    }
+    .status .message {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .heatmap-wrap {
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .zone-visual {
+      display: grid;
+      grid-template-columns: 72px minmax(560px, 1fr) 72px;
+      grid-template-rows: 48px auto 28px;
+      align-items: center;
+      gap: 6px;
+      min-width: 720px;
+    }
+    .field-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .view-label {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: start;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: 0;
+    }
+    .field-label.top { grid-column: 2; grid-row: 1; align-self: end; }
+    .field-label.bottom { grid-column: 2; grid-row: 3; }
+    .field-label.glove { grid-column: 1; grid-row: 2; writing-mode: vertical-rl; transform: rotate(180deg); justify-self: center; }
+    .field-label.arm { grid-column: 3; grid-row: 2; writing-mode: vertical-rl; justify-self: center; }
+    .zone-board {
+      grid-column: 2;
+      grid-row: 2;
+      display: grid;
+      grid-template-columns: repeat(7, minmax(68px, 1fr));
+      grid-template-rows: repeat(5, 88px);
+      gap: 7px;
+      position: relative;
+      background: #fff;
+      padding: 6px;
+      border-radius: 8px;
+    }
+    .zone-tile {
+      border-radius: 8px;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px;
+      font-weight: 900;
+      z-index: 1;
+      transition: transform 140ms ease, box-shadow 140ms ease;
+    }
+    .zone-tile:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(17, 24, 40, 0.12); }
+    .zone-tile .quiet {
+      display: block;
+      color: rgba(17, 24, 39, 0.64);
+      font-size: 11px;
+      font-weight: 800;
+      margin-top: 3px;
+    }
+    .strike-zone-outline {
+      grid-column: 3 / 6;
+      grid-row: 2 / 5;
+      border: 3px solid #111827;
+      border-radius: 6px;
+      z-index: 3;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.72);
+    }
+    .area-outline {
+      border: 4px solid var(--blue);
+      border-radius: 12px;
+      background: rgba(63, 194, 204, 0.12);
+      z-index: 4;
+      pointer-events: none;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.85);
+    }
+    .zone-tooltip {
+      position: fixed;
+      z-index: 40;
+      width: min(330px, calc(100vw - 28px));
+      background: #101828;
+      color: #f9fafb;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 8px;
+      box-shadow: 0 18px 40px rgba(16, 24, 40, 0.28);
+      padding: 14px 16px;
+      display: none;
+      pointer-events: none;
+    }
+    .zone-tooltip.active { display: block; }
+    .tooltip-title {
+      color: var(--sand);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .tooltip-row {
+      display: grid;
+      grid-template-columns: 128px 1fr;
+      gap: 12px;
+      border-top: 1px solid rgba(255,255,255,0.22);
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+    .tooltip-value {
+      color: var(--blue);
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .tooltip-copy {
+      color: #d1d5db;
+      font-size: 14px;
+    }
+    .zone-legend {
+      margin: 18px 0 2px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 10px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .zone-legend .left { text-align: left; }
+    .zone-legend .mid { text-align: center; }
+    .zone-legend .right { text-align: right; }
+    .gradient-legend {
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #e4544f 0%, #f8d8d4 28%, #f8fafc 50%, #dcefe0 72%, #3ca861 100%);
+      margin-top: 10px;
+    }
+    .legend-scale {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+    .legend-scale span:nth-child(2) { text-align: center; }
+    .legend-scale span:nth-child(3) { text-align: right; }
+    .trend-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 14px 0 16px;
+    }
+    .trend-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .trend-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background: var(--red);
+    }
+    .trend-card .kicker {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 5px;
+    }
+    .trend-card strong {
+      display: block;
+      font-size: 32px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .trend-card .mini-bar {
+      height: 9px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      overflow: hidden;
+      margin: 13px 0 9px;
+    }
+    .trend-card .mini-bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--red));
+      border-radius: inherit;
+    }
+    .rate-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 17px;
+      font-weight: 800;
+    }
+    .rate-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .rate-arrow .arrow {
+      color: var(--red);
+      font-size: 20px;
+      line-height: 1;
+    }
+    .area-panel { margin-top: 16px; }
+    .area-detail {
+      display: grid;
+      grid-template-columns: minmax(180px, 1fr) repeat(3, minmax(130px, 0.5fr));
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
+      margin-bottom: 12px;
+    }
+    .area-detail .label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .area-detail .value {
+      font-weight: 900;
+      font-size: 18px;
+    }
+    .area-row {
+      cursor: pointer;
+    }
+    .area-row.selected {
+      background: #fff4f4;
+    }
+    .area-chip {
+      display: inline-flex;
+      width: 13px;
+      height: 13px;
+      border-radius: 4px;
+      margin-right: 8px;
+      border: 1px solid rgba(17,24,39,0.14);
+      vertical-align: -1px;
+    }
+    .heatmap {
+      display: grid;
+      grid-template-columns: 82px repeat(7, minmax(82px, 1fr));
+      gap: 6px;
+      min-width: 720px;
+      align-items: stretch;
+    }
+    .cell,
+    .axis {
+      border-radius: 8px;
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px;
+      border: 1px solid rgba(17, 24, 39, 0.08);
+    }
+    .axis {
+      background: #f1f5f9;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .cell {
+      background: #f8fafc;
+      color: #111827;
+      font-weight: 800;
+      position: relative;
+    }
+    .cell .small {
+      display: block;
+      font-weight: 700;
+      font-size: 11px;
+      color: rgba(17, 24, 39, 0.7);
+      margin-top: 2px;
+    }
+    .legend {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 12px;
+    }
+    .swatch {
+      width: 38px;
+      height: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+    .swatch.loss { background: #fed7aa; }
+    .swatch.flat { background: #f8fafc; }
+    .swatch.gain { background: #bfdbfe; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th,
+    td {
+      padding: 10px 9px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+    }
+    th {
+      color: #475467;
+      background: #f8fafc;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      user-select: none;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+    }
+    .tag.positive { color: #0f766e; background: #ccfbf1; border-color: #99f6e4; }
+    .tag.negative { color: #b42318; background: #fee4e2; border-color: #fecdca; }
+    .tag.watch { color: #854d0e; background: #fef3c7; border-color: #fde68a; }
+    .tag.neutral { color: #344054; background: #f2f4f7; }
+    .takeaways {
+      margin-top: 16px;
+    }
+    .takeaways h3,
+    .panel h3 {
+      margin: 0 0 9px;
+      font-size: 16px;
+    }
+    .takeaways ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .muted { color: var(--muted); }
+    .empty {
+      padding: 20px;
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+    }
+    @media (max-width: 900px) {
+      .shell { padding: 16px; }
+      .two-col { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: repeat(2, minmax(150px, 1fr)); }
+      .section-head { grid-template-columns: 1fr; }
+      .status-grid { grid-template-columns: 1fr; }
+      .trend-row { grid-template-columns: 1fr; }
+      .area-detail { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      header { padding: 18px 16px; }
+      .metrics { grid-template-columns: 1fr; }
+      select.control,
+      input.control { width: 100%; min-width: 0; }
+      .field { width: 100%; }
+      .area-detail { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The ABS Edge Map</h1>
+    <p>Where the new zone is giving catchers strikes, taking them away, and changing the conversation behind the plate.</p>
+  </header>
+
+  <main class="shell">
+    <nav class="nav" aria-label="Dashboard sections">
+      <button class="active" data-view="zone">Zone Change</button>
+      <button data-view="overview">Catcher Overview</button>
+      <button data-view="report">Challenge Report Card</button>
+      <button data-view="evaluation">Catcher Evaluation</button>
+      <button data-view="data">Data Check</button>
+    </nav>
+
+    <section id="zone" class="view active">
+      <div class="section-head">
+        <div>
+          <h2>Zone Change</h2>
+          <p class="purpose">League view: what the ABS-era called-strike shape looks like compared with the prior human-zone window.</p>
+        </div>
+      </div>
+      <div class="filters" id="zone-filters"></div>
+      <div id="zone-content"></div>
+    </section>
+
+    <section id="overview" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Catcher Overview</h2>
+          <p class="purpose">Which catchers are creating or losing ABS challenge value from the pitching-team perspective.</p>
+        </div>
+      </div>
+      <div class="filters" id="overview-filters"></div>
+      <div id="overview-content"></div>
+    </section>
+
+    <section id="report" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Challenge Report Card</h2>
+          <p class="purpose">Decision feedback without treating success rate as the whole grade.</p>
+        </div>
+      </div>
+      <div class="filters" id="report-filters"></div>
+      <div id="report-content"></div>
+    </section>
+
+    <section id="evaluation" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Catcher Evaluation</h2>
+          <p class="purpose">A transparent ABS-era value summary using only the approved data sources.</p>
+        </div>
+      </div>
+      <div class="filters" id="evaluation-filters"></div>
+      <div id="evaluation-content"></div>
+    </section>
+
+    <section id="data" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Data Check</h2>
+          <p class="purpose">Source, schema, and join checks used to build this file.</p>
+        </div>
+      </div>
+      <div id="data-content"></div>
+    </section>
+  </main>
+
+  <script>
+    const DASHBOARD_DATA = __DASHBOARD_DATA__;
+    const state = {
+      zone: { team: "All", catcher: "All", pitcher: "All", pitchType: "All", side: "All" },
+      overview: { team: "All", catcher: "All" },
+      report: { catcher: "" },
+      evaluation: { team: "All" },
+      sort: { key: "totalVsExpected", dir: -1 },
+      selectedAreas: new Set()
+    };
+
+    function fmtNumber(value, digits = 1) {
+      const number = Number(value || 0);
+      return number.toLocaleString(undefined, { minimumFractionDigits: digits, maximumFractionDigits: digits });
+    }
+
+    function fmtSignedNumber(value, digits = 1) {
+      const number = Number(value || 0);
+      return `${number > 0 ? "+" : ""}${fmtNumber(number, digits)}`;
+    }
+
+    function fmtInt(value) {
+      return Number(value || 0).toLocaleString();
+    }
+
+    function fmtPct(value, digits = 0) {
+      return `${fmtNumber(Number(value || 0) * 100, digits)}%`;
+    }
+
+    function fmtPctPoints(value, digits = 1) {
+      return `${value > 0 ? "+" : ""}${fmtNumber(Number(value || 0) * 100, digits)} pts`;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function tagClass(label) {
+      if (["Positive", "Battery Captain", "Technician", "Balanced"].includes(label)) return "positive";
+      if (["Negative", "Gambler", "At-Risk Receiver", "Too Aggressive"].includes(label)) return "negative";
+      if (["Too Passive", "Traditional Receiver", "Passive Receiver", "Watch"].includes(label)) return "watch";
+      return "neutral";
+    }
+
+    function options(values, current = "All") {
+      const unique = ["All", ...Array.from(new Set(values.filter(Boolean))).sort()];
+      return unique.map(value => `<option value="${escapeHtml(value)}" ${value === current ? "selected" : ""}>${escapeHtml(value)}</option>`).join("");
+    }
+
+    function setHtml(id, html) {
+      document.getElementById(id).innerHTML = html;
+    }
+
+    function buildSelect(label, id, values, current = "All") {
+      return `<div class="field"><label for="${id}">${label}</label><select class="control" id="${id}">${options(values, current)}</select></div>`;
+    }
+
+    function initNav() {
+      document.querySelectorAll(".nav button").forEach(button => {
+        button.addEventListener("click", () => {
+          document.querySelectorAll(".nav button").forEach(item => item.classList.remove("active"));
+          document.querySelectorAll("section.view").forEach(section => section.classList.remove("active"));
+          button.classList.add("active");
+          document.getElementById(button.dataset.view).classList.add("active");
+        });
+      });
+    }
+
+    function initFilters() {
+      setHtml("zone-filters", "");
+
+      setHtml("overview-filters", [
+        buildSelect("Team", "overview-team", DASHBOARD_DATA.filters.teams, state.overview.team),
+        buildSelect("Catcher", "overview-catcher", DASHBOARD_DATA.filters.catchers, state.overview.catcher)
+      ].join(""));
+      document.getElementById("overview-team").addEventListener("change", renderOverview);
+      document.getElementById("overview-catcher").addEventListener("change", renderOverview);
+
+      const firstCatcher = DASHBOARD_DATA.catchers[0] ? DASHBOARD_DATA.catchers[0].name : "";
+      state.report.catcher = firstCatcher;
+      setHtml("report-filters", buildSelect("Catcher", "report-catcher", DASHBOARD_DATA.filters.catchers, firstCatcher));
+      document.getElementById("report-catcher").addEventListener("change", renderReport);
+
+      setHtml("evaluation-filters", buildSelect("Team", "evaluation-team", DASHBOARD_DATA.filters.teams, state.evaluation.team));
+      document.getElementById("evaluation-team").addEventListener("change", renderEvaluation);
+    }
+
+    function filterZoneRows() {
+      const start = DASHBOARD_DATA.config.statcast2026Start;
+      const end = DASHBOARD_DATA.config.statcast2026End;
+      const start2025 = String(start).replace("2026", "2025");
+      const end2025 = String(end).replace("2026", "2025");
+      return DASHBOARD_DATA.zoneRows.filter(row => {
+        if (Number(row.season) === 2026 && (row.game_date < start || row.game_date > end)) return false;
+        if (Number(row.season) === 2025 && (row.game_date < start2025 || row.game_date > end2025)) return false;
+        return true;
+      });
+    }
+
+    function aggregateZone(rows) {
+      const map = new Map();
+      rows.forEach(row => {
+        const key = `${row.x_bin}|${row.z_bin}`;
+        if (!map.has(key)) {
+          map.set(key, { x: row.x_bin, z: row.z_bin, s2026: 0, t2026: 0, sw2026: 0, p2026: 0, s2025: 0, t2025: 0, sw2025: 0, p2025: 0 });
+        }
+        const item = map.get(key);
+        if (Number(row.season) === 2026) {
+          item.s2026 += Number(row.called_strikes || 0);
+          item.t2026 += Number(row.taken || 0);
+          item.sw2026 += Number(row.swinging_strikes || 0);
+          item.p2026 += Number(row.pitches || 0);
+        } else if (Number(row.season) === 2025) {
+          item.s2025 += Number(row.called_strikes || 0);
+          item.t2025 += Number(row.taken || 0);
+          item.sw2025 += Number(row.swinging_strikes || 0);
+          item.p2025 += Number(row.pitches || 0);
+        }
+      });
+      return map;
+    }
+
+    function diffColor(diff) {
+      const value = Math.max(-0.08, Math.min(0.08, diff || 0));
+      const strength = Math.abs(value) / 0.08;
+      if (value > 0) return `rgba(61, 168, 97, ${0.14 + strength * 0.62})`;
+      if (value < 0) return `rgba(228, 84, 79, ${0.14 + strength * 0.62})`;
+      return "#f8fafc";
+    }
+
+    const AREA_DEFS = [
+      { key: "top", label: "Top of the zone", cells: [[2,3],[3,3],[4,3],[2,4],[3,4],[4,4]], color: "#7da2f7" },
+      { key: "bottom", label: "Bottom of the zone", cells: [[2,1],[3,1],[4,1],[2,0],[3,0],[4,0]], color: "#8ecae6" },
+      { key: "glove", label: "Third-base side edge", cells: [[1,1],[1,2],[1,3],[2,1],[2,2],[2,3]], color: "#f4a261" },
+      { key: "arm", label: "First-base side edge", cells: [[4,1],[4,2],[4,3],[5,1],[5,2],[5,3]], color: "#2a9d8f" },
+      { key: "middle", label: "Middle of the plate", cells: [[3,1],[3,2],[3,3]], color: "#94a3b8" }
+    ];
+
+    function areaGuide(agg) {
+      return AREA_DEFS.map(area => {
+        const total = area.cells.reduce((acc, cell) => {
+          const item = agg.get(`${cell[0]}|${cell[1]}`) || { s2026: 0, t2026: 0, s2025: 0, t2025: 0 };
+          acc.s2026 += item.s2026 || 0;
+          acc.t2026 += item.t2026 || 0;
+          acc.s2025 += item.s2025 || 0;
+          acc.t2025 += item.t2025 || 0;
+          return acc;
+        }, { s2026: 0, t2026: 0, s2025: 0, t2025: 0 });
+        const rate2026 = total.t2026 ? total.s2026 / total.t2026 : 0;
+        const rate2025 = total.t2025 ? total.s2025 / total.t2025 : 0;
+        const diff = rate2026 - rate2025;
+        return { ...area, ...total, rate2026, rate2025, diff };
+      });
+    }
+
+    function leagueChallengeSummary() {
+      return DASHBOARD_DATA.catchers.reduce((acc, row) => {
+        acc.challenges += Number(row.challenges || 0);
+        acc.overturns += Number(row.overturns || 0);
+        acc.expectedOverturns += Number(row.expectedOverturns || 0);
+        acc.value += Number(row.totalVsExpected || 0);
+        acc.strikeoutFlips += Number(row.nStrikeoutsFlip || 0);
+        acc.walkFlips += Number(row.nWalksFlip || 0);
+        return acc;
+      }, { challenges: 0, overturns: 0, expectedOverturns: 0, value: 0, strikeoutFlips: 0, walkFlips: 0 });
+    }
+
+    function thesisStatement(areaMap) {
+      return "The early ABS zone is not just a cleaner version of the old human zone. It is rewarding vertical command more clearly, while the side edges are becoming less of a place to steal strikes and more of a place where catchers need conviction before asking for a challenge.";
+    }
+
+    function areaCells(areaKey) {
+      const area = AREA_DEFS.find(item => item.key === areaKey);
+      return area ? area.cells.map(cell => `${cell[0]}-${cell[1]}`) : [];
+    }
+
+    function addAreaOutline(area) {
+      const board = document.querySelector(".zone-board");
+      if (!board || !area) return;
+      const xs = area.cells.map(cell => cell[0]);
+      const zs = area.cells.map(cell => cell[1]);
+      const xMin = Math.min(...xs) + 1;
+      const xMax = Math.max(...xs) + 2;
+      const zMin = Math.min(...zs);
+      const zMax = Math.max(...zs);
+      const outline = document.createElement("div");
+      outline.className = "area-outline";
+      outline.style.gridColumn = `${xMin} / ${xMax}`;
+      outline.style.gridRow = `${5 - zMax} / ${6 - zMin}`;
+      board.appendChild(outline);
+    }
+
+    function selectedAreaSummary(areas) {
+      const selected = areas.filter(area => state.selectedAreas.has(area.key));
+      if (!selected.length) return null;
+      const selectedCellKeys = new Set();
+      selected.forEach(area => area.cells.forEach(cell => selectedCellKeys.add(`${cell[0]}|${cell[1]}`)));
+      const totals = { s2026: 0, t2026: 0, s2025: 0, t2025: 0 };
+      selectedCellKeys.forEach(key => {
+        const item = window.__zoneAgg.get(key) || { s2026: 0, t2026: 0, s2025: 0, t2025: 0 };
+        totals.s2026 += item.s2026 || 0;
+        totals.t2026 += item.t2026 || 0;
+        totals.s2025 += item.s2025 || 0;
+        totals.t2025 += item.t2025 || 0;
+      });
+      const rate2025 = totals.t2025 ? totals.s2025 / totals.t2025 : 0;
+      const rate2026 = totals.t2026 ? totals.s2026 / totals.t2026 : 0;
+      return {
+        label: selected.length === 1 ? selected[0].label : `${selected.length} areas selected`,
+        rate2025,
+        rate2026,
+        diff: rate2026 - rate2025,
+      };
+    }
+
+    function updateZoneAreaSelection(areas) {
+      document.querySelectorAll(".area-outline").forEach(item => item.remove());
+      areas.filter(area => state.selectedAreas.has(area.key)).forEach(addAreaOutline);
+      document.querySelectorAll(".area-row").forEach(row => {
+        row.classList.toggle("selected", state.selectedAreas.has(row.dataset.area));
+      });
+      const selected = selectedAreaSummary(areas);
+      if (!selected) {
+        clearZoneArea();
+        return;
+      }
+      setHtml("area-detail", `
+        <div><div class="label">Selected Area</div><div class="value">${escapeHtml(selected.label)}</div></div>
+        <div><div class="label">2025 Called Strike Rate</div><div class="value">${fmtPct(selected.rate2025, 1)}</div></div>
+        <div><div class="label">2026 Called Strike Rate</div><div class="value">${fmtPct(selected.rate2026, 1)}</div></div>
+        <div><div class="label">Change</div><div class="value">${fmtPctPoints(selected.diff)}</div></div>
+      `);
+    }
+
+    function clearZoneArea() {
+      state.selectedAreas.clear();
+      document.querySelectorAll(".area-outline").forEach(item => item.remove());
+      document.querySelectorAll(".area-row").forEach(row => row.classList.remove("selected"));
+      setHtml("area-detail", `
+        <div><div class="label">Selected Area</div><div class="value">Choose an area below</div></div>
+        <div><div class="label">2025 Called Strike Rate</div><div class="value">--</div></div>
+        <div><div class="label">2026 Called Strike Rate</div><div class="value">--</div></div>
+        <div><div class="label">Change</div><div class="value">--</div></div>
+      `);
+    }
+
+    function showZoneTooltip(event, tile) {
+      const tooltip = document.getElementById("zone-tooltip");
+      if (!tooltip) return;
+      tooltip.innerHTML = `
+        <div class="tooltip-title">Zone detail</div>
+        <div class="tooltip-row">
+          <div><div class="tooltip-value">${escapeHtml(tile.dataset.delta)}</div><div class="muted">called strike change</div></div>
+          <div class="tooltip-copy">Called Strike %<br><strong>${escapeHtml(tile.dataset.cs2025)} <span class="arrow">→</span> ${escapeHtml(tile.dataset.cs2026)}</strong></div>
+        </div>
+        <div class="tooltip-row">
+          <div><div class="tooltip-value">${escapeHtml(tile.dataset.swDelta)}</div><div class="muted">swing/miss change</div></div>
+          <div class="tooltip-copy">Swinging Strike %<br><strong>${escapeHtml(tile.dataset.sw2025)} <span class="arrow">→</span> ${escapeHtml(tile.dataset.sw2026)}</strong></div>
+        </div>
+      `;
+      tooltip.classList.add("active");
+      moveZoneTooltip(event);
+    }
+
+    function moveZoneTooltip(event) {
+      const tooltip = document.getElementById("zone-tooltip");
+      if (!tooltip || !tooltip.classList.contains("active")) return;
+      const pad = 14;
+      const rect = tooltip.getBoundingClientRect();
+      const x = Math.min(window.innerWidth - rect.width - pad, event.clientX + 18);
+      const y = Math.min(window.innerHeight - rect.height - pad, event.clientY + 18);
+      tooltip.style.left = `${Math.max(pad, x)}px`;
+      tooltip.style.top = `${Math.max(pad, y)}px`;
+    }
+
+    function hideZoneTooltip() {
+      const tooltip = document.getElementById("zone-tooltip");
+      if (tooltip) tooltip.classList.remove("active");
+    }
+
+    function renderZone() {
+      if (!DASHBOARD_DATA.zoneRows.length) {
+        const statusItems = Object.values(DASHBOARD_DATA.sourceStatus).map(item => `
+          <div class="status warn">
+            <div class="name">${escapeHtml(item.source || "missing")}</div>
+            <div class="message">${escapeHtml(item.message || "")}</div>
+          </div>`).join("");
+        setHtml("zone-content", `
+          <div class="empty">
+            <strong>Zone Change needs cached or pulled Statcast data.</strong>
+            <p>The workbook loaded, but no pitch-level Statcast cache is available yet. Install requirements, set <code>refresh_statcast</code> to <code>true</code>, and rebuild. The coach-facing dashboard will not show mock zone data.</p>
+            <div class="status-grid">${statusItems}</div>
+          </div>`);
+        return;
+      }
+
+      const rows = filterZoneRows();
+      const agg = aggregateZone(rows);
+      window.__zoneAgg = agg;
+      const xBins = DASHBOARD_DATA.zoneGrid.x_bins;
+      const zBins = [...DASHBOARD_DATA.zoneGrid.z_bins].sort((a, b) => b.index - a.index);
+      const areas = areaGuide(agg);
+      const areaMap = Object.fromEntries(areas.map(area => [area.key, area]));
+      const gained = [...areas].sort((a, b) => b.diff - a.diff)[0] || { label: "No clear gain", diff: 0 };
+      const lost = [...areas].sort((a, b) => a.diff - b.diff)[0] || { label: "No clear loss", diff: 0 };
+      let heatmap = `<div class="zone-visual">
+        <div class="view-label">Catcher's view</div>
+        <div class="field-label top">High pitches</div>
+        <div class="field-label glove">Third-base side</div>
+        <div class="field-label arm">First-base side</div>
+        <div class="field-label bottom">Low pitches</div>
+        <div class="zone-board">
+          <div class="strike-zone-outline"></div>`;
+      zBins.forEach((z, rowIndex) => {
+        xBins.forEach(x => {
+          const item = agg.get(`${x.index}|${z.index}`) || { s2026: 0, t2026: 0, s2025: 0, t2025: 0 };
+          const rate2026 = item.t2026 ? item.s2026 / item.t2026 : 0;
+          const rate2025 = item.t2025 ? item.s2025 / item.t2025 : 0;
+          const diff = rate2026 - rate2025;
+          const swstrRate2026 = item.p2026 ? item.sw2026 / item.p2026 : 0;
+          const swstrRate2025 = item.p2025 ? item.sw2025 / item.p2025 : 0;
+          const swstrDiff = swstrRate2026 - swstrRate2025;
+          const sample = item.t2026 + item.t2025;
+          heatmap += `<div class="zone-tile" data-cell="${x.index}-${z.index}" data-delta="${fmtPctPoints(diff)}" data-cs2025="${fmtPct(rate2025, 1)}" data-cs2026="${fmtPct(rate2026, 1)}" data-sw-delta="${fmtPctPoints(swstrDiff)}" data-sw2025="${fmtPct(swstrRate2025, 1)}" data-sw2026="${fmtPct(swstrRate2026, 1)}" style="grid-column:${x.index + 1}; grid-row:${rowIndex + 1}; background:${diffColor(diff)}">
+            <div>${sample ? fmtSignedNumber(diff * 100, 1) : ""}</div>
+          </div>`;
+        });
+      });
+      heatmap += `</div></div>`;
+
+      const tableRows = areas
+        .sort((a, b) => Math.abs(b.diff) - Math.abs(a.diff))
+        .map(item => `
+        <tr class="area-row" data-area="${item.key}">
+          <td><span class="area-chip" style="background:${item.color}"></span>${escapeHtml(item.label)}</td>
+          <td>${fmtPct(item.rate2025, 1)}</td>
+          <td>${fmtPct(item.rate2026, 1)}</td>
+          <td>${fmtPctPoints(item.diff)}</td>
+        </tr>`).join("");
+
+      setHtml("zone-content", `
+        <div class="insight">
+          <strong>What this page is saying</strong>
+          <p>${escapeHtml(thesisStatement(areaMap))}</p>
+        </div>
+        <div class="trend-row">
+          <div class="trend-card"><div class="kicker">Top zone</div><strong>${fmtPctPoints(areaMap.top.diff)}</strong><div class="mini-bar"><span style="width:${Math.min(100, Math.abs(areaMap.top.diff) / 0.10 * 100)}%"></span></div><div class="rate-arrow"><span class="rate-label">Called Strike %:</span> ${fmtPct(areaMap.top.rate2025, 1)} <span class="arrow">→</span> ${fmtPct(areaMap.top.rate2026, 1)}</div></div>
+          <div class="trend-card"><div class="kicker">Bottom zone</div><strong>${fmtPctPoints(areaMap.bottom.diff)}</strong><div class="mini-bar"><span style="width:${Math.min(100, Math.abs(areaMap.bottom.diff) / 0.10 * 100)}%"></span></div><div class="rate-arrow"><span class="rate-label">Called Strike %:</span> ${fmtPct(areaMap.bottom.rate2025, 1)} <span class="arrow">→</span> ${fmtPct(areaMap.bottom.rate2026, 1)}</div></div>
+          <div class="trend-card"><div class="kicker">Side edges</div><strong>${fmtPctPoints((areaMap.glove.diff + areaMap.arm.diff) / 2)}</strong><div class="mini-bar"><span style="width:${Math.min(100, Math.abs((areaMap.glove.diff + areaMap.arm.diff) / 2) / 0.10 * 100)}%"></span></div><div class="rate-arrow"><span class="rate-label">Called Strike %:</span> ${fmtPct((areaMap.glove.rate2025 + areaMap.arm.rate2025) / 2, 1)} <span class="arrow">→</span> ${fmtPct((areaMap.glove.rate2026 + areaMap.arm.rate2026) / 2, 1)}</div></div>
+        </div>
+        <div class="panel pad">
+          <h3>MLB Called-Strike Shape</h3>
+          <div class="heatmap-wrap">${heatmap}</div>
+          <div id="zone-tooltip" class="zone-tooltip"></div>
+          <div class="zone-legend">
+            <span class="left">Lost strikes</span>
+            <span class="mid">No change</span>
+            <span class="right">Gained strikes</span>
+          </div>
+          <div class="gradient-legend"></div>
+          <div class="legend-scale"><span>-8 pp</span><span>0</span><span>+8 pp</span></div>
+        </div>
+        <div class="panel pad area-panel">
+            <h3>Area Guide</h3>
+            <div id="area-detail" class="area-detail"></div>
+            <table>
+              <thead><tr><th>Area</th><th>2025 Called Strike Rate</th><th>2026 Called Strike Rate</th><th>Change</th></tr></thead>
+              <tbody>${tableRows || `<tr><td colspan="4" class="muted">No areas meet the minimum sample.</td></tr>`}</tbody>
+            </table>
+        </div>
+        `);
+      document.querySelectorAll(".zone-tile").forEach(tile => {
+        tile.addEventListener("mouseenter", event => showZoneTooltip(event, tile));
+        tile.addEventListener("mousemove", moveZoneTooltip);
+        tile.addEventListener("mouseleave", hideZoneTooltip);
+      });
+      document.querySelectorAll(".area-row").forEach(row => {
+        row.addEventListener("click", () => {
+          if (state.selectedAreas.has(row.dataset.area)) {
+            state.selectedAreas.delete(row.dataset.area);
+          } else {
+            state.selectedAreas.add(row.dataset.area);
+          }
+          updateZoneAreaSelection(areas);
+        });
+      });
+      clearZoneArea();
+    }
+
+    function currentCatcherRows() {
+      const team = document.getElementById("overview-team") ? document.getElementById("overview-team").value : "All";
+      const catcher = document.getElementById("overview-catcher") ? document.getElementById("overview-catcher").value : "All";
+      return DASHBOARD_DATA.catchers.filter(row => {
+        if (team !== "All" && row.team !== team) return false;
+        if (catcher !== "All" && row.name !== catcher) return false;
+        return true;
+      });
+    }
+
+    function sortableHeader(label, key) {
+      return `<th data-sort="${key}">${label}</th>`;
+    }
+
+    function renderOverview() {
+      const rows = currentCatcherRows().sort((a, b) => {
+        const dir = state.sort.dir;
+        const key = state.sort.key;
+        return (Number(a[key]) > Number(b[key]) ? 1 : -1) * dir;
+      });
+      const top = rows[0] || {};
+      const tableRows = rows.map(row => `
+        <tr>
+          <td><strong>${escapeHtml(row.name)}</strong><div class="muted">${escapeHtml(row.team)}</div></td>
+          <td>${fmtInt(row.challenges)}</td>
+          <td>${fmtInt(row.overturns)}</td>
+          <td>${fmtPct(row.successRate)}</td>
+          <td>${fmtNumber(row.totalVsExpected, 1)}</td>
+          <td>${fmtNumber(row.overturnsAboveExpected, 1)}</td>
+          <td><span class="tag ${tagClass(row.aggressionLabel)}">${escapeHtml(row.aggressionLabel)}</span></td>
+        </tr>`).join("");
+      setHtml("overview-content", `
+        <div class="metrics">
+          <div class="metric"><div class="label">Catchers Shown</div><div class="value">${fmtInt(rows.length)}</div><div class="note">Workbook rows</div></div>
+          <div class="metric"><div class="label">Top Value</div><div class="value">${fmtNumber(top.totalVsExpected || 0, 1)}</div><div class="note">${escapeHtml(top.name || "None")}</div></div>
+          <div class="metric"><div class="label">Top Success Rate</div><div class="value">${fmtPct(Math.max(...rows.map(r => r.successRate), 0))}</div><div class="note">Overturns per challenge</div></div>
+          <div class="metric"><div class="label">Too Passive Flags</div><div class="value">${fmtInt(rows.filter(r => r.aggressionLabel === "Too Passive").length)}</div><div class="note">Expected challenge rate signal</div></div>
+        </div>
+        <div class="panel pad">
+          <table>
+            <thead><tr>
+              ${sortableHeader("Catcher", "name")}
+              ${sortableHeader("Challenges", "challenges")}
+              ${sortableHeader("Overturns", "overturns")}
+              ${sortableHeader("Success", "successRate")}
+              ${sortableHeader("Value", "totalVsExpected")}
+              ${sortableHeader("Above Expected", "overturnsAboveExpected")}
+              <th>Aggression</th>
+            </tr></thead>
+            <tbody>${tableRows}</tbody>
+          </table>
+        </div>
+        <div class="panel pad takeaways">
+          <h3>Coach Takeaways</h3>
+          <ul>
+            <li>Do not grade only by success rate. Pair it with value and aggression.</li>
+            <li>Too Passive catchers may need encouragement even if their success rate is strong.</li>
+            <li>Too Aggressive catchers should review low-value challenge losses first.</li>
+          </ul>
+        </div>`);
+      document.querySelectorAll("#overview th[data-sort]").forEach(th => {
+        th.addEventListener("click", () => {
+          const key = th.dataset.sort;
+          state.sort.dir = state.sort.key === key ? state.sort.dir * -1 : -1;
+          state.sort.key = key;
+          renderOverview();
+        });
+      });
+    }
+
+    function renderReport() {
+      const selected = document.getElementById("report-catcher").value;
+      const row = DASHBOARD_DATA.catchers.find(item => item.name === selected) || DASHBOARD_DATA.catchers[0];
+      if (!row) {
+        setHtml("report-content", `<div class="empty">No catcher rows are available.</div>`);
+        return;
+      }
+      const categories = [
+        ["Challenge Execution", row.executionGrade, `${fmtPct(row.successRate)} success rate, ${fmtNumber(row.overturnsAboveExpected, 1)} overturns above expected.`],
+        ["Challenge Selection", row.selectionGrade, `${fmtNumber(row.totalVsExpected, 1)} total value versus expected.`],
+        ["Aggressiveness", row.aggressionLabel, `Expected challenge rate difference is ${fmtPctPoints(row.expectedChallengeDiff)}.`],
+        ["Zone Read", "Data Needed", "Requires pitch-level challenge linkage before grading missed opportunities."],
+        ["Battery Process", "Data Needed", "Requires internal charting fields."],
+        ["Overall ABS Value", row.valueLabel, `${fmtNumber(row.totalVsExpected, 1)} value versus expected.`]
+      ];
+      setHtml("report-content", `
+        <div class="metrics">
+          <div class="metric"><div class="label">Challenges Used</div><div class="value">${fmtInt(row.challenges)}</div><div class="note">${escapeHtml(row.team)}</div></div>
+          <div class="metric"><div class="label">Successful Challenges</div><div class="value">${fmtInt(row.overturns)}</div><div class="note">${fmtPct(row.successRate)} success</div></div>
+          <div class="metric"><div class="label">Net Challenge Value</div><div class="value">${fmtNumber(row.totalVsExpected, 1)}</div><div class="note">${escapeHtml(row.valueLabel)}</div></div>
+          <div class="metric"><div class="label">Above Expected</div><div class="value">${fmtNumber(row.overturnsAboveExpected, 1)}</div><div class="note">Overturns</div></div>
+        </div>
+        <div class="grid two-col">
+          <div class="panel pad">
+            <h3>${escapeHtml(row.name)} Report Card</h3>
+            <table>
+              <thead><tr><th>Category</th><th>Grade</th><th>Note</th></tr></thead>
+              <tbody>${categories.map(item => `<tr><td>${escapeHtml(item[0])}</td><td><span class="tag ${tagClass(item[1])}">${escapeHtml(item[1])}</span></td><td>${escapeHtml(item[2])}</td></tr>`).join("")}</tbody>
+            </table>
+          </div>
+          <div class="panel pad">
+            <h3>Decision Quality</h3>
+            <table>
+              <tbody>
+                <tr><td>Expected Success Rate</td><td>${fmtPct(row.expectedSuccessRate)}</td></tr>
+                <tr><td>Actual Success Rate</td><td>${fmtPct(row.successRate)}</td></tr>
+                <tr><td>Overturns Above Expected</td><td>${fmtNumber(row.overturnsAboveExpected, 1)}</td></tr>
+                <tr><td>Strikeouts Flipped</td><td>${fmtInt(row.nStrikeoutsFlip)}</td></tr>
+                <tr><td>Walks Flipped</td><td>${fmtInt(row.nWalksFlip)}</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel pad takeaways">
+          <h3>Coach Takeaways</h3>
+          <ul>
+            <li>Start the video review with the biggest wins and losses, not the full challenge list.</li>
+            <li>Use the aggression label to separate conviction problems from zone-read problems.</li>
+            <li>Keep zone-specific missed opportunity feedback out until challenge-level pitch linkage is available.</li>
+          </ul>
+        </div>`);
+    }
+
+    function renderEvaluation() {
+      const team = document.getElementById("evaluation-team").value;
+      const rows = DASHBOARD_DATA.catchers
+        .filter(row => team === "All" || row.team === team)
+        .sort((a, b) => b.overallValue - a.overallValue);
+      const tableRows = rows.map(row => `
+        <tr>
+          <td><strong>${escapeHtml(row.name)}</strong><div class="muted">${escapeHtml(row.team)}</div></td>
+          <td>${fmtNumber(row.executionValue, 1)}</td>
+          <td>${fmtNumber(row.selectionValue, 1)}</td>
+          <td>${fmtNumber(row.zoneAdaptation, 1)}</td>
+          <td>${fmtNumber(row.overallValue, 1)}</td>
+          <td><span class="tag ${tagClass(row.archetype)}">${escapeHtml(row.archetype)}</span></td>
+        </tr>`).join("");
+      setHtml("evaluation-content", `
+        <div class="insight">
+          <strong>Transparent MVP formula</strong>
+          ABS Catcher Value = Challenge Execution Value + Challenge Selection Value + Zone Adaptation Indicator.
+          Receiving value, battery process value, and true missed-opportunity value are held out until the needed data exists.
+        </div>
+        <div class="panel pad">
+          <table>
+            <thead><tr><th>Catcher</th><th>Execution</th><th>Selection</th><th>Zone Adaptation</th><th>Overall</th><th>Archetype</th></tr></thead>
+            <tbody>${tableRows}</tbody>
+          </table>
+        </div>
+        <div class="panel pad takeaways">
+          <h3>Coach Takeaways</h3>
+          <ul>
+            <li>Use the component table before debating the overall number.</li>
+            <li>Archetypes are coaching labels, not final player grades.</li>
+            <li>Zone adaptation is neutral until the Statcast zone-change cache is available.</li>
+          </ul>
+        </div>`);
+    }
+
+    function renderDataCheck() {
+      const validationRows = DASHBOARD_DATA.validations.map(item => `
+        <div class="status ${item.ok ? "ok" : "warn"}">
+          <div class="name">${escapeHtml(item.name)}</div>
+          <div class="message">${escapeHtml(item.message)}</div>
+        </div>`).join("");
+      const sourceRows = Object.entries(DASHBOARD_DATA.sourceStatus).map(([name, item]) => `
+        <tr><td>${escapeHtml(name)}</td><td>${escapeHtml(item.source)}</td><td>${fmtInt(item.rows)}</td><td>${escapeHtml(item.message)}</td></tr>`).join("");
+      setHtml("data-content", `
+        <div class="metrics">
+          <div class="metric"><div class="label">Generated</div><div class="value" style="font-size:18px">${escapeHtml(DASHBOARD_DATA.generatedAt)}</div><div class="note">Local build time</div></div>
+          <div class="metric"><div class="label">Catcher Rows</div><div class="value">${fmtInt(DASHBOARD_DATA.catchers.length)}</div><div class="note">Workbook</div></div>
+          <div class="metric"><div class="label">Zone Rows</div><div class="value">${fmtInt(DASHBOARD_DATA.zoneRows.length)}</div><div class="note">Aggregated Statcast</div></div>
+          <div class="metric"><div class="label">Statcast Refresh</div><div class="value">${DASHBOARD_DATA.config.refreshStatcast ? "On" : "Off"}</div><div class="note">Config setting</div></div>
+        </div>
+        <div class="grid two-col">
+          <div class="panel pad">
+            <h3>Validation</h3>
+            <div class="status-grid">${validationRows}</div>
+          </div>
+          <div class="panel pad">
+            <h3>Sources</h3>
+            <table><thead><tr><th>Source</th><th>Status</th><th>Rows</th><th>Message</th></tr></thead><tbody>${sourceRows}</tbody></table>
+          </div>
+        </div>`);
+    }
+
+    function init() {
+      initNav();
+      initFilters();
+      renderZone();
+      renderOverview();
+      renderReport();
+      renderEvaluation();
+      renderDataCheck();
+    }
+
+    init();
+  </script>
+</body>
+</html>
