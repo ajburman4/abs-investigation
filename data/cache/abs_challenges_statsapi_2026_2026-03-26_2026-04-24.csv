@@ -1,0 +1,1226 @@
+game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_description,balls_after_pitch,strikes_after_pitch,outs_after_pitch,abs_overturned,abs_in_progress,review_type,challenge_team_id,batting_team_id,fielding_team_id,challenge_side,abs_player_id,abs_player_name
+822745,7,8,0,1.0,1c57f338-eeab-3a45-b836-bb3cfbad1179,Called Strike,0,1,2,True,False,MJ,144.0,120,144,fielding,686948.0,Drake Baldwin
+822745,30,31,1,2.0,0ab26ac2-1d2a-3829-829d-e940605275d3,Called Strike,0,2,0,True,False,MJ,144.0,120,144,fielding,686948.0,Drake Baldwin
+822745,36,37,3,4.0,ca668b9e-d799-3ee8-8cb1-86071fe8f6f8,Called Strike,2,2,0,True,False,MJ,120.0,144,120,fielding,660688.0,Keibert Ruiz
+822745,41,42,4,5.0,2b485e19-9786-34ec-8a07-a7e9325e2072,Called Strike,3,2,2,False,False,MJ,120.0,120,144,batting,695578.0,James Wood
+822747,0,1,8,6.0,453c5f94-d27a-3457-95e7-7c096183e1a9,Ball,3,2,0,False,False,MJ,120.0,144,120,fielding,686452.0,Drew Millas
+822747,3,4,1,2.0,54f7bd24-2a2c-32e3-9d7f-db8962c62738,Ball,2,0,0,True,False,MJ,120.0,120,144,batting,695578.0,James Wood
+822747,14,15,0,1.0,03c3a0bb-8ca2-3b65-87e9-cb67021b6fab,Ball,1,0,2,True,False,MJ,144.0,144,120,batting,643289.0,Mauricio Dubón
+822747,72,73,0,1.0,98755b99-55f8-38a2-8d2b-b90afbcdd926,Ball,1,0,2,False,False,MJ,120.0,144,120,fielding,686452.0,Drew Millas
+822748,9,10,1,1.0,1850cf58-8fb5-34c9-b39d-c99aee4a90fd,Ball,1,0,2,False,False,MJ,144.0,120,144,fielding,641680.0,Jonah Heim
+822748,68,69,2,3.0,a9d7d6a3-caf3-330b-ac5b-af6c81a394ee,Ball,2,1,1,False,False,MJ,144.0,120,144,fielding,641680.0,Jonah Heim
+822750,23,24,2,3.0,34c1116b-6a99-3f35-9cd9-8073f2bb0b23,Called Strike,1,2,0,False,False,MJ,120.0,120,137,batting,695578.0,James Wood
+822750,37,38,2,1.0,35bdcd16-2aee-3d9b-ab21-74ff91808735,Ball,1,0,2,False,False,MJ,120.0,137,120,fielding,660688.0,Keibert Ruiz
+822751,32,33,0,1.0,06d6cb40-5598-3fc9-8db0-b0ee7e5f6702,Called Strike,0,1,0,False,False,MJ,137.0,137,120,batting,671218.0,Heliot Ramos
+822751,97,98,0,1.0,c92d090a-1cdc-3829-a46a-96da1be5fc7d,Called Strike,0,1,1,False,False,MJ,137.0,137,120,batting,669477.0,Casey Schmitt
+822752,18,19,0,1.0,fd376b1b-cb08-3134-a155-b53eb791327e,Ball,1,0,0,False,False,MJ,137.0,120,137,fielding,691740.0,Daniel Susac
+822752,62,63,3,4.0,055e8a31-e4bc-3443-b07c-1aa335c1bf27,Ball,3,1,0,True,False,MJ,120.0,120,137,batting,691781.0,Brady House
+822752,73,74,0,1.0,0887253b-c39b-3ab1-9df8-9d07b6c7d2d2,Called Strike,0,1,0,True,False,MJ,120.0,137,120,fielding,660688.0,Keibert Ruiz
+822753,8,9,4,4.0,c1060edf-9d95-35d1-a75a-8b84835c1760,Ball,2,2,0,True,False,MJ,120.0,120,138,batting,691781.0,Brady House
+822753,34,35,1,2.0,655dd593-8e03-3d2c-9211-62f962ea44e7,Called Strike,1,1,2,True,False,MJ,138.0,120,138,fielding,671056.0,Iván Herrera
+822753,67,68,7,5.0,0a603d41-6bb6-3888-83d5-ddd3ad82fa62,Ball,3,2,2,False,False,MJ,120.0,138,120,fielding,686452.0,Drew Millas
+822754,49,50,1,2.0,1a8aaf5e-f272-3dbb-9c85-b293db565a94,Ball,2,0,0,False,False,MJ,120.0,138,120,fielding,660688.0,Keibert Ruiz
+822754,55,56,3,4.0,46f640cc-4cf0-32aa-85bd-8a8c34225a6a,Ball,3,1,2,False,False,MJ,138.0,120,138,fielding,686780.0,Pedro Pagés
+822755,30,31,1,2.0,ea1bb305-86da-3c2c-bdb4-292292899c6d,Called Strike,0,2,0,False,False,MJ,120.0,120,138,batting,683083.0,Nasim Nuñez
+822755,37,38,2,2.0,c6446d40-43d6-37de-97b8-94ba4f370a85,Ball,2,0,1,True,False,MJ,138.0,138,120,batting,671056.0,Iván Herrera
+822755,64,65,0,1.0,6a598cdc-6397-3572-a798-6e24bd8c1bcd,Called Strike,0,1,0,True,False,MJ,120.0,138,120,fielding,686452.0,Drew Millas
+822755,74,75,3,3.0,66234850-f309-3af4-8afc-9578d06c671b,Called Strike,1,2,1,True,False,MJ,138.0,120,138,fielding,671056.0,Iván Herrera
+822756,32,33,1,,,"Nationals challenged (tag play), call on the field was overturned: CJ Abrams steals (2) 2nd base.",0,1,1,True,False,MA,120.0,120,119,batting,,
+822756,63,64,0,1.0,f9c303fa-8e8e-33fa-90d9-13dcbe3d2533,Called Strike,0,1,0,False,False,MJ,119.0,119,120,batting,681624.0,Andy Pages
+822756,77,78,4,4.0,80380b48-8238-3281-a805-27bcdec5c695,Called Strike,2,2,2,True,False,MJ,120.0,119,120,fielding,686452.0,Drew Millas
+822757,19,20,1,2.0,9e00ad90-98ab-3364-8e04-ed87721cf41f,Called Strike,0,2,1,True,False,MJ,119.0,120,119,fielding,669257.0,Will Smith
+822757,24,25,7,5.0,156b3c1c-3025-36ff-9f4b-7af1df92916d,Ball,3,2,2,True,False,MJ,119.0,119,120,batting,669743.0,Alex Call
+822757,47,48,2,3.0,100aa1d1-fe0a-378a-b340-4d6384de843e,Ball,2,1,0,False,False,MJ,119.0,120,119,fielding,669257.0,Will Smith
+822758,50,51,0,1.0,09715d20-6bed-36a3-8b91-756f785b1f82,Ball,1,0,1,True,False,MJ,120.0,120,119,batting,695734.0,Daylen Lile
+822758,62,63,1,1.0,bdf74029-6e1c-3145-bff3-d9534349bc82,Called Strike,0,1,2,True,False,MJ,119.0,120,119,fielding,669257.0,Will Smith
+822758,64,65,1,2.0,9b7251f2-a145-3546-bcef-1c4eb2befbf8,Called Strike,0,2,1,False,False,MJ,119.0,119,120,batting,660271.0,Shohei Ohtani
+822758,79,80,2,2.0,45aae2a0-cad7-3e37-968c-ac54e29433c9,Called Strike,0,2,1,False,False,MJ,120.0,120,119,batting,671277.0,Luis García Jr.
+822827,43,44,2,3.0,ca0d1d96-5d7b-328f-99a1-73279549c08b,Ball,3,0,2,True,False,MJ,141.0,141,114,batting,676914.0,Davis Schneider
+822827,66,67,4,5.0,fb9e6fcf-3322-3d3a-8850-7f08b306bb57,Called Strike,3,2,2,True,False,MJ,141.0,114,141,fielding,623168.0,Tyler Heineman
+822827,77,78,0,1.0,6c9bf4d3-3215-35fc-9ebb-ced05b25aa4e,Ball,1,0,2,True,False,MJ,141.0,141,114,batting,676914.0,Davis Schneider
+822828,6,7,3,4.0,778beec2-df1f-3442-8793-e5e2e1e0b54e,Called Strike,2,2,0,True,False,MJ,142.0,141,142,fielding,605170.0,Victor Caratini
+822829,9,10,0,1.0,e00ff6af-b80a-329d-9604-5b92b5ff070c,Called Strike,0,1,1,False,False,MJ,141.0,141,142,batting,665489.0,Vladimir Guerrero Jr.
+822829,19,20,0,1.0,d46e6e7f-0e6b-396d-af9a-4633a3f07fcf,Called Strike,0,1,1,False,False,MJ,142.0,142,141,batting,605137.0,Josh Bell
+822829,46,47,3,4.0,5e9a50e7-d3ea-34e7-b999-7c32ce71a889,Ball,3,1,0,False,False,MJ,142.0,141,142,fielding,680777.0,Ryan Jeffers
+822829,53,54,0,1.0,be7d7e3b-43f3-388e-b2c7-a886181e333e,Ball,1,0,0,True,False,MJ,141.0,141,142,batting,676391.0,Ernie Clement
+822829,58,59,5,5.0,108b8875-0227-35e9-b8a0-0cd71d7214b4,Ball,3,2,0,False,False,MJ,141.0,142,141,fielding,678218.0,Brandon Valenzuela
+822830,2,3,1,2.0,f594edc6-7884-3778-be5d-8df53d2f8d51,Called Strike,1,1,2,True,False,MJ,141.0,142,141,fielding,678218.0,Brandon Valenzuela
+822830,34,35,0,1.0,a1df2e83-8dde-3db8-8553-d24d66d3acaa,Called Strike,0,1,1,False,False,MJ,141.0,141,142,batting,676914.0,Davis Schneider
+822830,48,49,1,2.0,80d68dcf-5981-33d9-a38d-d72f42fb5e06,Ball,1,1,2,True,False,MJ,141.0,141,142,batting,665489.0,Vladimir Guerrero Jr.
+822831,51,52,4,3.0,f994c19a-0166-303c-9561-c23cc9581fd7,Called Strike,2,1,2,True,False,MJ,141.0,119,141,fielding,678218.0,Brandon Valenzuela
+822831,52,53,3,4.0,4e17a8a1-63b1-38e1-b280-d0f4623bfd7e,Ball,2,2,0,True,False,MJ,141.0,141,119,batting,672960.0,Kazuma Okamoto
+822831,63,64,2,2.0,628726d0-bd08-38b4-8068-359efb9f66be,Ball,1,1,2,False,False,MJ,119.0,141,119,fielding,669257.0,Will Smith
+822832,34,35,2,2.0,684678cf-09df-3df9-84f2-e2bb1fdf0227,Ball,2,0,2,False,False,MJ,141.0,119,141,fielding,623168.0,Tyler Heineman
+822832,53,54,6,,,"Blue Jays challenged (tag play), call on the field was upheld: Kyle Tucker steals (3) 3rd base. Teoscar Hernández steals (1) 2nd base.",3,1,2,False,False,MA,141.0,119,141,fielding,,
+822832,58,59,4,5.0,f146eb57-e5f0-38fb-aabc-4b0f53120e53,Ball,3,2,2,False,False,MJ,119.0,141,119,fielding,687221.0,Dalton Rushing
+822833,4,5,0,1.0,b5e86f2a-356a-3ea3-a3ef-beb67e364960,Ball,1,0,0,False,False,MJ,119.0,141,119,fielding,669257.0,Will Smith
+822833,57,58,5,3.0,7bc606d4-d352-3d11-bbbc-06586070c6a1,Ball,2,1,0,True,False,MJ,141.0,141,119,batting,676914.0,Davis Schneider
+822833,70,71,1,2.0,2fddba52-7991-3c51-bade-e5f513e5974c,Called Strike,0,2,1,False,False,MJ,141.0,141,119,batting,665926.0,Andrés Giménez
+822834,52,53,4,2.0,34a76c0f-b903-36d7-a076-8bec592bf554,Called Strike,1,1,0,False,False,MJ,141.0,141,115,batting,660821.0,Jesús Sánchez
+822834,71,72,2,1.0,74772d4f-b7c2-3d5b-a3ae-58345fd96be3,Called Strike,0,1,0,False,False,MJ,141.0,141,115,batting,665926.0,Andrés Giménez
+822835,5,6,4,4.0,dfa53c15-3b0b-39b6-9b3a-45bce6c71701,Ball,2,2,2,False,False,MJ,115.0,141,115,fielding,664954.0,Brett Sullivan
+822835,10,11,0,1.0,627e80a9-4fb9-3751-899f-15717a045eab,Called Strike,0,1,0,False,False,MJ,141.0,141,115,batting,672386.0,Alejandro Kirk
+822835,62,63,2,3.0,aba3ac1a-3be0-3fe7-b8e2-736c6cb772cc,Called Strike,1,2,1,True,False,MJ,115.0,141,115,fielding,664954.0,Brett Sullivan
+822835,64,65,2,1.0,ac552c0f-4948-358a-9eb4-3d25583bd362,Ball,1,0,2,True,False,MJ,141.0,141,115,batting,676391.0,Ernie Clement
+822835,68,69,6,3.0,d3bc9fb9-3c5b-3253-b312-c62080d89f7c,Ball,1,2,0,True,False,MJ,141.0,141,115,batting,660821.0,Jesús Sánchez
+822835,71,72,6,3.0,1d6bd4fc-f1ae-3852-805a-95e3fa510c85,Ball,1,2,0,False,False,MJ,141.0,115,141,fielding,623168.0,Tyler Heineman
+822836,9,10,2,3.0,5622e6c3-f759-3484-b866-50df3c629c45,Ball,3,0,2,False,False,MJ,141.0,115,141,fielding,623168.0,Tyler Heineman
+822836,48,49,0,1.0,e5b65aca-8450-34eb-8f98-f485e87d7e8f,Called Strike,0,1,2,True,False,MJ,115.0,141,115,fielding,696100.0,Hunter Goodman
+822836,60,61,4,4.0,3d5d8d18-1868-356a-9453-21273c51fec1,Ball,3,1,0,True,False,MJ,115.0,115,141,batting,691720.0,Kyle Karros
+822836,63,64,2,2.0,b7a94a50-0a64-3485-a3dc-c33fc8abac0c,Called Strike,1,1,2,False,False,MJ,115.0,115,141,batting,696100.0,Hunter Goodman
+822837,23,24,3,4.0,0de9a4ed-3830-38fe-90e8-b8d41f4ee4b3,Ball,3,1,1,True,False,MJ,133.0,133,141,batting,701762.0,Nick Kurtz
+822837,50,51,3,4.0,31ea248e-b22c-365a-8297-6d1d1bdb2ccb,Called Strike,2,2,2,False,False,MJ,133.0,133,141,batting,687231.0,Darell Hernaiz
+822838,6,7,3,4.0,b1c82036-d959-3dc6-bfe1-5d4202dffefa,Called Strike,2,2,2,False,False,MJ,141.0,141,133,batting,665489.0,Vladimir Guerrero Jr.
+822838,34,35,1,2.0,1e50a0c2-adf2-3bc4-af80-ac704f526b00,Called Strike,0,2,2,False,False,MJ,133.0,133,141,batting,672016.0,Denzel Clarke
+822838,58,59,4,3.0,13e14651-4df2-3a70-932c-e2e2d0868520,Ball,1,2,0,True,False,MJ,141.0,141,133,batting,543807.0,George Springer
+822838,67,68,4,3.0,87e753ec-cf0a-3540-a423-308e23809cef,Called Strike,1,2,0,True,False,MJ,133.0,141,133,fielding,663687.0,Hogan Harris
+822909,58,59,1,2.0,ab56deb1-e22c-3668-9d8c-aae5c5401ecc,Ball,1,1,2,True,False,MJ,133.0,133,140,batting,805779.0,Jacob Wilson
+822912,20,21,2,2.0,ba89aa19-8d91-3b4f-8453-43c5bc7712c1,Called Strike,0,2,0,True,False,MJ,140.0,134,140,fielding,643376.0,Danny Jansen
+822912,26,27,3,4.0,c449dcd3-3950-3971-a500-4f2912f63047,Called Strike,3,1,2,True,False,MJ,134.0,140,134,fielding,663698.0,Joey Bart
+822912,72,73,1,2.0,f858b4be-1407-3177-a209-4c05d31c45e1,Ball,1,1,2,True,False,MJ,134.0,134,140,batting,804606.0,Konnor Griffin
+822913,36,37,1,1.0,8497dab2-03e5-3e03-b788-6fc167a60bc7,Called Strike,0,1,2,True,False,MJ,140.0,134,140,fielding,543309.0,Kyle Higashioka
+822913,52,53,2,2.0,1cf3041a-93b3-3420-a75b-463bb037a07d,Ball,2,0,0,True,False,MJ,140.0,140,134,batting,694497.0,Evan Carter
+822913,57,58,4,3.0,7b439fae-d8ad-3893-91fd-3169bc496d1d,Ball,2,1,0,False,False,MJ,134.0,140,134,fielding,642397.0,Gregory Soto
+822913,63,64,9,6.0,5c26ec79-7373-344e-ab5f-d08f47e7771d,Ball,3,2,0,False,False,MJ,140.0,134,140,fielding,543309.0,Kyle Higashioka
+822914,3,4,0,1.0,4af666ca-07a6-35a7-9b01-4cde37e98f7a,Called Strike,0,1,1,False,False,MJ,134.0,134,140,batting,542303.0,Marcell Ozuna
+822914,8,9,1,2.0,b03f86ec-a12b-3c3a-a5e9-de0612add50b,Ball,2,0,2,True,False,MJ,140.0,140,134,batting,669394.0,Jake Burger
+822915,13,14,1,2.0,58e68cc2-20fd-3f37-be66-1081f10c4fd3,Called Strike,0,2,1,True,False,MJ,136.0,140,136,fielding,641598.0,Mitch Garver
+822915,29,30,3,4.0,2d41e85c-06cf-35e6-8a36-cb0dc2d21627,Called Strike,2,2,0,True,False,MJ,140.0,136,140,fielding,643376.0,Danny Jansen
+822916,7,8,3,4.0,6e6e872e-ca65-3d13-966b-5fe644c8e00d,Ball,2,2,0,False,False,MI,136.0,136,140,batting,,
+822916,55,56,3,4.0,c9a943ff-49f8-3fe5-9cc9-c9d46d16e3fb,Foul,1,2,1,True,False,NI,,136,140,unknown,,
+822917,21,22,2,3.0,e0bd98fe-8210-396e-b4b8-b4b5a92e944f,Ball,2,1,2,True,False,MJ,140.0,140,113,batting,694671.0,Wyatt Langford
+822918,46,47,3,4.0,874aac0a-5a38-3cab-974a-6b38fda5e825,Called Strike,2,2,1,True,False,MJ,140.0,136,140,fielding,643376.0,Danny Jansen
+822919,58,59,0,1.0,540bdf8b-0953-3692-a56a-f1eae60faacd,Called Strike,0,1,1,True,False,MJ,113.0,140,113,fielding,663886.0,Tyler Stephenson
+822992,1,2,4,4.0,d3e282d6-bf9a-3e16-8d9f-317cf89e1ea9,Ball,2,2,1,False,False,MJ,139.0,142,139,fielding,663743.0,Nick Fortes
+822992,48,49,2,3.0,c573359c-4ae8-35e5-a57c-618274110f17,Ball,3,0,2,False,False,MJ,142.0,139,142,fielding,605170.0,Victor Caratini
+822993,32,33,2,3.0,e4d4b744-f7c7-32fa-b313-bba73d7c39ce,Called Strike,1,2,0,True,False,MJ,139.0,113,139,fielding,663743.0,Nick Fortes
+822993,35,36,1,1.0,0806e558-4433-3626-8571-2cae1a8b1b7e,Called Strike,0,1,0,False,False,MJ,113.0,113,139,batting,664731.0,P.J. Higgins
+822993,59,60,3,3.0,6e3ec2f4-e10e-3b89-92a6-953217f6546f,Called Strike,1,2,0,True,False,MJ,139.0,113,139,fielding,663743.0,Nick Fortes
+822995,89,90,1,2.0,255daf2e-bf1a-38f1-83d1-b3de19471f28,Ball,1,1,2,False,False,MJ,113.0,139,113,fielding,663886.0,Tyler Stephenson
+822996,5,6,0,1.0,7cfa17a3-eb8e-35da-9a13-682427c90e12,Called Strike,0,1,0,True,False,MJ,147.0,139,147,fielding,669224.0,Austin Wells
+822996,20,21,0,1.0,4ebf5349-47f2-35ae-95a1-f9a767fcaf29,Called Strike,0,1,2,True,False,MJ,139.0,147,139,fielding,663743.0,Nick Fortes
+822996,32,33,4,4.0,364b2724-feb0-3823-829f-ef5e52e7cc87,Ball,2,2,1,False,False,MJ,139.0,147,139,fielding,663743.0,Nick Fortes
+822997,28,29,0,1.0,d169a380-15c2-3a38-bd03-02ebeec85ec5,Called Strike,0,1,1,False,False,MJ,147.0,147,139,batting,665862.0,Jazz Chisholm Jr.
+822997,35,36,0,1.0,6554e40c-52fb-3456-8502-e0fee81d9fce,Called Strike,0,1,0,False,False,MJ,147.0,147,139,batting,676609.0,José Caballero
+822997,36,37,0,1.0,5e6c0b71-765b-3713-ae7b-2a6022c6a094,Ball,1,0,1,False,False,MJ,139.0,147,139,fielding,663743.0,Nick Fortes
+822998,25,26,1,2.0,dde3c2a2-c274-3e90-9d10-cf369be38978,Called Strike,1,1,0,True,False,MJ,139.0,147,139,fielding,676439.0,Hunter Feduccia
+822998,36,37,4,3.0,5b089957-1470-35d9-afec-ca1d0bc20b3d,Ball,1,2,1,True,False,MJ,139.0,139,147,batting,666018.0,Jonathan Aranda
+822998,41,42,0,1.0,a8ea5d83-4608-3900-9c6e-c82c5e67b69d,Ball,1,0,2,False,False,MJ,139.0,147,139,fielding,676439.0,Hunter Feduccia
+822998,57,58,0,1.0,6dc6e12c-8fb0-346a-ae26-86c6f817d8c6,Ball,1,0,0,True,False,MJ,147.0,147,139,batting,676609.0,José Caballero
+822999,8,9,2,3.0,5f409134-aa17-3087-9622-02fabbf23a21,Ball,1,2,1,True,False,MJ,112.0,112,139,batting,694208.0,Moisés Ballesteros
+822999,12,13,1,1.0,31a03746-a569-3816-a9d6-11e97b50ca38,Ball,1,0,2,True,False,MJ,112.0,112,139,batting,663538.0,Nico Hoerner
+822999,33,34,1,2.0,881ea7d9-3700-3930-ac1b-c3c94e9fc86a,Called Strike,1,1,0,False,False,MJ,112.0,112,139,batting,691718.0,Pete Crow-Armstrong
+822999,35,36,1,2.0,ac567918-d957-3e6c-b701-2ebc514f0730,Ball,2,0,0,True,False,MJ,139.0,139,112,batting,691406.0,Junior Caminero
+822999,40,41,0,1.0,7fa5894b-0c15-35a1-a360-0741570af82f,Called Strike,0,1,0,True,False,MJ,139.0,112,139,fielding,663743.0,Nick Fortes
+822999,76,77,3,4.0,0eb59000-ae0a-3796-b534-acc26ba9b4b7,Ball,2,2,2,False,False,MJ,139.0,112,139,fielding,663743.0,Nick Fortes
+823000,28,29,2,3.0,99f5b1a1-bb70-3281-94d4-c7bbdf4a9cb3,Ball,2,1,1,True,False,MJ,139.0,139,112,batting,810938.0,Ben Williamson
+823000,31,32,3,4.0,81e48810-7bc8-355c-acb9-325ce54d9068,Foul,2,2,0,True,False,MI,139.0,112,139,fielding,,
+823000,70,71,4,,,"Rays challenged (tag play), call on the field was upheld: Chandler Simpson caught stealing 3rd base, catcher Carson Kelly to third baseman Alex Bregman.",1,2,1,False,False,MA,139.0,139,112,batting,,
+823002,51,52,4,3.0,a5e06a1e-088e-3cc5-ae65-5c48a26ed654,Called Strike,1,2,1,True,False,MJ,139.0,112,139,fielding,663743.0,Nick Fortes
+823002,58,59,1,2.0,f213bf69-94aa-3c53-b8b4-b6e12386bef5,Called Strike,1,1,0,False,False,MJ,112.0,112,139,batting,608324.0,Alex Bregman
+823002,60,61,1,2.0,2836cb7c-35ff-31d7-9b91-2d22ea758466,Ball,1,1,2,True,False,MJ,112.0,112,139,batting,608348.0,Carson Kelly
+823069,19,20,0,1.0,67c86a58-5ae9-3d4f-8b91-be2b57f5a012,Called Strike,0,1,0,True,False,MJ,136.0,138,136,fielding,663728.0,Cal Raleigh
+823069,24,25,1,2.0,2c275705-4e5b-3d97-9985-c79860e00440,Ball,1,1,1,True,False,MJ,136.0,136,138,batting,670042.0,Luke Raley
+823069,57,58,1,1.0,739c8617-d031-387e-a6d5-cf86e6e0f7e0,Called Strike,0,1,0,False,False,MJ,136.0,136,138,batting,647304.0,Josh Naylor
+823071,6,7,3,4.0,eb8b96b6-f441-3e3c-9cb7-d1c8d5dd4b51,Swinging Strike,2,2,1,True,False,MI,138.0,138,114,batting,,
+823071,30,31,3,3.0,52976eb8-03fd-38db-9720-f34d4bbec888,Called Strike,1,2,2,False,False,MJ,114.0,114,138,batting,682877.0,Juan Brito
+823071,73,74,2,3.0,84409405-63cd-3164-a553-e0e9155ef538,Called Strike,1,2,1,False,False,MJ,114.0,114,138,batting,656555.0,Rhys Hoskins
+823072,46,47,3,2.0,5421a366-cd3d-3756-8386-49fd42ec7d01,Called Strike,0,2,0,True,False,MJ,138.0,114,138,fielding,671056.0,Iván Herrera
+823072,64,65,2,3.0,d9dceb5d-2e95-3cd1-914c-1ba4f58105f1,Ball,3,0,2,True,False,MJ,138.0,138,114,batting,676475.0,Alec Burleson
+823073,42,43,0,1.0,87012d5c-bb77-37b2-8ef9-e9ca06c5f7ed,Called Strike,0,1,1,True,False,MJ,114.0,138,114,fielding,595978.0,Austin Hedges
+823073,62,63,4,5.0,f70fb429-e8d1-377c-bfc2-121b71dcd11d,Called Strike,3,2,0,True,False,MJ,138.0,114,138,fielding,686780.0,Pedro Pagés
+823074,4,5,2,3.0,16d00d28-0d0c-324b-b048-892510f87b3b,Ball,2,1,0,True,False,MJ,138.0,138,111,batting,671056.0,Iván Herrera
+823074,7,8,4,4.0,a14a2468-b407-3246-bad7-254400c2e45b,Ball,2,2,2,True,False,MJ,138.0,138,111,batting,602104.0,Ramón Urías
+823074,27,28,0,1.0,4c675a9f-3eaa-3694-95d2-a8e94fdf4fc1,Called Strike,0,1,2,True,False,MJ,138.0,111,138,fielding,686780.0,Pedro Pagés
+823074,43,44,0,1.0,b6139779-b2e8-3705-a2d8-5133a3170b92,Ball,1,0,1,True,False,MJ,138.0,138,111,batting,691023.0,Jordan Walker
+823074,56,57,4,1.0,b2fe803e-2e01-3c89-9c2c-37adda17a615,Called Strike,0,1,0,True,False,MJ,138.0,111,138,fielding,650968.0,Yohel Pozo
+823075,7,8,1,2.0,be2ca482-46d9-3d28-94d9-b552e9cdea53,Ball,1,1,2,True,False,MJ,138.0,138,111,batting,676475.0,Alec Burleson
+823076,51,52,2,3.0,7836585b-86a9-3f10-ab26-df0d55f25d63,Called Strike,1,2,0,False,False,MJ,138.0,138,111,batting,671056.0,Iván Herrera
+823077,13,14,4,4.0,87cabcfa-777f-3eff-9a7c-8091c45a7477,Called Strike,2,2,0,True,False,MJ,121.0,138,121,fielding,620443.0,Luis Torrens
+823077,30,31,0,1.0,516c15d1-a060-31bf-af36-e5f29e50f344,Ball,1,0,0,False,False,MJ,121.0,138,121,fielding,620443.0,Luis Torrens
+823077,38,39,0,1.0,24c5ba72-4eda-3bdd-9d29-e96f993e8e43,Ball,1,0,2,True,False,MJ,138.0,138,121,batting,671056.0,Iván Herrera
+823077,38,39,2,3.0,a883a0e8-f297-3de5-9cd3-1c49264f7428,Ball,3,0,2,True,False,MJ,138.0,138,121,batting,671056.0,Iván Herrera
+823078,18,19,0,1.0,c2b9c80f-8caa-369e-9fec-ec0b5b5a613a,Ball,1,0,2,False,False,MJ,121.0,138,121,fielding,682626.0,Francisco Alvarez
+823078,26,27,1,2.0,868f5c3e-f511-394b-93ae-e384fef4e50c,Called Strike,0,2,1,True,False,MJ,138.0,121,138,fielding,686780.0,Pedro Pagés
+823078,33,34,3,2.0,452603b4-4205-3d94-a82b-f91f6d5a69df,Called Strike,1,1,1,True,False,MJ,121.0,138,121,fielding,642547.0,Freddy Peralta
+823078,41,42,5,4.0,5c761593-b5b8-3acc-8f85-1bf2942a0506,Ball,3,1,0,False,False,MJ,121.0,138,121,fielding,682626.0,Francisco Alvarez
+823078,66,67,4,4.0,b3dd0a7d-7660-3b16-8587-e8f1c98886be,Called Strike,2,2,1,False,False,MJ,138.0,138,121,batting,695336.0,Thomas Saggese
+823079,29,30,3,4.0,23fbea3c-a720-394b-a5b1-8bd3168e95a4,Called Strike,2,2,2,False,False,MJ,139.0,139,138,batting,676439.0,Hunter Feduccia
+823081,30,31,0,1.0,b883d3ee-f4e4-3470-9e7e-8c6efd0bddea,Foul,0,1,2,True,False,NH,,139,138,unknown,,
+823081,57,58,1,1.0,0fbde82a-5972-333a-a2ee-2d24e31246df,Called Strike,0,1,0,True,False,MJ,139.0,138,139,fielding,663743.0,Nick Fortes
+823081,87,88,0,1.0,77c3406f-ebad-3060-9d95-fd0cae7a5173,Ball,1,0,2,True,False,MJ,139.0,139,138,batting,666018.0,Jonathan Aranda
+823082,58,59,0,1.0,8f231311-8aaf-3e31-98de-3c2dfa62aee7,Ball,1,0,2,False,False,MJ,139.0,138,139,fielding,663743.0,Nick Fortes
+823082,64,65,2,1.0,4542a247-9358-327a-a01e-c68c43d671d4,Ball,1,0,2,False,False,MJ,138.0,139,138,fielding,686780.0,Pedro Pagés
+823147,15,16,1,1.0,459ac2bf-5008-300a-9480-7da5c0ac09f0,Called Strike,0,1,0,True,False,MJ,136.0,133,136,fielding,663728.0,Cal Raleigh
+823147,21,22,1,2.0,a6ff7ee7-643a-3110-bb58-6639468f6060,Called Strike,1,1,2,True,False,MJ,133.0,136,133,fielding,642851.0,Austin Wynns
+823147,34,35,0,1.0,4281437e-edd8-34fb-b84b-535cdd85ef87,Ball,1,0,0,False,False,MJ,136.0,133,136,fielding,663728.0,Cal Raleigh
+823147,35,36,4,5.0,35e5d7d0-266e-3fd9-8825-9ae65c1c4871,Foul,3,2,1,True,False,MI,136.0,133,136,fielding,,
+823147,43,44,1,1.0,ae21910c-90a7-31f5-b707-1291593dbb6a,Called Strike,0,1,2,True,False,MJ,136.0,133,136,fielding,663728.0,Cal Raleigh
+823147,63,64,1,,,"Mariners challenged (tag play), call on the field was overturned: Cal Raleigh steals (2) 3rd base.",0,1,2,True,False,MA,136.0,136,133,batting,,
+823147,66,67,3,4.0,fc095846-e0bf-3eb7-ad87-b981b4498952,Called Strike,2,2,2,False,False,MJ,133.0,133,136,batting,671732.0,Lawrence Butler
+823148,43,44,4,4.0,b98ad49c-10a8-3aa6-8cd0-29550fd048f7,Called Strike,2,2,1,False,False,MJ,136.0,136,133,batting,647304.0,Josh Naylor
+823148,45,46,3,3.0,563195b0-7714-3a2d-a5f6-5e04c9241379,Called Strike,1,2,0,True,False,MJ,136.0,133,136,fielding,641598.0,Mitch Garver
+823148,47,48,0,1.0,ee2c9ac6-b260-302c-8d37-a76b6f5b26cf,Called Strike,0,1,0,True,False,MJ,136.0,133,136,fielding,641598.0,Mitch Garver
+823148,47,48,1,2.0,cc5aa0c2-376c-3ed3-82a3-5dd8f4ccb2fc,Ball,1,1,0,True,False,MJ,133.0,133,136,batting,643446.0,Jeff McNeil
+823148,51,52,2,1.0,c77513d2-b971-3a45-8c9a-0c9d581aa0be,Called Strike,0,1,1,True,False,MJ,133.0,136,133,fielding,669127.0,Shea Langeliers
+823148,66,67,0,1.0,f47e2e77-9064-3b73-aa84-3f64190cd269,Called Strike,0,1,2,True,False,MJ,136.0,133,136,fielding,641598.0,Mitch Garver
+823148,77,78,5,6.0,072b9cfd-75a7-36c2-adf6-16903fc02720,Ball,3,2,2,False,False,MJ,136.0,133,136,fielding,641598.0,Mitch Garver
+823150,1,2,2,3.0,02cc437a-220f-3f0e-b1dc-deb9a4d411bf,Called Strike,2,1,0,True,False,MJ,136.0,140,136,fielding,641598.0,Mitch Garver
+823150,60,61,0,1.0,9c9d571f-9d58-31a4-95fd-22115f8b069f,Ball,1,0,2,True,False,MJ,140.0,140,136,batting,694671.0,Wyatt Langford
+823151,21,22,0,1.0,810ae714-bd2d-3087-a7e9-5547f1abf632,Called Strike,0,1,0,True,False,MJ,140.0,136,140,fielding,543309.0,Kyle Higashioka
+823151,28,29,5,5.0,a86c5211-893f-37b8-b707-62480db2a722,Ball,3,2,1,False,False,MJ,136.0,140,136,fielding,669923.0,George Kirby
+823152,33,34,1,2.0,24c89438-d994-33cd-a8d1-a8b273fcb605,Ball,2,0,0,True,False,MJ,136.0,136,140,batting,670042.0,Luke Raley
+823152,47,48,2,3.0,bde86a57-c9bc-30c3-bb97-18da7c03802a,Called Strike,1,2,1,False,False,MJ,140.0,140,136,batting,669701.0,Josh Smith
+823152,74,75,2,3.0,db7e0811-ae58-3f02-9525-83f7dca8d9a3,Called Strike,2,1,0,True,False,MJ,136.0,140,136,fielding,663728.0,Cal Raleigh
+823153,4,5,2,3.0,27733718-8ffc-31ac-b396-2e33ccde3416,Called Strike,1,2,0,False,False,MJ,136.0,136,117,batting,680977.0,Brendan Donovan
+823153,25,26,0,1.0,43a2b63e-82b0-3251-9122-9390d0e27a12,Called Strike,0,1,2,True,False,MJ,117.0,136,117,fielding,673237.0,Yainer Diaz
+823153,43,44,1,2.0,fa2890d7-0a44-38b5-b2b9-633286524058,Called Strike,0,2,2,True,False,MJ,117.0,136,117,fielding,673237.0,Yainer Diaz
+823154,34,35,0,1.0,2175d7c3-18a4-32a2-887f-635b80352156,Called Strike,0,1,1,False,False,MJ,136.0,136,117,batting,647304.0,Josh Naylor
+823156,8,9,1,2.0,5e00ec54-cfb5-339a-818f-eed68f54c9dc,Ball,2,0,0,False,False,MJ,117.0,136,117,fielding,543877.0,Christian Vázquez
+823156,16,17,1,1.0,2a9581c8-3ed2-3fea-a4bc-04ab4583ba0e,Called Strike,0,1,1,False,False,MJ,117.0,117,136,batting,694388.0,Joey Loperfido
+823156,17,18,1,2.0,54416108-3ae9-34b7-9284-b228a8927f24,Called Strike,0,2,2,True,False,MJ,136.0,117,136,fielding,663728.0,Cal Raleigh
+823156,20,21,4,4.0,66335e72-6a1a-3ecc-bc92-37bc1e13b886,Ball,2,2,1,True,False,MJ,136.0,136,117,batting,663728.0,Cal Raleigh
+823156,55,56,3,3.0,a5d00b76-b0ff-3570-b4f1-f8cd362ab662,Called Strike,1,2,0,True,False,MJ,136.0,117,136,fielding,663728.0,Cal Raleigh
+823156,78,79,2,3.0,7ceed95d-0488-32a0-9178-157065ca729d,Ball,3,0,2,False,False,MJ,136.0,117,136,fielding,663728.0,Cal Raleigh
+823157,1,2,1,2.0,42b67988-3a58-310e-aa9d-80e7327a4873,Ball,1,1,1,False,False,MJ,136.0,147,136,fielding,663728.0,Cal Raleigh
+823157,14,15,1,2.0,10efa2c4-e972-3bb0-ba17-4c90fb04ea07,Called Strike,1,1,1,True,False,MJ,147.0,136,147,fielding,669224.0,Austin Wells
+823157,42,43,1,2.0,75b57d46-77df-3b16-bf9b-14eabc22ee05,Ball,1,1,1,True,False,MJ,136.0,136,147,batting,680977.0,Brendan Donovan
+823157,45,46,2,3.0,a128e3cf-e3fe-3c2f-826a-8fa32b033e4a,Called Strike,1,2,1,False,False,MJ,147.0,147,136,batting,669224.0,Austin Wells
+823157,48,49,2,2.0,47f79cc9-089d-3b15-8fc6-578470b90bd3,Ball,1,1,1,True,False,MJ,136.0,136,147,batting,647304.0,Josh Naylor
+823157,53,54,1,2.0,9e1db4e8-b647-3c63-91d5-4a49389dce0d,Ball,2,0,2,False,False,MJ,136.0,147,136,fielding,663728.0,Cal Raleigh
+823158,16,17,0,1.0,c5185a14-388c-3c69-b646-f77c4d2dfe25,Ball,1,0,0,True,False,MJ,147.0,147,136,batting,663757.0,Trent Grisham
+823158,27,28,0,1.0,3727a740-3167-39de-a773-be29009ab486,Called Strike,0,1,1,True,False,MJ,147.0,136,147,fielding,608331.0,Max Fried
+823158,32,33,1,2.0,cb27d422-74e0-3fb8-90d3-3a97164d49fb,Called Strike,0,2,2,True,False,MJ,136.0,147,136,fielding,663728.0,Cal Raleigh
+823158,59,60,3,3.0,971d5de9-c506-3f35-af81-d52dddbc0474,Called Strike,1,2,0,False,False,MJ,136.0,136,147,batting,660844.0,Leo Rivas
+823159,18,19,1,2.0,2e489c9f-3d4e-3c58-bd63-73904d18b591,Ball,2,0,1,True,False,MJ,147.0,147,136,batting,676609.0,José Caballero
+823159,25,26,2,3.0,1443a13b-3228-3905-b21b-85f0b756f85a,Ball,2,1,0,True,False,MJ,147.0,147,136,batting,700250.0,Ben Rice
+823159,26,27,4,5.0,2e245811-b6f1-3ece-8432-00fd276bb510,Ball,2,2,1,True,False,MJ,147.0,147,136,batting,519317.0,Giancarlo Stanton
+823159,27,28,0,1.0,92447309-c733-3e27-8978-9c1d5ceab751,Ball,1,0,2,True,False,MJ,147.0,147,136,batting,665862.0,Jazz Chisholm Jr.
+823161,42,43,2,3.0,3b612b8c-d6d1-31e2-8c8b-40d929a2ba6b,Called Strike,2,1,2,True,False,MJ,136.0,114,136,fielding,663728.0,Cal Raleigh
+823161,53,54,1,2.0,a680b018-020a-3057-9691-0fe4165171e0,Called Strike,0,2,2,False,False,MJ,114.0,114,136,batting,677587.0,Brayan Rocchio
+823161,78,79,2,3.0,b2843c64-e6dd-3779-9a60-b778a4100e6c,Called Strike,1,2,0,False,False,MJ,114.0,114,136,batting,800050.0,Chase DeLauter
+823162,28,29,4,4.0,e780c597-4e47-322b-b1bf-7115ef367e3f,Ball,2,2,1,False,False,MJ,114.0,136,114,fielding,666310.0,Bo Naylor
+823162,41,42,0,1.0,85945d00-8f26-3c52-a973-24370fcd574f,Ball,1,0,0,False,False,MJ,136.0,114,136,fielding,663728.0,Cal Raleigh
+823231,19,20,1,1.0,5a548416-bfce-35dc-838e-fc3f5d640be8,Ball,1,0,2,False,False,MJ,137.0,119,137,fielding,672275.0,Patrick Bailey
+823231,34,35,0,1.0,5d5dfd1c-ee3c-35a2-9826-c6d1b4a0835d,Ball,1,0,0,True,False,MJ,137.0,137,119,batting,808982.0,Jung Hoo Lee
+823231,36,37,4,5.0,3112fb76-fe9d-3f94-96a7-c2db90bb9e7a,Called Strike,3,2,1,True,False,MJ,119.0,137,119,fielding,669257.0,Will Smith
+823231,51,52,1,2.0,377c9dd4-6e05-31be-bb8c-48df873185c4,Called Strike,1,1,0,True,False,MJ,119.0,137,119,fielding,669257.0,Will Smith
+823231,57,58,0,1.0,f7bf2ec8-28a4-3ae9-9134-0a0394536010,Ball,1,0,1,False,False,MJ,137.0,119,137,fielding,672275.0,Patrick Bailey
+823232,8,9,1,2.0,a4593b0a-9b63-3a8a-a0ff-9480e02288f9,Ball,1,1,1,True,False,MJ,137.0,137,146,batting,656305.0,Matt Chapman
+823232,17,18,0,1.0,6cd3e9e8-239b-390f-8923-ebe205e22b81,Called Strike,0,1,2,True,False,MJ,146.0,137,146,fielding,689414.0,Liam Hicks
+823232,54,55,1,2.0,dc6ed17b-90c2-3a84-b1b6-c057408d1a9a,Called Strike,1,1,1,False,False,MJ,137.0,137,146,batting,669477.0,Casey Schmitt
+823232,56,57,2,3.0,116afd37-2220-330f-940c-957548d1ee28,Ball,2,1,2,False,False,MJ,146.0,137,146,fielding,645261.0,Sandy Alcantara
+823232,57,58,5,4.0,73affc95-0ab5-3f8b-adf0-151d1f50aa07,Ball,2,2,2,False,False,MJ,146.0,137,146,fielding,689414.0,Liam Hicks
+823232,80,81,9,5.0,86f6a29a-eb90-3ea3-b779-48250d747263,Called Strike,3,2,0,False,False,MJ,137.0,137,146,batting,666464.0,Jerar Encarnacion
+823233,1,2,1,2.0,86ad71b0-060b-3b4b-aa64-6e31cfca8dc8,Called Strike,1,1,1,True,False,MJ,137.0,119,137,fielding,672275.0,Patrick Bailey
+823233,38,39,1,2.0,99c1b8f4-3958-3eaa-81a6-494f05d96c54,Called Strike,1,1,2,True,False,MJ,119.0,137,119,fielding,607192.0,Tyler Glasnow
+823233,61,62,3,3.0,c529f97c-d1ab-3d1a-b1b4-a259f55a218d,Ball,2,1,2,True,False,MJ,119.0,119,137,batting,660271.0,Shohei Ohtani
+823233,64,65,2,3.0,0b332ae6-9855-3c92-a235-24a90adb71c9,Called Strike,1,2,2,True,False,MJ,119.0,137,119,fielding,687221.0,Dalton Rushing
+823234,44,45,3,4.0,f223bb37-beb5-3bc3-bf43-9ce8a42370cc,Ball,3,1,1,True,False,MJ,137.0,137,143,batting,650333.0,Luis Arraez
+823234,45,46,6,5.0,ef53a0f4-bbd7-3565-bfea-0963aa06e9c8,Called Strike,3,2,1,False,False,MJ,137.0,137,143,batting,656305.0,Matt Chapman
+823234,56,57,2,3.0,cea58dec-fb1c-3b34-93e1-9d23f4987036,Called Strike,1,2,2,True,False,MJ,143.0,137,143,fielding,665561.0,Rafael Marchán
+823234,57,58,2,1.0,ccdc818e-7ba0-3d30-9653-635e0acb529e,Ball,1,0,0,False,False,MJ,137.0,143,137,fielding,672275.0,Patrick Bailey
+823235,30,31,0,1.0,b5d69d1b-701b-3ff8-8cae-e2f5fb78b981,Ball,1,0,2,True,False,MJ,137.0,137,143,batting,666464.0,Jerar Encarnacion
+823236,52,53,7,5.0,b8a983d6-2024-349a-a65e-74cfda60a9ba,Called Strike,3,2,2,False,False,MJ,119.0,119,137,batting,660271.0,Shohei Ohtani
+823236,59,60,3,4.0,f566c64c-dd9f-3b25-ad2f-b43d27329fc8,Ball,2,2,1,True,False,MJ,119.0,119,137,batting,571970.0,Max Muncy
+823236,62,63,0,1.0,7f74dc9d-798e-319b-9953-7005a3321f04,Called Strike,0,1,1,True,False,MJ,119.0,137,119,fielding,669257.0,Will Smith
+823236,67,68,6,6.0,ba03ef0d-74c4-394d-92ae-dda567510d4e,Ball,3,2,2,False,False,MJ,137.0,119,137,fielding,672275.0,Patrick Bailey
+823237,18,19,5,6.0,f462ddd2-4c3f-34dc-bc81-bef08a2f6ae4,Ball,2,2,0,False,False,MJ,137.0,143,137,fielding,672275.0,Patrick Bailey
+823237,50,51,3,3.0,f26a6d1d-63f3-3981-8e2d-1fb3526195d6,Called Strike,1,2,0,True,False,MJ,143.0,137,143,fielding,592663.0,J.T. Realmuto
+823237,77,78,1,,,"Umpire reviewed (tag play), call on the field was upheld: Adolis García steals (1) 2nd base.",1,0,2,False,False,NA,,143,137,unknown,,
+823238,38,39,0,1.0,f06fcad9-7874-3a53-842c-9bdd02835b5e,Ball,1,0,2,False,False,MJ,137.0,121,137,fielding,672275.0,Patrick Bailey
+823238,64,65,1,2.0,eeea0b82-2051-3e69-ad4a-e4dea43f59ed,Called Strike,0,2,2,False,False,MJ,137.0,137,121,batting,650333.0,Luis Arraez
+823239,10,11,1,2.0,0af378b9-8674-312d-9c79-859c5b1436f0,Called Strike,1,1,1,True,False,MJ,137.0,121,137,fielding,672275.0,Patrick Bailey
+823239,38,39,0,1.0,74b8a01b-78fa-3116-bdb6-ebc562f2271b,Ball,1,0,2,True,False,MJ,121.0,121,137,batting,668901.0,Mark Vientos
+823240,3,4,1,2.0,9eb2cebb-048c-3f90-821f-cae7218d7100,Called Strike,1,1,0,True,False,MJ,137.0,121,137,fielding,672275.0,Patrick Bailey
+823240,55,56,3,3.0,a39a9b5e-92e1-3296-a133-74310f427682,Called Strike,1,2,0,False,False,MJ,137.0,137,121,batting,656305.0,Matt Chapman
+823240,58,59,4,5.0,5018507f-eb88-3b64-9d30-808c0db4ef90,Foul,2,2,2,False,False,MI,137.0,137,121,batting,,
+823240,72,73,2,3.0,1263722d-de01-3b1f-a223-e7f0600340cc,Ball,2,1,0,True,False,MJ,121.0,121,137,batting,668901.0,Mark Vientos
+823241,18,19,5,5.0,b8edcd01-2307-3d9b-98a2-875fe9b7e34b,Ball,3,2,1,True,False,MJ,147.0,147,137,batting,663757.0,Trent Grisham
+823241,27,28,6,7.0,a2ff2bc3-16eb-3504-8aa4-412001d072e0,Ball,3,2,2,True,False,MJ,137.0,137,147,batting,671218.0,Heliot Ramos
+823241,44,45,0,1.0,75b41ced-33ce-3091-ad29-6f78ac64023b,Called Strike,0,1,2,True,False,MJ,137.0,147,137,fielding,672275.0,Patrick Bailey
+823241,53,54,1,2.0,a867507d-f101-3ea8-a0b0-6628171250eb,Called Strike,0,2,1,True,False,MJ,147.0,137,147,fielding,669224.0,Austin Wells
+823241,66,67,7,6.0,13bd45cf-e1ef-366d-8238-ee8f5190cff6,Ball,3,2,0,True,False,MJ,137.0,137,147,batting,671218.0,Heliot Ramos
+823243,35,36,1,2.0,89c91b63-696b-3028-9f51-e525ccebb210,Ball,2,0,0,True,False,MJ,147.0,147,137,batting,592450.0,Aaron Judge
+823243,54,55,4,3.0,52334c55-fadc-3bd2-bd22-0d2b22b602eb,Ball,3,0,1,False,False,MJ,137.0,147,137,fielding,672275.0,Patrick Bailey
+823243,55,56,1,2.0,8d62286f-86fe-3947-967f-0cd665126adb,Called Strike,0,2,1,True,False,MJ,137.0,147,137,fielding,672275.0,Patrick Bailey
+823313,18,19,0,1.0,89d78816-7e99-3562-9eb7-9ebb46231464,Ball,1,0,0,True,False,MJ,136.0,136,135,batting,641487.0,J.P. Crawford
+823313,39,40,1,2.0,1b7679a2-d5ce-3047-985c-652476ae966c,Ball,1,1,1,True,False,MJ,135.0,135,136,batting,593428.0,Xander Bogaerts
+823313,48,49,1,2.0,c637234d-bbc3-314b-88a3-a26196f67a1c,Ball,1,1,2,False,False,MJ,135.0,136,135,fielding,669134.0,Luis Campusano
+823313,56,57,3,3.0,1a1164a6-c88d-32a2-b041-67bd76c27ebd,Called Strike,2,1,0,True,False,MJ,136.0,135,136,fielding,663728.0,Cal Raleigh
+823314,25,26,1,2.0,8031264f-6034-3a7e-b40f-1f9ffeeefc0e,Called Strike,1,1,2,True,False,MJ,135.0,136,135,fielding,669134.0,Luis Campusano
+823314,33,34,0,1.0,b933932a-aa45-356c-ae25-ec038931fbf9,Called Strike,0,1,2,False,False,MJ,135.0,135,136,batting,592518.0,Manny Machado
+823314,35,36,1,2.0,2f72d6c9-a3ac-3440-8f4e-8902265f6d37,Called Strike,1,1,1,False,False,MJ,136.0,136,135,batting,668227.0,Randy Arozarena
+823314,61,62,2,2.0,ad6aae9e-28a3-3da5-81da-cdda6aa09920,Called Strike,1,1,0,True,False,MJ,135.0,136,135,fielding,669134.0,Luis Campusano
+823315,68,69,1,2.0,0150041f-587d-374d-87aa-abd4d59c3658,Ball,1,1,2,False,False,MJ,135.0,136,135,fielding,669134.0,Luis Campusano
+823316,1,2,6,,,"Rockies challenged (tag play), call on the field was overturned: Edouard Julien steals (2) 2nd base.",1,2,0,True,False,MA,115.0,115,135,batting,,
+823316,49,50,0,1.0,6c3e5f30-b8b6-3cac-8a54-e08f2c619e04,Ball,1,0,1,False,False,MJ,115.0,135,115,fielding,664954.0,Brett Sullivan
+823317,22,23,3,4.0,7590d080-2d32-3270-b75e-4b696746b721,Ball,3,1,2,True,False,MJ,135.0,135,115,batting,593428.0,Xander Bogaerts
+823317,50,51,4,5.0,940a014e-fe0d-3aab-84a6-af99506e3305,Called Strike,3,2,0,False,False,MJ,115.0,115,135,batting,696100.0,Hunter Goodman
+823318,0,1,5,3.0,abe0be78-4763-3486-8096-2742e6415d9c,Ball,2,1,0,True,False,MJ,115.0,115,135,batting,666397.0,Edouard Julien
+823318,21,22,0,1.0,959478ea-6ee4-3f84-b956-6bc299f67ff6,Called Strike,0,1,0,True,False,MJ,135.0,115,135,fielding,669134.0,Luis Campusano
+823318,22,23,2,3.0,d61d7eb0-8e7e-3d87-9306-2347cbdbe294,Ball,2,1,1,True,False,MJ,115.0,115,135,batting,666160.0,Mickey Moniak
+823318,47,48,1,2.0,a63587a4-e60e-3a6a-8019-84f7b7c4d691,Called Strike,0,2,1,True,False,MJ,115.0,135,115,fielding,664954.0,Brett Sullivan
+823318,52,53,3,3.0,a3e737d1-0bf4-3b51-a0fc-0383d52b52ce,Ball,2,1,2,True,False,MJ,115.0,115,135,batting,696100.0,Hunter Goodman
+823318,54,55,1,1.0,0e48d4ec-e4eb-3493-bcc8-32b23c32ec6f,Called Strike,0,1,2,False,False,MJ,115.0,115,135,batting,687597.0,Jordan Beck
+823318,56,57,4,4.0,617a40d3-1a9a-3a52-bcc3-e5f87f1028e2,Called Strike,3,1,0,True,False,MJ,115.0,135,115,fielding,664954.0,Brett Sullivan
+823318,58,59,3,3.0,3292185e-c0e9-3739-b056-2e5537e6fa44,Ball,3,0,2,False,False,MJ,115.0,135,115,fielding,664954.0,Brett Sullivan
+823318,65,66,2,3.0,ce2a7c06-7e2d-3da9-996a-c58e7f12fdec,Ball,3,0,0,True,False,MJ,135.0,135,115,batting,593428.0,Xander Bogaerts
+823319,7,8,0,1.0,c50de6d1-b880-3eb7-99ac-608f883ce181,Ball,1,0,1,True,False,MJ,115.0,115,135,batting,681198.0,TJ Rumfield
+823319,12,13,0,1.0,e4ed2fad-505d-34e6-a392-9e425ebb8187,Called Strike,0,1,2,True,False,MJ,115.0,135,115,fielding,696100.0,Hunter Goodman
+823319,18,19,1,2.0,5c270ba8-8057-3069-8a5f-7c3ea498b706,Called Strike,0,2,2,True,False,MJ,135.0,115,135,fielding,666023.0,Freddy Fermin
+823319,30,31,0,1.0,daa7e19f-6d88-3d08-a803-3e755d6b9a5d,Called Strike,0,1,1,True,False,MJ,115.0,135,115,fielding,696100.0,Hunter Goodman
+823319,41,42,5,4.0,1f75f9b7-d5b8-3868-a6e3-4bdd4a90cd5a,Called Strike,2,2,0,False,False,MJ,115.0,115,135,batting,687859.0,Troy Johnston
+823319,49,50,1,2.0,266d5b03-21a4-3fe4-848c-7dec7ea35780,Called Strike,1,1,0,False,False,MJ,115.0,115,135,batting,650489.0,Willi Castro
+823319,61,62,2,,,"Padres challenged (tag play), call on the field was upheld: pitcher Juan Mejia picks off Fernando Tatis Jr. at 2nd on throw to second baseman Willi Castro.",0,1,2,False,False,MA,135.0,135,115,batting,,
+823319,79,80,2,2.0,9eba288e-9f5f-3942-9ab9-99bcc60ba4af,Called Strike,1,1,0,True,False,MJ,135.0,115,135,fielding,669134.0,Luis Campusano
+823319,83,84,3,4.0,63169f0f-501f-3f67-a0f2-c59a75f59f2e,Ball,3,1,2,False,False,MJ,135.0,115,135,fielding,669134.0,Luis Campusano
+823319,88,89,0,1.0,b1af166d-121a-3c6f-b2e7-1409692348a4,Called Strike,0,1,2,True,False,MJ,115.0,135,115,fielding,664954.0,Brett Sullivan
+823320,16,17,1,2.0,a90c5707-95e8-3da0-a85e-48674f120f57,Ball,2,0,1,False,False,MJ,135.0,137,135,fielding,669134.0,Luis Campusano
+823320,30,31,1,2.0,db1ba049-4190-3cab-a52c-812b5758e66f,Ball,2,0,0,True,False,MJ,135.0,135,137,batting,592518.0,Manny Machado
+823320,66,67,1,2.0,a679265a-f23e-3623-9cf9-54f60bda4107,Ball,1,1,2,False,False,MJ,137.0,135,137,fielding,672275.0,Patrick Bailey
+823321,18,19,1,2.0,72fb1b4e-7fb5-387f-b1c2-08c94961f86a,Ball,1,1,2,False,False,MJ,135.0,137,135,fielding,666023.0,Freddy Fermin
+823323,50,51,9,9.0,f6fd1891-aad1-373b-9a64-ae9b3b9465ac,Ball,3,2,2,True,False,MJ,135.0,135,116,batting,630105.0,Jake Cronenworth
+823323,67,68,1,2.0,95e0c9ab-c18d-3425-ad51-2095580b2b43,Called Strike,0,2,2,True,False,MJ,135.0,116,135,fielding,666023.0,Freddy Fermin
+823324,17,18,2,3.0,7e4a6160-3a40-3047-ad09-74f133f0a0e9,Called Strike,1,2,2,True,False,MJ,135.0,116,135,fielding,669134.0,Luis Campusano
+823324,24,25,4,5.0,f9d9aa65-d43c-3e8d-8cec-9f59a658aca2,Called Strike,3,2,2,True,False,MJ,135.0,116,135,fielding,669134.0,Luis Campusano
+823325,40,41,1,2.0,c031e5eb-4c5b-3d45-b5be-dae631d4e0d6,Ball,1,1,2,True,False,MJ,116.0,116,135,batting,595879.0,Javier Báez
+823393,25,26,1,2.0,4756c922-3a32-333f-9de2-f26c9ffd7d52,Called Strike,0,2,0,True,False,MJ,139.0,134,139,fielding,676439.0,Hunter Feduccia
+823393,63,64,1,,,"Umpire reviewed (tag play), call on the field was upheld: Konnor Griffin steals (4) 2nd base.",0,1,1,False,False,NA,,134,139,unknown,,
+823394,8,9,0,1.0,b4de4aa1-cbc2-3f33-a3e1-7f7bbb477e4b,Called Strike,0,1,2,False,False,MJ,134.0,134,139,batting,542303.0,Marcell Ozuna
+823394,8,9,1,2.0,e038ecf6-73ae-3ac6-a566-f7f2b9048c34,Called Strike,0,2,2,True,False,MJ,139.0,134,139,fielding,676439.0,Hunter Feduccia
+823396,27,28,2,3.0,d2a5c8f2-d5c4-3ca0-a858-1c9700eaf4bb,Ball,2,1,0,True,False,MJ,134.0,134,120,batting,542303.0,Marcell Ozuna
+823396,42,43,0,1.0,69c3068a-5807-32e7-b966-2b549edfcc9b,Called Strike,0,1,2,True,False,MJ,120.0,134,120,fielding,686452.0,Drew Millas
+823396,42,43,1,2.0,2e772a8c-7264-3766-b3d7-7da215eca7c6,Ball,1,1,2,False,False,MJ,120.0,134,120,fielding,686452.0,Drew Millas
+823396,80,81,1,1.0,f2ddc57e-efcb-3575-b075-c6bddf912514,Called Strike,0,1,0,True,False,MJ,120.0,134,120,fielding,690925.0,Clayton Beeter
+823396,80,81,2,,,"Nationals challenged (tag play), call on the field was upheld: Clayton Beeter challenged (pitch result), call on the field was overturned: Jake Mangum steals (2) 2nd base.",0,1,0,False,False,MA,120.0,134,120,fielding,,
+823397,8,9,1,2.0,d5464207-1f67-3818-baea-00ef458ce76d,Ball,1,1,1,True,False,MJ,139.0,139,134,batting,641584.0,Jake Fraley
+823397,12,13,0,1.0,763665dd-4588-3a2d-902d-82dd1d7c877c,Called Strike,0,1,1,True,False,MJ,139.0,134,139,fielding,663743.0,Nick Fortes
+823397,21,22,4,5.0,94677434-d259-3cb1-b33a-4e20eedbb89c,Called Strike,3,2,1,False,False,MJ,134.0,134,139,batting,668804.0,Bryan Reynolds
+823397,24,25,2,3.0,f32bbe31-bda7-3360-ac60-703cfb614ae4,Called Strike,1,2,0,False,False,MJ,139.0,139,134,batting,691406.0,Junior Caminero
+823397,32,33,1,1.0,db35257a-384d-3f79-a023-bcb00335a5e8,Ball,1,0,2,False,False,MJ,139.0,134,139,fielding,663743.0,Nick Fortes
+823397,70,71,0,1.0,0b0aef24-8d24-300c-8a12-889fdb3c3b00,Ball,1,0,1,False,False,MJ,134.0,139,134,fielding,680779.0,Henry Davis
+823398,10,11,2,3.0,feb565d7-6d8c-3d3c-a496-bd253cc1415c,Called Strike,1,2,0,False,False,MJ,120.0,120,134,batting,678391.0,Jorbit Vivas
+823398,12,13,2,2.0,ad041b5b-f3a3-3807-8de4-142da741c40f,Called Strike,1,1,1,True,False,MJ,134.0,120,134,fielding,663698.0,Joey Bart
+823398,42,43,5,4.0,eb329afe-d6c7-3cdc-90ea-19c30ca7bc93,Ball,2,2,1,True,False,MJ,134.0,134,120,batting,665833.0,Oneil Cruz
+823398,44,45,2,3.0,3f4b81e3-7d90-3b66-b1e1-574b8e5b7514,Ball,2,1,0,False,False,MJ,134.0,120,134,fielding,663698.0,Joey Bart
+823398,69,70,2,3.0,5f439042-1345-3fc9-a310-ac64f97ad42a,Called Strike,1,2,1,False,False,MJ,120.0,120,134,batting,695578.0,James Wood
+823399,41,42,0,1.0,79e819c3-ff68-3fb2-87df-e98ca4c2ca2a,Ball,1,0,2,False,False,MJ,120.0,134,120,fielding,660688.0,Keibert Ruiz
+823399,52,53,3,3.0,d49dbc26-8d69-325d-97fc-08b89121f821,Ball,1,2,2,False,False,MJ,134.0,120,134,fielding,680779.0,Henry Davis
+823399,63,64,4,1.0,995fbe88-c5c7-3445-943c-e6a8a76d1dfe,Ball,1,0,0,False,False,MJ,134.0,120,134,fielding,680779.0,Henry Davis
+823400,87,88,2,3.0,055406bc-bb1a-3946-94f6-ad128ade2887,Ball,1,2,2,False,False,MJ,134.0,120,134,fielding,680779.0,Henry Davis
+823401,30,31,0,1.0,0c27d794-c031-3240-92cf-4204fe1dcf71,Ball,1,0,0,True,False,MJ,134.0,134,135,batting,542303.0,Marcell Ozuna
+823401,50,51,2,3.0,2fd4bcab-0437-3e16-b914-ba22e1ce0b00,Ball,3,0,0,True,False,MJ,134.0,134,135,batting,542303.0,Marcell Ozuna
+823401,66,67,2,2.0,d79042a9-ff7a-3973-ba28-a0284809ed8a,Called Strike,1,1,0,True,False,MJ,135.0,134,135,fielding,666023.0,Freddy Fermin
+823401,75,76,0,1.0,ce95d928-7d41-35bf-9d46-1d994950463c,Called Strike,0,1,1,False,False,MJ,134.0,134,135,batting,687462.0,Spencer Horwitz
+823402,4,5,1,2.0,f6ee84e2-4802-3121-8403-74a7a2c34119,Called Strike,0,2,1,True,False,MJ,135.0,134,135,fielding,666023.0,Freddy Fermin
+823402,5,6,4,4.0,97744975-8f98-38d7-8801-bcf217de38f7,Ball,2,2,2,False,False,MJ,135.0,134,135,fielding,666023.0,Freddy Fermin
+823402,10,11,2,3.0,62c2422a-49f6-33f1-bb1f-78c796371804,Ball,2,1,0,True,False,MJ,134.0,134,135,batting,656811.0,Ryan O'Hearn
+823402,42,43,1,2.0,08fe0bae-ff3d-3fb5-a860-2f986b467b83,Ball,2,0,1,True,False,MJ,134.0,134,135,batting,656811.0,Ryan O'Hearn
+823402,67,68,1,2.0,b931448e-191b-3c3e-84aa-bacfe85ea061,Called Strike,0,2,1,False,False,MJ,135.0,135,134,batting,592518.0,Manny Machado
+823403,49,50,1,2.0,e20a7c1c-65e1-33e4-8e58-fb000390dce7,Called Strike,1,1,1,False,False,MJ,135.0,135,134,batting,657656.0,Ramón Laureano
+823403,53,54,4,2.0,27a87c05-17ee-396b-8b83-1102681d039c,Called Strike,1,1,0,True,False,MJ,135.0,134,135,fielding,669134.0,Luis Campusano
+823403,60,61,0,1.0,b3f79237-d56a-3b0c-aafd-676b9b58a17b,Called Strike,0,1,2,True,False,MJ,134.0,135,134,fielding,663698.0,Joey Bart
+823403,61,62,1,,1bccc2db-1819-3e32-bb84-3a55fad7ebb7,Pickoff Attempt 1B,0,1,2,False,False,MA,134.0,135,134,fielding,,
+823404,64,65,2,,,"Orioles challenged (tag play), call on the field was upheld: pitcher Isaac Mattson picks off Coby Mayo at 1st on throw to first baseman Spencer Horwitz.",0,1,2,False,False,MA,110.0,110,134,batting,,
+823405,17,18,0,1.0,0b07fe07-3c08-3fbd-a133-2f5d518b3855,Called Strike,0,1,1,False,False,MJ,134.0,134,110,batting,668804.0,Bryan Reynolds
+823405,66,67,1,2.0,6efd85de-a774-3f42-80c6-2a1c7fe929c9,Ball,1,1,0,False,False,MJ,110.0,134,110,fielding,694212.0,Samuel Basallo
+823406,6,7,1,2.0,92ffc469-6830-30af-bb48-ca5890745199,Called Strike,1,1,1,False,False,MJ,134.0,134,110,batting,668804.0,Bryan Reynolds
+823406,9,10,0,1.0,28aa8e27-4206-3f5b-80dd-4cd58d7208ea,Called Strike,0,1,1,False,False,MJ,110.0,110,134,batting,687637.0,Dylan Beavers
+823406,47,48,6,5.0,b6a05bed-084d-372b-a4bb-8b4db1cd19dc,Ball,3,2,2,True,False,MJ,134.0,134,110,batting,804606.0,Konnor Griffin
+823474,17,18,5,5.0,5a26271f-ed22-3fa9-9936-ed3ba4e06718,Ball,3,2,0,True,False,MJ,144.0,144,143,batting,622761.0,Jorge Mateo
+823474,18,19,3,4.0,511d8f40-6e24-384a-b4ae-bfed9435dad6,Ball,2,2,1,True,False,MJ,144.0,144,143,batting,660670.0,Ronald Acuña Jr.
+823474,21,22,1,2.0,d849f8ee-ca5a-3267-9b16-4cecac584507,Ball,2,0,2,True,False,MJ,144.0,144,143,batting,621566.0,Matt Olson
+823474,25,26,0,1.0,7ee82eb5-f2dc-3cbd-9c3b-b5c8ee5e716e,Called Strike,0,1,0,True,False,MJ,144.0,143,144,fielding,641680.0,Jonah Heim
+823474,62,63,2,2.0,10808135-8b82-3058-8608-c91b240c6cb4,Ball,2,0,2,False,False,MJ,143.0,144,143,fielding,665561.0,Rafael Marchán
+823475,10,11,5,6.0,f612437b-885a-32c5-a380-339e4bbd50a3,Ball,2,2,0,True,False,MJ,144.0,144,143,batting,645277.0,Ozzie Albies
+823475,35,36,3,2.0,9ad3a526-6f67-3eee-a9d2-76c47236210a,Ball,2,0,0,True,False,MJ,144.0,144,143,batting,686948.0,Drake Baldwin
+823475,36,37,1,2.0,7d3e8a13-8c24-3eaa-a125-f794ebd89da3,Called Strike,0,2,0,False,False,MJ,144.0,144,143,batting,621566.0,Matt Olson
+823476,28,29,0,1.0,62c9dc9e-82e7-3e78-bc7c-2ce04d6b726e,Called Strike,0,1,2,False,False,MJ,144.0,144,143,batting,660670.0,Ronald Acuña Jr.
+823476,72,73,1,2.0,9279505c-35f9-3f7c-8c94-7c8efd25653e,Called Strike,0,2,2,False,False,MJ,143.0,143,144,batting,664761.0,Alec Bohm
+823477,27,28,1,2.0,1246dd22-0915-34c5-8ba7-31697fe6a796,Called Strike,0,2,0,True,False,MJ,112.0,143,112,fielding,665804.0,Miguel Amaya
+823477,40,41,2,3.0,4b15c731-d9d8-311b-ab69-65c8a82abefa,Ball,2,1,0,False,False,MJ,143.0,112,143,fielding,592663.0,J.T. Realmuto
+823477,47,48,4,5.0,46514b70-81f8-3496-91ef-8da08d1f91bd,Ball,3,2,2,True,False,MJ,112.0,112,143,batting,673548.0,Seiya Suzuki
+823479,13,14,2,3.0,0d6fbc82-7e3a-3183-b7e8-72299b931b93,Ball,2,1,1,False,False,MJ,109.0,143,109,fielding,543510.0,James McCann
+823479,19,20,2,3.0,cfbfdc27-903c-36ca-9797-e9d4df9825df,Called Strike,2,1,2,True,False,MJ,143.0,109,143,fielding,665561.0,Rafael Marchán
+823479,23,24,3,4.0,219c5373-dc77-3aac-aea6-a90f4dda606d,Ball,3,1,0,False,False,MJ,143.0,109,143,fielding,665561.0,Rafael Marchán
+823479,37,38,0,1.0,dd53f9eb-fe29-3841-bcb6-8957d55ef8b4,Called Strike,0,1,0,False,False,MJ,109.0,109,143,batting,672695.0,Geraldo Perdomo
+823480,57,58,0,1.0,d32f359e-9084-323f-a785-bbc03268f9ca,Called Strike,0,1,1,True,False,MJ,109.0,143,109,fielding,680728.0,Adrian Del Castillo
+823481,22,23,0,1.0,ae964ea4-0938-339d-90a6-5ed977742003,Foul,0,1,0,False,False,NH,,143,112,unknown,,
+823481,74,75,3,4.0,124a06c2-9858-3b01-b585-a3263a404866,Called Strike,3,1,0,True,False,MJ,143.0,112,143,fielding,592663.0,J.T. Realmuto
+823482,58,59,4,3.0,9e108b7a-1e8c-39f1-b9df-a16f25797c13,Called Strike,1,2,2,False,False,MJ,143.0,143,109,batting,656941.0,Kyle Schwarber
+823483,12,13,2,2.0,a362634d-71e4-345b-912f-fef5931a8f5d,Ball,1,1,1,False,False,MJ,143.0,120,143,fielding,650911.0,Cristopher Sánchez
+823483,52,53,3,4.0,e5619339-d7ce-3976-aade-851d25a40757,Ball,3,1,2,False,False,MJ,120.0,143,120,fielding,686452.0,Drew Millas
+823484,21,22,0,1.0,93d32568-083c-3b35-aa1f-89b3597f3069,Ball,1,0,1,False,False,MJ,120.0,143,120,fielding,686452.0,Drew Millas
+823484,67,68,3,4.0,81e5fe21-59e6-3c04-a29f-fb5eef4844f8,Ball,2,2,1,True,False,MJ,143.0,143,120,batting,656941.0,Kyle Schwarber
+823484,73,74,0,1.0,fb094063-33ec-357c-be57-c201384a30f8,Called Strike,0,1,0,False,False,MJ,143.0,143,120,batting,666969.0,Adolis García
+823485,38,39,2,2.0,938f331c-1fec-325d-ac5a-720c017f8e12,Ball,1,1,1,True,False,MJ,143.0,143,120,batting,656941.0,Kyle Schwarber
+823487,6,7,2,3.0,61388b67-a3ac-3265-9ca0-79c9b91c1c38,Called Strike,1,2,0,True,False,MJ,143.0,140,143,fielding,592663.0,J.T. Realmuto
+823487,38,39,4,4.0,888dc05a-2ea7-380c-b865-2f47ef5c4241,Ball,2,2,1,True,False,MJ,140.0,140,143,batting,669394.0,Jake Burger
+823487,62,63,1,2.0,aec20d74-1e1e-3565-9fc5-fe676e31878f,Ball,1,1,0,True,False,MJ,143.0,143,140,batting,656941.0,Kyle Schwarber
+823487,74,75,3,3.0,2133944a-56ba-3e28-9a48-a200baf7c1e8,Ball,3,0,1,False,False,MJ,140.0,143,140,fielding,543309.0,Kyle Higashioka
+823488,26,27,2,3.0,3f6afa2b-88b1-326e-a8be-e3d8ed944bc3,Called Strike,1,2,2,False,False,MJ,140.0,140,143,batting,694497.0,Evan Carter
+823488,72,73,5,3.0,2fff9466-be8d-36de-9fab-322970ba3492,Called Strike,1,2,0,True,False,MJ,143.0,140,143,fielding,592663.0,J.T. Realmuto
+823488,74,75,0,1.0,f8ef8872-3eed-3ed1-a160-294f54e2879a,Called Strike,0,1,1,True,False,MJ,143.0,140,143,fielding,592663.0,J.T. Realmuto
+823488,79,80,4,4.0,edcc6b23-2108-3abb-8e29-c5bd5fe2455c,Called Strike,2,2,1,False,False,MJ,143.0,143,140,batting,656941.0,Kyle Schwarber
+823556,0,1,7,4.0,73a461e3-d023-3702-9478-e25efe331af1,Ball,3,1,0,True,False,MJ,118.0,118,147,batting,672580.0,Maikel Garcia
+823556,7,8,5,4.0,0ca0f92f-45cb-38b7-b522-518c3356b90a,Called Strike,2,2,0,False,False,MJ,147.0,147,118,batting,502671.0,Paul Goldschmidt
+823556,11,12,3,4.0,0ade8c6b-6844-3493-93cb-0e8eb0bbc0c1,Ball,3,1,2,False,False,MJ,118.0,147,118,fielding,553869.0,Elias Díaz
+823556,21,22,5,6.0,1d00543f-471c-34db-9b15-8783ea227a75,Ball,3,2,2,True,False,MJ,118.0,118,147,batting,672580.0,Maikel Garcia
+823556,74,75,0,1.0,dca07a02-57d7-32d6-a3c3-86f4ae0018d6,Ball,1,0,2,False,False,MJ,147.0,118,147,fielding,669224.0,Austin Wells
+823558,2,3,4,4.0,fbc8e51e-3cb5-3b84-98bb-9ee9f2c634b2,Ball,3,1,1,True,False,MJ,118.0,118,147,batting,686469.0,Vinnie Pasquantino
+823558,8,9,2,3.0,23626fbb-20fa-3015-bdef-83300d09c0fe,Ball,2,1,0,True,False,MJ,118.0,118,147,batting,695600.0,Carter Jensen
+823558,38,39,4,5.0,d7f6d31f-c45c-3e4f-a8ba-5a1af94df70e,Ball,2,2,2,False,False,MJ,147.0,118,147,fielding,701542.0,Will Warren
+823559,19,20,0,1.0,ffa90f0d-dbcc-35dc-8ca3-aae2fcf5a89d,Called Strike,0,1,2,True,False,MJ,118.0,147,118,fielding,521692.0,Salvador Perez
+823559,34,35,0,1.0,6111ce5e-5e86-3e59-9ad7-6e3f6a871c81,Called Strike,0,1,0,True,False,MJ,118.0,147,118,fielding,521692.0,Salvador Perez
+823559,37,38,4,3.0,bab0ab4c-2a86-3872-9bd1-eac527311266,Ball,1,2,2,True,False,MJ,147.0,147,118,batting,641355.0,Cody Bellinger
+823559,39,40,0,1.0,826350e9-02bb-3b36-9802-4460297dc890,Ball,1,0,1,True,False,MJ,118.0,118,147,batting,672580.0,Maikel Garcia
+823559,51,52,6,3.0,8c83db12-43b2-34a6-a1fe-c9aa1dd35705,Called Strike,1,2,0,True,False,MJ,118.0,147,118,fielding,521692.0,Salvador Perez
+823560,14,15,2,3.0,6d3ddf87-f464-36c9-b3a0-da22a34ea06c,Called Strike,1,2,2,False,False,MJ,147.0,147,108,batting,665862.0,Jazz Chisholm Jr.
+823560,21,22,0,1.0,8b145625-a9d5-3925-8a28-a1a7ed16ea92,Called Strike,0,1,0,False,False,MJ,147.0,147,108,batting,663757.0,Trent Grisham
+823560,59,60,2,1.0,5ac43a36-99d5-3991-b063-7d7d0b88d9b7,Ball,1,0,2,True,False,MJ,108.0,108,147,batting,694384.0,Nolan Schanuel
+823560,66,67,0,1.0,4514d0e0-ba68-316f-b66f-ca73be87ea9a,Ball,1,0,2,True,False,MJ,108.0,108,147,batting,687263.0,Zach Neto
+823560,80,81,2,3.0,5ddf4586-fd4a-3fba-a29f-bb31a3ee2142,Called Strike,1,2,2,True,False,MJ,108.0,147,108,fielding,518595.0,Travis d'Arnaud
+823561,30,31,8,6.0,1561d452-df10-34d6-a3af-fbb13497bebc,Ball,3,2,2,False,False,MJ,147.0,108,147,fielding,669224.0,Austin Wells
+823561,36,37,2,3.0,14c114e8-877d-37a7-8b03-5212a73a9576,Ball,3,0,1,True,False,MJ,108.0,108,147,batting,687263.0,Zach Neto
+823561,51,52,2,2.0,9c5f7909-6c77-3edf-ae1d-28635bfc9c74,Called Strike,0,2,2,True,False,MJ,147.0,108,147,fielding,669224.0,Austin Wells
+823562,19,20,0,1.0,f5df848f-9f9b-39bc-b81b-12854301a9e3,Foul,0,1,2,False,False,NH,,108,147,unknown,,
+823562,40,41,3,4.0,a32141b0-1fd7-3da9-b24f-98504bb09a1e,Called Strike,3,1,0,True,False,MJ,147.0,108,147,fielding,669224.0,Austin Wells
+823562,51,52,1,2.0,e58eb9c0-a1db-3641-a4cf-31099521473a,Called Strike,1,1,2,True,False,MJ,147.0,108,147,fielding,669224.0,Austin Wells
+823562,57,58,5,6.0,3c2f0144-af49-38cb-b543-ea290c91bda4,Ball,3,2,0,True,False,MJ,108.0,108,147,batting,672724.0,Oswald Peraza
+823562,66,67,4,1.0,bd418bce-59a8-314c-b980-3e4ac030b1c9,Ball,1,0,0,False,False,MJ,147.0,108,147,fielding,669224.0,Austin Wells
+823563,2,3,2,3.0,b80edbc7-3156-3632-8e7e-d5382e5facc8,Ball,2,1,2,True,False,MJ,108.0,108,147,batting,694384.0,Nolan Schanuel
+823563,5,6,2,3.0,f9ae554b-9aa6-3f26-b8b1-29618bf3b898,Called Strike,1,2,0,True,False,MJ,108.0,147,108,fielding,681351.0,Logan O'Hoppe
+823563,19,20,1,2.0,783449f2-4212-3b9e-aebd-52d58ca9098d,Ball,2,0,2,False,False,MJ,108.0,147,108,fielding,681351.0,Logan O'Hoppe
+823563,26,27,2,3.0,705daabb-8edc-3370-aaa1-59fcac87b530,Ball,2,1,2,True,False,MJ,147.0,147,108,batting,676609.0,José Caballero
+823563,55,56,1,2.0,c7e478c8-2053-37fd-a33a-b0e5af90216a,Ball,1,1,2,False,False,MJ,147.0,108,147,fielding,669224.0,Austin Wells
+823563,88,89,2,3.0,a84af501-293c-3a2e-baf1-739742403d48,Ball,2,1,0,True,False,MJ,147.0,147,108,batting,641857.0,Ryan McMahon
+823564,13,14,1,2.0,8590059c-59c7-3586-b3fd-d5d53f5b7983,Called Strike,1,1,1,True,False,MJ,147.0,133,147,fielding,641555.0,J.C. Escarra
+823564,42,43,0,1.0,65b74290-4d84-3549-ba26-9854b78c67d4,Ball,1,0,0,True,False,MJ,147.0,147,133,batting,663757.0,Trent Grisham
+823565,35,36,2,3.0,78bb0271-65e8-35ff-a450-3abd6d0a139d,Called Strike,2,1,2,False,False,MJ,147.0,147,133,batting,676609.0,José Caballero
+823565,47,48,3,3.0,9f3bcae4-a433-3caa-b373-d158fb2183df,Called Strike,1,2,0,False,False,MJ,147.0,147,133,batting,641355.0,Cody Bellinger
+823565,48,49,4,5.0,01bf1578-8301-3c30-9846-2e45a174d188,Ball,3,2,1,False,False,MJ,133.0,147,133,fielding,642851.0,Austin Wynns
+823566,2,3,3,4.0,304912ea-b90a-301f-b027-7e086d717c20,Ball,2,2,1,False,False,MJ,147.0,146,147,fielding,669224.0,Austin Wells
+823566,6,7,2,3.0,3f065197-bb4f-3ee3-8fa1-2c699ada3607,Called Strike,2,1,0,True,False,MJ,146.0,147,146,fielding,689414.0,Liam Hicks
+823566,47,48,1,,,"Yankees challenged (tag play), call on the field was overturned: pitcher Max Fried picks off Heriberto Hernández at 1st on throw to first baseman Ben Rice.",0,0,1,True,False,MA,147.0,146,147,fielding,,
+823566,59,60,0,1.0,9581cdeb-b55a-36a6-870a-04fc40c2253d,Called Strike,0,1,2,True,False,MJ,146.0,147,146,fielding,689414.0,Liam Hicks
+823566,77,78,2,3.0,d53c1e3f-37bc-3f86-8ccc-c8b3a465b769,Ball,3,0,1,False,False,MJ,146.0,147,146,fielding,689414.0,Liam Hicks
+823566,78,79,2,3.0,a50a2a86-c741-38a6-b025-589ba108f9ff,Ball,1,2,1,False,False,MJ,146.0,147,146,fielding,689414.0,Liam Hicks
+823567,25,26,2,3.0,37549c4c-a27d-3707-a70f-c758838fd73b,Called Strike,1,2,2,True,False,MJ,133.0,147,133,fielding,669127.0,Shea Langeliers
+823567,28,29,4,5.0,39d97c1b-b11e-33dc-bd4d-9b8c19fc0be5,Ball,3,2,1,True,False,MJ,133.0,133,147,batting,671732.0,Lawrence Butler
+823567,39,40,2,2.0,77d10b79-5fda-3051-949a-a1b804f8d977,Ball,2,0,1,True,False,MJ,147.0,147,133,batting,592450.0,Aaron Judge
+823567,61,62,2,3.0,ee42d3a0-9635-3643-a962-63a41842a0ea,Called Strike,1,2,2,False,False,MJ,133.0,133,147,batting,671732.0,Lawrence Butler
+823567,66,67,1,1.0,6aff379f-a271-30aa-9780-89c8e378e1d1,Called Strike,0,1,0,False,False,MJ,147.0,147,133,batting,665862.0,Jazz Chisholm Jr.
+823567,70,71,6,,,"Athletics challenged (tag play), call on the field was upheld: José Caballero steals (4) 2nd base.",2,1,2,False,False,MA,133.0,147,133,fielding,,
+823568,4,5,3,4.0,eed3c2b1-c9e9-33fe-aa48-97df0cec19c0,Ball,3,1,0,False,False,MJ,146.0,147,146,fielding,689414.0,Liam Hicks
+823568,19,20,2,3.0,3a3de494-22a8-363d-bed5-c20e5f86d2a2,Called Strike,1,2,2,False,False,MJ,147.0,147,146,batting,700250.0,Ben Rice
+823568,33,34,0,1.0,2818d002-18ab-3cc2-889a-da05cfcec4fd,Ball,1,0,0,True,False,MJ,146.0,146,147,batting,672640.0,Otto Lopez
+823568,37,38,1,1.0,2f263644-f59f-39e0-a396-1a6e14777b01,Called Strike,0,1,0,False,False,MJ,147.0,147,146,batting,641355.0,Cody Bellinger
+823569,15,16,2,3.0,91272a4a-6d82-35d4-b6a5-74bbb371c7b2,Called Strike,1,2,2,True,False,MJ,147.0,146,147,fielding,669224.0,Austin Wells
+823569,22,23,2,3.0,1341d14d-82d9-3613-927f-b36dc4dc7e60,Ball,1,2,2,True,False,MJ,146.0,146,147,batting,681393.0,Connor Norby
+823569,26,27,3,4.0,ce610f34-a33a-306b-8b84-987ab2fd8fb0,Called Strike,2,2,0,True,False,MJ,146.0,147,146,fielding,682663.0,Agustín Ramírez
+823569,38,39,2,3.0,9684e1fc-310a-3885-b78b-ce81ffd5b579,Called Strike,1,2,2,True,False,MJ,146.0,147,146,fielding,682663.0,Agustín Ramírez
+823569,42,43,2,3.0,b9515c90-3f6f-3005-a3fd-de1bca7e4dc8,Called Strike,1,2,0,True,False,MJ,146.0,147,146,fielding,682663.0,Agustín Ramírez
+823569,46,47,5,5.0,1e2a8700-cc42-33fe-9b0c-2a6c3d762d48,Called Strike,3,2,2,False,False,MJ,147.0,147,146,batting,700250.0,Ben Rice
+823569,75,76,0,1.0,35c8300c-62e3-304d-9fa2-578b9d4d61b0,Called Strike,0,1,0,True,False,MJ,146.0,147,146,fielding,682663.0,Agustín Ramírez
+823569,85,86,5,5.0,e35651cf-7305-31a8-ad1f-138e45bf2dc7,Ball,3,2,1,True,False,MJ,146.0,146,147,batting,683357.0,Owen Caissie
+823638,8,9,4,4.0,63c7fb5d-7b39-34d7-aba8-f53b4d145cd6,Ball,2,2,1,True,False,MJ,115.0,115,121,batting,691720.0,Kyle Karros
+823638,36,37,2,2.0,14af939d-5fa5-3aaf-835a-c094e4cf85aa,Called Strike,0,2,2,True,False,MJ,121.0,115,121,fielding,642547.0,Freddy Peralta
+823638,48,49,1,1.0,9f93ea96-3a09-36ac-a4e8-0c01ca82326f,Ball,1,0,0,True,False,MJ,121.0,121,115,batting,682626.0,Francisco Alvarez
+823638,56,57,3,3.0,45b7ef4d-890c-307b-be51-d24d08ac0479,Ball,1,2,2,True,False,MJ,115.0,115,121,batting,687597.0,Jordan Beck
+823639,48,49,2,3.0,83203256-0c5b-3fb6-a469-2bb8fd960f35,Called Strike,1,2,1,False,False,MJ,121.0,121,142,batting,668901.0,Mark Vientos
+823639,72,73,1,2.0,ec3c0561-0cc9-30b7-b3e8-b31e70923224,Called Strike,1,1,0,False,False,MJ,121.0,121,142,batting,683146.0,Brett Baty
+823640,29,30,4,5.0,47238f91-2c7e-334b-9cd4-9370c0cfccfb,Ball,3,2,2,False,False,MJ,142.0,121,142,fielding,680777.0,Ryan Jeffers
+823640,46,47,4,3.0,903f5e15-52e0-3924-be6a-67828d30b4f7,Ball,2,1,0,True,False,MJ,142.0,142,121,batting,680777.0,Ryan Jeffers
+823640,52,53,4,5.0,3cc63f8f-b2d9-316d-a7e8-e41dd956b967,Called Strike,3,2,1,False,False,MJ,121.0,121,142,batting,701807.0,Carson Benge
+823640,63,64,0,1.0,76286fa2-170c-35b6-bd9f-fd3a49cd2845,Called Strike,0,1,0,False,False,MJ,142.0,142,121,batting,807712.0,Luke Keaschall
+823641,37,38,1,2.0,eb3eec05-6df1-3984-a142-bcd32eda9219,Called Strike,1,1,2,False,False,MJ,121.0,121,142,batting,665742.0,Juan Soto
+823641,47,48,3,4.0,1614eb4e-6881-3bd3-8632-12eb9f254443,Ball,2,2,2,True,False,MJ,121.0,121,142,batting,668901.0,Mark Vientos
+823641,63,64,3,2.0,0d39c56d-aef1-3164-bcf4-cf5cc4e70d9f,Called Strike,1,1,2,True,False,MJ,142.0,121,142,fielding,680777.0,Ryan Jeffers
+823641,66,67,0,1.0,43f9d032-85b9-35ad-9cd0-ffd9462b93cc,Ball,1,0,2,True,False,MJ,121.0,121,142,batting,543760.0,Marcus Semien
+823641,66,67,2,3.0,117b0f6b-7b95-30fc-a78f-837d83ce4f2d,Ball,2,1,2,True,False,MJ,121.0,121,142,batting,543760.0,Marcus Semien
+823642,12,13,2,3.0,4e3f630e-ab0d-3871-be0f-485b0dd7dbc6,Ball,2,1,2,True,False,MJ,133.0,133,121,batting,672016.0,Denzel Clarke
+823642,57,58,3,4.0,b0203ae9-1e54-30c1-a520-f3d6842a488c,Ball,3,1,2,True,False,MJ,121.0,121,133,batting,621438.0,Tyrone Taylor
+823643,17,18,0,1.0,893e6a66-fca3-31c8-bf88-44e53057167b,Called Strike,0,1,2,True,False,MJ,121.0,133,121,fielding,682626.0,Francisco Alvarez
+823643,63,64,1,1.0,2d970be9-6523-3a9f-adfc-6675b6f21bf4,Called Strike,0,1,0,False,False,MJ,133.0,133,121,batting,666126.0,Carlos Cortes
+823644,48,49,2,3.0,9f9d1680-b769-37eb-b547-69a17a0bfc15,Called Strike,1,2,2,False,False,MJ,121.0,121,133,batting,668901.0,Mark Vientos
+823644,48,49,4,4.0,c32646e5-34cd-333b-9e69-84e1d7ff9c2a,Ball,2,2,2,False,False,MJ,133.0,121,133,fielding,669127.0,Shea Langeliers
+823645,21,22,1,2.0,946d112d-2031-34f2-8b58-e1a8074d3919,Called Strike,0,2,2,True,False,MJ,109.0,121,109,fielding,543510.0,James McCann
+823646,5,6,1,2.0,46d1425a-8e1d-33c3-bec3-cb11428a93c1,Called Strike,0,2,0,True,False,MJ,109.0,121,109,fielding,672515.0,Gabriel Moreno
+823646,19,20,0,1.0,ae8ba847-ff75-33c8-9374-1bb93e3de988,Called Strike,0,1,2,True,False,MJ,109.0,121,109,fielding,672515.0,Gabriel Moreno
+823646,32,33,1,2.0,3aa8ed8c-3a40-3217-b318-bda46fbdb30a,Called Strike,0,2,2,True,False,MJ,109.0,121,109,fielding,672515.0,Gabriel Moreno
+823646,51,52,2,1.0,76d1d8f7-02c1-36b8-932c-b993934db23c,Ball,1,0,2,True,False,MJ,121.0,121,109,batting,543760.0,Marcus Semien
+823647,2,3,3,3.0,d2a24d17-c350-38d0-82c2-9cee180e7a62,Called Strike,1,2,0,True,False,MJ,121.0,134,121,fielding,620443.0,Luis Torrens
+823647,7,8,0,1.0,b8f57810-e274-3f4d-9795-1e03f65a5e1a,Called Strike,0,1,1,True,False,MJ,134.0,121,134,fielding,680779.0,Henry Davis
+823647,35,36,2,3.0,925dcd83-4f34-3fc0-b8ea-9c2a97951fd9,Called Strike,1,2,0,False,False,MJ,134.0,134,121,batting,665833.0,Oneil Cruz
+823647,42,43,2,1.0,482274e9-b571-380a-805e-9883346df6c9,Called Strike,0,1,1,False,False,MJ,121.0,121,134,batting,666182.0,Bo Bichette
+823648,25,26,0,1.0,bc1e85e5-b0ae-369f-a09d-de2b8b6c0548,Ball,1,0,1,True,False,MJ,121.0,121,109,batting,673357.0,Luis Robert Jr.
+823648,41,42,6,5.0,39b9dcf5-ee6d-3165-9bb1-8d40c1203207,Ball,2,2,2,True,False,MJ,109.0,109,121,batting,680728.0,Adrian Del Castillo
+823648,47,48,3,3.0,3a07f655-bce9-3d72-a22a-95910f650e72,Ball,3,0,2,False,False,MJ,109.0,121,109,fielding,672515.0,Gabriel Moreno
+823648,60,61,1,2.0,a560f930-da7a-3782-94c5-db364b34bc45,Called Strike,1,1,2,False,False,MJ,121.0,121,109,batting,666182.0,Bo Bichette
+823648,76,77,1,1.0,120f29dc-cfda-3ca4-8abf-431562231a2f,Ball,1,0,1,True,False,MJ,121.0,121,109,batting,682626.0,Francisco Alvarez
+823649,80,81,1,1.0,cdaad1c9-37ed-3ad4-93c3-756534d70b43,Called Strike,0,1,1,True,False,MJ,121.0,134,121,fielding,682626.0,Francisco Alvarez
+823651,54,55,5,3.0,90da1f6f-c60a-3664-9f71-08e678b5bea8,Ball,1,2,0,False,False,MJ,134.0,121,134,fielding,663698.0,Joey Bart
+823718,8,9,2,3.0,904ffa95-5c44-392e-a4ae-56522282ac58,Ball,2,1,2,True,False,MJ,142.0,142,113,batting,665019.0,Kody Clemens
+823718,13,14,3,3.0,89d3eead-4f50-3cfa-978a-1c62c4ba1bab,Ball,1,2,0,True,False,MJ,142.0,142,113,batting,807712.0,Luke Keaschall
+823718,44,45,0,1.0,d5c58e66-11bf-355c-8933-f7bc59e27cd7,Called Strike,0,1,0,False,False,MJ,113.0,113,142,batting,682829.0,Elly De La Cruz
+823718,51,52,3,4.0,8f9e0057-1f2b-3048-b7fe-b92ed0b2ec22,Ball,1,2,0,False,False,MJ,142.0,113,142,fielding,605170.0,Victor Caratini
+823718,53,54,7,4.0,15326705-e7da-3517-8e5b-3926b3bb29fc,Called Strike,2,2,1,False,False,MJ,113.0,113,142,batting,667472.0,Dane Myers
+823718,86,87,4,3.0,6d5820af-b834-3390-8565-3df775092855,Called Strike,2,1,0,False,False,MJ,142.0,142,113,batting,665019.0,Kody Clemens
+823720,20,21,6,6.0,a699d359-8d89-306d-af26-025b8d07ccdd,Ball,3,2,2,False,False,MJ,113.0,142,113,fielding,663886.0,Tyler Stephenson
+823720,56,57,0,1.0,c34d6406-ec6f-3b37-909d-3a71bdf0f34a,Called Strike,0,1,1,True,False,MJ,142.0,113,142,fielding,605170.0,Victor Caratini
+823721,26,27,1,,,"Twins challenged (tag play), call on the field was overturned: Luke Keaschall steals (4) 2nd base.",0,0,2,True,False,MA,142.0,142,113,batting,,
+823721,40,41,2,3.0,eecd1ba8-6202-3931-b62c-856a756570c2,Ball,2,1,2,False,False,MJ,142.0,113,142,fielding,680777.0,Ryan Jeffers
+823721,65,66,0,1.0,7b38494c-ba17-3311-8110-86ea7c797643,Called Strike,0,1,1,True,False,MJ,113.0,142,113,fielding,663886.0,Tyler Stephenson
+823721,80,81,2,3.0,13d780f2-f17c-33ee-a699-c98d066baefe,Called Strike,1,2,1,False,False,MJ,142.0,142,113,batting,807712.0,Luke Keaschall
+823721,81,82,2,1.0,2215a1b8-5123-3001-919b-e3ea43f295a7,Ball,1,0,2,False,False,MJ,113.0,142,113,fielding,663886.0,Tyler Stephenson
+823722,39,40,1,1.0,716d5af6-2678-3078-a928-674812e1b183,Called Strike,0,1,1,True,False,MJ,142.0,111,142,fielding,680777.0,Ryan Jeffers
+823722,71,72,1,1.0,1cf9f9a9-f220-3e06-a3ae-b4022e8f886c,Ball,1,0,0,False,False,MJ,142.0,111,142,fielding,680777.0,Ryan Jeffers
+823722,79,80,2,2.0,b2a80b7e-1e4e-3dba-939e-97d655ee8cf7,Called Strike,0,2,1,False,False,MJ,142.0,142,111,batting,665019.0,Kody Clemens
+823723,13,14,2,3.0,15451924-ca13-38ee-95c0-9a731f6ef55b,Ball,2,1,1,True,False,MJ,142.0,142,111,batting,665019.0,Kody Clemens
+823723,61,62,2,3.0,6298e2f5-e6f5-3b0f-949c-33262bc648bb,Ball,2,1,1,True,False,MJ,111.0,111,142,batting,702332.0,Caleb Durbin
+823723,67,68,5,5.0,24fef216-dcf3-3fd5-ab44-64e7e159e948,Ball,3,2,2,False,False,MJ,111.0,142,111,fielding,665966.0,Carlos Narváez
+823724,0,1,8,5.0,8f9702ac-8328-3f4c-b993-40be974cca7b,Called Strike,3,2,0,False,False,MJ,116.0,116,142,batting,690993.0,Colt Keith
+823724,1,2,0,1.0,190fca70-a58b-300f-a33c-8d954b5b5673,Called Strike,0,1,0,True,False,MJ,142.0,116,142,fielding,605170.0,Victor Caratini
+823724,16,17,5,5.0,f9eadde2-e930-35f7-babf-26cc56ed464b,Called Strike,3,2,1,True,False,MJ,116.0,142,116,fielding,668670.0,Jake Rogers
+823724,35,36,6,6.0,f1a494c0-63c0-310d-9ed1-fd81568767b1,Ball,3,2,1,False,False,MJ,142.0,116,142,fielding,605170.0,Victor Caratini
+823724,65,66,2,3.0,e1297332-e0cc-3224-ae6d-97127fe2826e,Ball,3,0,1,True,False,MJ,142.0,142,116,batting,665019.0,Kody Clemens
+823724,71,72,4,3.0,81e6cc4f-1964-3bed-bb58-bb2af21611c2,Called Strike,1,2,2,True,False,MJ,142.0,116,142,fielding,605170.0,Victor Caratini
+823725,44,45,1,2.0,943827fb-b670-3cf2-86c9-587373ea1628,Called Strike,1,1,1,True,False,MJ,142.0,111,142,fielding,680777.0,Ryan Jeffers
+823726,4,5,0,1.0,1523864b-85b2-3afa-b703-a0ced89268e9,Called Strike,0,1,0,False,False,MJ,142.0,142,116,batting,668885.0,Austin Martin
+823726,60,61,3,3.0,9034beaf-3ca6-3b59-a2e0-ad7abad97349,Called Strike,1,2,0,False,False,MJ,116.0,116,142,batting,595879.0,Javier Báez
+823726,70,71,1,2.0,dbbe8a3a-b5a5-3b18-8814-731579c5310c,Called Strike,0,2,1,True,False,MJ,116.0,142,116,fielding,693307.0,Dillon Dingler
+823726,76,77,0,1.0,4c942d0d-ece6-34c9-aac3-cf508f3da601,Called Strike,0,1,2,False,False,MJ,116.0,116,142,batting,650402.0,Gleyber Torres
+823727,13,14,0,1.0,35d9ea7e-d6f2-33b7-b7bc-1561a762c0d8,Ball,1,0,0,False,False,MJ,116.0,142,116,fielding,693307.0,Dillon Dingler
+823727,16,17,0,1.0,7375655e-48bf-33c2-88cc-f4f7616dc781,Called Strike,0,1,1,False,False,MJ,142.0,142,116,batting,670242.0,Matt Wallner
+823727,76,77,2,2.0,933d5ff4-efcc-3d80-9f23-d25540d69636,Ball,2,0,2,False,False,MJ,142.0,116,142,fielding,680777.0,Ryan Jeffers
+823728,4,5,3,4.0,41893f58-ea19-3c95-a8c9-7aaba368bdcf,Called Strike,2,2,1,False,False,MJ,142.0,142,116,batting,663616.0,Trevor Larnach
+823728,7,8,2,3.0,05001673-1d54-33b8-a474-74398ee1c86e,Called Strike,1,2,1,False,False,MJ,116.0,116,142,batting,679529.0,Spencer Torkelson
+823728,21,22,0,1.0,d6a2a096-5080-34e6-8c8e-b4655536dd90,Called Strike,0,1,0,False,False,MJ,142.0,142,116,batting,605137.0,Josh Bell
+823728,22,23,0,1.0,84a2c21b-ca08-3192-a56c-325081b38f13,Called Strike,0,1,1,True,False,MJ,116.0,142,116,fielding,663554.0,Casey Mize
+823729,57,58,0,1.0,5f40d921-fc64-3514-9c79-82412fad5b92,Called Strike,0,1,2,False,False,MJ,142.0,142,139,batting,686797.0,Brooks Lee
+823729,63,64,1,2.0,84c58d30-42b8-391a-a260-ea675007f4bb,Ball,2,0,1,False,False,MJ,139.0,142,139,fielding,663743.0,Nick Fortes
+823729,72,73,2,3.0,17b11d55-d73a-3219-b8f7-6bfc38ef4a88,Ball,3,0,2,True,False,MJ,139.0,139,142,batting,656775.0,Cedric Mullins
+823730,27,28,2,3.0,044a2061-8653-36a7-9178-ad5a503a56d9,Called Strike,1,2,1,False,False,MJ,142.0,142,139,batting,807712.0,Luke Keaschall
+823730,33,34,1,2.0,809036a7-3081-3bf2-a00a-c5c0683b68ed,Ball,1,1,2,True,False,MJ,139.0,139,142,batting,641584.0,Jake Fraley
+823732,9,10,4,4.0,d3a63791-d3c9-3a00-9f2b-60dbe91e9de9,Ball,2,2,2,False,False,MJ,139.0,142,139,fielding,663743.0,Nick Fortes
+823732,25,26,1,2.0,ecd019f6-f99a-3b31-9d54-eb567c9496d5,Ball,1,1,1,True,False,MJ,139.0,139,142,batting,656775.0,Cedric Mullins
+823732,33,34,4,4.0,6168007d-041f-315a-ab83-1e61c46ec67e,Called Strike,2,2,1,False,False,MJ,142.0,142,139,batting,663616.0,Trevor Larnach
+823800,7,8,2,3.0,ef56548f-7e06-31aa-a125-69c41db62284,Ball,2,1,1,True,False,MJ,134.0,134,158,batting,656811.0,Ryan O'Hearn
+823800,22,23,0,1.0,1ec85fba-bafd-3107-aaab-e9c293cbdfc6,Ball,1,0,1,True,False,MJ,134.0,134,158,batting,656811.0,Ryan O'Hearn
+823800,22,23,1,2.0,3bc23993-890b-3942-8e3a-6fb896bbb573,Called Strike,1,1,1,True,False,MJ,158.0,134,158,fielding,661388.0,William Contreras
+823800,25,26,0,1.0,044d037e-a7be-3c84-a5a3-0a8973676a65,Called Strike,0,1,1,True,False,MJ,134.0,158,134,fielding,680779.0,Henry Davis
+823801,2,3,3,4.0,be0b79e6-7bf6-353c-a6f6-bae44451aea5,Called Strike,2,2,2,True,False,MJ,158.0,141,158,fielding,661388.0,William Contreras
+823801,9,10,2,3.0,19c06b8a-c052-31e7-acf4-c45fa40898ba,Ball,2,1,0,True,False,MJ,158.0,158,141,batting,596142.0,Gary Sánchez
+823801,44,45,0,1.0,a4f23347-e812-3eb7-bc7e-8d8e6d9ade92,Ball,1,0,2,True,False,MJ,158.0,158,141,batting,596142.0,Gary Sánchez
+823801,47,48,2,3.0,20682779-9144-320b-aa84-115bac322126,Called Strike,2,1,1,True,False,MJ,158.0,141,158,fielding,661388.0,William Contreras
+823801,49,50,1,2.0,cec27e25-4502-3698-a642-116e80fcaabb,Ball,2,0,2,False,False,MJ,158.0,141,158,fielding,661388.0,William Contreras
+823801,53,54,0,1.0,7b920bd0-af27-31b3-9059-b22b6796afe2,Called Strike,0,1,1,True,False,MJ,141.0,158,141,fielding,623168.0,Tyler Heineman
+823801,55,56,4,1.0,97033625-c447-3f7a-a774-0804ef2908ed,Ball,1,0,0,True,False,MJ,141.0,141,158,batting,623168.0,Tyler Heineman
+823801,62,63,2,1.0,fd4c3b21-883d-3a56-bf83-5c30d2b80f3c,Ball,1,0,0,True,False,MJ,141.0,141,158,batting,665489.0,Vladimir Guerrero Jr.
+823802,2,3,2,3.0,be9ed5f9-d6d9-3c02-9a6d-f5ecd6a7064c,Ball,2,1,2,False,False,MJ,158.0,141,158,fielding,661388.0,William Contreras
+823802,6,7,3,4.0,4b614044-940f-3a84-8611-18b1fb657074,Ball,2,2,2,False,False,MJ,141.0,158,141,fielding,678218.0,Brandon Valenzuela
+823802,76,77,0,1.0,eec748c7-cc95-30f4-b5a5-85f3dac79f3e,Called Strike,0,1,1,False,False,MJ,158.0,158,141,batting,596142.0,Gary Sánchez
+823802,85,86,1,,,"Umpire reviewed (tag play), call on the field was overturned: Myles Straw caught stealing 3rd base, catcher William Contreras to third baseman Luis Rengifo.",1,0,2,True,False,NA,,141,158,unknown,,
+823802,90,91,1,1.0,45fbd561-dc11-38f9-a3d1-8ba90a2ca6d6,Ball,1,0,2,False,False,MJ,141.0,158,141,fielding,623168.0,Tyler Heineman
+823803,26,27,1,2.0,c9eb8e8d-af6d-3506-8c56-584101e5d44a,Ball,2,0,1,True,False,MJ,158.0,158,141,batting,596142.0,Gary Sánchez
+823803,47,48,1,2.0,c1e3c46f-f3c5-3e5d-9da7-1f6e9a23956f,Called Strike,1,1,2,True,False,MJ,158.0,141,158,fielding,596142.0,Gary Sánchez
+823803,51,52,3,1.0,35816d13-41e6-3ebf-8c07-dbffe3193c34,Ball,1,0,2,True,False,MJ,158.0,158,141,batting,687401.0,Joey Ortiz
+823804,5,6,2,3.0,ae14bf2d-1e31-34d9-b976-f07454edd0e7,Ball,2,1,1,False,False,MJ,120.0,158,120,fielding,686452.0,Drew Millas
+823804,9,10,0,1.0,9ba92ee0-cc15-3f79-beb0-461fdb45e314,Called Strike,0,1,2,True,False,MJ,158.0,120,158,fielding,661388.0,William Contreras
+823804,14,15,2,3.0,7aed7152-0032-331e-a88d-960b534ab6b9,Called Strike,1,2,1,True,False,MJ,158.0,120,158,fielding,661388.0,William Contreras
+823804,53,54,3,2.0,ab24de7a-4bf9-3620-b2f4-d1b9ab2c4279,Called Strike,0,2,2,True,False,MJ,158.0,120,158,fielding,661388.0,William Contreras
+823804,54,55,3,,,"Nationals challenged (tag play), call on the field was overturned: Curtis Mead steals (2) 2nd base. James Wood steals (2) home.",1,2,2,True,False,MA,120.0,120,158,batting,,
+823804,60,61,2,2.0,6c75030d-7bcd-3d19-82fd-5232742aa8ed,Ball,2,0,2,True,False,MJ,158.0,158,120,batting,596142.0,Gary Sánchez
+823805,11,12,2,3.0,9b5dc4ed-eba9-3488-904d-c4f0977c6f79,Ball,1,2,1,True,False,MJ,158.0,158,120,batting,596142.0,Gary Sánchez
+823805,51,52,0,1.0,7d228cba-3244-3804-b9fb-6f0494e0d506,Called Strike,0,1,2,False,False,MJ,120.0,120,158,batting,695578.0,James Wood
+823805,51,52,1,2.0,74931113-ea7b-3823-8014-c300816a364f,Called Strike,0,2,2,True,False,MJ,158.0,120,158,fielding,661388.0,William Contreras
+823805,59,60,4,4.0,dccc7426-c4e1-33c5-b546-38fb3b34cfb9,Called Strike,2,2,0,False,False,MJ,158.0,158,120,batting,687401.0,Joey Ortiz
+823805,71,72,3,4.0,a42f3a5d-4e31-3430-9786-f997fb2ec3fb,Ball,3,1,1,False,False,MJ,120.0,158,120,fielding,686452.0,Drew Millas
+823806,26,27,1,2.0,1a410d61-b7c0-343f-a720-314250fc1da0,Called Strike,0,2,2,True,False,MJ,139.0,158,139,fielding,663743.0,Nick Fortes
+823807,14,15,3,4.0,46e9b17c-d4d1-3eb6-adbc-9d6da2f6a126,Called Strike,2,2,0,False,False,MJ,139.0,139,158,batting,802415.0,Chandler Simpson
+823807,22,23,1,2.0,6c8d6a35-5660-3afe-b924-16af38852573,Ball,2,0,0,True,False,MJ,139.0,139,158,batting,641584.0,Jake Fraley
+823807,37,38,2,2.0,ec895f58-0b06-33e7-a930-4995e66c6bb8,Called Strike,1,1,2,True,False,MJ,139.0,158,139,fielding,663743.0,Nick Fortes
+823807,41,42,2,3.0,2b221a39-274d-3543-a09a-2f128a4371d8,Ball,2,1,2,True,False,MJ,139.0,139,158,batting,641584.0,Jake Fraley
+823807,63,64,2,1.0,8396fc94-407a-347d-a694-5811501cffbe,Called Strike,0,1,2,True,False,MJ,158.0,139,158,fielding,661388.0,William Contreras
+823808,35,36,0,1.0,38559c74-85c4-3f4e-a510-b536ef99a605,Called Strike,0,1,1,True,False,MJ,158.0,120,158,fielding,661388.0,William Contreras
+823808,44,45,2,1.0,8e56007f-5a70-34d7-9741-0401042fc692,Called Strike,0,1,1,True,False,MJ,158.0,120,158,fielding,661388.0,William Contreras
+823808,44,45,3,2.0,16c892db-2cbf-33e9-8dcf-315bf6e81f9b,Called Strike,0,2,1,True,False,MJ,158.0,120,158,fielding,661388.0,William Contreras
+823808,63,64,0,1.0,a7f478fb-7e5e-3f34-8066-03779a7b03f8,Called Strike,0,1,2,True,False,MJ,120.0,158,120,fielding,686452.0,Drew Millas
+823809,57,58,3,3.0,ffe3bcca-6cda-3a5e-a887-d9c7ea603c60,Ball,3,0,0,False,False,MJ,139.0,158,139,fielding,663743.0,Nick Fortes
+823809,62,63,2,1.0,3ec0c6bf-de8f-38e5-a350-bfc1910ec1e6,Called Strike,0,1,0,True,False,MJ,158.0,139,158,fielding,661388.0,William Contreras
+823809,70,71,7,4.0,53ef37f1-e908-3d2c-a7cb-da10bfcc9aa0,Called Strike,2,2,2,True,False,MJ,139.0,158,139,fielding,663743.0,Nick Fortes
+823810,18,19,1,2.0,59ce914a-c46a-3637-bd5e-698f3e1d6343,Called Strike,0,2,2,True,False,MJ,158.0,145,158,fielding,691620.0,Jeferson Quero
+823810,51,52,0,1.0,0dc426ad-ff7d-39be-b2b5-46acf2464a44,Ball,1,0,0,False,False,MJ,145.0,158,145,fielding,700337.0,Edgar Quero
+823811,0,1,5,3.0,3650d63b-0cf3-39d7-8235-18bc10baad21,Ball,3,0,0,False,False,MJ,158.0,145,158,fielding,661388.0,William Contreras
+823811,68,69,3,3.0,e56c59be-59e6-3b33-8745-be7513050c97,Called Strike,1,2,1,False,False,MJ,145.0,145,158,batting,672820.0,Lenyn Sosa
+823812,4,5,3,4.0,a1b4c12d-c0d8-36fa-be32-adb1c89a12e7,Called Strike,2,2,0,True,False,MJ,145.0,158,145,fielding,700337.0,Edgar Quero
+823812,16,17,1,1.0,7c118725-d77d-341b-bc0d-467a72b438c0,Called Strike,0,1,1,True,False,MJ,145.0,158,145,fielding,700337.0,Edgar Quero
+823812,18,19,2,3.0,539f2ea8-6428-3cdb-9804-342b3ee481ad,Called Strike,1,2,2,True,False,MJ,145.0,158,145,fielding,700337.0,Edgar Quero
+823812,55,56,2,3.0,dec1c79d-295c-33c9-80af-1ffc916a2c89,Ball,2,1,2,False,False,MJ,145.0,158,145,fielding,700337.0,Edgar Quero
+823878,3,4,3,4.0,3ba14e8e-481d-3b2c-9300-3611857c9c21,Ball,3,1,0,True,False,MJ,146.0,146,138,batting,805300.0,Jakob Marsee
+823878,33,34,3,4.0,615373f5-1526-3055-b71b-b1f7c9ff6eb5,Called Strike,2,2,0,True,False,MJ,146.0,138,146,fielding,682663.0,Agustín Ramírez
+823878,35,36,7,5.0,6e83b30f-fee3-34a8-87db-95f1c44450e5,Ball,1,2,1,True,False,MJ,138.0,138,146,batting,695336.0,Thomas Saggese
+823878,50,51,2,1.0,9d768cda-0835-3d17-8e95-182415d2e3ce,Called Strike,0,1,0,False,False,MJ,138.0,138,146,batting,602104.0,Ramón Urías
+823878,57,58,1,1.0,54618168-3281-3385-a912-ef059863c41d,Called Strike,0,1,0,True,False,MJ,146.0,138,146,fielding,682663.0,Agustín Ramírez
+823878,70,71,3,4.0,dbacd6cb-437d-3ea2-9385-ff5f005a12ef,Called Strike,2,2,2,True,False,MJ,146.0,138,146,fielding,682663.0,Agustín Ramírez
+823879,23,24,0,1.0,043aa675-50ab-3a8a-bd02-2b33179712d4,Called Strike,0,1,1,True,False,MJ,146.0,138,146,fielding,682663.0,Agustín Ramírez
+823879,42,43,0,1.0,ac1678b1-c928-3cce-a4d9-f23e9f51c598,Called Strike,0,1,1,True,False,MJ,146.0,138,146,fielding,682663.0,Agustín Ramírez
+823880,2,3,2,3.0,5edf95c1-e301-31c0-8fa5-91741d4bae80,Called Strike,1,2,1,True,False,MJ,146.0,138,146,fielding,689414.0,Liam Hicks
+823880,40,41,2,1.0,bc48aaa2-ca91-3a84-94c6-45569f5b15eb,Called Strike,0,1,2,True,False,MJ,146.0,138,146,fielding,689414.0,Liam Hicks
+823880,42,43,2,3.0,02c9440a-9a3d-3a60-8152-42431d6708a0,Called Strike,1,2,0,True,False,MJ,138.0,146,138,fielding,686780.0,Pedro Pagés
+823880,52,53,4,3.0,75512511-7866-3b4f-80d8-cbc0f4e23239,Called Strike,1,2,0,False,False,MJ,138.0,138,146,batting,671056.0,Iván Herrera
+823880,63,64,1,,,"Cardinals challenged (tag play), call on the field was overturned: Nathan Church steals (3) 2nd base.",0,1,2,True,False,MA,138.0,138,146,batting,,
+823880,67,68,4,4.0,f082a3f3-06ae-3693-85aa-e7c8daca0b63,Called Strike,2,2,1,False,False,MJ,146.0,146,138,batting,682663.0,Agustín Ramírez
+823880,77,78,1,2.0,1b68c8e5-9c48-3201-8eef-056c08ff23e0,Called Strike,0,2,2,True,False,MJ,138.0,146,138,fielding,686780.0,Pedro Pagés
+823880,77,78,5,5.0,59d2535d-4b58-334c-92a1-4c3864c026e4,Ball,2,2,2,False,False,MJ,138.0,146,138,fielding,686780.0,Pedro Pagés
+823881,55,56,0,1.0,373d882a-e4ab-3a52-ad5d-e37d1201d9fe,Called Strike,0,1,0,False,False,MJ,146.0,146,158,batting,682663.0,Agustín Ramírez
+823882,10,11,1,2.0,0e4881d8-77e0-39f4-aca8-4c9d17b7e5c3,Called Strike,0,2,2,True,False,MJ,146.0,158,146,fielding,689414.0,Liam Hicks
+823882,16,17,1,2.0,80128b1a-83dc-3c9d-94bc-b650004f4e48,Ball,1,1,0,False,False,MJ,146.0,158,146,fielding,689414.0,Liam Hicks
+823882,23,24,3,3.0,ab90ea1d-6650-36f8-b093-d0de27ea30b0,Called Strike,1,2,1,False,False,MJ,146.0,146,158,batting,669364.0,Xavier Edwards
+823882,25,26,1,2.0,a8243663-f564-3e16-a223-cafde6cd3bf4,Called Strike,0,2,0,False,False,MJ,158.0,158,146,batting,641343.0,Jake Bauers
+823882,68,69,3,2.0,34952d5c-85b4-3d26-a1d6-c746b8371c8e,Called Strike,0,2,2,True,False,MJ,158.0,146,158,fielding,661388.0,William Contreras
+823882,77,78,2,2.0,462c8ed5-edaf-3e02-9c5f-eb3dd71e653b,Ball,2,0,1,False,False,MJ,158.0,146,158,fielding,661388.0,William Contreras
+823883,11,12,0,1.0,be0ec457-00e1-369c-8d2c-528e268061f0,Called Strike,0,1,0,True,False,MJ,158.0,146,158,fielding,661388.0,William Contreras
+823883,29,30,3,2.0,6b199de5-511a-3475-b761-6d5b233373e7,Ball,2,0,2,False,False,MJ,146.0,158,146,fielding,682663.0,Agustín Ramírez
+823883,54,55,3,4.0,3f080e4e-5d82-3d9d-860e-e61cfeb33a07,Called Strike,2,2,2,False,False,MJ,158.0,158,146,batting,596142.0,Gary Sánchez
+823883,73,74,3,3.0,396cdbd7-0dab-3bd8-90ef-cc756b6d8153,Called Strike,1,2,0,False,False,MJ,146.0,146,158,batting,681393.0,Connor Norby
+823883,85,86,1,2.0,b7f633b6-ba93-3e1d-a188-8a40d5ea7ecb,Ball,1,1,1,False,False,MJ,158.0,146,158,fielding,661388.0,William Contreras
+823884,11,12,1,2.0,ed090635-2d76-3d67-b4f2-22fb43186f72,Ball,2,0,0,False,False,MJ,146.0,113,146,fielding,682663.0,Agustín Ramírez
+823884,24,25,4,5.0,802276c5-fc60-3e9a-9da5-e4419c0aab6d,Called Strike,3,2,1,True,False,MJ,113.0,146,113,fielding,664731.0,P.J. Higgins
+823884,36,37,3,,44c7fe9f-5d03-3376-875b-eef2ea3aeb9b,Pickoff Attempt 1B,1,2,1,False,False,MA,113.0,146,113,fielding,,
+823884,42,43,0,1.0,0d480bc5-bec7-3cb7-aed8-417c98d13380,Ball,1,0,0,True,False,MJ,146.0,146,113,batting,669364.0,Xavier Edwards
+823884,76,77,0,1.0,1590a4ee-af93-358a-9ac4-79d5987dba50,Called Strike,0,1,0,True,False,MJ,146.0,113,146,fielding,682663.0,Agustín Ramírez
+823885,10,11,2,2.0,3f0c31f5-a454-36d6-b400-245b61dbdac1,Called Strike,0,2,1,False,False,MJ,146.0,146,113,batting,681393.0,Connor Norby
+823885,58,59,1,1.0,a3e8f548-5c14-38be-9b8a-aa59caafdca2,Called Strike,0,1,0,True,False,MJ,146.0,113,146,fielding,689414.0,Liam Hicks
+823885,63,64,2,3.0,580a9aff-b0da-381e-b780-1e3d17b47795,Ball,1,2,1,False,False,MJ,113.0,146,113,fielding,663886.0,Tyler Stephenson
+823885,65,66,3,2.0,f64b70e3-50bf-31d8-8ba4-ce01dc211e25,Ball,1,1,0,True,False,MJ,113.0,113,146,batting,701398.0,Sal Stewart
+823885,76,77,1,2.0,01111b3d-d0b2-3db3-8321-3ea2c3042cda,Ball,1,1,2,False,False,MJ,146.0,113,146,fielding,689414.0,Liam Hicks
+823886,65,66,0,1.0,22c879e8-32c8-3c9c-80af-b66984d5a115,Called Strike,0,1,1,False,False,MJ,146.0,146,113,batting,672640.0,Otto Lopez
+823887,35,36,2,2.0,0bb60ed7-04f6-3527-8002-ea8939d6a28a,Called Strike,1,1,2,True,False,MJ,113.0,146,113,fielding,663886.0,Tyler Stephenson
+823887,51,52,2,2.0,f020cd3f-c3d7-3f31-972d-168a4b8cc972,Called Strike,1,1,1,True,False,MJ,113.0,146,113,fielding,663886.0,Tyler Stephenson
+823887,64,65,2,1.0,916ae48d-4dfb-3ff7-a5e1-3e1481f112e1,Ball,1,0,1,True,False,MJ,113.0,113,146,batting,701398.0,Sal Stewart
+823887,65,66,4,5.0,b9138575-a5e5-303e-a408-791dfe4bd408,Called Strike,3,2,2,True,False,MJ,146.0,113,146,fielding,682663.0,Agustín Ramírez
+823888,24,25,1,2.0,27e033da-335e-3c6f-9465-d29d23a51424,Ball,2,0,0,True,False,MJ,145.0,145,146,batting,669720.0,Austin Hays
+823888,38,39,1,2.0,60cd4b22-41ea-30ef-8856-0cae909fa881,Called Strike,0,2,2,True,False,MJ,146.0,145,146,fielding,682663.0,Agustín Ramírez
+823888,46,47,0,1.0,18f14a1e-4a0c-3a48-8a68-ab3345694b57,Ball,1,0,1,False,False,MJ,145.0,146,145,fielding,700337.0,Edgar Quero
+823888,67,68,1,1.0,e2e5c354-11d4-34a1-8f8c-6ceb123e35b8,Ball,1,0,0,False,False,MJ,146.0,145,146,fielding,682663.0,Agustín Ramírez
+823890,28,29,0,1.0,b2fb234d-0348-349c-8ccb-0f3048d71470,Ball,1,0,1,False,False,MJ,146.0,145,146,fielding,689414.0,Liam Hicks
+823890,29,30,2,3.0,c0b09724-bbbf-3c55-aded-7fc0c8bb3e21,Ball,2,1,1,True,False,MJ,145.0,145,146,batting,808959.0,Munetaka Murakami
+823890,64,65,2,2.0,54ca0401-2f6a-3284-a4d2-cd5562658c0f,Ball,1,1,0,False,False,MJ,145.0,146,145,fielding,700337.0,Edgar Quero
+823890,65,66,1,2.0,c93bf7d5-6c15-33a6-a5b4-71dd115e67c7,Ball,2,0,1,False,False,MJ,145.0,146,145,fielding,700337.0,Edgar Quero
+823891,34,35,5,5.0,4cdff3bd-9fab-3ca3-aa52-71748c98fe05,Ball,3,2,0,False,False,MJ,115.0,146,115,fielding,500779.0,Jose Quintana
+823891,58,59,0,1.0,93e9b188-bbd9-372c-8c26-0dadb040d624,Called Strike,0,1,2,True,False,MJ,115.0,146,115,fielding,664954.0,Brett Sullivan
+823891,63,64,1,2.0,bed9b555-1072-366a-9cfe-ff6398d0c524,Called Strike,0,2,1,False,False,MJ,146.0,146,115,batting,682663.0,Agustín Ramírez
+823892,10,11,0,1.0,1424c41e-bd4f-3bc0-8960-80143ee2ce82,Called Strike,0,1,2,True,False,MJ,146.0,115,146,fielding,689414.0,Liam Hicks
+823892,37,38,5,4.0,e77d1b8a-bdfd-3987-a932-7e343654ee8b,Ball,3,1,1,False,False,MJ,146.0,115,146,fielding,689414.0,Liam Hicks
+823893,30,31,2,2.0,a8bed893-a785-3a2b-8cfa-41cb832cd605,Ball,1,1,2,False,False,MJ,146.0,115,146,fielding,682663.0,Agustín Ramírez
+823893,34,35,2,,fbfa891e-88fa-3b62-8e85-bd0697b83102,Pickoff Attempt 1B,1,1,1,False,False,MA,115.0,146,115,fielding,,
+823893,60,61,0,1.0,9a9a409f-f567-35e8-8658-cf9fe97182f1,Called Strike,0,1,2,True,False,MJ,146.0,115,146,fielding,682663.0,Agustín Ramírez
+823893,65,66,6,3.0,0a835341-bfed-3372-bcf1-65bd9b7f44a1,Called Strike,1,2,0,True,False,MJ,146.0,115,146,fielding,682663.0,Agustín Ramírez
+823963,10,11,1,2.0,7ec03bf7-81ab-3430-ac3e-241d0e0bcf20,Called Strike,1,1,0,True,False,MJ,121.0,119,121,fielding,682626.0,Francisco Alvarez
+823963,14,15,3,3.0,4880d2c7-fe49-37e7-a609-ac32b38f0cce,Ball,1,2,2,False,False,MJ,121.0,119,121,fielding,682626.0,Francisco Alvarez
+823963,18,19,8,8.0,cafeedaa-5105-369c-874a-bfb70761cf32,Ball,3,2,2,False,False,MJ,119.0,121,119,fielding,669257.0,Will Smith
+823963,59,60,3,3.0,b717c932-3fa8-3e9f-85f3-2e3bcabf5c9f,Called Strike,1,2,0,True,False,MJ,121.0,119,121,fielding,682626.0,Francisco Alvarez
+823963,72,73,1,2.0,1198ec12-f949-3f64-af3f-1cf72b0754ae,Ball,2,0,2,False,False,MJ,119.0,121,119,fielding,669257.0,Will Smith
+823964,27,28,2,3.0,bb3605cc-9f76-3d13-870a-8dab178eed42,Called Strike,1,2,2,False,False,MJ,121.0,121,119,batting,668901.0,Mark Vientos
+823964,46,47,0,1.0,851a20ac-f07a-380a-b87f-185aedd67221,Called Strike,0,1,0,True,False,MJ,119.0,121,119,fielding,669257.0,Will Smith
+823964,58,59,3,4.0,6a64ac32-913e-39f4-91f1-c31ffeca457c,Called Strike,2,2,0,True,False,MJ,121.0,119,121,fielding,682626.0,Francisco Alvarez
+823964,63,64,2,3.0,7c678e90-56e8-3067-a757-b9bc5399e3f1,Called Strike,1,2,0,True,False,MJ,119.0,121,119,fielding,669257.0,Will Smith
+823965,45,46,2,2.0,44bf62f8-7e6a-3f39-b25a-a33cad0abd5a,Called Strike,0,2,0,True,False,MJ,121.0,119,121,fielding,682626.0,Francisco Alvarez
+823965,53,54,8,6.0,72ae6b84-198f-3185-b0bf-0476fbc953f5,Ball,3,2,2,False,False,MJ,119.0,121,119,fielding,669257.0,Will Smith
+823966,24,25,4,3.0,55bcb1c3-4624-3146-bd78-b5a82e660c60,Ball,1,2,2,False,False,MJ,119.0,140,119,fielding,687221.0,Dalton Rushing
+823966,53,54,1,2.0,df2c5f44-1b78-3b82-9517-7426865c75ec,Ball,2,0,1,False,False,MJ,140.0,119,140,fielding,643376.0,Danny Jansen
+823966,59,60,2,2.0,dd1a45ae-3ef4-382e-b004-281bc59e3745,Called Strike,0,2,0,True,False,MJ,140.0,119,140,fielding,643376.0,Danny Jansen
+823967,26,27,1,2.0,cd53859b-f0f4-3dec-8a03-98613e812794,Called Strike,0,2,2,True,False,MJ,140.0,119,140,fielding,543309.0,Kyle Higashioka
+823967,54,55,7,7.0,8326f4cf-7ccf-3897-933a-0ad15b8e05ef,Ball,3,2,1,False,False,MJ,140.0,119,140,fielding,676395.0,Robert Garcia
+823967,62,63,0,,ac467363-6c7e-3e4d-9ae4-fd5313df7f75,Pickoff Attempt 1B,0,0,0,False,False,MA,140.0,119,140,fielding,,
+823967,62,63,3,2.0,0ee7de59-acf3-3937-b930-b99214f51ed5,Ball,2,0,1,False,False,MJ,140.0,119,140,fielding,543309.0,Kyle Higashioka
+823968,2,3,1,2.0,ce3647ac-e5ff-359c-99cd-104ff31650fd,Called Strike,1,1,2,True,False,MJ,119.0,140,119,fielding,669257.0,Will Smith
+823968,63,64,4,4.0,ac76eec8-ccf7-3266-9847-4ff077db6b20,Ball,3,1,0,True,False,MJ,119.0,119,140,batting,606192.0,Teoscar Hernández
+823968,69,70,5,3.0,e4ffc348-d5de-3df7-9a7c-0c87bd04d5ba,Ball,1,2,0,True,False,MJ,140.0,140,119,batting,592626.0,Joc Pederson
+823969,18,19,2,3.0,0e9953ae-7478-335e-8985-7a19d5cf5842,Called Strike,1,2,2,True,False,MJ,119.0,114,119,fielding,669257.0,Will Smith
+823969,25,26,0,1.0,26962eb7-620b-32c8-a765-72f566aee793,Called Strike,0,1,2,True,False,MJ,119.0,114,119,fielding,669257.0,Will Smith
+823969,29,30,3,4.0,6981fc01-ecce-3fb9-a73b-00b6dc1d5de8,Ball,2,2,1,False,False,MJ,114.0,119,114,fielding,666310.0,Bo Naylor
+823969,34,35,3,4.0,2b5f2339-250e-37c4-a1fe-fce13424d678,Called Strike,2,2,1,False,False,MJ,114.0,114,119,batting,672356.0,Gabriel Arias
+823969,71,72,1,1.0,0a31c769-25ae-33cb-b0a7-257ac3ad9685,Called Strike,0,1,1,True,False,MJ,119.0,114,119,fielding,669257.0,Will Smith
+823971,22,23,3,4.0,0dc9d67d-1b85-3a39-8a0c-b6ff908a55c3,Called Strike,2,2,1,True,False,MJ,109.0,119,109,fielding,672515.0,Gabriel Moreno
+823971,37,38,4,5.0,fc5befa7-1373-3259-8024-a9a3187f97ea,Called Strike,3,2,2,True,False,MJ,119.0,109,119,fielding,669257.0,Will Smith
+823972,0,1,5,3.0,354f37fd-93ab-3505-855d-67d06f14f347,Ball,2,1,0,True,False,MJ,114.0,114,119,batting,680757.0,Steven Kwan
+823972,22,23,8,,,"Guardians challenged (tag play), call on the field was overturned: pitcher Parker Messick picks off Miguel Rojas at 2nd on throw to shortstop Gabriel Arias.",3,2,1,True,False,MA,114.0,119,114,fielding,,
+823972,54,55,3,4.0,27ee8d60-c02f-32fa-91af-592ce9c1967b,Ball,2,2,1,True,False,MJ,119.0,119,114,batting,606192.0,Teoscar Hernández
+823972,69,70,0,1.0,8468a77d-b7cf-3c42-9471-0fd238847166,Ball,1,0,0,True,False,MJ,119.0,119,114,batting,606192.0,Teoscar Hernández
+823972,71,72,2,2.0,e67ee720-dc00-37fd-9715-969f504dc4d0,Ball,2,0,2,False,False,MJ,114.0,119,114,fielding,595978.0,Austin Hedges
+823973,8,9,1,2.0,f0f3a40c-4371-3561-8914-f1e92d93cb5b,Ball,1,1,0,False,False,MJ,119.0,109,119,fielding,669257.0,Will Smith
+823973,38,39,3,3.0,fd0c0bc2-cda1-38e7-9b61-36fc17efe766,Called Strike,1,2,1,True,False,MJ,109.0,119,109,fielding,543510.0,James McCann
+823973,63,64,1,2.0,0233cb49-e87f-3980-adf5-6d8f9c86dfaa,Ball,2,0,1,False,False,MJ,119.0,109,119,fielding,621242.0,Edwin Díaz
+823974,1,2,2,3.0,4fa76fa3-f299-3931-9880-93a8cf137a3c,Ball,1,2,1,True,False,MJ,109.0,109,119,batting,682998.0,Corbin Carroll
+824044,18,19,1,2.0,d28ebbc9-9358-3019-8c0e-9e0c27f5922a,Called Strike,0,2,2,True,False,MJ,108.0,141,108,fielding,681351.0,Logan O'Hoppe
+824044,46,47,0,1.0,64bc9921-2ebe-35e8-8751-bd2d44ebaa88,Called Strike,0,1,2,True,False,MJ,108.0,141,108,fielding,681351.0,Logan O'Hoppe
+824044,61,62,5,2.0,9bef5829-3e2c-3450-b290-65b4b302c529,Ball,1,1,2,False,False,MJ,141.0,108,141,fielding,623168.0,Tyler Heineman
+824044,62,63,1,2.0,3f129526-ba05-342d-93e7-64ed5307502f,Called Strike,1,1,2,False,False,MJ,108.0,108,141,batting,694384.0,Nolan Schanuel
+824044,74,75,1,2.0,341835bb-e8bc-3011-bd60-7090cb9ce9b0,Called Strike,0,2,0,False,False,MJ,141.0,141,108,batting,665926.0,Andrés Giménez
+824045,24,25,0,1.0,5bf5da28-99e9-3f52-9ea0-b8c267d4eaf1,Called Strike,0,1,2,True,False,MJ,108.0,141,108,fielding,681351.0,Logan O'Hoppe
+824045,68,69,3,1.0,acdeeb8a-ca45-3461-ab41-04bf5fb8ad9f,Called Strike,0,1,1,True,False,MJ,141.0,108,141,fielding,678218.0,Brandon Valenzuela
+824046,0,1,5,3.0,ce2f7dab-e445-3d9c-b3b9-059986ff5851,Ball,3,0,0,True,False,MJ,141.0,141,108,batting,676914.0,Davis Schneider
+824046,7,8,1,2.0,807ade04-3a89-3b55-a5cf-1d49aa0d995d,Called Strike,0,2,1,True,False,MJ,141.0,108,141,fielding,623168.0,Tyler Heineman
+824046,11,12,0,1.0,7e178432-7f5f-37c1-9937-e823b87b7694,Called Strike,0,1,0,True,False,MJ,108.0,141,108,fielding,681351.0,Logan O'Hoppe
+824046,17,18,0,1.0,3b93be39-e35f-3116-96b7-09c7aa23e1a8,Called Strike,0,1,2,True,False,MJ,141.0,108,141,fielding,623168.0,Tyler Heineman
+824046,56,57,1,2.0,dcf67084-76c2-3fd0-98b1-cd84706d1f10,Ball,1,1,1,True,False,MJ,108.0,108,141,batting,624428.0,Adam Frazier
+824047,38,39,1,2.0,99dba7ff-221a-3347-a9e4-e86b264b01d1,Called Strike,0,2,2,True,False,MJ,135.0,108,135,fielding,669134.0,Luis Campusano
+824047,70,71,0,1.0,80d2e548-beef-3b08-8c4e-892ca58a9aa4,Ball,1,0,2,False,False,MJ,135.0,108,135,fielding,666023.0,Freddy Fermin
+824048,50,51,1,2.0,a72633fb-dee5-35b7-85b9-bae7fce1c1df,Ball,1,1,0,False,False,MJ,108.0,135,108,fielding,681351.0,Logan O'Hoppe
+824048,63,64,4,3.0,5b2ad3ac-02b1-3ce6-8139-7b49532d8490,Called Strike,1,2,0,True,False,MJ,135.0,108,135,fielding,669134.0,Luis Campusano
+824048,69,70,2,2.0,3352e28b-b08d-3668-9d3a-00b40a8bc179,Ball,1,1,0,False,False,MJ,135.0,108,135,fielding,669134.0,Luis Campusano
+824049,38,39,1,2.0,b807f24e-967a-3466-8856-f4b96df72896,Ball,2,0,2,False,False,MJ,108.0,135,108,fielding,681351.0,Logan O'Hoppe
+824049,61,62,3,4.0,b8a6b608-4b02-3a84-b093-97f018e818e3,Ball,2,2,2,True,False,MJ,108.0,108,135,batting,694384.0,Nolan Schanuel
+824050,20,21,2,3.0,41080c4f-ddcc-3219-a809-062d2a9de4fc,Called Strike,1,2,0,False,False,MJ,144.0,144,108,batting,660670.0,Ronald Acuña Jr.
+824050,25,26,0,1.0,4f57df01-1e5d-3060-be00-688a31efe5b0,Called Strike,0,1,2,False,False,MJ,144.0,144,108,batting,643289.0,Mauricio Dubón
+824050,40,41,3,2.0,24e2aa2c-a4d2-3582-9c88-18552b8658ce,Ball,2,0,1,False,False,MJ,108.0,144,108,fielding,681351.0,Logan O'Hoppe
+824051,13,14,0,1.0,7f85edbd-c519-349d-b8d2-1d9de266f148,Ball,1,0,0,False,False,MJ,144.0,108,144,fielding,641680.0,Jonah Heim
+824051,58,59,2,3.0,d0ea22e4-e09d-3cae-afbd-c6367ac008ab,Called Strike,2,1,2,False,False,MJ,108.0,108,144,batting,694384.0,Nolan Schanuel
+824052,2,3,2,3.0,686dc559-acf5-3665-bf98-7341f45170dd,Called Strike,1,2,1,False,False,MJ,144.0,144,108,batting,621566.0,Matt Olson
+824052,42,43,3,4.0,a2615904-2d79-3f62-9920-65b98138f615,Ball,3,1,2,True,False,MJ,144.0,144,108,batting,660670.0,Ronald Acuña Jr.
+824053,13,14,0,1.0,b5790c14-3f66-3e7f-9184-b59cd276ff5a,Called Strike,0,1,1,True,False,MJ,108.0,136,108,fielding,681351.0,Logan O'Hoppe
+824053,28,29,0,1.0,db39dc03-cbd7-3822-becd-69d52cf54ef7,Called Strike,0,1,0,True,False,MJ,136.0,108,136,fielding,641598.0,Mitch Garver
+824053,46,47,0,1.0,a8e4eab8-21e3-3904-b028-6c74c153da44,Ball,1,0,2,False,False,MJ,108.0,136,108,fielding,681351.0,Logan O'Hoppe
+824053,55,56,5,4.0,26413f8c-153b-36c5-8df4-f8a87a0f9dc3,Ball,2,2,1,True,False,MJ,136.0,136,108,batting,670042.0,Luke Raley
+824053,65,66,0,1.0,1ac2b1b0-bcbc-37a1-ace1-3dcc982823e3,Called Strike,0,1,1,True,False,MJ,136.0,108,136,fielding,641598.0,Mitch Garver
+824053,73,74,2,1.0,c69cc31e-7a8e-35d6-b5f8-b463a6ef2743,Called Strike,0,1,1,True,False,MJ,136.0,108,136,fielding,641598.0,Mitch Garver
+824054,21,22,3,4.0,643f55a8-609c-3e7c-9f3c-43fd9271e4ae,Called Strike,3,1,2,True,False,MJ,108.0,136,108,fielding,681351.0,Logan O'Hoppe
+824054,46,47,0,1.0,fd27e727-3591-3084-9be8-c29ea01fd59f,Called Strike,0,1,0,True,False,MJ,108.0,136,108,fielding,681351.0,Logan O'Hoppe
+824054,48,49,3,3.0,0c6ebdd5-215b-3ab0-aeea-cdaab503d0f3,Called Strike,1,2,0,True,False,MJ,108.0,136,108,fielding,681351.0,Logan O'Hoppe
+824054,63,64,3,3.0,5c21545d-02e1-3440-8dbc-c7e17ab72736,Called Strike,2,1,0,True,False,MJ,108.0,136,108,fielding,681351.0,Logan O'Hoppe
+824056,17,18,4,4.0,57f85fda-98f6-3b30-99e3-8746beda7316,Called Strike,2,2,2,True,False,MJ,108.0,136,108,fielding,681351.0,Logan O'Hoppe
+824056,20,21,1,,,"Mariners challenged (tag play), call on the field was overturned: pitcher Bryan Woo picks off Oswald Peraza at 1st on throw to first baseman Josh Naylor.",0,0,2,True,False,MA,136.0,108,136,fielding,,
+824056,36,37,3,4.0,534a287c-c8e6-3820-9cbe-744030762de4,Ball,3,1,2,False,False,MJ,136.0,108,136,fielding,663728.0,Cal Raleigh
+824056,44,45,1,2.0,e416b653-e620-353c-88d9-6b9f30e99d5f,Called Strike,1,1,1,True,False,MJ,108.0,136,108,fielding,681351.0,Logan O'Hoppe
+824056,58,59,5,4.0,69e85a7d-f04f-3efa-9c2c-d59f68bc46dc,Foul,1,2,0,True,False,MI,108.0,136,108,fielding,,
+824056,68,69,0,1.0,1bd2245e-7469-3eb9-b7aa-585be5285274,Called Strike,0,1,2,False,False,MJ,136.0,136,108,batting,647304.0,Josh Naylor
+824056,71,72,2,1.0,11de99bd-2d7d-3d1e-bb5f-9f56b799a0cc,Called Strike,0,1,0,False,False,MJ,108.0,108,136,batting,694384.0,Nolan Schanuel
+824123,7,8,1,2.0,c53c0c42-bd24-3a35-b278-a37d7b2dc4b6,Ball,2,0,2,True,False,MJ,118.0,118,110,batting,686469.0,Vinnie Pasquantino
+824123,35,36,1,2.0,4007918f-a5b4-31c6-8b21-3dc3d529f2a0,Ball,2,0,0,False,False,MJ,118.0,110,118,fielding,695600.0,Carter Jensen
+824123,76,77,0,1.0,50be85b3-5b58-30af-840b-062f79baea2b,Ball,1,0,2,False,False,MJ,110.0,118,110,fielding,694212.0,Samuel Basallo
+824124,9,10,0,1.0,759fd51f-fb43-35d9-b277-8fb91ecc6170,Ball,1,0,0,True,False,MJ,118.0,118,108,batting,657041.0,Lane Thomas
+824124,9,10,2,3.0,3f52a037-162a-358d-aa8a-40b20b668aa3,Called Strike,2,1,0,True,False,MJ,108.0,118,108,fielding,681351.0,Logan O'Hoppe
+824124,68,69,3,3.0,d169c977-fa13-38c0-8ba8-0ce075ee5e7f,Called Strike,2,1,2,False,False,MJ,118.0,118,108,batting,686555.0,Isaac Collins
+824124,71,72,4,1.0,3ee81e81-8825-3274-9f2f-8b884990a461,Ball,1,0,0,False,False,MJ,118.0,108,118,fielding,553869.0,Elias Díaz
+824125,20,21,2,2.0,40685295-e699-3972-b095-af17696eeb8a,Called Strike,0,2,2,True,False,MJ,118.0,110,118,fielding,695600.0,Carter Jensen
+824125,44,45,2,,,Pickoff Attempt 1B,1,1,0,False,False,MA,110.0,118,110,fielding,,
+824125,60,61,2,3.0,94eccf6e-704d-3342-a968-20a55e1fc01e,Called Strike,1,2,1,True,False,MJ,118.0,110,118,fielding,695600.0,Carter Jensen
+824125,66,67,1,,,"Umpire reviewed (tag play), call on the field was upheld: pitcher Lucas Erceg picks off Gunnar Henderson at 1st on throw to first baseman Vinnie Pasquantino.",0,0,1,False,False,NA,,110,118,unknown,,
+824125,66,67,4,3.0,d7945a52-229e-3eec-af6b-111054f58166,Called Strike,2,1,1,False,False,MJ,110.0,110,118,batting,621493.0,Taylor Ward
+824125,69,70,4,3.0,48c5ae9b-897a-365b-936a-826288ddc2f2,Ball,1,2,2,False,False,MJ,118.0,110,118,fielding,695600.0,Carter Jensen
+824126,54,55,3,2.0,29f564fc-53e8-3666-a4c6-535eedb69afc,Ball,1,1,2,True,False,MJ,118.0,118,145,batting,672580.0,Maikel Garcia
+824126,61,62,3,3.0,c82c7527-33ad-3343-a9b2-9aee582a74b1,Ball,2,1,0,False,False,MJ,145.0,118,145,fielding,700337.0,Edgar Quero
+824127,13,14,2,2.0,e77d82b3-6361-3d3b-8013-41a8aab0506a,Called Strike,0,2,2,True,False,MJ,118.0,110,118,fielding,521692.0,Salvador Perez
+824127,35,36,0,1.0,a7756b0e-27b0-38ab-b7c0-60b1aa98c483,Ball,1,0,0,True,False,MJ,110.0,110,118,batting,621493.0,Taylor Ward
+824127,37,38,1,2.0,45424164-625e-345b-bd80-7f3c006bee1f,Called Strike,0,2,2,True,False,MJ,118.0,110,118,fielding,521692.0,Salvador Perez
+824127,70,71,3,2.0,845a197f-c69d-3e63-8f24-f909e0ebb7c2,Called Strike,1,1,0,True,False,MJ,118.0,110,118,fielding,521692.0,Salvador Perez
+824128,56,57,1,1.0,30f4fca1-3f18-3653-a4ec-076d85db38d3,Called Strike,0,1,0,True,False,MJ,118.0,145,118,fielding,521692.0,Salvador Perez
+824129,1,2,1,2.0,02e4a9f2-1bd2-3331-9452-9fb85d99d725,Called Strike,0,2,1,True,False,MJ,118.0,145,118,fielding,521692.0,Salvador Perez
+824129,34,35,2,3.0,58efa311-f7cb-3fb8-a127-4e7526803f49,Called Strike,1,2,2,False,False,MJ,145.0,145,118,batting,695020.0,Tanner Murray
+824130,2,3,1,2.0,1cd6dd2f-5d7b-3b01-ab85-1ec68ba583c4,Called Strike,0,2,1,False,False,MJ,145.0,145,118,batting,678246.0,Miguel Vargas
+824130,23,24,0,1.0,67a57a81-b00a-35b0-9974-0600338ea0ee,Ball,1,0,0,True,False,MJ,145.0,145,118,batting,808959.0,Munetaka Murakami
+824130,48,49,2,2.0,6405fea8-ecc6-36f4-9cbe-a2c8c4b81266,Called Strike,1,1,1,True,False,MJ,118.0,145,118,fielding,521692.0,Salvador Perez
+824130,71,72,4,5.0,e2e372cd-dbb9-3228-8c17-577f57629460,Ball,3,2,1,False,False,MJ,145.0,118,145,fielding,622554.0,Seranthony Domínguez
+824131,24,25,5,4.0,108960c4-de56-3583-93b0-95ffc9bfe057,Ball,2,2,1,False,False,MJ,158.0,118,158,fielding,661388.0,William Contreras
+824131,26,27,2,3.0,921d5079-a203-3895-a7cc-f42fb363d76f,Called Strike,1,2,0,False,False,MJ,158.0,158,118,batting,596142.0,Gary Sánchez
+824131,59,60,6,4.0,e960a5da-8924-3aea-82c1-5b029bb82632,Called Strike,2,2,0,False,False,MJ,118.0,118,158,batting,686555.0,Isaac Collins
+824132,2,3,4,4.0,ce13742d-3da7-39ac-8709-4e13fb67b66c,Ball,3,1,1,False,False,MJ,118.0,158,118,fielding,521692.0,Salvador Perez
+824132,16,17,0,1.0,c6d403f6-29fd-3604-aaa5-cca79438b115,Called Strike,0,1,2,True,False,MJ,158.0,118,158,fielding,661388.0,William Contreras
+824132,32,33,2,3.0,dc1b03e6-bcb9-3797-90bf-522baa8398df,Called Strike,2,1,0,True,False,MJ,118.0,158,118,fielding,521692.0,Salvador Perez
+824132,78,79,1,2.0,c3cbe70d-993a-35e9-a4ae-a83c01116835,Ball,2,0,1,True,False,MJ,118.0,118,158,batting,657041.0,Lane Thomas
+824132,80,81,3,4.0,7a047512-e4be-3772-8dcc-63205cc8ef73,Ball,3,1,2,True,False,MJ,118.0,118,158,batting,677951.0,Bobby Witt Jr.
+824133,12,13,0,1.0,acff5ba3-6671-37a1-afd7-7ff5f17d707e,Called Strike,0,1,1,True,False,MJ,142.0,118,142,fielding,605170.0,Victor Caratini
+824133,12,13,1,2.0,40fe0460-0de1-361e-933f-d3c0f0b43a22,Called Strike,0,2,1,True,False,MJ,142.0,118,142,fielding,605170.0,Victor Caratini
+824133,44,45,2,3.0,feb9da99-6ade-35b7-9daf-765af3967d9d,Ball,2,1,2,False,False,MJ,142.0,118,142,fielding,605170.0,Victor Caratini
+824133,67,68,4,4.0,b9d75f8a-8818-3da9-a0be-bd4b8ff25315,Ball,3,1,1,True,False,MJ,142.0,142,118,batting,668904.0,Royce Lewis
+824134,33,34,2,1.0,ef9f2303-0a60-3ed2-b81c-0871f71974c2,Called Strike,0,1,2,True,False,MJ,158.0,118,158,fielding,596142.0,Gary Sánchez
+824134,46,47,3,4.0,e568e387-5ede-3d37-a253-319ccd75c803,Ball,3,1,1,True,False,MJ,118.0,118,158,batting,695506.0,Jac Caglianone
+824134,67,68,0,1.0,6f27b718-3d2b-352f-8b1c-e788d2f2b17d,Called Strike,0,1,1,False,False,MJ,158.0,158,118,batting,596142.0,Gary Sánchez
+824134,69,70,3,3.0,b272f810-ea76-3c9f-b073-edc2cb8bd0c8,Called Strike,1,2,0,False,False,MJ,118.0,118,158,batting,672580.0,Maikel Garcia
+824134,71,72,1,2.0,0a4ae2f3-d670-3cae-9059-ea73bf2dfd4b,Called Strike,0,2,2,True,False,MJ,158.0,118,158,fielding,596142.0,Gary Sánchez
+824135,36,37,3,4.0,947d8527-ac36-3bdd-8d0a-6b7ea68536fe,Ball,3,1,1,True,False,MJ,118.0,118,142,batting,672580.0,Maikel Garcia
+824135,52,53,5,4.0,d9acfbaf-73a5-3abf-bb03-ba7c0c62d39a,Called Strike,2,2,1,True,False,MJ,142.0,118,142,fielding,680777.0,Ryan Jeffers
+824135,52,53,7,6.0,eaef57d3-f79e-317b-9935-1cd909705e39,Ball,3,2,1,False,False,MJ,142.0,118,142,fielding,680777.0,Ryan Jeffers
+824135,60,61,3,2.0,9576f600-5f5f-380a-a4ec-0a32a518794d,Ball,2,0,0,False,False,MJ,118.0,142,118,fielding,521692.0,Salvador Perez
+824136,6,7,3,4.0,35032120-5cc7-318b-b6be-9b19dc6e7d50,Called Strike,2,2,1,True,False,MJ,142.0,118,142,fielding,680777.0,Ryan Jeffers
+824136,20,21,4,4.0,1f1b557f-edc6-3acc-981d-0975ffe06008,Ball,3,1,2,True,False,MJ,142.0,142,118,batting,668885.0,Austin Martin
+824136,44,45,1,1.0,41631495-e900-3b91-a074-af68d757ce51,Ball,1,0,0,True,False,MJ,142.0,142,118,batting,807712.0,Luke Keaschall
+824136,58,59,6,3.0,76b985f7-84b7-3abe-a43f-b5a4920f10e8,Ball,3,0,0,False,False,MJ,118.0,142,118,fielding,521692.0,Salvador Perez
+824136,71,72,6,5.0,95a48530-0398-31a5-82dd-8947e3389b07,Ball,3,2,0,True,False,MJ,142.0,142,118,batting,680777.0,Ryan Jeffers
+824136,85,86,0,1.0,7efdd303-d758-34a3-a9c1-ec0b9b544bc1,Ball,1,0,0,True,False,MJ,142.0,142,118,batting,605137.0,Josh Bell
+824204,3,4,3,3.0,9d07bc7f-3e2d-32c8-aeb7-f57f957adf79,Called Strike,1,2,0,True,False,MJ,117.0,147,117,fielding,673237.0,Yainer Diaz
+824204,13,14,3,4.0,6bfe918c-0094-3d08-a1b9-9240316bb475,Ball,3,1,2,True,False,MJ,147.0,147,117,batting,592450.0,Aaron Judge
+824204,65,66,1,2.0,63dc0275-cb42-39ca-8104-8d66884170b6,Called Strike,0,2,1,True,False,MJ,147.0,117,147,fielding,641555.0,J.C. Escarra
+824204,73,74,3,4.0,0ab1e0fe-5e6a-309c-bf5a-3d074fa9a0c4,Called Strike,2,2,0,True,False,MJ,147.0,117,147,fielding,641555.0,J.C. Escarra
+824204,80,81,1,2.0,57cfa1a2-f289-3709-aac7-c3202dc47587,Ball,2,0,0,False,False,MJ,147.0,117,147,fielding,641555.0,J.C. Escarra
+824205,27,28,1,2.0,fd2f417f-f8a2-32dc-b595-04a1e24fc6d4,Called Strike,0,2,0,True,False,MJ,117.0,138,117,fielding,673237.0,Yainer Diaz
+824205,32,33,4,5.0,2168ab4b-2978-32c1-ac50-ff8c7c486b6b,Called Strike,3,2,2,False,False,MJ,138.0,138,117,batting,687363.0,Victor Scott II
+824205,51,52,0,1.0,5e91bbd1-0944-389b-abb7-b6690566c6d3,Ball,1,0,2,False,False,MJ,117.0,138,117,fielding,673237.0,Yainer Diaz
+824206,61,62,1,2.0,47631146-c155-3dcb-abf8-dd0c392b6310,Ball,1,1,0,False,False,MJ,117.0,138,117,fielding,543877.0,Christian Vázquez
+824206,76,77,3,4.0,305bb743-5ea6-342a-b420-a142a953f62d,Called Strike,2,2,1,True,False,MJ,138.0,117,138,fielding,671056.0,Iván Herrera
+824207,50,51,1,1.0,605b7c7f-3323-3105-bcca-48b17e8a3c37,Called Strike,0,1,0,True,False,MJ,138.0,117,138,fielding,686780.0,Pedro Pagés
+824208,16,17,2,3.0,27163324-c53f-37a6-80c0-1045e3c718c4,Ball,2,1,2,True,False,MJ,117.0,117,115,batting,514888.0,Jose Altuve
+824208,20,21,1,1.0,352181fa-70c0-36ff-a74b-f638ae864fbd,Called Strike,0,1,0,False,False,MJ,115.0,115,117,batting,671289.0,Tyler Freeman
+824208,21,22,0,1.0,dc9d7a53-201c-381e-94e7-0ba966f84d25,Called Strike,0,1,2,True,False,MJ,117.0,115,117,fielding,673237.0,Yainer Diaz
+824208,23,24,1,2.0,868d238d-e49b-3104-84d1-b79d3524193b,Ball,1,1,1,True,False,MJ,117.0,117,115,batting,670623.0,Isaac Paredes
+824208,50,51,0,1.0,d6c58384-622b-3555-93da-ed431511b1ad,Called Strike,0,1,2,False,False,MJ,117.0,117,115,batting,701358.0,Cam Smith
+824208,55,56,5,4.0,4793bd7c-4560-3a4c-ac75-6b5d789a9fc2,Ball,2,2,1,True,False,MJ,115.0,115,117,batting,696100.0,Hunter Goodman
+824208,59,60,0,1.0,dd7d8c52-7183-3b63-bbdd-3621ce8d425d,Called Strike,0,1,2,False,False,MJ,117.0,117,115,batting,514888.0,Jose Altuve
+824209,33,34,3,4.0,15435d50-bb9b-3fa1-8b8b-0cd9dedea858,Called Strike,2,2,2,True,False,MJ,117.0,115,117,fielding,673237.0,Yainer Diaz
+824209,50,51,2,3.0,594fa841-4b88-3128-9a0e-265ddb3b2fdd,Called Strike,1,2,2,False,False,MJ,115.0,115,117,batting,687597.0,Jordan Beck
+824209,70,71,2,3.0,a9f6ab57-d3e0-3bf9-ad75-a5f7da4c7c3c,Ball,2,1,1,True,False,MJ,115.0,115,117,batting,666397.0,Edouard Julien
+824210,55,56,2,3.0,8dd680c2-1dcb-33ad-801b-42ea70d3937a,Ball,3,0,2,True,False,MJ,115.0,115,117,batting,671289.0,Tyler Freeman
+824210,64,65,2,3.0,ab8c63c9-7413-311f-a5f4-0037589a8015,Ball,2,1,0,True,False,MJ,117.0,117,115,batting,572233.0,Christian Walker
+824210,72,73,4,5.0,603a8e6a-cbe6-330f-9993-5f16c29827ba,Called Strike,3,2,2,False,False,MJ,115.0,115,117,batting,666160.0,Mickey Moniak
+824211,4,5,3,4.0,9c6cb3b3-c7e7-3803-b553-536e314603b2,Ball,3,1,1,True,False,MJ,111.0,111,117,batting,677800.0,Wilyer Abreu
+824211,20,21,4,5.0,5b967dff-0822-3885-88d8-075687c59413,Ball,3,2,2,True,False,MJ,117.0,117,111,batting,514888.0,Jose Altuve
+824212,3,4,1,2.0,c32cbb74-7d0d-38fe-b281-c979e6b9645e,Called Strike,1,1,2,True,False,MJ,117.0,111,117,fielding,673237.0,Yainer Diaz
+824212,17,18,0,1.0,dccda9af-0521-3bd7-b9b7-dda6ca4799e9,Called Strike,0,1,1,False,False,MJ,111.0,111,117,batting,678882.0,Ceddanne Rafaela
+824213,19,20,2,3.0,80c8520f-a44a-3ca1-ba08-be114e27c0c8,Called Strike,1,2,0,False,False,MJ,117.0,117,108,batting,514888.0,Jose Altuve
+824213,24,25,3,4.0,eaaa0d18-4e55-3acc-b0ef-6f5b47c69932,Called Strike,2,2,0,False,False,MJ,108.0,108,117,batting,694384.0,Nolan Schanuel
+824213,46,47,1,2.0,fd8c05e6-b002-38a3-adf4-d183ca71a842,Called Strike,1,1,2,False,False,MJ,117.0,117,108,batting,701358.0,Cam Smith
+824213,81,82,2,2.0,75ac00ff-a890-377e-9d1b-29c1e50b1e19,Ball,2,0,2,True,False,MJ,108.0,108,117,batting,545361.0,Mike Trout
+824214,3,4,3,3.0,8e8fdbfd-354e-3fa5-b251-e2306240f2ae,Ball,2,1,0,True,False,MJ,117.0,117,111,batting,514888.0,Jose Altuve
+824214,28,29,3,3.0,ff115bc8-7868-31eb-b4a0-4fd190312219,Ball,1,2,2,False,False,MJ,111.0,117,111,fielding,665966.0,Carlos Narváez
+824214,48,49,2,3.0,3ebceecf-a076-38a6-a3af-213a7d056a40,Ball,2,1,1,False,False,MJ,117.0,111,117,fielding,673237.0,Yainer Diaz
+824215,79,80,0,1.0,bd504d5b-4091-3499-8708-96919b7e1962,Ball,1,0,1,True,False,MJ,108.0,108,117,batting,545361.0,Mike Trout
+824215,82,83,7,8.0,2c2c0f41-d17a-396b-ac75-a4e413c87e1d,Ball,2,2,2,False,False,MJ,117.0,108,117,fielding,543877.0,Christian Vázquez
+824216,3,4,0,1.0,ff58659f-e466-3d04-9ab9-123e7c4efaa4,Ball,1,0,2,False,False,MJ,117.0,108,117,fielding,673237.0,Yainer Diaz
+824216,17,18,0,1.0,be052085-a815-3663-9af5-00f92faa0154,Called Strike,0,1,1,True,False,MJ,108.0,117,108,fielding,681351.0,Logan O'Hoppe
+824218,5,6,1,2.0,c59e587f-f83b-3fd6-b91e-768177f8b8f5,Foul,0,2,1,False,False,NH,,117,108,unknown,,
+824218,50,51,2,2.0,423e35f3-2231-3aa6-b64b-db0ef5f7085e,Called Strike,0,2,2,True,False,MJ,108.0,117,108,fielding,681351.0,Logan O'Hoppe
+824218,74,75,1,2.0,de240292-09d8-315f-bdc3-eb0f7d657ddc,Called Strike,1,1,2,False,False,MJ,108.0,108,117,batting,669326.0,Bryce Teodosio
+824286,69,70,2,2.0,3325743e-d99b-3dd1-9501-eab16c8b0ca2,Called Strike,0,2,1,False,False,MJ,158.0,158,116,batting,686217.0,Sal Frelick
+824288,19,20,1,2.0,ede6e7b3-2051-3f09-b00c-f5478988cd0a,Called Strike,0,2,1,True,False,MJ,158.0,116,158,fielding,596142.0,Gary Sánchez
+824288,52,53,5,5.0,43cc675d-66eb-3f92-a3f3-7469280d0303,Called Strike,3,2,1,False,False,MJ,158.0,158,116,batting,663604.0,Brandon Lockridge
+824288,68,69,2,1.0,d46cb26d-1cbc-3032-a73b-a8192dedeb81,Called Strike,0,1,0,True,False,MJ,158.0,116,158,fielding,596142.0,Gary Sánchez
+824289,4,5,2,3.0,9d04130f-3168-36e3-a0a9-779ef834b039,Ball,2,1,0,True,False,MJ,116.0,116,118,batting,805808.0,Kevin McGonigle
+824289,4,5,3,4.0,4d52fcab-eef2-30c4-b73e-6c54f2de0fc6,Ball,3,1,0,False,False,MJ,118.0,116,118,fielding,695600.0,Carter Jensen
+824289,15,16,1,1.0,66e3ce3f-e666-3a39-a1f3-c13b6ac2f4ea,Ball,1,0,0,True,False,MJ,118.0,118,116,batting,686681.0,Michael Massey
+824290,16,17,1,2.0,9fcaff6b-2078-3c48-9b84-e882393d6c22,Ball,1,1,1,False,False,MJ,158.0,116,158,fielding,661388.0,William Contreras
+824291,5,6,4,5.0,8fa41b08-ed5b-39ff-9c0b-a0b566ad2454,Called Strike,3,2,1,True,False,MJ,118.0,116,118,fielding,521692.0,Salvador Perez
+824291,63,64,1,2.0,64c99154-25ab-311f-a53a-619e3899d77d,Called Strike,0,2,2,False,False,MJ,118.0,118,116,batting,695506.0,Jac Caglianone
+824291,64,65,2,,926988cc-6482-35eb-95b0-bccbb0ada7e5,Pickoff Attempt 1B,0,0,2,True,False,MA,118.0,118,116,batting,,
+824292,25,26,0,1.0,6be464ab-7c52-3942-bbea-de36c7026dfc,Ball,1,0,2,False,False,MJ,116.0,118,116,fielding,693307.0,Dillon Dingler
+824292,34,35,4,5.0,2630c31b-5c84-38f8-967a-3669d66ded92,Called Strike,3,2,0,True,False,MJ,118.0,116,118,fielding,521692.0,Salvador Perez
+824293,4,5,0,1.0,3d8ec139-5a50-3381-a55f-cc09c0147d71,Ball,1,0,1,False,False,MJ,146.0,116,146,fielding,682663.0,Agustín Ramírez
+824293,9,10,0,1.0,88f4b6cc-b310-30b3-b8a5-480632962a4b,Called Strike,0,1,0,True,False,MJ,116.0,146,116,fielding,693307.0,Dillon Dingler
+824293,43,44,1,1.0,790bb08a-2856-32cc-af3a-15e1a8a2fd6d,Called Strike,0,1,1,True,False,MJ,146.0,116,146,fielding,682663.0,Agustín Ramírez
+824293,49,50,1,1.0,52b04813-cb9b-30a8-afbe-c2bddc3c8d84,Ball,1,0,2,False,False,MJ,146.0,116,146,fielding,682663.0,Agustín Ramírez
+824293,56,57,6,5.0,ad7de813-cd6d-34f7-9596-c04d8a4a9fe0,Ball,3,2,0,True,False,MJ,116.0,116,146,batting,682985.0,Riley Greene
+824294,66,67,5,4.0,12617ce1-ae8a-3374-8381-7070806f2f3c,Called Strike,2,2,2,False,False,MJ,116.0,116,146,batting,679529.0,Spencer Torkelson
+824295,51,52,4,4.0,eac20f46-da64-3ee1-9410-053ffe8ee31e,Ball,2,2,2,True,False,MJ,116.0,116,138,batting,693307.0,Dillon Dingler
+824296,1,2,0,1.0,504b60fe-8738-3bd4-a091-4aee631920e5,Called Strike,0,1,1,True,False,MJ,116.0,138,116,fielding,693307.0,Dillon Dingler
+824296,3,4,2,3.0,721aab52-022b-3103-8f21-8b4e21e05eba,Called Strike,1,2,0,True,False,MJ,138.0,116,138,fielding,686780.0,Pedro Pagés
+824296,17,18,1,2.0,7d0b83d8-4bfc-3dea-ac22-db419e395cbf,Called Strike,0,2,1,True,False,MJ,116.0,138,116,fielding,693307.0,Dillon Dingler
+824296,39,40,0,1.0,3fe426b7-77d2-380d-9bd9-250cd43966d6,Called Strike,0,1,2,True,False,MJ,116.0,138,116,fielding,693307.0,Dillon Dingler
+824296,42,43,1,2.0,e700d788-7f58-3a4a-b156-902785d0cc00,Called Strike,1,1,2,False,False,MJ,116.0,116,138,batting,681481.0,Kerry Carpenter
+824297,4,5,3,3.0,da07cf7c-216f-379e-8bc1-3e99d0d51b57,Ball,2,1,0,True,False,MJ,116.0,116,146,batting,805808.0,Kevin McGonigle
+824297,6,7,0,1.0,3e184c8d-1a59-3819-a82b-2218b97511e6,Called Strike,0,1,1,True,False,MJ,146.0,116,146,fielding,689414.0,Liam Hicks
+824297,36,37,1,2.0,e4894d5b-7aab-36a8-83ec-665c65db8f30,Called Strike,1,1,0,True,False,MJ,146.0,116,146,fielding,689414.0,Liam Hicks
+824299,67,68,4,4.0,d61ed7d0-a5bb-3843-a02c-22fa9da2e899,Ball,2,2,2,False,False,MJ,138.0,116,138,fielding,671056.0,Iván Herrera
+824367,28,29,3,4.0,fe069ab6-db18-37a5-8cb2-2bd86c99d630,Called Strike,2,2,1,False,False,MJ,115.0,115,135,batting,650489.0,Willi Castro
+824368,2,3,0,1.0,cd2cfc25-caee-385a-a267-04b3d08ac809,Called Strike,0,1,2,True,False,MJ,115.0,135,115,fielding,664954.0,Brett Sullivan
+824368,27,28,0,1.0,0d0461f2-f845-3764-b7ed-2012cfabf359,Called Strike,0,1,1,True,False,MJ,115.0,135,115,fielding,664954.0,Brett Sullivan
+824368,32,33,0,1.0,0dc2fac8-7f9a-3013-8a4a-cb273dbcad92,Called Strike,0,1,2,True,False,MJ,135.0,115,135,fielding,666023.0,Freddy Fermin
+824368,45,46,2,3.0,d813e7cd-a6bb-308b-bbc9-5b05aef10e14,Ball,3,0,2,False,False,MJ,115.0,135,115,fielding,664954.0,Brett Sullivan
+824368,69,70,3,4.0,2e2b649f-a886-3ccc-ae36-688f743cf4f6,Ball,3,1,2,False,False,MJ,115.0,135,115,fielding,664954.0,Brett Sullivan
+824369,48,49,0,1.0,10b2de97-6909-3056-a832-0378af7b5ff1,Called Strike,0,1,0,False,False,MJ,115.0,115,135,batting,681198.0,TJ Rumfield
+824369,59,60,2,1.0,2f80b0d3-94b6-3434-b306-cbe56acfb3d1,Called Strike,0,1,1,True,False,MJ,115.0,135,115,fielding,696100.0,Hunter Goodman
+824370,5,6,0,1.0,4d706810-fa27-342b-9808-f91ae654558b,Called Strike,0,1,0,True,False,MJ,119.0,115,119,fielding,669257.0,Will Smith
+824370,52,53,1,2.0,00bbbb0d-9440-36a5-8a38-7573a50e52e1,Called Strike,0,2,1,False,False,MJ,115.0,115,119,batting,678662.0,Ezequiel Tovar
+824370,67,68,1,2.0,d95e87c1-6579-3713-a520-42b39c8d7e1d,Called Strike,1,1,1,True,False,MJ,115.0,119,115,fielding,664954.0,Brett Sullivan
+824371,6,7,1,2.0,59e2be9a-e0af-3e82-8d13-d34009402d04,Called Strike,0,2,0,True,False,MJ,115.0,119,115,fielding,696100.0,Hunter Goodman
+824371,14,15,0,1.0,f1686d11-5c56-3d93-b4db-f9a020761315,Ball,1,0,1,False,False,MJ,115.0,119,115,fielding,547179.0,Michael Lorenzen
+824371,14,15,1,2.0,1b7f9f8e-9c55-38c4-a654-851980b46352,Called Strike,1,1,1,True,False,MJ,115.0,119,115,fielding,696100.0,Hunter Goodman
+824371,52,53,3,4.0,a9ddc193-c660-38c2-96a3-89731b8f446f,Called Strike,2,2,0,True,False,MJ,119.0,115,119,fielding,669257.0,Will Smith
+824371,62,63,4,1.0,a35b4e2c-7cbe-3dfc-b58b-17d6702ab27a,Called Strike,0,1,0,False,False,MJ,115.0,115,119,batting,678662.0,Ezequiel Tovar
+824372,5,6,1,2.0,42a11811-f5fb-317d-b80c-6195a15695d5,Ball,2,0,0,True,False,MJ,115.0,115,119,batting,666397.0,Edouard Julien
+824372,18,19,1,2.0,1757a0da-7bfa-3a41-b913-1ce380b668b7,Called Strike,1,1,0,True,False,MJ,115.0,119,115,fielding,696100.0,Hunter Goodman
+824372,43,44,1,2.0,7393e32f-5c69-370c-8cc8-c2fb58dbd01c,Ball,2,0,1,True,False,MJ,119.0,119,115,batting,606192.0,Teoscar Hernández
+824373,4,5,1,2.0,2861291b-0013-3ac2-b7ec-03d5fd9938b3,Ball,2,0,2,False,False,MJ,115.0,119,115,fielding,664954.0,Brett Sullivan
+824373,71,72,2,3.0,ef249641-db65-34ba-8978-8aff561c058d,Called Strike,1,2,1,False,False,MJ,115.0,115,119,batting,681198.0,TJ Rumfield
+824374,54,55,4,4.0,cee4f4d9-1ee2-3687-bb3c-32b3d9131c68,Ball,3,1,2,False,False,MJ,115.0,117,115,fielding,696100.0,Hunter Goodman
+824374,71,72,0,1.0,eee5ae7d-7968-3dcb-935c-f06cc40bf733,Ball,1,0,2,True,False,MJ,117.0,117,115,batting,701358.0,Cam Smith
+824374,79,80,3,4.0,eb1dd7e7-98bb-34b0-af60-9f25d883d175,Called Strike,2,2,1,True,False,MJ,115.0,117,115,fielding,696100.0,Hunter Goodman
+824375,8,9,0,1.0,5807b857-ffb1-3829-a0c8-c974bfb0d507,Called Strike,0,1,1,False,False,MJ,117.0,117,115,batting,701358.0,Cam Smith
+824375,18,19,1,2.0,2dd13372-7765-35cb-bbe7-1a0dfc715465,Ball,2,0,2,True,False,MJ,117.0,117,115,batting,670541.0,Yordan Alvarez
+824375,30,31,1,2.0,a00670ef-4c4b-3f82-8540-5c5e43f953e0,Ball,2,0,2,True,False,MJ,115.0,115,117,batting,687597.0,Jordan Beck
+824375,64,65,0,1.0,c0621b64-f9f1-3ad5-b6fd-7f32f0782e05,Called Strike,0,1,2,False,False,MJ,117.0,117,115,batting,572233.0,Christian Walker
+824376,2,3,0,1.0,37c49af6-31a5-324e-9f72-b71381aabf1e,Ball,1,0,2,True,False,MJ,117.0,117,115,batting,514888.0,Jose Altuve
+824376,41,42,0,1.0,87ebc2b6-4499-3540-a287-adb701c9890d,Called Strike,0,1,2,False,False,MJ,115.0,115,117,batting,687859.0,Troy Johnston
+824376,46,47,1,1.0,ffd05d4d-b08d-3b5e-82e2-b570da918385,Ball,1,0,2,False,False,MJ,117.0,115,117,fielding,673237.0,Yainer Diaz
+824377,7,8,0,1.0,82acae76-d6d7-32cf-9789-de9a01179dd9,Called Strike,0,1,1,True,False,MJ,115.0,143,115,fielding,696100.0,Hunter Goodman
+824377,49,50,0,1.0,d110a982-f9d4-30b9-84c4-fb170176e3fb,Called Strike,0,1,2,False,False,MJ,115.0,115,143,batting,696100.0,Hunter Goodman
+824377,52,53,1,2.0,06a018ef-9fbd-3b22-8e9a-6b2dd8765e79,Ball,2,0,2,True,False,MJ,143.0,143,115,batting,666969.0,Adolis García
+824377,68,69,1,2.0,59a98377-d7f6-345f-9b59-a58ce3b91138,Called Strike,0,2,1,False,False,MJ,115.0,115,143,batting,696100.0,Hunter Goodman
+824378,40,41,1,2.0,671dfffd-7638-3a97-b37c-8e1e5cbcaeea,Ball,1,1,0,False,False,MJ,115.0,143,115,fielding,664954.0,Brett Sullivan
+824378,46,47,4,5.0,b80f80a9-8e4c-3392-aecb-e860394e6fe0,Called Strike,3,2,2,True,False,MJ,143.0,115,143,fielding,666200.0,Jesús Luzardo
+824379,29,30,0,1.0,309331ba-522b-3846-a79e-7bb72aff5815,Called Strike,0,1,0,True,False,MJ,143.0,115,143,fielding,665561.0,Rafael Marchán
+824379,34,35,2,3.0,644c4184-dc6c-3c8c-91ca-63f9828b3a89,Called Strike,2,1,1,True,False,MJ,115.0,143,115,fielding,696100.0,Hunter Goodman
+824379,66,67,0,1.0,414a56c8-8c51-31b2-98d4-6e2885946394,Ball,1,0,2,True,False,MJ,143.0,143,115,batting,665561.0,Rafael Marchán
+824448,22,23,2,3.0,dffa30bd-9fe0-3f50-9230-18ec3f2129af,Ball,2,1,0,False,False,MJ,117.0,114,117,fielding,673237.0,Yainer Diaz
+824448,68,69,0,1.0,9c7af58f-a005-3b07-aedd-38067fb35928,Called Strike,0,1,0,True,False,MJ,117.0,114,117,fielding,673237.0,Yainer Diaz
+824448,80,81,6,6.0,fb1b722c-8e9b-3214-859e-44278238315b,Ball,2,2,2,False,False,MJ,114.0,117,114,fielding,666310.0,Bo Naylor
+824449,15,16,4,4.0,231ea89a-7127-3e5a-b1d6-4599b933aca3,Ball,3,1,1,True,False,MJ,114.0,114,117,batting,666310.0,Bo Naylor
+824449,19,20,1,2.0,5331fe90-5973-3d45-90fe-621bb3f3b0f8,Ball,2,0,2,True,False,MJ,117.0,117,114,batting,514888.0,Jose Altuve
+824449,47,48,1,1.0,6cc138d9-6499-3ea4-99a2-a295834de07b,Called Strike,0,1,2,True,False,MJ,117.0,114,117,fielding,543877.0,Christian Vázquez
+824449,51,52,3,4.0,82c806f0-bb66-3bce-8e75-edffb3c5d499,Ball,2,2,2,False,False,MJ,114.0,117,114,fielding,666310.0,Bo Naylor
+824449,70,71,6,5.0,e783fd44-39ad-3c11-94cf-538d91487902,Ball,3,2,2,False,False,MJ,117.0,114,117,fielding,543877.0,Christian Vázquez
+824450,5,6,3,3.0,af4e6e38-81ef-342e-a2d7-c5d42021025a,Ball,2,1,2,True,False,MJ,117.0,117,114,batting,666211.0,Taylor Trammell
+824450,83,84,1,2.0,ad7b70aa-bffa-3003-839f-96a88a50c328,Called Strike,0,2,2,True,False,MJ,117.0,114,117,fielding,673237.0,Yainer Diaz
+824451,5,6,1,2.0,62fc8d07-7834-39a1-9f4f-a429204174f0,Ball,1,1,1,False,False,MJ,110.0,114,110,fielding,694212.0,Samuel Basallo
+824451,33,34,0,1.0,19a31562-84f7-3684-a23c-7c8bc3654884,Called Strike,0,1,0,False,False,MJ,114.0,114,110,batting,671655.0,George Valera
+824452,1,2,0,1.0,60807cb6-a997-3b32-8f75-280743667aab,Called Strike,0,1,0,True,False,MJ,114.0,110,114,fielding,595978.0,Austin Hedges
+824452,9,10,4,4.0,acf0de11-d9cc-3512-b5df-28cc58e9b09f,Called Strike,2,2,1,True,False,MJ,114.0,110,114,fielding,595978.0,Austin Hedges
+824452,22,23,2,3.0,1751c102-a1b2-3497-9af3-73360057f930,Ball,1,2,0,True,False,MJ,110.0,110,114,batting,624413.0,Pete Alonso
+824452,72,73,2,1.0,6357d8fb-c369-3c86-96a7-aa4fdcf29a9d,Ball,1,0,0,True,False,MJ,110.0,110,114,batting,681297.0,Colton Cowser
+824452,74,75,0,1.0,ab6c8cce-ecf8-352b-95f8-a5ee763f49c6,Called Strike,0,1,2,False,False,MJ,110.0,110,114,batting,683002.0,Gunnar Henderson
+824453,62,63,3,2.0,3d63d39a-e70a-303d-a49f-1b0cd166bd64,Called Strike,0,2,0,False,False,MJ,110.0,110,114,batting,621493.0,Taylor Ward
+824454,29,30,0,1.0,827bc8e6-697b-3241-96b1-432e9f6f2f43,Foul,0,1,2,False,False,NH,,110,114,unknown,,
+824455,50,51,0,1.0,b58d54a2-ab8e-3222-9642-0cb4b07f79ee,Ball,1,0,2,True,False,MJ,114.0,114,118,batting,682657.0,Angel Martínez
+824455,56,57,2,1.0,f8db8c8c-26c2-3c30-bba8-3bf8f6fa26ad,Ball,1,0,0,True,False,MJ,114.0,114,118,batting,700932.0,Kyle Manzardo
+824456,5,6,3,4.0,85401203-7616-3336-8c36-516c1828dbfe,Called Strike,2,2,0,True,False,MJ,118.0,114,118,fielding,521692.0,Salvador Perez
+824456,47,48,0,1.0,e226d080-a8f2-393c-ab06-2cc1d01d21e6,Ball,1,0,1,False,False,MJ,118.0,114,118,fielding,521692.0,Salvador Perez
+824457,15,16,4,,,"Guardians challenged (play at 1st), call on the field was overturned: pitcher Gavin Williams picks off Isaac Collins at 1st on throw to first baseman Rhys Hoskins.",2,1,1,True,False,MF,114.0,118,114,fielding,,
+824457,29,30,5,4.0,c2df87d8-31c0-30f4-8e4b-391caf282b10,Ball,2,2,1,True,False,MJ,114.0,114,118,batting,656555.0,Rhys Hoskins
+824457,34,35,4,4.0,60f6924f-9e9b-32c3-9728-23e4a7e45977,Ball,2,2,2,True,False,MJ,118.0,118,114,batting,677951.0,Bobby Witt Jr.
+824457,58,59,2,1.0,6414f7e8-a2a8-39e6-9ba8-d7a4b4e91b73,Called Strike,0,1,1,False,False,MJ,118.0,118,114,batting,521692.0,Salvador Perez
+824457,59,60,2,,,"Royals challenged (tag play), call on the field was overturned: Bobby Witt Jr. steals (7) 3rd base. Lane Thomas steals (1) 2nd base.",0,1,2,True,False,MA,118.0,118,114,batting,,
+824458,52,53,1,2.0,3a96523c-17f0-3db8-97b8-0059506418aa,Called Strike,1,1,1,False,False,MJ,114.0,114,112,batting,677587.0,Brayan Rocchio
+824458,57,58,4,3.0,f87acba4-21b6-3bb0-b9e3-1d2b10dbd897,Ball,2,1,0,True,False,MJ,112.0,112,114,batting,694208.0,Moisés Ballesteros
+824459,7,8,0,1.0,85d56b59-6eaa-3e37-a07b-4d8f2cfe5ff8,Called Strike,0,1,1,True,False,MJ,114.0,112,114,fielding,666310.0,Bo Naylor
+824459,40,41,0,1.0,db25be5d-22d7-3b25-bf1e-62e53161ab1d,Called Strike,0,1,1,True,False,MJ,112.0,114,112,fielding,665804.0,Miguel Amaya
+824459,55,56,1,2.0,49a0f663-5db5-368c-adb5-9cfb3f258a2b,Ball,2,0,2,True,False,MJ,112.0,112,114,batting,608324.0,Alex Bregman
+824459,57,58,1,2.0,9d8a27a1-9e86-3c36-8efa-ed9f8f6de7f7,Ball,1,1,0,False,False,MJ,112.0,114,112,fielding,665804.0,Miguel Amaya
+824460,40,41,1,2.0,8c0eae64-169f-38cc-b673-21b350144267,Called Strike,0,2,1,True,False,MJ,114.0,112,114,fielding,595978.0,Austin Hedges
+824460,50,51,0,1.0,cf51482a-a305-3013-b7f8-4801bbddc755,Called Strike,0,1,2,True,False,MJ,112.0,114,112,fielding,608348.0,Carson Kelly
+824460,55,56,1,2.0,cd025a30-24b9-3d20-9591-6e65ff9d75fc,Ball,2,0,0,False,False,MJ,112.0,114,112,fielding,608348.0,Carson Kelly
+824460,73,74,3,3.0,b7191622-32bd-33ec-a356-e4292f39fbc7,Called Strike,1,2,2,False,False,MJ,112.0,112,114,batting,663538.0,Nico Hoerner
+824529,11,12,2,3.0,8ee565df-2b46-35eb-9f72-f4819b6fa409,Ball,3,0,0,True,False,MJ,113.0,113,116,batting,701398.0,Sal Stewart
+824529,55,56,0,1.0,8d8fe555-4d7c-3c01-a562-ddeb9f1ea3c3,Called Strike,0,1,2,False,False,MJ,113.0,113,116,batting,663647.0,Ke'Bryan Hayes
+824529,83,84,1,2.0,2289642a-b3cf-34d5-ba94-d7141cfcab7b,Called Strike,0,2,2,True,False,MJ,116.0,113,116,fielding,693307.0,Dillon Dingler
+824530,61,62,4,3.0,f63e55b9-123d-3fde-a09d-b9a1c85851e1,Called Strike,1,2,0,True,False,MJ,137.0,113,137,fielding,672275.0,Patrick Bailey
+824530,64,65,1,1.0,ab7cdf78-f7c6-3d1f-a853-27b8cf7f5399,Called Strike,0,1,2,True,False,MJ,137.0,113,137,fielding,672275.0,Patrick Bailey
+824531,40,41,1,2.0,252ce049-45d4-3dd9-91cf-d20a67c6c3ea,Ball,2,0,1,True,False,MJ,113.0,113,137,batting,667472.0,Dane Myers
+824532,28,29,2,3.0,947c1692-11ea-37a5-b426-1bcc1586edc1,Called Strike,1,2,1,True,False,MJ,137.0,113,137,fielding,691740.0,Daniel Susac
+824532,55,56,6,4.0,6c306eb6-fad8-33ba-b413-e002ca3d94b2,Called Strike,2,2,2,False,False,MJ,137.0,137,113,batting,671218.0,Heliot Ramos
+824532,63,64,0,1.0,fde2b9a3-b056-3a50-a4b5-d7afc9d4270c,Ball,1,0,0,True,False,MJ,137.0,137,113,batting,669477.0,Casey Schmitt
+824532,74,75,0,1.0,7140bd0d-91b6-33c1-984d-b52387afd0b0,Called Strike,0,1,2,True,False,MJ,113.0,137,113,fielding,663886.0,Tyler Stephenson
+824533,20,21,1,2.0,e3687838-1edb-3f5d-9caf-0f62bc34dba7,Called Strike,0,2,0,True,False,MJ,113.0,108,113,fielding,664731.0,P.J. Higgins
+824533,28,29,3,,,"Angels challenged (tag play), call on the field was overturned: Bryce Teodosio steals (1) 2nd base.",1,0,0,True,False,MA,108.0,108,113,batting,,
+824533,59,60,7,6.0,b15b4e82-4779-32b6-a1de-51bf631963bb,Ball,3,2,1,False,False,MJ,108.0,113,108,fielding,681351.0,Logan O'Hoppe
+824534,5,6,1,1.0,6d75f601-dbb8-3840-93ad-7760b7020d11,Ball,1,0,2,False,False,MJ,108.0,113,108,fielding,681351.0,Logan O'Hoppe
+824534,65,66,1,1.0,0c81ce4e-acb8-3837-b758-8541ec1561f9,Called Strike,0,1,1,False,False,MJ,108.0,108,113,batting,694384.0,Nolan Schanuel
+824535,0,1,3,1.0,c97fabd7-281b-3494-99eb-fa38e9d4adde,Called Strike,0,1,0,False,False,MJ,108.0,108,113,batting,687263.0,Zach Neto
+824535,47,48,2,3.0,25f0e91b-d12f-3b83-aa6a-af276d0ad438,Called Strike,2,1,2,True,False,MJ,113.0,108,113,fielding,663886.0,Tyler Stephenson
+824536,25,26,3,4.0,cdf975b7-d0ee-3f68-a61a-7dd6f1cef410,Ball,3,1,0,True,False,MJ,134.0,134,113,batting,694377.0,Nick Yorke
+824536,50,51,2,3.0,8054128a-95ad-3723-93d9-b6627871049d,Called Strike,1,2,1,False,False,MJ,113.0,113,134,batting,668715.0,Spencer Steer
+824536,56,57,2,3.0,deec50db-1d32-30cd-b769-374c84bbbd3c,Ball,2,1,2,True,False,MJ,134.0,134,113,batting,542303.0,Marcell Ozuna
+824536,74,75,1,2.0,3420d324-5d9e-3d29-9945-2e1073874ebc,Ball,1,1,1,False,False,MJ,134.0,113,134,fielding,642397.0,Gregory Soto
+824536,75,76,3,3.0,a80dfc9c-d67f-3f5e-b008-17e7c8647ead,Ball,1,2,2,True,False,MJ,113.0,113,134,batting,663886.0,Tyler Stephenson
+824537,16,17,0,1.0,72bf42c0-1bfb-3350-adf4-f5d32e2b1502,Called Strike,0,1,0,False,False,MJ,113.0,113,134,batting,701398.0,Sal Stewart
+824537,67,68,2,1.0,8befaa9c-ca66-3ffc-9a9c-5c9a001b97aa,Called Strike,0,1,0,False,False,MJ,134.0,134,113,batting,693304.0,Nick Gonzales
+824538,44,45,0,1.0,7a3c0ae6-1d1e-3a9d-9ed0-fd70b791fc25,Called Strike,0,1,0,True,False,MJ,111.0,113,111,fielding,657136.0,Connor Wong
+824538,52,53,3,3.0,56bbaa27-69c5-3895-8ca0-b6d62dd196fd,Called Strike,1,2,2,True,False,MJ,113.0,111,113,fielding,663886.0,Tyler Stephenson
+824539,43,44,3,4.0,f44b489d-69ba-3f32-8963-9f7d5edd2cdd,Called Strike,3,1,0,True,False,MJ,134.0,113,134,fielding,680779.0,Henry Davis
+824539,53,54,1,2.0,b078c6bf-89a5-3294-bf84-0c6cbfe7a8d8,Ball,2,0,1,True,False,MJ,113.0,113,134,batting,663647.0,Ke'Bryan Hayes
+824540,16,17,3,4.0,ad222420-8b09-33f4-9174-8cdf1180b0c4,Ball,2,2,0,False,False,MJ,111.0,113,111,fielding,665966.0,Carlos Narváez
+824540,21,22,3,4.0,b3d7b94c-9393-30bb-b0d9-5db22429e2b8,Ball,3,1,0,True,False,MJ,111.0,111,113,batting,701350.0,Roman Anthony
+824540,21,22,4,5.0,98a539cf-fe58-3284-a6b3-7fafe1bee299,Called Strike,3,2,0,False,False,MJ,111.0,111,113,batting,701350.0,Roman Anthony
+824540,58,59,2,2.0,3832259a-a652-3be5-9a43-14cc551cb075,Ball,2,0,2,True,False,MJ,113.0,113,111,batting,682829.0,Elly De La Cruz
+824540,60,61,4,5.0,ab28dbd6-23e6-3659-9c94-92cb0da7101e,Ball,2,2,2,True,False,MJ,113.0,113,111,batting,553993.0,Eugenio Suárez
+824540,60,61,5,6.0,43e2581b-ed92-333d-976c-4274bc74c43f,Ball,3,2,2,True,False,MJ,113.0,113,111,batting,553993.0,Eugenio Suárez
+824540,67,68,1,2.0,9a990b8c-e524-386f-a052-6bb8a00137aa,Ball,2,0,1,True,False,MJ,113.0,113,111,batting,666181.0,Will Benson
+824541,53,54,3,2.0,15dcffa2-071f-370a-ad62-e203793ef06c,Ball,1,1,0,False,False,MJ,111.0,113,111,fielding,665966.0,Carlos Narváez
+824541,53,54,4,3.0,2428b94a-31f7-3570-ac9b-a7d1e1c6f3f9,Ball,2,1,0,True,False,MJ,113.0,113,111,batting,663886.0,Tyler Stephenson
+824611,45,46,0,1.0,4fe286ff-4202-3ce7-a131-874d22c3aff2,Ball,1,0,0,True,False,MJ,145.0,145,120,batting,805367.0,Chase Meidroth
+824611,46,47,4,3.0,1993d1f5-261a-37e5-9e58-3aba52c4e5f4,Ball,3,0,1,True,False,MJ,145.0,145,120,batting,808959.0,Munetaka Murakami
+824611,48,49,2,3.0,56811439-c11b-3baf-9480-5bf752542d4b,Called Strike,1,2,2,False,False,MJ,145.0,145,120,batting,695657.0,Colson Montgomery
+824611,55,56,0,1.0,132d1593-2ed4-3e62-bf8f-0b271e9368d6,Ball,1,0,0,False,False,MJ,120.0,145,120,fielding,686452.0,Drew Millas
+824611,58,59,0,1.0,926dbab8-3815-39a8-9bcc-d263a9a22db5,Ball,1,0,1,False,False,MJ,120.0,145,120,fielding,686452.0,Drew Millas
+824611,65,66,2,3.0,cb3c51a6-9d26-3be9-8114-a9544ef03614,Ball,3,0,0,True,False,MJ,145.0,145,120,batting,695657.0,Colson Montgomery
+824614,9,10,8,,,"White Sox challenged (tag play), call on the field was upheld: Ryan Vilade steals (1) 2nd base.",3,2,1,False,False,MA,145.0,139,145,fielding,,
+824614,16,17,1,2.0,a090e202-1aa7-3a97-a8c7-0b201d508d2d,Ball,2,0,0,True,False,MJ,139.0,139,145,batting,670764.0,Taylor Walls
+824614,20,21,2,3.0,51047d66-09f4-3604-9c2a-845bdc13e1ef,Called Strike,2,1,2,True,False,MJ,145.0,139,145,fielding,700337.0,Edgar Quero
+824614,20,21,3,4.0,aab28c51-55a8-3367-b043-8a3ad6889858,Called Strike,2,2,2,True,False,MJ,145.0,139,145,fielding,700337.0,Edgar Quero
+824614,22,23,4,5.0,237223eb-2ce9-321d-9e16-5d732d4893dd,Ball,3,2,1,True,False,MJ,145.0,145,139,batting,678246.0,Miguel Vargas
+824614,52,53,0,1.0,7957c11f-8a95-33f2-bca5-b8aab326e9b2,Ball,1,0,1,False,False,MJ,139.0,145,139,fielding,663743.0,Nick Fortes
+824614,65,66,1,2.0,ecba608c-4332-304b-a596-ebc6f6ba0d13,Ball,1,1,2,False,False,MJ,145.0,139,145,fielding,700337.0,Edgar Quero
+824614,76,77,3,2.0,a3fbed39-5d3d-31aa-90cd-1e7b1c993a88,Ball,2,0,2,False,False,MJ,145.0,139,145,fielding,700337.0,Edgar Quero
+824615,52,53,0,1.0,361cefc6-e3fa-34cf-8989-0857bd070943,Called Strike,0,1,1,False,False,MJ,139.0,139,145,batting,666018.0,Jonathan Aranda
+824615,61,62,1,1.0,e7827737-467f-3f02-814e-939d087304ff,Ball,1,0,2,False,False,MJ,139.0,145,139,fielding,676439.0,Hunter Feduccia
+824616,3,4,1,2.0,ade21688-513e-3a45-a7fe-6f7ebd30f16a,Ball,2,0,1,False,False,MJ,145.0,139,145,fielding,700337.0,Edgar Quero
+824616,16,17,0,1.0,95ce267b-6238-370f-814d-ceba40d10798,Called Strike,0,1,1,True,False,MJ,139.0,145,139,fielding,663743.0,Nick Fortes
+824616,47,48,1,2.0,f53b8377-3da2-3ed5-9519-270a93133e27,Ball,1,1,1,True,False,MJ,139.0,139,145,batting,676356.0,Jonny DeLuca
+824616,61,62,4,4.0,fe53f58d-7e50-38bd-b5bf-7f5e8150f109,Called Strike,3,1,1,True,False,MJ,145.0,139,145,fielding,700337.0,Edgar Quero
+824616,63,64,1,2.0,70fc9302-e4f9-3508-8f8d-73faa5c3537c,Ball,1,1,2,False,False,MJ,145.0,139,145,fielding,700337.0,Edgar Quero
+824616,74,75,3,3.0,6b40b252-5c91-3e3d-a293-46438ce97e01,Ball,2,1,2,False,False,MJ,139.0,145,139,fielding,663743.0,Nick Fortes
+824617,35,36,2,3.0,26b8435c-dd1c-37ee-9550-d81756b62de9,Called Strike,1,2,1,False,False,MJ,110.0,110,145,batting,683002.0,Gunnar Henderson
+824617,48,49,1,2.0,aa65d966-690e-3920-8a71-dc50273908c1,Called Strike,0,2,2,False,False,MJ,110.0,110,145,batting,691723.0,Coby Mayo
+824617,50,51,5,,,"Orioles challenged (tag play), call on the field was upheld: Dustin Harris steals (2) 2nd base.",2,2,0,False,False,MA,110.0,145,110,fielding,,
+824617,57,58,0,1.0,7f726ccf-127a-3008-b4c5-a4f7a499d763,Called Strike,0,1,2,True,False,MJ,145.0,110,145,fielding,624512.0,Reese McGuire
+824617,65,66,6,5.0,f2fea4a8-b6ba-3035-ab3b-26049c71d1bb,Called Strike,3,2,2,True,False,MJ,145.0,110,145,fielding,624512.0,Reese McGuire
+824618,20,21,3,4.0,646b93fc-e59b-3a73-bfbe-c94880ac098b,Ball,1,2,2,False,False,MJ,145.0,110,145,fielding,700337.0,Edgar Quero
+824618,25,26,7,7.0,a2aef118-b8bb-307a-bd80-4c141e28b44f,Ball,2,2,2,False,False,MJ,110.0,145,110,fielding,694212.0,Samuel Basallo
+824618,80,81,2,3.0,a919cb50-ce9a-3bb6-a1a8-fdcce81bc9f4,Ball,2,1,2,True,False,MJ,145.0,145,110,batting,656537.0,Derek Hill
+824619,48,49,5,5.0,7a904e36-efda-35b5-a28a-035cb777a9ff,Ball,3,2,0,True,False,MJ,145.0,145,110,batting,656537.0,Derek Hill
+824619,66,67,2,2.0,bb2b895f-4487-33ba-99b1-a054f9a7a568,Called Strike,0,2,2,False,False,MJ,145.0,145,110,batting,700337.0,Edgar Quero
+824620,55,56,2,2.0,5f0ef3ba-0eeb-32d0-9dc0-da2e3d56fc8c,Ball,1,1,2,False,False,MJ,145.0,141,145,fielding,700337.0,Edgar Quero
+824620,69,70,0,1.0,4fabb982-151b-3257-9e11-906bf0dc34db,Called Strike,0,1,1,False,False,MJ,141.0,141,145,batting,676391.0,Ernie Clement
+824621,12,13,0,1.0,1ada529b-7c31-37f4-82f7-0b293051c8c6,Called Strike,0,1,1,True,False,MJ,145.0,141,145,fielding,700337.0,Edgar Quero
+824621,50,51,0,1.0,f0f2bcd3-9d11-3d5e-a847-d697ee427b56,Ball,1,0,0,False,False,MJ,145.0,141,145,fielding,700337.0,Edgar Quero
+824621,61,62,4,4.0,9143ac79-9e94-3790-9a82-5c1ac8ea0353,Ball,2,2,0,False,False,MJ,141.0,145,141,fielding,672386.0,Alejandro Kirk
+824622,53,54,2,1.0,960ff903-8a13-3c16-8bf1-372d0bb27c16,Called Strike,0,1,1,True,False,MJ,145.0,141,145,fielding,624512.0,Reese McGuire
+824688,14,15,3,3.0,c288f102-60ce-32f3-97ae-90b35ded41b0,Ball,3,0,0,False,False,MJ,143.0,112,143,fielding,665561.0,Rafael Marchán
+824688,21,22,1,2.0,85e60361-1149-3de1-9659-b4909c12b83e,Called Strike,1,1,1,False,False,MJ,143.0,143,112,batting,547180.0,Bryce Harper
+824688,28,29,1,2.0,968e3f20-1e89-31ec-b26b-d756f8fdc2a9,Foul,0,2,0,True,False,NH,,143,112,unknown,,
+824688,50,51,3,3.0,54cc2150-8c91-3268-875f-57e933ee61dd,Called Strike,1,2,2,True,False,MJ,112.0,143,112,fielding,665804.0,Miguel Amaya
+824688,56,57,0,1.0,e3b7637b-fe8e-304c-87c8-1d861b4b56ed,Called Strike,0,1,1,True,False,MJ,112.0,143,112,fielding,665804.0,Miguel Amaya
+824689,13,14,0,1.0,ecad16fa-9077-3183-aae5-0308d8ac0680,Called Strike,0,1,0,True,False,MJ,143.0,112,143,fielding,596117.0,Garrett Stubbs
+824689,36,37,2,3.0,16bfe29f-29b6-3f8d-ab0e-5961610127cf,Ball,3,0,1,True,False,MJ,112.0,112,143,batting,673548.0,Seiya Suzuki
+824689,58,59,1,2.0,3163fbeb-95ab-3f72-942f-9198a9a9e67c,Called Strike,1,1,1,True,False,MJ,112.0,143,112,fielding,608348.0,Carson Kelly
+824690,17,18,1,2.0,3cda7ed3-8399-3286-9f47-dd2ce461723f,Ball,2,0,1,True,False,MJ,143.0,143,112,batting,624641.0,Edmundo Sosa
+824690,76,77,2,2.0,94cb73a7-c1e8-3983-b80a-ae112a8a5389,Called Strike,0,2,1,False,False,MJ,112.0,112,143,batting,663538.0,Nico Hoerner
+824691,11,12,2,3.0,b22290d1-dc23-3c26-8594-76e09a12be5b,Called Strike,1,2,1,False,False,MJ,112.0,112,121,batting,694208.0,Moisés Ballesteros
+824691,64,65,2,2.0,be04737f-c4e7-3fbc-bc61-f4e3bd2d4a3d,Called Strike,0,2,0,True,False,MJ,121.0,112,121,fielding,620443.0,Luis Torrens
+824691,68,69,3,1.0,8707873b-bada-3793-ad9a-82a288382dca,Ball,1,0,0,True,False,MJ,121.0,121,112,batting,668901.0,Mark Vientos
+824692,8,9,0,1.0,1c592bcc-8168-3ee6-afd1-a1519c4e9399,Called Strike,0,1,1,True,False,MJ,112.0,143,112,fielding,665804.0,Miguel Amaya
+824692,51,52,0,1.0,8b4209db-cbc7-3e19-a3fe-4c52cbeac5df,Called Strike,0,1,2,True,False,MJ,143.0,112,143,fielding,665561.0,Rafael Marchán
+824692,56,57,0,1.0,4bfc697f-086e-36b2-a8e3-809c45f39b0a,Ball,1,0,0,False,False,MJ,143.0,112,143,fielding,665561.0,Rafael Marchán
+824692,73,74,0,1.0,7df36701-a105-394e-a7f4-8b85278cbf08,Ball,1,0,2,False,False,MJ,112.0,143,112,fielding,665804.0,Miguel Amaya
+824693,5,6,4,5.0,d5d2132a-15c3-3077-a03d-831a6fffdb26,Called Strike,3,2,1,True,False,MJ,121.0,112,121,fielding,682626.0,Francisco Alvarez
+824693,25,26,2,3.0,3c7ac272-c49a-3484-9725-18830144537d,Ball,1,2,0,False,False,MJ,121.0,112,121,fielding,682626.0,Francisco Alvarez
+824693,69,70,2,2.0,df287180-25d7-3f99-8f48-ca4f761a409d,Called Strike,0,2,0,True,False,MJ,112.0,121,112,fielding,608348.0,Carson Kelly
+824694,4,5,0,1.0,e87da2ab-3488-3ce5-96c9-8147fe2eb0b2,Called Strike,0,1,2,True,False,MJ,112.0,121,112,fielding,665804.0,Miguel Amaya
+824695,39,40,1,2.0,c15e9f52-6cfb-3d19-886e-17894dce17c1,Called Strike,1,1,0,True,False,MJ,134.0,112,134,fielding,663698.0,Joey Bart
+824695,44,45,4,3.0,2d2494f4-4021-33f2-9754-c8c2dae4bc6b,Ball,1,2,2,False,False,MJ,134.0,112,134,fielding,663698.0,Joey Bart
+824695,48,49,4,4.0,b21e7051-d486-3b66-bd09-9d40c72302f9,Ball,1,2,1,True,False,MJ,134.0,134,112,batting,693304.0,Nick Gonzales
+824696,3,4,2,2.0,da110e6c-6e87-3920-9e0b-6c937e15b48f,Called Strike,1,1,1,False,False,MJ,134.0,134,112,batting,656811.0,Ryan O'Hearn
+824696,6,7,1,2.0,f710ed3a-e816-3bc8-8fed-fa0c92ec9c5e,Called Strike,0,2,1,True,False,MJ,134.0,112,134,fielding,696149.0,Bubba Chandler
+824696,46,47,0,1.0,d7dd4889-13d6-3c70-a82a-59ba0956d8fd,Called Strike,0,1,1,True,False,MJ,112.0,134,112,fielding,608348.0,Carson Kelly
+824696,51,52,1,1.0,b12be093-d00d-3864-ac98-eb2a855b2ab9,Called Strike,0,1,0,False,False,MJ,134.0,134,112,batting,663698.0,Joey Bart
+824696,58,59,4,4.0,b109b6f1-2503-3532-8a2d-3f720221a600,Called Strike,2,2,1,False,False,MJ,112.0,112,134,batting,608324.0,Alex Bregman
+824696,74,75,3,,,"Cubs challenged (tag play), call on the field was upheld: Oneil Cruz steals (6) 2nd base.",1,2,2,False,False,MA,112.0,134,112,fielding,,
+824697,30,31,3,4.0,5df60c03-ddc3-3733-94f6-896a2be31a85,Called Strike,2,2,2,True,False,MJ,112.0,134,112,fielding,665795.0,Edward Cabrera
+824697,54,55,2,3.0,4f8ecb91-6f20-389e-8d64-30890a3e83fe,Called Strike,2,1,0,True,False,MJ,112.0,134,112,fielding,665804.0,Miguel Amaya
+824697,62,63,3,2.0,c0e08ce1-1ad5-3c35-a2fd-ac9903984216,Called Strike,0,2,0,False,False,MJ,134.0,134,112,batting,687462.0,Spencer Horwitz
+824697,75,76,3,3.0,4e13edbf-3867-383a-a69e-23cb516d51fd,Called Strike,1,2,1,False,False,MJ,112.0,112,134,batting,663538.0,Nico Hoerner
+824697,85,86,5,5.0,235b8be7-0fb9-35e1-8088-eaad5ffffe0d,Called Strike,3,2,1,True,False,MJ,134.0,112,134,fielding,680779.0,Henry Davis
+824697,97,98,3,3.0,7ad5dfc6-a0e2-3c23-aa03-b195c1b7279f,Ball,3,0,2,False,False,MJ,134.0,112,134,fielding,663698.0,Joey Bart
+824698,11,12,0,1.0,193dde67-2f67-3d08-a178-e2d2ca76ef78,Called Strike,0,1,0,False,False,MJ,112.0,112,108,batting,621020.0,Dansby Swanson
+824698,29,30,0,1.0,1ae0532b-d4c3-3da9-b88d-37c58bc9d506,Called Strike,0,1,1,True,False,MJ,112.0,108,112,fielding,608348.0,Carson Kelly
+824698,51,52,7,,,"Angels challenged (tag play), call on the field was upheld: Nico Hoerner steals (4) 2nd base.",3,2,2,False,False,MA,108.0,112,108,fielding,,
+824699,13,14,3,3.0,56fea40c-272c-315d-bf15-caa9952cf721,Called Strike,1,2,0,True,False,MJ,108.0,112,108,fielding,681351.0,Logan O'Hoppe
+824699,44,45,6,6.0,d778bd6c-d750-3c7f-96aa-8b89a27e3d94,Ball,3,2,2,False,False,MJ,112.0,108,112,fielding,665804.0,Miguel Amaya
+824699,63,64,0,1.0,d9368e63-7046-344e-8c77-29364057bc9c,Ball,1,0,1,False,False,MJ,108.0,112,108,fielding,681351.0,Logan O'Hoppe
+824700,37,38,2,3.0,beb24ee5-2b5d-330a-a5e9-c05bd64a092c,Ball,2,1,0,False,False,MJ,120.0,112,120,fielding,660688.0,Keibert Ruiz
+824700,43,44,1,2.0,bea9b3fd-0e17-3c20-af97-48feab2c6885,Called Strike,0,2,0,True,False,MJ,112.0,120,112,fielding,608348.0,Carson Kelly
+824700,44,45,2,3.0,39cd0366-0aa0-30b6-a1a4-3c5c62ba6a74,Called Strike,1,2,0,False,False,MJ,120.0,120,112,batting,683083.0,Nasim Nuñez
+824700,46,47,1,2.0,c9d26624-069b-302d-816f-bb3e608f3bf7,Ball,1,1,2,False,False,MJ,112.0,120,112,fielding,608348.0,Carson Kelly
+824700,61,62,0,,a800d0e5-e7e5-3b3e-b89e-f4c4c75677fc,Pickoff Attempt 1B,0,0,2,False,False,MA,112.0,120,112,fielding,,
+824701,15,16,0,1.0,d543c6b2-8f66-3e28-a295-fb023713cd90,Called Strike,0,1,2,True,False,MJ,120.0,112,120,fielding,686452.0,Drew Millas
+824701,29,30,2,3.0,b9f08a94-024b-3ecb-830c-92499aa26202,Ball,2,1,1,True,False,MJ,112.0,112,120,batting,807713.0,Matt Shaw
+824701,48,49,4,4.0,b6b49bca-b856-380b-a6b8-4d0e4a378c14,Ball,3,1,1,True,False,MJ,112.0,112,120,batting,608324.0,Alex Bregman
+824702,50,51,2,2.0,9ee5b630-eae6-3bf2-8ce4-fd3e2249c759,Called Strike,0,2,0,True,False,MJ,112.0,108,112,fielding,608348.0,Carson Kelly
+824704,4,5,2,3.0,1637d5b3-1715-35e1-a39f-d44aaf9f0890,Called Strike,2,1,0,True,False,MJ,120.0,112,120,fielding,660688.0,Keibert Ruiz
+824704,46,47,2,3.0,5c64dcf6-a20e-346c-89fb-1d6ea14a2dd6,Ball,2,1,0,True,False,MJ,120.0,120,112,batting,682928.0,CJ Abrams
+824704,74,75,0,1.0,6ab3af4f-ded2-35c0-a206-f9e79338b9a9,Called Strike,0,1,1,False,False,MJ,120.0,120,112,batting,671277.0,Luis García Jr.
+824770,10,11,2,3.0,52062e27-c800-3f19-a682-3ecd2382f00b,Ball,1,2,1,False,False,MJ,147.0,111,147,fielding,669224.0,Austin Wells
+824770,59,60,0,1.0,92db558f-4aa0-332b-bd88-5660137f4207,Called Strike,0,1,2,False,False,MJ,147.0,147,111,batting,676609.0,José Caballero
+824773,37,38,1,2.0,aa8215ab-b945-3c27-814f-b3ce84391647,Called Strike,0,2,0,False,False,MJ,147.0,147,111,batting,592450.0,Aaron Judge
+824773,55,56,1,2.0,e208244b-bf9f-3743-97aa-261aeb6a3442,Ball,1,1,2,True,False,MJ,111.0,111,147,batting,702332.0,Caleb Durbin
+824774,47,48,2,3.0,641e0972-29d4-3db4-adf7-9d918702a1ac,Called Strike,2,1,2,True,False,MJ,147.0,111,147,fielding,608331.0,Max Fried
+824774,48,49,3,4.0,ea59c283-46cc-3687-80c6-41897f6a3ad2,Ball,3,1,0,True,False,MJ,147.0,147,111,batting,676609.0,José Caballero
+824775,38,39,0,1.0,48cf7162-4279-30d2-b0ae-445ff9205e15,Ball,1,0,0,True,False,MJ,111.0,111,116,batting,678882.0,Ceddanne Rafaela
+824775,53,54,2,3.0,f20ba3bb-6c76-3bdc-b181-16ac6548f010,Called Strike,2,1,2,True,False,MJ,111.0,116,111,fielding,657136.0,Connor Wong
+824776,38,39,6,5.0,28851365-0fc3-37e6-993a-9d90452372e7,Ball,2,2,1,False,False,MJ,116.0,111,116,fielding,668670.0,Jake Rogers
+824776,58,59,1,2.0,6d7ea7c3-69f4-3f8e-a68a-42d5c18028a9,Called Strike,0,2,1,False,False,MJ,116.0,116,111,batting,650402.0,Gleyber Torres
+824777,3,4,5,5.0,340376b8-371c-3f47-92aa-9a97db2cf667,Ball,3,2,2,False,False,MJ,111.0,116,111,fielding,665966.0,Carlos Narváez
+824777,5,6,0,1.0,24751f35-01ea-3dba-9db7-5c5316f30e99,Called Strike,0,1,0,True,False,MJ,116.0,111,116,fielding,693307.0,Dillon Dingler
+824777,59,60,1,1.0,8369bfdc-8ba2-3323-b43a-719edd094ab4,Called Strike,0,1,0,False,False,MJ,116.0,116,111,batting,672761.0,Wenceel Pérez
+824777,66,67,2,3.0,2058374d-65dd-36a9-84de-7c12248ba4e4,Called Strike,2,1,0,False,False,MJ,116.0,116,111,batting,681481.0,Kerry Carpenter
+824778,54,55,1,1.0,59042789-a7b1-3ca1-a297-65fc4d518d35,Ball,1,0,0,False,False,MJ,111.0,116,111,fielding,657136.0,Connor Wong
+824778,55,56,4,,,"Red Sox challenged (tag play), call on the field was overturned: Javier Báez caught stealing 2nd base, catcher Connor Wong to second baseman Marcelo Mayer.",3,1,1,True,False,MA,111.0,116,111,fielding,,
+824779,22,23,3,4.0,9cfb7b69-b813-3845-aa30-5f7c56a0a1c0,Called Strike,2,2,0,True,False,MJ,158.0,111,158,fielding,596142.0,Gary Sánchez
+824779,24,25,4,4.0,63939b51-fea6-393c-9963-cc2e91766781,Ball,3,1,1,False,False,MJ,158.0,111,158,fielding,596142.0,Gary Sánchez
+824780,62,63,3,4.0,386c730a-48c6-3ea3-99db-26062888e0f0,Ball,1,2,1,False,False,MJ,158.0,111,158,fielding,661388.0,William Contreras
+824781,11,12,1,2.0,ca1c8a30-27a5-33ca-a5b9-e6cfbace1bdf,Called Strike,0,2,1,True,False,MJ,135.0,111,135,fielding,669134.0,Luis Campusano
+824781,29,30,5,3.0,3dd4a004-c49c-33ae-9772-ad81cfb96768,Ball,2,1,1,True,False,MJ,135.0,135,111,batting,609280.0,Miguel Andujar
+824781,53,54,0,1.0,107089d6-4f2e-326f-9ae9-f473923952fa,Called Strike,0,1,2,True,False,MJ,135.0,111,135,fielding,669134.0,Luis Campusano
+824782,11,12,3,4.0,d132c0ee-9c52-31b4-bede-dc0a64470501,Ball,2,2,1,False,False,MJ,111.0,135,111,fielding,665966.0,Carlos Narváez
+824782,42,43,5,5.0,df10bb17-2648-3735-8de2-b44a76b600d6,Ball,3,2,2,False,False,MJ,135.0,111,135,fielding,666023.0,Freddy Fermin
+824783,7,8,2,3.0,35b4ff81-9df7-3572-9c5a-b5bff834f5e3,Ball,3,0,1,False,False,MJ,158.0,111,158,fielding,661388.0,William Contreras
+824786,39,40,4,5.0,f9655829-96cf-38cb-bf59-b3204fc19f82,Ball,3,2,0,True,False,MJ,135.0,135,111,batting,593428.0,Xander Bogaerts
+824786,63,64,0,1.0,8a70bead-44d0-399a-80f9-9b30f7d28f67,Ball,1,0,2,True,False,MJ,135.0,135,111,batting,592518.0,Manny Machado
+824853,10,11,1,2.0,d5316c65-18b5-3a95-9425-c6d4f6a633ed,Ball,2,0,2,False,False,MJ,110.0,109,110,fielding,694212.0,Samuel Basallo
+824853,24,25,3,4.0,79a41e57-e459-37cb-8911-8bb03110cdfb,Ball,3,1,1,False,False,MJ,109.0,110,109,fielding,543510.0,James McCann
+824853,62,63,6,6.0,639d1e95-5778-3bfb-8498-8f1867bf935d,Ball,3,2,1,False,False,MJ,109.0,110,109,fielding,543510.0,James McCann
+824853,64,65,3,3.0,a081243c-8b2c-3e2a-b612-4fad26f0622f,Called Strike,1,2,1,False,False,MJ,110.0,110,109,batting,687637.0,Dylan Beavers
+824854,13,14,0,1.0,08655559-3211-3947-9a6d-47593760b5a6,Ball,1,0,1,True,False,MJ,111.0,111,110,batting,596115.0,Trevor Story
+824854,72,73,0,1.0,e96d28af-e435-3ae2-9634-41c476199560,Ball,1,0,0,False,False,MJ,111.0,110,111,fielding,665966.0,Carlos Narváez
+824855,14,15,3,4.0,efa0a59c-30f2-3f98-8b40-3ae8b712b913,Called Strike,3,1,2,False,False,MJ,110.0,110,109,batting,691723.0,Coby Mayo
+824855,26,27,2,3.0,50b4ca1e-f77d-318d-8435-e1f8b8624632,Ball,2,1,1,True,False,MJ,110.0,110,109,batting,671286.0,Johnathan Rodríguez
+824855,34,35,1,1.0,77069b01-9619-3c0b-b3b9-bca7507b7562,Called Strike,0,1,2,False,False,MJ,109.0,109,110,batting,606466.0,Ketel Marte
+824856,20,21,8,8.0,e1341c78-424b-3a29-8140-3f0dbf47f598,Foul,3,2,1,False,False,MO,110.0,110,109,batting,,
+824856,34,35,1,2.0,d7be7170-1ce7-36d0-acff-2e76da2db2eb,Called Strike,1,1,1,True,False,MJ,110.0,109,110,fielding,694212.0,Samuel Basallo
+824856,49,50,3,3.0,ad24455c-1746-3c5a-aa96-fb27b266d8fb,Called Strike,1,2,0,True,False,MJ,109.0,110,109,fielding,680728.0,Adrian Del Castillo
+824856,58,59,4,,,"Diamondbacks challenged (tag play), call on the field was upheld: Geraldo Perdomo caught stealing 2nd base, catcher Samuel Basallo to shortstop Gunnar Henderson.",2,2,2,False,False,MA,109.0,109,110,batting,,
+824856,59,60,3,3.0,85586249-f9df-32e7-bc29-f64de2eb5a6f,Called Strike,1,2,0,True,False,MJ,109.0,110,109,fielding,680728.0,Adrian Del Castillo
+824856,67,68,2,3.0,59861173-d269-3a0e-881c-e664c958775c,Ball,2,1,2,False,False,MJ,110.0,109,110,fielding,694212.0,Samuel Basallo
+824856,73,74,1,2.0,b92d8b49-1d79-35fb-8a62-6cb0f75f362c,Ball,2,0,1,True,False,MJ,109.0,109,110,batting,678489.0,Jorge Barrosa
+824857,16,17,1,1.0,5b0853eb-d202-3316-8d60-b4c9db412132,Called Strike,0,1,0,True,False,MJ,110.0,137,110,fielding,605135.0,Chris Bassitt
+824857,17,18,1,2.0,57ebb03e-4746-323b-a6cc-6b655c8a8ebe,Ball,1,1,1,True,False,MJ,137.0,137,110,batting,642715.0,Willy Adames
+824857,45,46,2,3.0,d0bfea72-b68b-3cca-a682-ea0f9823a798,Ball,2,1,1,False,False,MJ,110.0,137,110,fielding,694212.0,Samuel Basallo
+824858,53,54,1,1.0,af758d87-e16d-3e51-a8c0-9f8ed9925c5a,Ball,1,0,0,True,False,MJ,137.0,137,110,batting,650333.0,Luis Arraez
+824859,19,20,0,1.0,9b3b4902-2058-3b1b-853a-fe81620eb777,Ball,1,0,1,True,False,MJ,110.0,110,137,batting,621493.0,Taylor Ward
+824859,38,39,5,4.0,eafc85ed-8269-306a-90aa-6d9e24ed8a86,Ball,3,1,2,False,False,MJ,137.0,110,137,fielding,691740.0,Daniel Susac
+824859,59,60,0,1.0,0fbed542-a27c-36ab-b4e6-db5429b9c355,Ball,1,0,2,False,False,MJ,137.0,110,137,fielding,669062.0,Erik Miller
+824859,67,68,2,3.0,10c5b5d3-7e49-329b-8a0b-c71cad32ce6a,Ball,2,1,1,True,False,MJ,110.0,110,137,batting,624413.0,Pete Alonso
+824860,43,44,3,4.0,a3651e1c-6298-3838-9b20-2309d45e2cba,Ball,3,1,0,True,False,MJ,110.0,110,140,batting,691723.0,Coby Mayo
+824860,67,68,1,2.0,7cc617e6-0ef9-3228-97e6-6dc7f7c4c97d,Ball,1,1,2,True,False,MJ,110.0,110,140,batting,624413.0,Pete Alonso
+824861,63,64,0,1.0,64a948a7-940f-3af1-ac1e-62963ad2bfc5,Ball,1,0,2,True,False,MJ,110.0,110,140,batting,683002.0,Gunnar Henderson
+824861,73,74,0,1.0,02cb211f-d886-32b3-af51-9e098261bab1,Called Strike,0,1,2,False,False,MJ,140.0,140,110,batting,669701.0,Josh Smith
+824862,30,31,0,1.0,2b06e2d3-a816-308c-a7c8-3cf73688634e,Ball,1,0,1,False,False,MJ,142.0,110,142,fielding,680777.0,Ryan Jeffers
+824862,36,37,1,2.0,bad924aa-9a61-3ec8-8064-39b097680adf,Ball,2,0,1,True,False,MJ,142.0,142,110,batting,665019.0,Kody Clemens
+824863,4,5,1,2.0,61bf594b-d73d-3b04-ab3a-95e42b1bd05b,Called Strike,0,2,1,True,False,MJ,110.0,140,110,fielding,668939.0,Adley Rutschman
+824863,43,44,4,5.0,b3f8a2bf-5d21-3551-83df-8e368e1074d6,Ball,1,2,1,True,False,MJ,110.0,110,140,batting,681297.0,Colton Cowser
+824863,62,63,5,5.0,fa973a33-8728-32cc-84ca-d553eccea133,Ball,3,2,0,True,False,MJ,140.0,140,110,batting,543309.0,Kyle Higashioka
+824863,78,79,2,2.0,4f839845-4fd1-3774-9ce5-efd3d25a3194,Ball,1,1,2,True,False,MJ,110.0,110,140,batting,663624.0,Ryan Mountcastle
+824864,33,34,0,1.0,3debe2f7-a453-34ad-afdb-9206374f086b,Called Strike,0,1,2,True,False,MJ,142.0,110,142,fielding,605170.0,Victor Caratini
+824864,55,56,5,4.0,253959c9-481b-3873-90b3-7bbed57747ae,Ball,2,2,2,False,False,MJ,110.0,142,110,fielding,694212.0,Samuel Basallo
+824864,57,58,4,3.0,308dc603-b023-3967-9425-cbf912cd7e58,Called Strike,1,2,2,True,False,MJ,110.0,142,110,fielding,694212.0,Samuel Basallo
+824864,60,61,3,4.0,4cfc4f28-7929-383b-8684-582388bddb24,Ball,3,1,0,True,False,MJ,110.0,110,142,batting,624413.0,Pete Alonso
+824864,74,75,5,,,"Orioles challenged (tag play), call on the field was upheld: Blaze Alexander caught stealing 2nd base, catcher Victor Caratini to second baseman Luke Keaschall.",2,2,1,False,False,MA,110.0,110,142,batting,,
+824864,79,80,3,4.0,b4f6a91f-c01b-3269-aaf0-385d2ba54ce3,Called Strike,3,1,1,True,False,MJ,110.0,142,110,fielding,668939.0,Adley Rutschman
+824865,7,8,0,1.0,e4fd7020-5f39-381d-8142-79841e1a5f24,Ball,1,0,0,True,False,MJ,142.0,142,110,batting,670242.0,Matt Wallner
+824865,54,55,5,5.0,e296d626-b006-3e3e-b664-54c656d406c6,Ball,3,2,2,False,False,MJ,142.0,110,142,fielding,680777.0,Ryan Jeffers
+824865,58,59,2,3.0,8a5c75f5-3ee4-3d76-9026-e27a31f15af9,Ball,1,2,2,True,False,MJ,142.0,142,110,batting,680777.0,Ryan Jeffers
+824932,19,20,3,4.0,f2b5fe3c-fb04-3874-b372-ff80c2bf2709,Called Strike,3,1,1,False,False,MJ,143.0,143,144,batting,547180.0,Bryce Harper
+824932,74,75,4,4.0,930e829c-4d72-3224-a6f5-91dfeec34b1b,Called Strike,2,2,2,False,False,MJ,144.0,144,143,batting,621566.0,Matt Olson
+824935,70,71,0,1.0,80ca91cd-17c2-3805-811d-d329d875ef2a,Ball,1,0,2,False,False,MJ,144.0,146,144,fielding,686948.0,Drake Baldwin
+824936,59,60,1,1.0,085d20e2-3796-342c-979e-a4b3901cbf92,Ball,1,0,1,False,False,MJ,146.0,144,146,fielding,689414.0,Liam Hicks
+824936,67,68,1,2.0,4f19e058-9258-34f7-aaed-c13e89632b84,Ball,1,1,1,False,False,MJ,144.0,146,144,fielding,686948.0,Drake Baldwin
+824937,26,27,5,5.0,86be5bf7-3632-3f16-82cd-ef77557d2cc0,Called Strike,3,2,2,True,False,MJ,144.0,146,144,fielding,686948.0,Drake Baldwin
+824937,45,46,0,1.0,3e29dc68-b080-393e-92fe-532adf0f25ea,Called Strike,0,1,1,True,False,MJ,146.0,144,146,fielding,689414.0,Liam Hicks
+824937,53,54,1,2.0,b63053c1-53aa-3549-960b-e741370183a8,Ball,2,0,2,True,False,MJ,146.0,146,144,batting,689414.0,Liam Hicks
+824937,59,60,1,2.0,9b6805a4-aca9-3fc7-ac40-431a946fd685,Ball,2,0,2,False,False,MJ,146.0,144,146,fielding,689414.0,Liam Hicks
+824938,17,18,2,3.0,986f2896-b1a3-37e5-b914-d6a58e43747e,Called Strike,1,2,2,False,False,MJ,144.0,144,114,batting,622761.0,Jorge Mateo
+824938,21,22,4,5.0,61ab990c-7bf7-3d35-80bc-92d85679b305,Ball,3,2,1,False,False,MJ,144.0,114,144,fielding,686948.0,Drake Baldwin
+824938,43,44,2,3.0,d2080d7b-9f12-30a2-94cd-fde5fb10233c,Ball,1,2,1,False,False,MJ,114.0,144,114,fielding,681807.0,David Fry
+824939,10,11,5,6.0,770983e5-f956-3c17-8502-bde93b716fc3,Ball,3,2,1,True,False,MJ,114.0,114,144,batting,656555.0,Rhys Hoskins
+824939,14,15,1,1.0,a69c915a-0896-3dfc-871d-96c66996b222,Called Strike,0,1,2,True,False,MJ,144.0,114,144,fielding,641680.0,Jonah Heim
+824939,22,23,5,6.0,44ec7e25-390e-3b60-bfe4-b10ee3638248,Ball,3,2,1,False,False,MJ,114.0,144,114,fielding,595978.0,Austin Hedges
+824939,28,29,1,2.0,2543e552-a1ae-37a7-a8cc-cacb393eedab,Called Strike,0,2,2,True,False,MJ,144.0,114,144,fielding,641680.0,Jonah Heim
+824939,60,61,1,2.0,048f2d1e-fed5-3fb9-b260-50a681afaba4,Called Strike,0,2,2,True,False,MJ,144.0,114,144,fielding,641680.0,Jonah Heim
+824939,61,62,1,1.0,d91b155e-db1b-38a3-947e-1e52ff9a1bd4,Called Strike,0,1,0,False,False,MJ,144.0,144,114,batting,660670.0,Ronald Acuña Jr.
+824939,75,76,1,2.0,73f763a5-0ca4-3644-99fa-3bb2ec53e349,Called Strike,0,2,2,True,False,MJ,114.0,144,114,fielding,595978.0,Austin Hedges
+824940,11,12,1,2.0,68a9a985-8c2b-3f2c-a85a-cfdc3a9326cc,Ball,2,0,0,False,False,MJ,133.0,144,133,fielding,642851.0,Austin Wynns
+824940,60,61,2,3.0,6edff8b3-4b34-30ad-a6ea-9ee37d6b2511,Called Strike,1,2,2,True,False,MJ,133.0,144,133,fielding,642851.0,Austin Wynns
+824941,1,2,1,2.0,c141f9a9-1bf5-310b-858a-ae7f4342b335,Ball,1,1,1,True,False,MJ,114.0,114,144,batting,800050.0,Chase DeLauter
+824941,55,56,1,2.0,38eb11ac-3b80-3cf0-8d60-612b3df5d439,Called Strike,0,2,2,False,False,MJ,114.0,114,144,batting,680757.0,Steven Kwan
+824941,74,75,1,2.0,2e6fe398-76cf-3c5d-92ea-5c298ce6d36f,Ball,2,0,1,False,False,MJ,114.0,144,114,fielding,681807.0,David Fry
+824942,60,61,0,1.0,563948a1-cd38-38d6-bb35-cc10e4cd6fc3,Ball,1,0,0,True,False,MJ,133.0,133,144,batting,667670.0,Brent Rooker
+824943,0,1,6,3.0,54a8886a-e46d-303d-96d8-9a1934cdcfe2,Ball,1,2,0,True,False,MJ,133.0,133,144,batting,701762.0,Nick Kurtz
+824943,15,16,2,3.0,e8aebbda-4d1e-3d47-ab77-9077c5d30575,Ball,2,1,2,True,False,MJ,133.0,133,144,batting,691777.0,Max Muncy
+824943,40,41,0,1.0,d44cedfb-8208-39ed-81a0-678ccc3d2825,Ball,1,0,2,False,False,MJ,144.0,133,144,fielding,641680.0,Jonah Heim
+824943,64,65,4,4.0,4944ed7e-1351-3435-94a9-690958dfaca0,Called Strike,2,2,0,True,False,MJ,133.0,144,133,fielding,669127.0,Shea Langeliers
+824944,38,39,4,5.0,c686bf46-ae5a-3616-9a49-f86a7349e161,Called Strike,3,2,2,False,False,MJ,144.0,144,118,batting,642086.0,Dominic Smith
+824944,58,59,1,2.0,9c646d49-cd58-3f18-816f-62f71d82e226,Called Strike,0,2,2,True,False,MJ,144.0,118,144,fielding,686948.0,Drake Baldwin
+824945,2,3,2,3.0,0a99ba6a-c189-3ac4-8463-203a9b11388d,Ball,1,2,2,False,False,MJ,144.0,118,144,fielding,686948.0,Drake Baldwin
+824945,3,4,1,2.0,a865986c-e275-34b2-9efa-50ccbc4f4e08,Called Strike,1,1,0,False,False,MJ,144.0,144,118,batting,660670.0,Ronald Acuña Jr.
+824945,69,70,3,4.0,5437bea2-15df-3deb-97f5-4ce62a06b0fc,Called Strike,2,2,1,True,False,MJ,118.0,144,118,fielding,521692.0,Salvador Perez
+824946,32,33,2,3.0,7a90165d-1346-37b5-b7ea-439a0b7e2e39,Called Strike,1,2,1,True,False,MJ,118.0,144,118,fielding,521692.0,Salvador Perez
+824946,42,43,2,3.0,d73db79f-8b5d-3347-91a8-64335e388a78,Called Strike,2,1,1,True,False,MJ,118.0,144,118,fielding,521692.0,Salvador Perez
+824946,43,44,1,2.0,38aad85f-c78a-3455-badd-e2feeebca547,Called Strike,1,1,1,True,False,MJ,118.0,144,118,fielding,521692.0,Salvador Perez
+824946,45,46,3,4.0,be5fa2ff-b3c9-3599-8353-d95b5f880849,Ball,2,2,0,False,False,MJ,144.0,118,144,fielding,641680.0,Jonah Heim
+825018,12,13,3,4.0,cd047a61-0d5b-3f44-820f-7509c737dfcf,Ball,2,2,1,False,False,MJ,133.0,145,133,fielding,669127.0,Shea Langeliers
+825018,19,20,0,1.0,5203971e-ecf9-3469-afb0-24a12eebfbdb,Called Strike,0,1,2,True,False,MJ,145.0,133,145,fielding,700337.0,Edgar Quero
+825018,34,35,1,2.0,9941f07f-7ffd-312e-8aa9-867729a16019,Ball,1,1,0,True,False,MJ,145.0,145,133,batting,678246.0,Miguel Vargas
+825018,41,42,2,3.0,8c80df07-7889-3dfa-9a42-987595574e83,Called Strike,1,2,1,True,False,MJ,145.0,133,145,fielding,700337.0,Edgar Quero
+825018,42,43,2,3.0,8e615491-7bf5-3058-93fc-d45da1625411,Ball,2,1,2,False,False,MJ,145.0,133,145,fielding,700337.0,Edgar Quero
+825018,56,57,6,6.0,0c1fbf20-b027-3e7c-8b04-6a238f5600e4,Ball,1,2,1,True,False,MJ,133.0,133,145,batting,687231.0,Darell Hernaiz
+825018,58,59,0,1.0,420276f6-25f1-3ed2-a8b1-f11a0eb8e305,Ball,1,0,2,True,False,MJ,133.0,133,145,batting,680869.0,Zack Gelof
+825018,69,70,1,1.0,bbd29a55-9219-3d38-b1f9-0d1a786ef97f,Ball,1,0,0,False,False,MJ,133.0,145,133,fielding,669127.0,Shea Langeliers
+825019,11,12,0,1.0,cb6d3d45-d678-39fc-b659-4068fb8ba2ea,Called Strike,0,1,1,True,False,MJ,133.0,145,133,fielding,669127.0,Shea Langeliers
+825019,29,30,3,2.0,cdad7fd2-97a0-343a-b414-fe93932ebec8,Ball,1,1,1,True,False,MJ,145.0,145,133,batting,678246.0,Miguel Vargas
+825019,32,33,1,2.0,7d95673d-3aba-300b-863e-8e50b83583ea,Ball,1,1,0,False,False,MJ,145.0,133,145,fielding,700337.0,Edgar Quero
+825019,37,38,0,1.0,d2845f4c-df4c-3e91-bc00-20ecbcd42d56,Called Strike,0,1,1,True,False,MJ,133.0,145,133,fielding,669127.0,Shea Langeliers
+825019,41,42,0,1.0,69ca066f-7236-319f-9100-4ae8fe9facba,Called Strike,0,1,2,False,False,MJ,145.0,145,133,batting,808959.0,Munetaka Murakami
+825020,46,47,0,1.0,7c854693-9993-3eb9-9eb4-56129659d34b,Ball,1,0,0,False,False,MJ,133.0,145,133,fielding,642851.0,Austin Wynns
+825020,50,51,1,2.0,229cd755-0d2b-319b-91dc-5cc74a8a86f0,Ball,2,0,2,False,False,MJ,133.0,145,133,fielding,642851.0,Austin Wynns
+825020,71,72,1,2.0,e9baca7f-a156-34ad-be7c-6e488382ac2b,Ball,1,1,1,False,False,MJ,145.0,133,145,fielding,624512.0,Reese McGuire
+825020,77,78,1,2.0,8b3bce5c-33f0-3266-9323-af4219a9931a,Ball,2,0,1,True,False,MJ,145.0,145,133,batting,808959.0,Munetaka Murakami
+825020,77,78,2,3.0,d3be7a5b-1acd-33ee-b24b-4e3d8659c446,Ball,3,0,1,True,False,MJ,145.0,145,133,batting,808959.0,Munetaka Murakami
+825020,87,88,6,5.0,1bed9cb1-c838-37cc-acbd-fbce819392ac,Called Strike,3,2,0,False,False,MJ,145.0,145,133,batting,805367.0,Chase Meidroth
+825021,11,12,3,3.0,1a9a4b6e-19c0-38bb-ac71-a284058c09b8,Foul,2,1,1,False,False,NH,,140,133,unknown,,
+825021,17,18,5,5.0,6348cc72-4e62-322e-8115-5616ac4f03a4,Ball,3,2,2,False,False,MJ,140.0,133,140,fielding,643376.0,Danny Jansen
+825022,27,28,5,4.0,f3d5b871-fd79-3296-8d2d-91a742b28e58,Ball,2,2,1,True,False,MJ,140.0,140,133,batting,673962.0,Josh Jung
+825022,50,51,2,3.0,fb882b66-819a-3794-a186-60d250261548,Called Strike,1,2,1,True,False,MJ,133.0,140,133,fielding,642851.0,Austin Wynns
+825022,66,67,1,1.0,5b7b8409-9feb-3436-ba57-9178ef52720b,Ball,1,0,0,False,False,MJ,133.0,140,133,fielding,642851.0,Austin Wynns
+825023,36,37,0,1.0,ac8eeb3a-b266-3e0f-9fce-34a18d943796,Ball,1,0,1,True,False,MJ,140.0,140,133,batting,607043.0,Brandon Nimmo
+825023,47,48,3,3.0,bc19a662-e97a-3f2d-bc65-47a1110d242a,Ball,1,2,1,True,False,MJ,140.0,140,133,batting,592626.0,Joc Pederson
+825023,71,72,0,1.0,8beb1dea-2f11-3d12-a285-e53e7ab58d5c,Ball,1,0,0,True,False,MJ,133.0,133,140,batting,671732.0,Lawrence Butler
+825023,76,77,4,3.0,ff1c0c03-18c4-3f6a-b04d-a9bff6365d0d,Ball,3,0,2,False,False,MJ,140.0,133,140,fielding,543309.0,Kyle Higashioka
+825023,84,85,2,3.0,4a1a4d03-a31d-310c-88b7-8f22885a4989,Called Strike,2,1,1,True,False,MJ,133.0,140,133,fielding,642851.0,Austin Wynns
+825023,84,85,3,4.0,52c30d75-c940-386a-b699-f7f7b3287b91,Ball,3,1,1,False,False,MJ,133.0,140,133,fielding,642851.0,Austin Wynns
+825024,29,30,2,3.0,80254e1c-7d24-3d6d-93e3-9c6d7867d3a2,Ball,2,1,1,True,False,MJ,133.0,133,140,batting,701762.0,Nick Kurtz
+825024,51,52,0,1.0,c88bb09f-e681-3462-b9fa-1bc0112d5a52,Called Strike,0,1,2,True,False,MJ,133.0,140,133,fielding,669127.0,Shea Langeliers
+825024,71,72,1,2.0,ac9cdba9-b246-38ed-809a-41fece45c6d2,Called Strike,0,2,1,True,False,MJ,133.0,140,133,fielding,642851.0,Austin Wynns
+825025,19,20,5,5.0,f552e94f-0996-3ef6-9a18-80c947b28e08,Ball,3,2,2,False,False,MJ,133.0,117,133,fielding,669127.0,Shea Langeliers
+825025,21,22,2,3.0,958a244b-36cd-38f4-a94d-061ca14333aa,Called Strike,1,2,1,True,False,MJ,117.0,133,117,fielding,673237.0,Yainer Diaz
+825025,22,23,2,3.0,64436e02-77db-3291-9e90-366e22915305,Ball,2,1,1,False,False,MJ,117.0,133,117,fielding,673237.0,Yainer Diaz
+825025,39,40,4,4.0,3ed30a4d-9d63-35ab-9ad4-1193a9b9e6c1,Ball,3,1,0,True,False,MJ,133.0,133,117,batting,643446.0,Jeff McNeil
+825025,40,41,1,1.0,235770a3-dc26-3142-b7c4-9f71300634b8,Ball,1,0,0,True,False,MJ,133.0,133,117,batting,666126.0,Carlos Cortes
+825025,50,51,1,2.0,89066e72-62ef-37ae-98f8-44a9511584b2,Ball,2,0,2,False,False,MJ,133.0,117,133,fielding,669127.0,Shea Langeliers
+825026,64,65,1,2.0,bd0f22ee-31b0-37c1-aefa-18987225937d,Called Strike,0,2,1,True,False,MJ,117.0,133,117,fielding,673237.0,Yainer Diaz
+825026,79,80,4,4.0,ce83249f-9f14-3e19-8b6c-d5f2da5ead1f,Ball,2,2,2,False,False,MJ,133.0,117,133,fielding,669127.0,Shea Langeliers
+825027,7,8,1,2.0,48e2b92b-4c61-347c-854b-56faca10878b,Called Strike,0,2,0,True,False,MJ,117.0,133,117,fielding,543877.0,Christian Vázquez
+825027,30,31,0,1.0,ed584a6c-89c3-325a-9370-e3b3888e91b9,Ball,1,0,2,False,False,MJ,117.0,133,117,fielding,543877.0,Christian Vázquez
+825027,64,65,0,1.0,49047b9c-44dd-3d7e-ab61-d0b5fc4ea618,Called Strike,0,1,1,True,False,MJ,133.0,117,133,fielding,642851.0,Austin Wynns
+825027,75,76,4,3.0,6211f936-3efd-399f-b59d-307c122f8136,Ball,2,1,2,True,False,MJ,117.0,117,133,batting,694376.0,Shay Whitcomb
+825027,81,82,3,3.0,ad3fadae-6d23-3c5b-94a5-55a6f7d077c6,Ball,2,1,0,False,False,MJ,133.0,117,133,fielding,642851.0,Austin Wynns
+825096,38,39,0,1.0,a43d5879-2f83-3a7e-85f0-5035f5861bf7,Ball,1,0,1,True,False,MJ,109.0,109,145,batting,677950.0,Alek Thomas
+825096,38,39,2,3.0,8f66a7f4-609e-3faa-b40a-d5420a0050cf,Ball,3,0,1,False,False,MJ,145.0,109,145,fielding,624512.0,Reese McGuire
+825096,51,52,0,1.0,717af300-9a54-3a95-bb7a-c6c43b9e4031,Ball,1,0,0,True,False,MJ,109.0,109,145,batting,545121.0,Ildemaro Vargas
+825096,54,55,0,1.0,eb34a63a-129b-3dcb-a9df-12dd40a9348c,Called Strike,0,1,2,False,False,MJ,109.0,109,145,batting,677950.0,Alek Thomas
+825096,72,73,0,1.0,c2149a2d-ab88-3341-b7e5-c4235856c18e,Called Strike,0,1,2,False,False,MJ,109.0,109,145,batting,678489.0,Jorge Barrosa
+825096,72,73,1,2.0,8d0d6ef1-db4e-30f3-82d9-23cd5b8b28c1,Ball,1,1,2,False,False,MJ,145.0,109,145,fielding,700337.0,Edgar Quero
+825097,13,14,1,2.0,21b34733-e684-3e20-a4fc-5310fc8fca20,Called Strike,1,1,2,True,False,MJ,109.0,145,109,fielding,543510.0,James McCann
+825097,13,14,4,5.0,c781c5aa-d422-3554-977c-f1c59ca6f903,Ball,3,2,2,False,False,MJ,109.0,145,109,fielding,543510.0,James McCann
+825097,21,22,0,1.0,a9a8f8ee-a3a3-3318-80df-494c3ff29c4e,Ball,1,0,2,False,False,MJ,145.0,109,145,fielding,700337.0,Edgar Quero
+825097,41,42,3,2.0,75ec52b3-6a26-3f05-8886-9b65f5d5f882,Ball,2,0,2,True,False,MJ,109.0,109,145,batting,699912.0,Jose Fernandez
+825097,49,50,2,2.0,ddbc9121-af68-3375-a98b-2772df7272dd,Called Strike,0,2,0,False,False,MJ,109.0,109,145,batting,543510.0,James McCann
+825099,26,27,1,2.0,6c4dca5f-1872-30da-8981-9ee65d0b32ac,Ball,2,0,0,True,False,MJ,109.0,109,145,batting,677950.0,Alek Thomas
+825099,45,46,3,3.0,bb7a1810-546c-3d1e-8741-40442ca03ed9,Ball,2,1,2,True,False,MJ,109.0,109,145,batting,677950.0,Alek Thomas
+825099,60,61,0,1.0,a02d04c4-499b-3893-8abb-923ba4c231d1,Called Strike,0,1,0,True,False,MJ,145.0,109,145,fielding,624512.0,Reese McGuire
+825099,84,85,3,4.0,4706b011-2928-3511-90fb-086ee3244434,Ball,3,1,2,False,False,MJ,145.0,109,145,fielding,674370.0,Osvaldo Bido
+825100,20,21,0,1.0,1f7ba24c-579c-39ca-ac38-095bfeb0c6f2,Ball,1,0,0,False,False,MJ,141.0,109,141,fielding,678218.0,Brandon Valenzuela
+825100,42,43,2,2.0,10ee6fc4-bf92-3172-8f23-857a7bf0fd32,Called Strike,0,2,0,True,False,MJ,109.0,141,109,fielding,543510.0,James McCann
+825102,3,4,0,1.0,92f8a03e-5efd-3949-b045-abc4a55c9d5e,Called Strike,0,1,2,True,False,MJ,109.0,144,109,fielding,543510.0,James McCann
+825102,43,44,3,4.0,d78c4100-5913-3ac5-b4fe-52f387bed145,Called Strike,2,2,2,False,False,MJ,144.0,144,109,batting,643289.0,Mauricio Dubón
+825102,51,52,0,1.0,52e00d94-868f-361b-a310-2f7a5820ab39,Ball,1,0,1,False,False,MJ,109.0,144,109,fielding,543510.0,James McCann
+825103,10,11,0,1.0,955272f4-3110-3682-8885-1b51b397bf4d,Called Strike,0,1,2,True,False,MJ,109.0,144,109,fielding,543510.0,James McCann
+825103,24,25,3,4.0,272681e2-488e-33c3-8bde-8cdb425796cb,Called Strike,3,1,0,True,False,MJ,144.0,109,144,fielding,641680.0,Jonah Heim
+825103,30,31,2,3.0,982efad7-46d5-3c75-97e3-a229f40b808b,Ball,3,0,2,True,False,MJ,144.0,144,109,batting,671739.0,Michael Harris II
+825103,38,39,1,1.0,d911f89b-1ee8-3ac1-8a79-64f866380fde,Called Strike,0,1,1,True,False,MJ,109.0,144,109,fielding,543510.0,James McCann
+825103,43,44,2,2.0,2ca14277-6f3a-315f-b65d-b481deb74507,Called Strike,0,2,1,True,False,MJ,144.0,109,144,fielding,641680.0,Jonah Heim
+825103,47,48,3,3.0,4e0e5a34-9a62-3d38-af42-05e14a3115ab,Ball,2,1,0,True,False,MJ,109.0,109,144,batting,672515.0,Gabriel Moreno
+825103,61,62,1,1.0,306f1042-036e-3bfc-97ad-d62d49e89d0f,Called Strike,0,1,2,False,False,MJ,144.0,144,109,batting,643289.0,Mauricio Dubón
+825104,52,53,1,1.0,c5c1ca31-a380-3050-a0c2-f6d6853927d3,Called Strike,0,1,0,True,False,MJ,109.0,144,109,fielding,672515.0,Gabriel Moreno
+825104,60,61,2,3.0,829e89d6-35a8-343b-b9cf-cf23e6407493,Called Strike,2,1,2,False,False,MJ,144.0,144,109,batting,671739.0,Michael Harris II
+825105,32,33,4,4.0,64b52e50-b4f0-3514-9621-0b2f5f097160,Ball,3,1,1,False,False,MJ,109.0,144,109,fielding,672515.0,Gabriel Moreno
+825106,29,30,7,7.0,44fc3851-949c-3b11-989f-f46fcb122f63,Ball,3,2,1,True,False,MJ,116.0,116,109,batting,663837.0,Matt Vierling
+825107,1,2,1,1.0,54ff118b-7340-34ad-8aeb-2916f416e34e,Ball,1,0,1,True,False,MJ,116.0,116,109,batting,805808.0,Kevin McGonigle
+825107,23,24,0,1.0,17064c8e-2c9d-31f9-a680-280b152b2a81,Ball,1,0,2,False,False,MJ,109.0,116,109,fielding,543510.0,James McCann
+825107,42,43,5,5.0,d414a97c-ac34-3dc1-a876-af3f245170b6,Ball,3,2,1,True,False,MJ,116.0,116,109,batting,681481.0,Kerry Carpenter
+825107,52,53,0,1.0,db7bcaad-78c0-3185-b04c-884051463e99,Called Strike,0,1,2,True,False,MJ,116.0,109,116,fielding,668670.0,Jake Rogers
+825107,55,56,4,5.0,94b4adc1-4fbc-3761-87c9-a1f88f4ce8cb,Ball,3,2,2,True,False,MJ,116.0,116,109,batting,650402.0,Gleyber Torres
+825107,62,63,2,2.0,09445d18-c9ae-3654-b0a8-d5a65a59f201,Ball,2,0,0,True,False,MJ,109.0,109,116,batting,672515.0,Gabriel Moreno
+825107,62,63,3,3.0,51a7624b-9358-3947-9e05-5bd8ba4a9bfc,Called Strike,2,1,0,False,False,MJ,109.0,109,116,batting,672515.0,Gabriel Moreno
+825108,36,37,2,2.0,fad82d1f-a181-3e32-bdc9-0127a0494416,Called Strike,1,1,2,True,False,MJ,116.0,109,116,fielding,693307.0,Dillon Dingler
+825108,71,72,1,1.0,82e8efd6-9099-3fd8-9173-722b83e5c649,Called Strike,0,1,2,True,False,MJ,116.0,109,116,fielding,693307.0,Dillon Dingler
+825108,82,83,0,1.0,40944245-b0d9-3435-a9a3-2d949195dd18,Called Strike,0,1,2,False,False,MJ,116.0,116,109,batting,679529.0,Spencer Torkelson

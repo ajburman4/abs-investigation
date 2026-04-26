@@ -97,8 +97,12 @@
       border: 1px solid var(--line);
       border-radius: 8px;
       box-shadow: var(--shadow);
+      min-width: 0;
     }
-    .panel.pad { padding: 16px; }
+    .panel.pad {
+      padding: 16px;
+      overflow-x: auto;
+    }
     .grid {
       display: grid;
       gap: 16px;
@@ -117,6 +121,7 @@
       border: 1px solid var(--line);
       border-radius: 8px;
       padding: 13px 14px;
+      min-width: 0;
     }
     .metric .label {
       color: var(--muted);
@@ -320,6 +325,19 @@
     .tooltip-copy {
       color: #d1d5db;
       font-size: 14px;
+    }
+    .tooltip-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #d1d5db;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .tooltip-list li {
+      border-top: 1px solid rgba(255,255,255,0.16);
+      padding-top: 7px;
+      margin-top: 7px;
     }
     .zone-legend {
       margin: 18px 0 2px;
@@ -548,6 +566,455 @@
     .tag.negative { color: #b42318; background: #fee4e2; border-color: #fecdca; }
     .tag.watch { color: #854d0e; background: #fef3c7; border-color: #fde68a; }
     .tag.neutral { color: #344054; background: #f2f4f7; }
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 0.85fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .challenge-plots {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .rule-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px;
+      background: #fff;
+    }
+    .rule-card strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
+    .count-ladder {
+      display: grid;
+      gap: 8px;
+    }
+    .count-row {
+      display: grid;
+      grid-template-columns: 48px minmax(120px, 1fr) 72px;
+      gap: 10px;
+      align-items: center;
+    }
+    .count-row .count {
+      font-weight: 900;
+      font-size: 18px;
+    }
+    .bar {
+      height: 12px;
+      border-radius: 999px;
+      background: #ece7dc;
+      overflow: hidden;
+    }
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--blue), var(--red));
+    }
+    .strategy-map {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(56px, 1fr));
+      grid-template-rows: repeat(5, 62px);
+      gap: 6px;
+      width: 500px;
+      max-width: none;
+      position: relative;
+    }
+    .strategy-cell {
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      border-radius: 8px;
+      padding: 6px;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      text-align: center;
+      font-weight: 900;
+      font-size: 13px;
+    }
+    .strategy-cell small {
+      display: block;
+      color: rgba(17, 24, 39, 0.68);
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .plot-wrap {
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .wristband {
+      display: grid;
+      grid-template-columns: 92px repeat(6, minmax(128px, 1fr));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      min-width: 780px;
+      background: #fff;
+    }
+    .wristband-group-head,
+    .wristband-head,
+    .wristband-count {
+      padding: 12px 14px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #475467;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--line);
+    }
+    .wristband-group-head {
+      text-align: center;
+      border-right: 1px solid var(--line);
+    }
+    .wristband-subhead {
+      padding: 8px 10px;
+      color: #667085;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .wristband-count {
+      display: flex;
+      align-items: center;
+      color: var(--ink);
+      font-size: 18px;
+      letter-spacing: 0;
+      text-transform: none;
+      background: #fff;
+      border-right: 1px solid var(--line);
+    }
+    .wristband-cell {
+      margin: 7px;
+      min-height: 68px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: 4px;
+      background: #f8fafc;
+    }
+    .wristband-cell .value {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .wristband-cell .rec {
+      border-radius: 6px;
+      padding: 3px 8px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .wristband-cell.hold { color: #98a2b3; background: #fafafa; }
+    .wristband-cell.hold .rec { color: #98a2b3; background: #f2f4f7; }
+    .wristband-cell.lean { color: #c98b3a; background: #fff8ea; border-color: #efcfaa; }
+    .wristband-cell.lean .rec { background: #d6a664; }
+    .wristband-cell.challenge { color: #3ca861; background: #eff8f1; border-color: #b6dec0; }
+    .wristband-cell.challenge .rec { background: #5ead72; }
+    .wristband-cell:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(17, 24, 40, 0.12);
+    }
+    .strategy-concept {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .inventory-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .inventory-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fff;
+      margin-bottom: 0;
+    }
+    .inventory-card .big {
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .confidence-row {
+      display: grid;
+      grid-template-columns: 46px minmax(0, 1fr) 46px 46px;
+      gap: 10px;
+      align-items: center;
+      justify-items: stretch;
+      text-align: left;
+      margin: 9px 0;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .confidence-row > span:nth-last-child(-n+2) {
+      justify-self: end;
+      text-align: right;
+    }
+    .confidence-row.strategy-cell {
+      cursor: help;
+      border-radius: 6px;
+    }
+    .confidence-row.strategy-cell:hover {
+      background: #f9fafb;
+    }
+    .confidence-svg {
+      display: block;
+      width: 100%;
+      height: 18px;
+      overflow: visible;
+    }
+    .light-board {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .light-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+      min-height: 230px;
+    }
+    .light-card.challenge { border-color: #b6dec0; }
+    .light-card.lean { border-color: #efcfaa; }
+    .light-card.hold { border-color: #f1c0bf; }
+    .light-head {
+      padding: 12px 14px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .light-card.challenge .light-head { background: #3ca861; }
+    .light-card.lean .light-head { background: #d6a664; }
+    .light-card.hold .light-head { background: #b42318; }
+    .light-copy {
+      color: var(--muted);
+      font-size: 13px;
+      padding: 10px 14px 0;
+    }
+    .light-bar-list {
+      display: grid;
+      gap: 8px;
+      padding: 12px 14px 14px;
+    }
+    .light-bar-row {
+      display: grid;
+      grid-template-columns: minmax(88px, 0.75fr) minmax(80px, 1fr) 48px;
+      gap: 8px;
+      align-items: center;
+      justify-items: stretch;
+      text-align: left;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 7px 8px;
+      background: #f8fafc;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: help;
+    }
+    .light-bar-row.challenge { color: #0f766e; background: #eff8f1; border-color: #b6dec0; }
+    .light-bar-row.lean { color: #854d0e; background: #fff8ea; border-color: #efcfaa; }
+    .light-bar-row.hold { color: #b42318; background: #fff4f4; border-color: #f1c0bf; }
+    .light-bar-row:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(17, 24, 40, 0.10);
+    }
+    .light-bar-label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .light-bar-track {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(16, 24, 40, 0.08);
+      overflow: hidden;
+    }
+    .light-bar-fill {
+      display: block;
+      height: 100%;
+      min-width: 8px;
+      border-radius: 999px;
+      background: currentColor;
+      opacity: 0.8;
+    }
+    .light-bar-value {
+      text-align: right;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+    .light-toggle {
+      display: inline-flex;
+      gap: 6px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      margin: 8px 0 14px;
+    }
+    .light-toggle button {
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      padding: 7px 10px;
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+    }
+    .light-toggle button.active {
+      background: var(--red);
+      color: #fff;
+    }
+    .strategy-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 8px 0 12px;
+    }
+    .strategy-filter-row label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .strategy-filter-row select {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 8px 10px;
+      font: inherit;
+      font-weight: 800;
+    }
+    .location-control {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+    }
+    .location-row {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: grid;
+      grid-template-columns: minmax(150px, 1fr) repeat(3, minmax(80px, auto));
+      gap: 10px;
+      align-items: center;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+    }
+    .location-row.selected {
+      border-color: var(--red);
+      background: #fff4f4;
+      box-shadow: inset 4px 0 0 var(--red);
+    }
+    .location-row .metric-label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .location-row strong { display: block; }
+    .strategy-area-table .area-row {
+      cursor: pointer;
+    }
+    .strategy-area-table .area-row.selected {
+      background: #fff4f4;
+    }
+    .strategy-plot,
+    .pitch-plot {
+      display: block;
+      width: 100%;
+      min-width: 420px;
+      height: auto;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .plot-axis {
+      stroke: #98a2b3;
+      stroke-width: 1;
+    }
+    .plot-grid {
+      stroke: #eaecf0;
+      stroke-width: 1;
+    }
+    .plot-label {
+      fill: #475467;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    .plot-note {
+      fill: #667085;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .plot-point {
+      stroke: rgba(9, 10, 12, 0.38);
+      stroke-width: 1;
+    }
+    .plot-point.green { fill: var(--green); }
+    .plot-point.yellow { fill: #f59e0b; }
+    .plot-point.red { fill: var(--red); }
+    .pitch-point.overturned { fill: var(--green); opacity: 0.78; }
+    .pitch-point.upheld { fill: var(--red); opacity: 0.6; }
+    .pitch-point.good { fill: var(--green); opacity: 0.78; }
+    .pitch-point.bad { fill: var(--red); opacity: 0.62; }
+    .pitch-point.dimmed { opacity: 0.12; }
+    .pitch-point.highlighted {
+      stroke: var(--black);
+      stroke-width: 1.4;
+      opacity: 0.92;
+    }
+    .pitch-point.impact-mid { stroke-width: 1.8; }
+    .pitch-point.impact-high { stroke-width: 2.5; }
+    .pitch-halo {
+      pointer-events: none;
+      opacity: 0.72;
+    }
+    .pitch-halo.impact-mid { fill: rgba(214, 166, 100, 0.18); }
+    .pitch-halo.impact-high { fill: rgba(182, 18, 52, 0.18); }
+    .plot-wrap.square {
+      max-width: 560px;
+      margin-inline: auto;
+    }
+    .strike-box {
+      fill: rgba(63, 194, 204, 0.05);
+      stroke: #111827;
+      stroke-width: 2;
+    }
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      margin-top: 10px;
+    }
+    .legend-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
     .takeaways {
       margin-top: 16px;
     }
@@ -572,10 +1039,13 @@
       .shell { padding: 16px; }
       .two-col { grid-template-columns: 1fr; }
       .metrics { grid-template-columns: repeat(2, minmax(150px, 1fr)); }
+      .strategy-grid { grid-template-columns: 1fr; }
       .section-head { grid-template-columns: 1fr; }
       .status-grid { grid-template-columns: 1fr; }
       .trend-row { grid-template-columns: 1fr; }
       .area-detail { grid-template-columns: 1fr 1fr; }
+      .inventory-row { grid-template-columns: 1fr; }
+      .light-board { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
       header { padding: 18px 16px; }
@@ -596,6 +1066,7 @@
   <main class="shell">
     <nav class="nav" aria-label="Dashboard sections">
       <button class="active" data-view="zone">Zone Change</button>
+      <button data-view="strategy">Challenge Strategy</button>
       <button data-view="overview">Catcher Overview</button>
       <button data-view="report">Challenge Report Card</button>
       <button data-view="evaluation">Catcher Evaluation</button>
@@ -611,6 +1082,16 @@
       </div>
       <div class="filters" id="zone-filters"></div>
       <div id="zone-content"></div>
+    </section>
+
+    <section id="strategy" class="view">
+      <div class="section-head">
+        <div>
+          <h2>Challenge Strategy Guide</h2>
+          <p class="purpose">A practical guide for when catcher conviction is worth spending a pitching-team challenge.</p>
+        </div>
+      </div>
+      <div id="strategy-content"></div>
     </section>
 
     <section id="overview" class="view">
@@ -665,7 +1146,10 @@
       report: { catcher: "" },
       evaluation: { team: "All" },
       sort: { key: "totalVsExpected", dir: -1 },
-      selectedAreas: new Set()
+      selectedAreas: new Set(),
+      selectedStrategyAreas: new Set(),
+      selectedStrategyLeft: 2,
+      selectedStrategyPitchType: "All"
     };
 
     function fmtNumber(value, digits = 1) {
@@ -700,9 +1184,9 @@
     }
 
     function tagClass(label) {
-      if (["Positive", "Battery Captain", "Technician", "Balanced"].includes(label)) return "positive";
-      if (["Negative", "Gambler", "At-Risk Receiver", "Too Aggressive"].includes(label)) return "negative";
-      if (["Too Passive", "Traditional Receiver", "Passive Receiver", "Watch"].includes(label)) return "watch";
+      if (["Positive", "Battery Captain", "Technician", "Balanced", "Green", "Challenge"].includes(label)) return "positive";
+      if (["Negative", "Gambler", "At-Risk Receiver", "Too Aggressive", "Red"].includes(label)) return "negative";
+      if (["Too Passive", "Traditional Receiver", "Passive Receiver", "Watch", "Yellow", "Lean"].includes(label)) return "watch";
       return "neutral";
     }
 
@@ -927,7 +1411,7 @@
     }
 
     function moveZoneTooltip(event) {
-      const tooltip = document.getElementById("zone-tooltip");
+      const tooltip = document.querySelector(".zone-tooltip.active");
       if (!tooltip || !tooltip.classList.contains("active")) return;
       const pad = 14;
       const rect = tooltip.getBoundingClientRect();
@@ -938,8 +1422,33 @@
     }
 
     function hideZoneTooltip() {
-      const tooltip = document.getElementById("zone-tooltip");
+      const tooltip = document.querySelector(".zone-tooltip.active");
       if (tooltip) tooltip.classList.remove("active");
+    }
+
+    function showStrategyTooltip(event, point) {
+      const tooltip = document.getElementById("strategy-tooltip");
+      if (!tooltip) return;
+      const lines = String(point.dataset.tooltip || "").split("\n").filter(Boolean);
+      const title = lines[0] || "Challenge pitch";
+      const metricRows = lines.slice(1).filter(line => line.startsWith("METRIC|"));
+      const notes = lines.slice(1).filter(line => !line.startsWith("METRIC|"));
+      const metricsHtml = metricRows.map(line => {
+        const parts = line.split("|").slice(1);
+        const left = { label: parts[0] || "", value: parts[1] || "", note: parts[2] || "" };
+        const right = { label: parts[3] || "", value: parts[4] || "", note: parts[5] || "" };
+        return `<div class="tooltip-row">
+          <div><div class="tooltip-value">${escapeHtml(left.value)}</div><div class="muted">${escapeHtml(left.label)}</div><div class="muted">${escapeHtml(left.note)}</div></div>
+          <div class="tooltip-copy"><strong>${escapeHtml(right.label)}</strong><br><span class="tooltip-value" style="font-size:22px">${escapeHtml(right.value)}</span><br>${escapeHtml(right.note)}</div>
+        </div>`;
+      }).join("");
+      tooltip.innerHTML = `
+        <div class="tooltip-title">${escapeHtml(title)}</div>
+        ${metricsHtml}
+        ${notes.length ? `<ul class="tooltip-list">${notes.map(line => `<li>${escapeHtml(line)}</li>`).join("")}</ul>` : ""}
+      `;
+      tooltip.classList.add("active");
+      moveZoneTooltip(event);
     }
 
     function renderZone() {
@@ -1063,6 +1572,518 @@
 
     function sortableHeader(label, key) {
       return `<th data-sort="${key}">${label}</th>`;
+    }
+
+    function recommendationClass(label) {
+      return String(label || "").toLowerCase();
+    }
+
+    function matrixTooltip(row, cell) {
+      const title = `${row.count} ${cell.gameState === "all" ? "" : cell.gameStateLabel}`.trim();
+      return [
+        title,
+        `METRIC|Conviction|${fmtPct(cell.confidenceRequired)}|to break even|Run swing|${fmtSignedNumber(cell.runValue, 2)}|runs if the call flips`,
+        `METRIC|Recommendation|${cell.recommendation}|${cell.challengesLeft} left|Cost|${fmtNumber(cell.challengeCost, 2)}|runs charged for a miss`,
+        `Sample: ${fmtInt(cell.calledPitches)} called pitches.`,
+        cell.fallbackUsed ? "Small game-state sample; count baseline used." : ""
+      ].filter(Boolean).join("\n");
+    }
+
+    function confidenceTooltip(row, two, one) {
+      return [
+        `${row.count} conviction bar`,
+        `METRIC|2 left|${fmtPct(two.confidenceRequired)}|breakeven conviction|1 left|${fmtPct(one.confidenceRequired)}|last miss costs more`,
+        `METRIC|Run swing|${fmtSignedNumber(two.runValue, 2)}|successful overturn value|Count|${row.count}|called-pitch state`,
+        `Catchers must be right at least this often for the challenge to break even.`
+      ].join("\n");
+    }
+
+    function renderStrategyMatrix(rows, gameStates, leftValues) {
+      const groupHeads = gameStates.map(state => `<div class="wristband-group-head" style="grid-column: span ${leftValues.length}">${escapeHtml(state.label)}</div>`).join("");
+      const subHeads = gameStates.map(() => leftValues.map(value => `<div class="wristband-subhead">${value} left</div>`).join("")).join("");
+      const body = rows.map(row => {
+        const cells = (row.cells || []).map(cell => {
+          const cls = recommendationClass(cell.recommendation);
+          return `<div class="wristband-cell ${cls} strategy-cell" data-tooltip="${escapeHtml(matrixTooltip(row, cell))}">
+            <div class="value">${fmtSignedNumber(cell.runValue, 2)}</div>
+            <div class="rec">${escapeHtml(cell.recommendation)}</div>
+          </div>`;
+        }).join("");
+        return `<div class="wristband-count">${escapeHtml(row.count)}</div>${cells}`;
+      }).join("");
+      return `
+        <div class="heatmap-wrap">
+          <div class="wristband">
+            <div class="wristband-head">Count</div>
+            ${groupHeads}
+            <div class="wristband-subhead"></div>
+            ${subHeads}
+            ${body}
+          </div>
+        </div>`;
+    }
+
+    function primaryCell(row, gameStateKey, challengesLeft) {
+      return (row.cells || []).find(cell => cell.gameState === gameStateKey && Number(cell.challengesLeft) === Number(challengesLeft));
+    }
+
+    function renderConfidenceBar(count, twoPct, onePct) {
+      const safeId = String(count || "count").replace(/[^a-z0-9]/gi, "-");
+      const twoX = Math.min(100, Math.max(0, Number(twoPct || 0)));
+      const oneX = Math.min(100, Math.max(0, Number(onePct || 0)));
+      return `
+        <svg class="confidence-svg" viewBox="0 0 100 18" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="confidence-${safeId}" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0%" stop-color="#5ead72"></stop>
+              <stop offset="48%" stop-color="#d6a664"></stop>
+              <stop offset="100%" stop-color="#d94c4c"></stop>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="5" width="100" height="8" rx="4" fill="url(#confidence-${safeId})"></rect>
+          <line x1="${twoX}" y1="2" x2="${twoX}" y2="16" stroke="#111827" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"></line>
+          <line x1="${oneX}" y1="2" x2="${oneX}" y2="16" stroke="#b61234" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"></line>
+        </svg>`;
+    }
+
+    function renderConceptView(rows, inventoryCosts) {
+      const examples = ["3-2", "2-2", "1-2", "0-2", "2-0", "1-0", "0-0"]
+        .map(count => rows.find(row => row.count === count))
+        .filter(Boolean)
+        .map(row => {
+          const two = primaryCell(row, "all", 2);
+          const one = primaryCell(row, "all", 1);
+          if (!two || !one) return "";
+          const leftPct = Math.min(100, Math.max(0, Number(two.confidenceRequired || 0) * 100));
+          const onePct = Math.min(100, Math.max(0, Number(one.confidenceRequired || 0) * 100));
+          return `<div class="confidence-row strategy-cell" data-tooltip="${escapeHtml(confidenceTooltip(row, two, one))}">
+            <span>${escapeHtml(row.count)}</span>
+            ${renderConfidenceBar(row.count, leftPct, onePct)}
+            <span>${fmtPct(two.confidenceRequired)}</span>
+            <span>${fmtPct(one.confidenceRequired)}</span>
+          </div>`;
+        }).join("");
+      const fullCost = inventoryCosts["2"] || { cost: 0.20 };
+      const lastCost = inventoryCosts["1"] || { cost: 0.31, premium: 0.11, sample: 0 };
+      return `
+        <div class="strategy-concept">
+          <div class="inventory-row">
+            <div class="inventory-card">
+              <div class="label">2 challenges left</div>
+              <div class="big">${fmtNumber(fullCost.cost, 2)} runs</div>
+              <div class="muted">Baseline cost of spending one.</div>
+            </div>
+            <div class="inventory-card">
+              <div class="label">1 challenge left</div>
+              <div class="big">${fmtNumber(lastCost.cost, 2)} runs</div>
+              <div class="muted">Adds a ${fmtNumber(lastCost.premium, 2)} run premium from observed future overturned challenge value.</div>
+            </div>
+          </div>
+          <div class="conviction-panel">
+            <h3>How The Conviction Bar Moves</h3>
+            <p class="muted">Lower percentages are easier spends. The red marker is stricter because missing with one challenge left costs more than missing with two.</p>
+            <div class="confidence-row" style="color:var(--muted); text-transform:uppercase; letter-spacing:.04em">
+              <span>Count</span><span>Lower is easier to challenge</span><span>2 left</span><span>1 left</span>
+            </div>
+            ${examples}
+            <p class="muted" style="font-size:13px; margin-top:10px">Why 2-0 and 0-2 are close here: a 2-0 strike prevents a dangerous 3-0 count, while many 0-2 balls are low-cost chase or waste pitches. The average run swing is similar in this 2026 sample, even though the baseball feel is different.</p>
+          </div>
+        </div>`;
+    }
+
+    function compactSituationLabel(cell) {
+      const state = cell.gameState === "all" ? "" : cell.gameStateLabel;
+      return `${cell.count || ""}${state ? ` + ${state}` : ""}`;
+    }
+
+    function lightCopy(label) {
+      if (label === "Challenge") return "Think challenge when the location read is real. Game-state rows appear only when runners or leverage move a count up.";
+      if (label === "Lean") return "Playable with a strong location tell. Game-state rows here are spots where context raises the baseline.";
+      return "Save it unless the location evidence is overwhelming.";
+    }
+
+    function recommendationRank(label) {
+      return { Hold: 0, Lean: 1, Challenge: 2 }[label] ?? 0;
+    }
+
+    function chipTooltip(cell) {
+      const moved = cell.baselineRecommendation && cell.baselineRecommendation !== cell.recommendation
+        ? `Game state moved this from ${cell.baselineRecommendation} to ${cell.recommendation}.`
+        : "Count-only baseline.";
+      return [
+        compactSituationLabel(cell),
+        `METRIC|Conviction|${fmtPct(cell.confidenceRequired)}|needed|Run swing|${fmtSignedNumber(cell.runValue, 2)}|runs`,
+        `METRIC|Light|${cell.recommendation}|${cell.challengesLeft} left|State|${cell.gameState === "all" ? "Baseline" : cell.gameStateLabel}|${cell.baselineRecommendation ? "moved up" : "count only"}`,
+        moved
+      ].join("\n");
+    }
+
+    function lightBarWidth(cell) {
+      const value = Number(cell.runValue || 0);
+      return Math.max(8, Math.min(100, (value / 0.65) * 100));
+    }
+
+    function renderLightBar(cell, key) {
+      const cls = recommendationClass(key);
+      return `
+        <div class="light-bar-row ${cls} strategy-cell" data-tooltip="${escapeHtml(chipTooltip(cell))}">
+          <div class="light-bar-label">${escapeHtml(compactSituationLabel(cell))}</div>
+          <div class="light-bar-track"><span class="light-bar-fill" style="width:${lightBarWidth(cell)}%"></span></div>
+          <div class="light-bar-value">${fmtSignedNumber(cell.runValue, 2)}</div>
+        </div>`;
+    }
+
+    function renderCheatCard(rows) {
+      const selectedLeft = Number(state.selectedStrategyLeft || 2);
+      const buckets = { Challenge: [], Lean: [], Hold: [] };
+      rows.forEach(row => {
+        const cells = (row.cells || []).filter(cell => Number(cell.challengesLeft) === selectedLeft);
+        const baseline = cells.find(cell => cell.gameState === "all");
+        if (!baseline) return;
+        buckets[baseline.recommendation || "Hold"].push({ ...baseline, count: row.count });
+        cells
+          .filter(cell => cell.gameState !== "all")
+          .forEach(cell => {
+            if (recommendationRank(cell.recommendation) <= recommendationRank(baseline.recommendation)) return;
+            buckets[cell.recommendation || "Hold"].push({
+              ...cell,
+              count: row.count,
+              baselineRecommendation: baseline.recommendation,
+            });
+          });
+      });
+      Object.keys(buckets).forEach(key => {
+        buckets[key].sort((a, b) => {
+          const stateScore = value => value.gameState === "all" ? 0 : value.gameState === "risp" ? 1 : 2;
+          return Number(b.runValue || 0) - Number(a.runValue || 0) || stateScore(a) - stateScore(b);
+        });
+      });
+      const cards = [
+        ["Challenge", "Green Light"],
+        ["Lean", "Yellow Light"],
+        ["Hold", "Red Light"],
+      ].map(([key, title]) => {
+        const bars = buckets[key].slice(0, 18).map(cell => renderLightBar(cell, key)).join("");
+        return `<div class="light-card ${recommendationClass(key)}">
+          <div class="light-head">${title}</div>
+          <div class="light-copy">${lightCopy(key)}</div>
+          <div class="light-bar-list">${bars || `<span class="muted">No situations in this tier.</span>`}</div>
+        </div>`;
+      }).join("");
+      return `
+        <div>
+          <div class="light-toggle" aria-label="Challenges left">
+            <button type="button" class="${selectedLeft === 2 ? "active" : ""}" data-left="2">2 left</button>
+            <button type="button" class="${selectedLeft === 1 ? "active" : ""}" data-left="1">1 left</button>
+          </div>
+          <p class="muted" style="font-size:13px; margin:0 0 12px">Plain count rows are the baseline. RISP and Late close rows only appear when that game state changes the light.</p>
+          <div class="light-board">${cards}</div>
+        </div>`;
+    }
+
+    function strategyAreaForPoint(point) {
+      const xBin = Number(point.x_bin);
+      const zBin = Number(point.z_bin);
+      if (!Number.isFinite(xBin) || !Number.isFinite(zBin)) return null;
+      return AREA_DEFS.find(area => area.cells.some(cell => cell[0] === xBin && cell[1] === zBin)) || null;
+    }
+
+    function pointInArea(point, areaKey) {
+      const area = AREA_DEFS.find(item => item.key === areaKey);
+      if (!area) return false;
+      const xBin = Number(point.x_bin);
+      const zBin = Number(point.z_bin);
+      return area.cells.some(cell => cell[0] === xBin && cell[1] === zBin);
+    }
+
+    function pointInStrategySelection(point) {
+      if (!state.selectedStrategyAreas.size) return true;
+      return [...state.selectedStrategyAreas].some(areaKey => pointInArea(point, areaKey));
+    }
+
+    function summarizeChallengeArea(points, area) {
+      const selected = area ? points.filter(point => pointInArea(point, area.key)) : points;
+      const challenges = selected.length;
+      const overturns = selected.filter(point => point.abs_overturned).length;
+      const runValues = selected.map(point => Number(point.runValue)).filter(Number.isFinite);
+      const avgRunValue = runValues.length ? runValues.reduce((sum, value) => sum + value, 0) / runValues.length : null;
+      return {
+        key: area ? area.key : "all",
+        label: area ? area.label : "All challenge locations",
+        color: area ? area.color : "var(--red)",
+        challenges,
+        overturns,
+        successRate: challenges ? overturns / challenges : 0,
+        avgRunValue
+      };
+    }
+
+    function selectedStrategyAreaSummary(ballPoints, strikePoints) {
+      const selectedAreas = AREA_DEFS.filter(area => state.selectedStrategyAreas.has(area.key));
+      const areaLabel = !selectedAreas.length
+        ? "Choose an area below"
+        : selectedAreas.length === 1 ? selectedAreas[0].label : `${selectedAreas.length} areas selected`;
+      const filterPoints = points => selectedAreas.length
+        ? points.filter(point => selectedAreas.some(area => pointInArea(point, area.key)))
+        : [];
+      const balls = filterPoints(ballPoints);
+      const strikes = filterPoints(strikePoints);
+      const ballOverturns = balls.filter(point => point.abs_overturned).length;
+      const strikeOverturns = strikes.filter(point => point.abs_overturned).length;
+      const selected = [...balls, ...strikes];
+      const runValues = selected.map(point => Number(point.runValue)).filter(Number.isFinite);
+      return {
+        areaLabel,
+        ballChallenges: balls.length,
+        ballOverturnRate: balls.length ? ballOverturns / balls.length : null,
+        strikeChallenges: strikes.length,
+        strikeOverturnRate: strikes.length ? strikeOverturns / strikes.length : null,
+        avgRunValue: runValues.length ? runValues.reduce((sum, value) => sum + value, 0) / runValues.length : null,
+      };
+    }
+
+    function renderStrategyAreaControls(ballPoints, strikePoints) {
+      const selected = selectedStrategyAreaSummary(ballPoints, strikePoints);
+      const rows = AREA_DEFS.map(area => {
+        const balls = summarizeChallengeArea(ballPoints, area);
+        const strikes = summarizeChallengeArea(strikePoints, area);
+        const combined = summarizeChallengeArea([...ballPoints, ...strikePoints], area);
+        return { ...balls, strikeChallenges: strikes.challenges, strikeOverturnRate: strikes.successRate, avgRunValue: combined.avgRunValue };
+      }).filter(row => row.challenges || row.strikeChallenges);
+      return `
+        <div id="strategy-area-detail" class="area-detail">
+          <div><div class="label">Selected Area</div><div class="value">${escapeHtml(selected.areaLabel)}</div></div>
+          <div><div class="label">Ball Challenges</div><div class="value">${selected.ballOverturnRate === null ? "--" : `${fmtInt(selected.ballChallenges)} / ${fmtPct(selected.ballOverturnRate)}`}</div></div>
+          <div><div class="label">Strike Challenges</div><div class="value">${selected.strikeOverturnRate === null ? "--" : `${fmtInt(selected.strikeChallenges)} / ${fmtPct(selected.strikeOverturnRate)}`}</div></div>
+          <div><div class="label">Avg Run Swing</div><div class="value">${selected.avgRunValue === null ? "--" : fmtSignedNumber(selected.avgRunValue, 2)}</div></div>
+        </div>
+        <table class="strategy-area-table">
+          <thead><tr><th>Area</th><th>Ball Challenges</th><th>Strike Challenges</th><th>Avg Run Swing</th></tr></thead>
+          <tbody>
+          ${rows.map(row => `
+            <tr class="area-row ${state.selectedStrategyAreas.has(row.key) ? "selected" : ""}" data-area="${escapeHtml(row.key)}">
+              <td><span class="area-chip" style="background:${row.color}"></span><strong>${escapeHtml(row.label)}</strong></td>
+              <td>${fmtInt(row.challenges)} / ${fmtPct(row.successRate)}</td>
+              <td>${fmtInt(row.strikeChallenges)} / ${fmtPct(row.strikeOverturnRate)}</td>
+              <td>${row.avgRunValue === null ? "--" : fmtSignedNumber(row.avgRunValue, 2)}</td>
+            </tr>`).join("")}
+          </tbody>
+        </table>`;
+    }
+
+    function pitchTypeName(code) {
+      return ({
+        FF: "4-seam",
+        SI: "Sinker",
+        SL: "Slider",
+        ST: "Sweeper",
+        FC: "Cutter",
+        CH: "Changeup",
+        CU: "Curveball",
+        KC: "Knuckle curve",
+        FS: "Splitter",
+        SV: "Slurve",
+      })[code] || code || "Unknown";
+    }
+
+    function availableStrategyPitchTypes(observed) {
+      const points = [...(observed.ballChallengePoints || []), ...(observed.strikeChallengePoints || [])];
+      const counts = new Map();
+      points.forEach(point => {
+        const key = point.pitch_type || "Unknown";
+        counts.set(key, (counts.get(key) || 0) + 1);
+      });
+      return [...counts.entries()]
+        .filter(([, count]) => count >= 20)
+        .sort((a, b) => b[1] - a[1])
+        .map(([key, count]) => ({ key, count, label: pitchTypeName(key) }));
+    }
+
+    function filterStrategyPitchType(points) {
+      const selected = state.selectedStrategyPitchType || "All";
+      if (selected === "All") return points;
+      return points.filter(point => (point.pitch_type || "Unknown") === selected);
+    }
+
+    function renderStrategyPitchFilter(observed) {
+      const options = availableStrategyPitchTypes(observed);
+      if (!options.length) return "";
+      const selected = state.selectedStrategyPitchType || "All";
+      const allCount = (observed.ballChallengePoints || []).length + (observed.strikeChallengePoints || []).length;
+      return `
+        <div class="strategy-filter-row">
+          <label for="strategy-pitch-type">Pitch Type</label>
+          <select id="strategy-pitch-type">
+            <option value="All"${selected === "All" ? " selected" : ""}>All pitch types (${fmtInt(allCount)})</option>
+            ${options.map(option => `<option value="${escapeHtml(option.key)}"${selected === option.key ? " selected" : ""}>${escapeHtml(option.label)} (${fmtInt(option.count)})</option>`).join("")}
+          </select>
+          <span class="muted">Use this to inspect pitch-type patterns in the same location view.</span>
+        </div>`;
+    }
+
+    function pitchTooltipText(point, direction) {
+      const side = direction === "strike" ? "Called strike challenge" : "Called ball challenge";
+      const result = point.result || (point.abs_overturned ? "Overturned" : "Upheld");
+      return [
+        side,
+        `METRIC|Run swing|${Number.isFinite(Number(point.runValue)) ? fmtSignedNumber(Number(point.runValue), 2) : "--"}|count value|Conviction|${Number.isFinite(Number(point.confidenceRequired)) ? fmtPct(Number(point.confidenceRequired)) : "--"}|breakeven with 2 left`,
+        `METRIC|Result|${point.abs_overturned ? "Overturned" : "Upheld"}|${result}|Count|${point.count || "--"}|${point.pitch_type || "pitch"}`,
+        `Area: ${point.zoneLabel || "Unknown"}.`
+      ].filter(Boolean).join("\n");
+    }
+
+    function impactClass(point) {
+      const value = Number(point.runValue || 0);
+      if (value >= 0.30) return "impact-high";
+      if (value >= 0.18) return "impact-mid";
+      return "impact-low";
+    }
+
+    function renderPitchPlot(points, direction) {
+      const width = 560;
+      const height = 560;
+      const margin = { left: 64, right: 30, top: 34, bottom: 64 };
+      const xMin = -1.75;
+      const xMax = 1.75;
+      const zMin = -0.35;
+      const zMax = 1.35;
+      const x = value => margin.left + ((Number(value || 0) - xMin) / (xMax - xMin)) * (width - margin.left - margin.right);
+      const y = value => height - margin.bottom - ((Number(value || 0) - zMin) / (zMax - zMin)) * (height - margin.top - margin.bottom);
+      const dots = points
+        .filter(point => Number.isFinite(Number(point.plate_x)) && Number.isFinite(Number(point.z_norm)))
+        .map(point => {
+          const selected = pointInStrategySelection(point);
+          const impact = impactClass(point);
+          const value = Number(point.runValue || 0);
+          const radius = selected ? (value >= 0.30 ? 5.8 : value >= 0.18 ? 5.0 : 4.2) : 3.4;
+          const haloRadius = value >= 0.30 ? 9.5 : value >= 0.18 ? 7.8 : 0;
+          const cls = `${point.abs_overturned ? "good" : "bad"} ${impact} ${selected ? "highlighted" : "dimmed"}`;
+          const tooltip = pitchTooltipText(point, direction);
+          const halo = selected && haloRadius ? `<circle class="pitch-halo ${impact}" cx="${x(point.plate_x)}" cy="${y(point.z_norm)}" r="${haloRadius}"></circle>` : "";
+          return `${halo}<circle class="pitch-point ${cls}" cx="${x(point.plate_x)}" cy="${y(point.z_norm)}" r="${radius}" data-tooltip="${escapeHtml(tooltip)}"></circle>`;
+        }).join("");
+      return `
+        <div class="plot-wrap square">
+          <svg class="pitch-plot" viewBox="0 0 ${width} ${height}" role="img" aria-label="${direction === "strike" ? "Called strike challenge locations" : "Called ball challenge locations"}">
+            <rect class="strike-box" x="${x(-0.83)}" y="${y(1)}" width="${x(0.83) - x(-0.83)}" height="${y(0) - y(1)}"></rect>
+            ${[-1.25, -0.83, 0, 0.83, 1.25].map(value => `<line class="plot-grid" x1="${x(value)}" y1="${margin.top}" x2="${x(value)}" y2="${height - margin.bottom}"></line>`).join("")}
+            ${[0, 0.5, 1].map(value => `<line class="plot-grid" x1="${margin.left}" y1="${y(value)}" x2="${width - margin.right}" y2="${y(value)}"></line>`).join("")}
+            ${dots}
+            <text class="plot-label" x="${width / 2 - 46}" y="${height - 20}">Catcher view, raw plate_x</text>
+            <text class="plot-label" transform="translate(22 ${height / 2 + 86}) rotate(-90)">Normalized height</text>
+            <text class="plot-note" x="${x(-1.72)}" y="${height - 40}">Third-base side</text>
+            <text class="plot-note" x="${x(1.2)}" y="${height - 40}">First-base side</text>
+          </svg>
+        </div>`;
+    }
+
+    function renderStrategy() {
+      const strategy = DASHBOARD_DATA.strategy || {};
+      const countRows = strategy.countRows || [];
+      if (!countRows.length) {
+        setHtml("strategy-content", `<div class="empty">Challenge strategy needs 2026 Statcast called-pitch data.</div>`);
+        return;
+      }
+      const observed = strategy.observed || {};
+      const lastCost = (strategy.inventoryCosts || {})["1"] || { cost: 0.28, premium: 0.08, sample: 0 };
+      const fullCost = (strategy.inventoryCosts || {})["2"] || { cost: 0.20 };
+      const availablePitchTypes = availableStrategyPitchTypes(observed);
+      if (state.selectedStrategyPitchType !== "All" && !availablePitchTypes.some(option => option.key === state.selectedStrategyPitchType)) {
+        state.selectedStrategyPitchType = "All";
+      }
+      const ballPoints = filterStrategyPitchType(observed.ballChallengePoints || []);
+      const strikePoints = filterStrategyPitchType(observed.strikeChallengePoints || []);
+      const ballOverturnRate = ballPoints.length ? ballPoints.filter(point => point.abs_overturned).length / ballPoints.length : 0;
+      const strikeOverturnRate = strikePoints.length ? strikePoints.filter(point => point.abs_overturned).length / strikePoints.length : 0;
+      const observedBlock = Number(observed.usablePitchReviews || 0)
+        ? `<div class="panel pad area-panel">
+            <h3>Observed Challenge Results By Location</h3>
+            <p class="muted">Use this as the confidence input. These views start with the original call: challenged balls on the left, challenged strikes on the right. Green means ABS overturned the call; red means the original call stood. Hover a dot to connect location to the count-level run swing.</p>
+            <p class="muted" style="font-size:13px">The box is a generic normalized strike zone. Because each pitch is normalized to that hitter's tracked top and bottom, dots just above the drawn box can still be close to the actual ABS top edge for that pitch.</p>
+            ${renderStrategyPitchFilter(observed)}
+            <div class="legend-row">
+              <span><span class="legend-dot" style="background:var(--green)"></span>Overturned</span>
+              <span><span class="legend-dot" style="background:var(--red)"></span>Upheld</span>
+              <span><span class="legend-dot" style="background:rgba(182,18,52,0.28); border:1px solid var(--red)"></span>larger halo = higher run swing</span>
+              <span>${fmtInt(ballPoints.length)} challenged balls, ${fmtPct(ballOverturnRate)} overturned to strikes</span>
+              <span>${fmtInt(strikePoints.length)} challenged strikes, ${fmtPct(strikeOverturnRate)} overturned to balls</span>
+            </div>
+            <div class="grid challenge-plots area-panel">
+              <div>
+                <h3>Challenged Balls</h3>
+                <p class="muted">Every point was originally called a ball. Green means ABS changed it to a strike.</p>
+                ${renderPitchPlot(ballPoints, "ball")}
+              </div>
+              <div>
+                <h3>Challenged Strikes</h3>
+                <p class="muted">Every point was originally called a strike. Green means ABS changed it to a ball.</p>
+                ${renderPitchPlot(strikePoints, "strike")}
+              </div>
+            </div>
+            <div class="area-panel">
+              <h3>Location Groups</h3>
+              <p class="muted">Click one or more areas to highlight the same catcher-view cells on both plots and combine the summary stats.</p>
+              ${renderStrategyAreaControls(ballPoints, strikePoints)}
+            </div>
+          </div>`
+        : `<div class="empty">Pitch-level challenge cache is not available yet. The guide still uses Statcast run value, but observed challenge behavior is hidden until the MLB Stats API cache is built.</div>`;
+
+      setHtml("strategy-content", `
+        <div class="insight">
+          <strong>The strategy story</strong>
+          <p>There are three questions in order. Is the count/game state worth enough? How many misses can we still absorb? Does the pitch location look like calls ABS is actually overturning? A challenge should pass all three, not just feel close.</p>
+        </div>
+        <div class="panel pad">
+          <h3>The Math In Plain English</h3>
+          <p>No, this is not assuming a ball-to-strike change is always worth 0.20 runs. The <strong>0.20</strong> number is the estimated cost of losing a challenge. The <strong>run swing</strong> changes by count and situation. On 0-0, it is essentially the run expectancy gap between moving to 1-0 versus 0-1. On 3-2, it is much larger because the call can flip a walk into a strikeout.</p>
+          <p><strong>Conviction needed</strong> is the breakeven probability: <code>challenge cost / (challenge cost + run swing)</code>. With two left, this uses ${fmtNumber(fullCost.cost, 2)} runs. With one left, this build uses ${fmtNumber(lastCost.cost, 2)} runs by adding a ${fmtNumber(lastCost.premium, 2)} run last-challenge premium estimated from observed future overturned challenge value (${fmtInt(lastCost.sample)} sequences).</p>
+        </div>
+        <div class="panel pad area-panel">
+          <h3>Concept: Why The Bar Moves</h3>
+          <p class="muted">This is the math view. It shows why the same pitch becomes harder to spend on when the team is down to its last challenge.</p>
+          ${renderConceptView(strategy.strategyMatrixRows || [], strategy.inventoryCosts || {})}
+        </div>
+        <div class="panel pad area-panel">
+          <h3>Catcher Cheat Card: When To Think Challenge</h3>
+          <p class="muted">This is the strategy view. Start in the green-light box, use the yellow-light box when the location read is strong, and treat red-light spots as save-it calls.</p>
+          ${renderCheatCard(strategy.strategyMatrixRows || [])}
+        </div>
+        ${observedBlock}
+        <div id="strategy-tooltip" class="zone-tooltip"></div>
+      `);
+      document.querySelectorAll(".pitch-point").forEach(point => {
+        point.addEventListener("mouseenter", event => showStrategyTooltip(event, point));
+        point.addEventListener("mousemove", moveZoneTooltip);
+        point.addEventListener("mouseleave", hideZoneTooltip);
+      });
+      document.querySelectorAll(".strategy-cell").forEach(cell => {
+        cell.addEventListener("mouseenter", event => showStrategyTooltip(event, cell));
+        cell.addEventListener("mousemove", moveZoneTooltip);
+        cell.addEventListener("mouseleave", hideZoneTooltip);
+      });
+      document.querySelectorAll(".light-toggle button").forEach(button => {
+        button.addEventListener("click", () => {
+          state.selectedStrategyLeft = Number(button.dataset.left || 2);
+          renderStrategy();
+        });
+      });
+      const pitchTypeSelect = document.getElementById("strategy-pitch-type");
+      if (pitchTypeSelect) {
+        pitchTypeSelect.addEventListener("change", () => {
+          state.selectedStrategyPitchType = pitchTypeSelect.value || "All";
+          renderStrategy();
+        });
+      }
+      document.querySelectorAll(".strategy-area-table .area-row").forEach(row => {
+        row.addEventListener("click", () => {
+          if (state.selectedStrategyAreas.has(row.dataset.area)) {
+            state.selectedStrategyAreas.delete(row.dataset.area);
+          } else {
+            state.selectedStrategyAreas.add(row.dataset.area);
+          }
+          renderStrategy();
+        });
+      });
     }
 
     function renderOverview() {
@@ -1241,6 +2262,7 @@
       initNav();
       initFilters();
       renderZone();
+      renderStrategy();
       renderOverview();
       renderReport();
       renderEvaluation();

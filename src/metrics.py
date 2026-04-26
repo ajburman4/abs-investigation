@@ -3,6 +3,7 @@ from __future__ import annotations
 import math
 from typing import Any
 
+import numpy as np
 import pandas as pd
 
 
@@ -144,6 +145,604 @@ def build_zone_rows(statcast_2026: pd.DataFrame, statcast_2025: pd.DataFrame) ->
     grouped["swinging_strikes"] = grouped["swinging_strikes"].astype(int)
     grouped["pitches"] = grouped["pitches"].astype(int)
     return grouped.to_dict(orient="records")
+
+
+def _count_order(count: str) -> int:
+    try:
+        balls, strikes = count.split("-")
+        return int(balls) * 10 + int(strikes)
+    except (AttributeError, ValueError):
+        return 99
+
+
+def _base_state(row: pd.Series) -> str:
+    occupied = [
+        "1" if pd.notna(row.get("on_1b")) else "",
+        "2" if pd.notna(row.get("on_2b")) else "",
+        "3" if pd.notna(row.get("on_3b")) else "",
+    ]
+    state = "".join(occupied)
+    return state if state else "Empty"
+
+
+def _inning_bucket(inning: object) -> str:
+    value = safe_float(inning)
+    if value <= 3:
+        return "Early"
+    if value <= 6:
+        return "Middle"
+    return "Late"
+
+
+def _score_bucket(row: pd.Series) -> str:
+    margin = abs(safe_float(row.get("fld_score")) - safe_float(row.get("bat_score")))
+    if margin <= 1:
+        return "Tie / 1 run"
+    if margin <= 3:
+        return "2-3 runs"
+    return "4+ runs"
+
+
+def _challenge_band(run_value: float, confidence: float) -> str:
+    if run_value >= 0.30 or confidence <= 0.40:
+        return "Green"
+    if run_value >= 0.13 or confidence <= 0.62:
+        return "Yellow"
+    return "Red"
+
+
+def _combined_band(run_value: float, success_rate: float | None = None) -> str:
+    if success_rate is None:
+        return _challenge_band(run_value, _confidence_required(run_value))
+    if run_value >= 0.18 and success_rate >= 0.60:
+        return "Green"
+    if run_value >= 0.13 and success_rate >= 0.45:
+        return "Yellow"
+    return "Red"
+
+
+def _confidence_required(run_value: float, challenge_cost: float = 0.20) -> float:
+    if run_value <= 0:
+        return 1.0
+    return challenge_cost / (challenge_cost + run_value)
+
+
+def _recommendation_from_cost(run_value: float, challenge_cost: float) -> tuple[float, str]:
+    confidence = _confidence_required(run_value, challenge_cost)
+    if confidence <= 0.45:
+        return confidence, "Challenge"
+    if confidence <= 0.62:
+        return confidence, "Lean"
+    return confidence, "Hold"
+
+
+def _called_pitch_frame(statcast_2026: pd.DataFrame) -> pd.DataFrame:
+    if statcast_2026.empty:
+        return pd.DataFrame()
+    needed = {"description", "delta_run_exp", "balls", "strikes"}
+    if not needed.issubset(statcast_2026.columns):
+        return pd.DataFrame()
+    called = statcast_2026[
+        statcast_2026["description"].isin(["ball", "blocked_ball", "called_strike"])
+    ].copy()
+    called["delta_run_exp"] = pd.to_numeric(called["delta_run_exp"], errors="coerce")
+    called = called.dropna(subset=["delta_run_exp"])
+    called["count"] = called["balls"].astype(int).astype(str) + "-" + called["strikes"].astype(int).astype(str)
+    called["is_called_ball"] = called["description"].isin(["ball", "blocked_ball"])
+    called["is_called_strike"] = called["description"].eq("called_strike")
+    return called
+
+
+def _count_run_values(called: pd.DataFrame) -> dict[str, dict[str, Any]]:
+    values: dict[str, dict[str, Any]] = {}
+    if called.empty:
+        return values
+    for count, group in called.groupby("count"):
+        balls = group[group["is_called_ball"]]["delta_run_exp"]
+        strikes = group[group["is_called_strike"]]["delta_run_exp"]
+        if len(balls) < 50 or len(strikes) < 50:
+            continue
+        run_value = max(0.0, float(balls.mean() - strikes.mean()))
+        confidence = _confidence_required(run_value)
+        values[count] = {
+            "count": count,
+            "calledPitches": int(len(group)),
+            "calledBalls": int(len(balls)),
+            "calledStrikes": int(len(strikes)),
+            "ballRunValue": float(balls.mean()),
+            "strikeRunValue": float(strikes.mean()),
+            "runValue": run_value,
+            "confidenceRequired": confidence,
+            "band": _challenge_band(run_value, confidence),
+        }
+    return values
+
+
+def _run_value_summary(group: pd.DataFrame, fallback: dict[str, Any] | None = None) -> dict[str, Any]:
+    balls = group[group["is_called_ball"]]["delta_run_exp"]
+    strikes = group[group["is_called_strike"]]["delta_run_exp"]
+    enough = len(group) >= 80 and len(balls) >= 20 and len(strikes) >= 20
+    if enough:
+        ball_value = float(balls.mean())
+        strike_value = float(strikes.mean())
+        run_value = max(0.0, ball_value - strike_value)
+    else:
+        ball_value = safe_float((fallback or {}).get("ballRunValue"))
+        strike_value = safe_float((fallback or {}).get("strikeRunValue"))
+        run_value = safe_float((fallback or {}).get("runValue"))
+    return {
+        "calledPitches": int(len(group)),
+        "calledBalls": int(len(balls)),
+        "calledStrikes": int(len(strikes)),
+        "ballRunValue": ball_value,
+        "strikeRunValue": strike_value,
+        "runValue": run_value,
+        "fallbackUsed": not enough,
+    }
+
+
+def _add_challenge_inventory(events: pd.DataFrame) -> pd.DataFrame:
+    if events.empty or "challenge_team_id" not in events.columns:
+        events["challengesLeft"] = np.nan
+        return events
+    ordered = events.sort_values(
+        ["game_pk", "challenge_team_id", "at_bat_number", "event_index", "pitch_number"],
+        na_position="last",
+    ).copy()
+    ordered["challengesLeft"] = np.nan
+    for _, group in ordered.groupby(["game_pk", "challenge_team_id"], dropna=False):
+        misses = 0
+        for index, row in group.iterrows():
+            left = max(0, 2 - misses)
+            ordered.at[index, "challengesLeft"] = left
+            if not bool(row.get("abs_overturned")):
+                misses += 1
+    return ordered.sort_index()
+
+
+def _inventory_costs(statcast_2026: pd.DataFrame, abs_challenges: pd.DataFrame, count_values: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    base_cost = 0.20
+    if statcast_2026.empty or abs_challenges.empty or not count_values:
+        return {
+            "1": {"cost": 0.28, "premium": 0.08, "sample": 0, "source": "fallback"},
+            "2": {"cost": base_cost, "premium": 0.0, "sample": 0, "source": "Savant breakeven cost"},
+        }
+    events = _add_challenge_inventory(abs_challenges.copy())
+    for column in ["game_pk", "at_bat_number", "pitch_number"]:
+        events[column] = pd.to_numeric(events[column], errors="coerce")
+    pitches = statcast_2026.copy()
+    for column in ["game_pk", "at_bat_number", "pitch_number"]:
+        pitches[column] = pd.to_numeric(pitches[column], errors="coerce")
+    joined = events.merge(
+        pitches[["game_pk", "at_bat_number", "pitch_number", "balls", "strikes"]],
+        on=["game_pk", "at_bat_number", "pitch_number"],
+        how="left",
+    )
+    joined = joined.dropna(subset=["balls", "strikes", "challenge_team_id"])
+    if joined.empty:
+        return {
+            "1": {"cost": 0.28, "premium": 0.08, "sample": 0, "source": "fallback"},
+            "2": {"cost": base_cost, "premium": 0.0, "sample": 0, "source": "Savant breakeven cost"},
+        }
+    joined["count"] = joined["balls"].astype(int).astype(str) + "-" + joined["strikes"].astype(int).astype(str)
+    joined["runValue"] = joined["count"].map({count: item["runValue"] for count, item in count_values.items()})
+    joined = joined.dropna(subset=["runValue"])
+    future_values: list[float] = []
+    for _, group in joined.sort_values(["at_bat_number", "event_index", "pitch_number"]).groupby(
+        ["game_pk", "challenge_team_id"], dropna=False
+    ):
+        values = group["runValue"].astype(float).to_list()
+        overturned = group["abs_overturned"].astype(bool).to_list()
+        left = group["challengesLeft"].astype(float).to_list()
+        for index, challenges_left in enumerate(left):
+            if challenges_left != 1:
+                continue
+            future_overturned = [values[j] for j in range(index + 1, len(values)) if overturned[j]]
+            if future_overturned:
+                future_values.append(max(future_overturned))
+    premium = float(np.nanmedian(future_values)) if future_values else 0.08
+    premium = max(0.04, min(0.14, premium))
+    return {
+        "1": {
+            "cost": base_cost + premium,
+            "premium": premium,
+            "sample": len(future_values),
+            "source": "observed future overturned challenge value",
+        },
+        "2": {"cost": base_cost, "premium": 0.0, "sample": int(len(joined)), "source": "Savant breakeven cost"},
+    }
+
+
+def _edge_distance_inches(frame: pd.DataFrame) -> pd.Series:
+    horizontal = (frame["plate_x"].abs() - 0.83).clip(lower=0) * 12.0
+    vertical_low = (frame["sz_bot"] - frame["plate_z"]).clip(lower=0) * 12.0
+    vertical_high = (frame["plate_z"] - frame["sz_top"]).clip(lower=0) * 12.0
+    return pd.concat([horizontal, vertical_low, vertical_high], axis=1).max(axis=1)
+
+
+def _zone_label(row: pd.Series) -> str:
+    if pd.isna(row.get("z_bin")) or pd.isna(row.get("x_bin")):
+        return "Location unavailable"
+    z_bin = int(row.get("z_bin", -1))
+    x_bin = int(row.get("x_bin", -1))
+    if z_bin == 4:
+        return "Top edge / above"
+    if z_bin == 0:
+        return "Bottom edge / below"
+    if x_bin in (0, 1, 2):
+        return "Third-base side"
+    if x_bin in (4, 5, 6):
+        return "First-base side"
+    return "Middle lane"
+
+
+def _observed_challenge_summary(
+    statcast_2026: pd.DataFrame, abs_challenges: pd.DataFrame, count_values: dict[str, dict[str, Any]]
+) -> dict[str, Any]:
+    empty = {
+        "total": 0,
+        "ballChallenges": 0,
+        "strikeChallenges": 0,
+        "ballOverturnRate": 0.0,
+        "strikeOverturnRate": 0.0,
+        "joinedPitchingTeam": [],
+        "byCount": [],
+        "byLocation": [],
+        "byLocationCell": [],
+        "ballChallengePoints": [],
+        "strikeChallengePoints": [],
+        "usablePitchReviews": 0,
+    }
+    if statcast_2026.empty or abs_challenges.empty:
+        return empty
+    events = _add_challenge_inventory(abs_challenges.copy())
+    for column in ["game_pk", "at_bat_number", "pitch_number"]:
+        events[column] = pd.to_numeric(events[column], errors="coerce")
+    pitches = statcast_2026.copy()
+    for column in ["game_pk", "at_bat_number", "pitch_number"]:
+        pitches[column] = pd.to_numeric(pitches[column], errors="coerce")
+    joined = events.merge(
+        pitches,
+        on=["game_pk", "at_bat_number", "pitch_number"],
+        how="left",
+        suffixes=("_abs", ""),
+    )
+    joined = joined[
+        joined["description"].notna()
+        & joined["call_description"].isin(["Ball", "Called Strike"])
+        & joined["challenge_side"].isin(["fielding", "batting"])
+    ].copy()
+    if joined.empty:
+        empty.update(total=int(len(events)))
+        return empty
+    joined["abs_overturned"] = joined["abs_overturned"].astype(bool)
+    joined["zoneLabel"] = joined.apply(_zone_label, axis=1)
+    joined["z_norm"] = pd.to_numeric(joined.get("z_norm"), errors="coerce")
+    joined["plate_x"] = pd.to_numeric(joined.get("plate_x"), errors="coerce")
+    joined["originalCall"] = np.where(joined["challenge_side"].eq("fielding"), "Ball", "Strike")
+    run_value_by_count = {count: item["runValue"] for count, item in count_values.items()}
+    confidence_by_count = {count: item["confidenceRequired"] for count, item in count_values.items()}
+    joined["runValue"] = joined["count"].map(run_value_by_count).fillna(0.0)
+    joined["confidenceRequired"] = joined["count"].map(confidence_by_count).fillna(1.0)
+    ball_challenges = joined[joined["originalCall"].eq("Ball")].copy()
+    strike_challenges = joined[joined["originalCall"].eq("Strike")].copy()
+    by_count = (
+        joined.groupby(["originalCall", "count"], dropna=False)
+        .agg(challenges=("game_pk", "size"), overturns=("abs_overturned", "sum"))
+        .reset_index()
+    )
+    by_count["successRate"] = by_count["overturns"] / by_count["challenges"]
+    by_location = (
+        joined.groupby(["originalCall", "zoneLabel"], dropna=False)
+        .agg(challenges=("game_pk", "size"), overturns=("abs_overturned", "sum"))
+        .reset_index()
+    )
+    by_location["successRate"] = by_location["overturns"] / by_location["challenges"]
+    by_location_cell = (
+        joined.dropna(subset=["x_bin", "z_bin"])
+        .groupby(["originalCall", "x_bin", "z_bin", "zoneLabel"], dropna=False)
+        .agg(challenges=("game_pk", "size"), overturns=("abs_overturned", "sum"))
+        .reset_index()
+    )
+    by_location_cell["successRate"] = by_location_cell["overturns"] / by_location_cell["challenges"]
+    point_columns = [
+        "plate_x",
+        "z_norm",
+        "x_bin",
+        "z_bin",
+        "count",
+        "game_date",
+        "inning",
+        "inning_topbot",
+        "zoneLabel",
+        "abs_overturned",
+        "description",
+        "pitch_type",
+        "catcher_name",
+        "pitcher_name",
+        "challenge_side",
+        "challengesLeft",
+        "call_description",
+        "runValue",
+        "confidenceRequired",
+    ]
+    ball_points = ball_challenges.dropna(subset=["plate_x", "z_norm"])[
+        [column for column in point_columns if column in ball_challenges.columns]
+    ].copy()
+    ball_points["originalCall"] = "Ball"
+    ball_points["result"] = ball_points["abs_overturned"].map(
+        {True: "Overturned to strike", False: "Upheld as ball"}
+    )
+    strike_points = strike_challenges.dropna(subset=["plate_x", "z_norm"])[
+        [column for column in point_columns if column in strike_challenges.columns]
+    ].copy()
+    strike_points["originalCall"] = "Strike"
+    strike_points["result"] = strike_points["abs_overturned"].map(
+        {True: "Overturned to ball", False: "Upheld as strike"}
+    )
+    return {
+        "total": int(len(events)),
+        "usablePitchReviews": int(len(joined)),
+        "ballChallenges": int(len(ball_challenges)),
+        "strikeChallenges": int(len(strike_challenges)),
+        "ballOverturnRate": float(ball_challenges["abs_overturned"].mean()) if not ball_challenges.empty else 0.0,
+        "strikeOverturnRate": float(strike_challenges["abs_overturned"].mean()) if not strike_challenges.empty else 0.0,
+        "joinedPitchingTeam": joined[
+            [
+                "game_date",
+                "inning",
+                "inning_topbot",
+                "count",
+                "call_description",
+                "description",
+                "pitch_type",
+                "pitcher_name",
+                "catcher_name",
+                "zoneLabel",
+                "abs_overturned",
+            ]
+        ]
+        .head(20)
+        .to_dict(orient="records"),
+        "byCount": by_count.sort_values("challenges", ascending=False).head(8).to_dict(orient="records"),
+        "byLocation": by_location.sort_values("challenges", ascending=False).to_dict(orient="records"),
+        "byLocationCell": by_location_cell.sort_values(
+            ["successRate", "challenges"], ascending=[False, False]
+        ).to_dict(orient="records"),
+        "ballChallengePoints": ball_points.to_dict(orient="records"),
+        "strikeChallengePoints": strike_points.to_dict(orient="records"),
+    }
+
+
+def build_strategy_guide(
+    statcast_2026: pd.DataFrame, abs_challenges: pd.DataFrame
+) -> dict[str, Any]:
+    called = _called_pitch_frame(statcast_2026)
+    count_values = _count_run_values(called)
+    count_rows = sorted(count_values.values(), key=lambda row: (-row["runValue"], _count_order(row["count"])))
+    inventory_costs = _inventory_costs(statcast_2026, abs_challenges, count_values)
+    count_order = ["0-0", "0-1", "1-0", "0-2", "1-1", "2-0", "1-2", "2-1", "3-0", "2-2", "3-1", "3-2"]
+    game_states = [
+        {"key": "all", "label": "Any state"},
+        {"key": "risp", "label": "RISP"},
+        {"key": "late_close", "label": "Late close"},
+    ]
+    strategy_matrix_rows: list[dict[str, Any]] = []
+    challenge_left_values = [2, 1]
+
+    situation_rows: list[dict[str, Any]] = []
+    game_rows: list[dict[str, Any]] = []
+    decision_rows: list[dict[str, Any]] = []
+    if not called.empty:
+        enriched = called.copy()
+        enriched["baseState"] = enriched.apply(_base_state, axis=1)
+        enriched["inningBucket"] = enriched["inning"].map(_inning_bucket)
+        enriched["scoreBucket"] = enriched.apply(_score_bucket, axis=1)
+        enriched["baseBucket"] = np.select(
+            [
+                enriched["on_2b"].notna() | enriched["on_3b"].notna(),
+                enriched["on_1b"].notna(),
+            ],
+            ["RISP", "Runner on first"],
+            default="Empty",
+        )
+        enriched["isLateClose"] = (enriched["inning"].map(safe_float) >= 7) & (
+            (enriched["fld_score"].map(safe_float) - enriched["bat_score"].map(safe_float)).abs() <= 1
+        )
+        for count in count_order:
+            if count not in count_values:
+                continue
+            count_group = enriched[enriched["count"].eq(count)]
+            row_cells: list[dict[str, Any]] = []
+            for game_state in game_states:
+                if game_state["key"] == "risp":
+                    state_group = count_group[count_group["baseBucket"].eq("RISP")]
+                elif game_state["key"] == "late_close":
+                    state_group = count_group[count_group["isLateClose"]]
+                else:
+                    state_group = count_group
+                summary = _run_value_summary(state_group, count_values[count])
+                for challenges_left in challenge_left_values:
+                    cost_meta = inventory_costs[str(challenges_left)]
+                    confidence, recommendation = _recommendation_from_cost(summary["runValue"], cost_meta["cost"])
+                    row_cells.append(
+                        {
+                            "gameState": game_state["key"],
+                            "gameStateLabel": game_state["label"],
+                            "challengesLeft": challenges_left,
+                            "runValue": summary["runValue"],
+                            "recommendation": recommendation,
+                            "confidenceRequired": confidence,
+                            "challengeCost": cost_meta["cost"],
+                            "inventoryPremium": cost_meta["premium"],
+                            "inventorySample": cost_meta["sample"],
+                            "inventorySource": cost_meta["source"],
+                            "calledPitches": summary["calledPitches"],
+                            "calledBalls": summary["calledBalls"],
+                            "calledStrikes": summary["calledStrikes"],
+                            "ballRunValue": summary["ballRunValue"],
+                            "strikeRunValue": summary["strikeRunValue"],
+                            "fallbackUsed": summary["fallbackUsed"],
+                        }
+                    )
+            strategy_matrix_rows.append({"count": count, "cells": row_cells})
+        for (count, base_state), group in enriched.groupby(["count", "baseState"]):
+            balls = group[group["is_called_ball"]]["delta_run_exp"]
+            strikes = group[group["is_called_strike"]]["delta_run_exp"]
+            fallback = count_values.get(count, {}).get("runValue", 0.0)
+            if len(group) < 60 or len(balls) < 15 or len(strikes) < 15:
+                run_value = float(fallback)
+            else:
+                run_value = max(0.0, float(balls.mean() - strikes.mean()))
+            confidence = _confidence_required(run_value)
+            situation_rows.append(
+                {
+                    "count": count,
+                    "baseState": base_state,
+                    "samples": int(len(group)),
+                    "runValue": run_value,
+                    "confidenceRequired": confidence,
+                    "band": _challenge_band(run_value, confidence),
+                }
+            )
+        situation_rows = sorted(
+            situation_rows,
+            key=lambda row: (-row["runValue"], row["baseState"], _count_order(row["count"])),
+        )[:18]
+        if "delta_home_win_exp" in enriched.columns:
+            enriched["delta_home_win_exp"] = pd.to_numeric(enriched["delta_home_win_exp"], errors="coerce")
+            is_bottom = enriched["inning_topbot"].astype(str).str.lower().eq("bot")
+            enriched["batWinDelta"] = enriched["delta_home_win_exp"].where(is_bottom, -enriched["delta_home_win_exp"])
+            enriched = enriched.dropna(subset=["batWinDelta"])
+            for (inning_bucket, score_bucket), group in enriched.groupby(["inningBucket", "scoreBucket"]):
+                balls = group[group["is_called_ball"]]
+                strikes = group[group["is_called_strike"]]
+                if len(group) < 200 or len(balls) < 50 or len(strikes) < 50:
+                    continue
+                run_value = max(0.0, float(balls["delta_run_exp"].mean() - strikes["delta_run_exp"].mean()))
+                win_swing = max(0.0, float(balls["batWinDelta"].mean() - strikes["batWinDelta"].mean()))
+                game_rows.append(
+                    {
+                        "inningBucket": inning_bucket,
+                        "scoreBucket": score_bucket,
+                        "samples": int(len(group)),
+                        "runValue": run_value,
+                        "winSwing": win_swing,
+                        "band": _challenge_band(run_value, _confidence_required(run_value)),
+                    }
+                )
+            game_rows = sorted(
+                game_rows,
+                key=lambda row: (-row["winSwing"], row["inningBucket"], row["scoreBucket"]),
+            )
+            for (count, inning_bucket, score_bucket, base_bucket), group in enriched.groupby(
+                ["count", "inningBucket", "scoreBucket", "baseBucket"]
+            ):
+                balls = group[group["is_called_ball"]]
+                strikes = group[group["is_called_strike"]]
+                if len(group) < 120 or len(balls) < 25 or len(strikes) < 25:
+                    continue
+                run_value = max(0.0, float(balls["delta_run_exp"].mean() - strikes["delta_run_exp"].mean()))
+                win_swing = max(0.0, float(balls["batWinDelta"].mean() - strikes["batWinDelta"].mean()))
+                confidence = _confidence_required(run_value)
+                decision_rows.append(
+                    {
+                        "count": count,
+                        "inningBucket": inning_bucket,
+                        "scoreBucket": score_bucket,
+                        "baseBucket": base_bucket,
+                        "samples": int(len(group)),
+                        "runValue": run_value,
+                        "winSwing": win_swing,
+                        "confidenceRequired": confidence,
+                        "band": _challenge_band(run_value, confidence),
+                    }
+                )
+            decision_rows = sorted(
+                decision_rows,
+                key=lambda row: (
+                    row["band"] != "Green",
+                    row["band"] != "Yellow",
+                    -row["runValue"],
+                    -row["winSwing"],
+                ),
+            )[:16]
+
+    location_rows: list[dict[str, Any]] = []
+    if not called.empty and count_values:
+        called_balls = called[called["is_called_ball"]].copy()
+        called_balls["runValue"] = called_balls["count"].map(
+            {count: item["runValue"] for count, item in count_values.items()}
+        )
+        called_balls = called_balls.dropna(subset=["runValue", "plate_x", "plate_z", "sz_top", "sz_bot"])
+        called_balls["edgeDistanceInches"] = _edge_distance_inches(called_balls)
+        called_balls["nearEdge"] = called_balls["edgeDistanceInches"] <= 3.0
+        called_balls["highValue"] = called_balls["runValue"] >= 0.30
+        called_balls["zoneLabel"] = called_balls.apply(_zone_label, axis=1)
+        grouped = (
+            called_balls.groupby(["x_bin", "z_bin", "zoneLabel"], dropna=False)
+            .agg(
+                calledBalls=("description", "size"),
+                avgRunValue=("runValue", "mean"),
+                nearEdgeRate=("nearEdge", "mean"),
+                highValueRate=("highValue", "mean"),
+            )
+            .reset_index()
+        )
+        grouped = grouped[grouped["calledBalls"] >= 40]
+        grouped["challengeScore"] = grouped["avgRunValue"] * (0.5 + grouped["nearEdgeRate"])
+        location_rows = grouped.sort_values("challengeScore", ascending=False).head(18).to_dict(orient="records")
+
+    observed = _observed_challenge_summary(statcast_2026, abs_challenges, count_values)
+    theory_by_cell = {
+        (int(row["x_bin"]), int(row["z_bin"])): row
+        for row in location_rows
+        if pd.notna(row.get("x_bin")) and pd.notna(row.get("z_bin"))
+    }
+    combined_location_rows: list[dict[str, Any]] = []
+    for row in observed.get("byLocationCell", []):
+        if safe_float(row.get("challenges")) < 8:
+            continue
+        key = (int(row["x_bin"]), int(row["z_bin"]))
+        theory = theory_by_cell.get(key)
+        run_value = safe_float(theory.get("avgRunValue")) if theory else 0.0
+        success_rate = safe_float(row.get("successRate"))
+        combined_location_rows.append(
+            {
+                "x_bin": int(row["x_bin"]),
+                "z_bin": int(row["z_bin"]),
+                "zoneLabel": row.get("zoneLabel"),
+                "challenges": int(safe_float(row.get("challenges"))),
+                "overturns": int(safe_float(row.get("overturns"))),
+                "successRate": success_rate,
+                "avgRunValue": run_value,
+                "decisionScore": run_value * success_rate,
+                "band": _combined_band(run_value, success_rate),
+            }
+        )
+    combined_location_rows = sorted(
+        combined_location_rows,
+        key=lambda row: (-row["decisionScore"], -row["challenges"]),
+    )
+
+    return {
+        "countRows": count_rows,
+        "strategyMatrixRows": strategy_matrix_rows,
+        "strategyGameStates": game_states,
+        "strategyChallengeLeftValues": challenge_left_values,
+        "inventoryCosts": inventory_costs,
+        "situationRows": situation_rows,
+        "gameRows": game_rows,
+        "decisionRows": decision_rows,
+        "locationRows": location_rows,
+        "combinedLocationRows": combined_location_rows,
+        "observed": observed,
+        "notes": [
+            "Run value is estimated from 2026 Statcast called pitches as the batting run expectancy swing between a called ball and a called strike.",
+            "Confidence required uses Savant's breakeven idea with a 0.20 run challenge cost.",
+            "Pitch-level challenge events come from MLB Stats API reviewDetails and are joined to Statcast by game, plate appearance, and pitch number.",
+        ],
+    }
 
 
 def filters_from_rows(catcher_rows: list[dict[str, Any]], zone_rows: list[dict[str, Any]]) -> dict[str, list[str]]:

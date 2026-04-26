@@ -44,6 +44,16 @@ STATCAST_REQUIRED_COLUMNS = {
     "stand",
 }
 
+ABS_CHALLENGE_REQUIRED_COLUMNS = {
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "call_description",
+    "abs_overturned",
+    "challenge_team_id",
+    "challenge_side",
+}
+
 
 def validation_item(name: str, ok: bool, message: str) -> dict[str, Any]:
     return {"name": name, "ok": bool(ok), "message": message}
@@ -89,6 +99,34 @@ def validate_statcast(df: pd.DataFrame, season: int) -> list[dict[str, Any]]:
             f"{season} Statcast rows",
             len(df) > 0,
             f"{season} Statcast contains {len(df):,} pitch rows.",
+        ),
+    ]
+
+
+def validate_abs_challenges(df: pd.DataFrame) -> list[dict[str, Any]]:
+    if df.empty:
+        return [
+            validation_item(
+                "ABS challenge event data",
+                False,
+                "No MLB Stats API ABS challenge rows are available in cache or pull output.",
+            )
+        ]
+    missing = sorted(ABS_CHALLENGE_REQUIRED_COLUMNS.difference(df.columns))
+    fielding = int(df["challenge_side"].eq("fielding").sum()) if "challenge_side" in df.columns else 0
+    batting = int(df["challenge_side"].eq("batting").sum()) if "challenge_side" in df.columns else 0
+    return [
+        validation_item(
+            "ABS challenge event schema",
+            not missing,
+            "All required MLB Stats API challenge columns are present."
+            if not missing
+            else "Missing ABS challenge columns: " + ", ".join(missing),
+        ),
+        validation_item(
+            "ABS challenge event rows",
+            len(df) > 0,
+            f"Challenge cache contains {len(df):,} rows: {fielding:,} fielding-side and {batting:,} batting-side.",
         ),
     ]
 

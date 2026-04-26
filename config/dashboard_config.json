@@ -3,6 +3,7 @@
   "cache_dir": "data/cache",
   "output_html": "outputs/dashboard/abs_catcher_dashboard.html",
   "refresh_statcast": false,
+  "refresh_abs_challenges": false,
   "statcast_2026_start_date": "2026-03-26",
   "statcast_2026_end_date": "2026-04-24",
   "statcast_2025_start_date": "2025-03-27",
