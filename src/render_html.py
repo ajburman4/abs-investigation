@@ -14,7 +14,13 @@ from .loaders import (
     load_or_pull_statcast,
     project_path,
 )
-from .metrics import build_catcher_rows, build_strategy_guide, build_zone_rows, filters_from_rows
+from .metrics import (
+    build_catcher_rows,
+    build_strategy_guide,
+    build_zone_rows,
+    enrich_catcher_report_metrics,
+    filters_from_rows,
+)
 from .validation import (
     validate_abs_challenges,
     validate_join_quality,
@@ -47,9 +53,13 @@ def build_payload(config: dict[str, Any]) -> dict[str, Any]:
     if not statcast_2026.empty:
         validations.extend(validate_join_quality(workbook, statcast_2026))
 
-    catcher_rows = build_catcher_rows(workbook)
     zone_rows = build_zone_rows(statcast_2026, statcast_2025)
     strategy = build_strategy_guide(statcast_2026, abs_challenges)
+    catcher_rows = enrich_catcher_report_metrics(
+        build_catcher_rows(workbook),
+        statcast_2026,
+        abs_challenges,
+    )
     filters = filters_from_rows(catcher_rows, zone_rows)
 
     return {
@@ -91,7 +101,7 @@ def render(
     template_path = Path(config["_project_root"]) / "templates" / "dashboard.html"
     template = template_path.read_text(encoding="utf-8")
     data_json = json.dumps(payload, ensure_ascii=True, allow_nan=False)
-    html = template.replace("__DASHBOARD_DATA__", data_json)
+    html = template.replace("window.__DASHBOARD_DATA__ = null;", f"window.__DASHBOARD_DATA__ = {data_json};")
     output_path = project_path(config, "output_html")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(html, encoding="utf-8")

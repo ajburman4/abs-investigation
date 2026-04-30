@@ -140,6 +140,289 @@
       font-size: 13px;
       margin-top: 2px;
     }
+    .metric .definition {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+      max-width: 280px;
+    }
+    .report-metrics {
+      grid-template-columns: repeat(6, minmax(140px, 1fr));
+    }
+    .metric.positive .value,
+    .metric.positive .signal {
+      color: #0f766e;
+    }
+    .metric.negative .value,
+    .metric.negative .signal {
+      color: #b42318;
+    }
+    .report-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .report-section-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .report-section-title h3 {
+      margin: 0;
+    }
+    .report-section-title .muted {
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .skill-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 13px;
+      min-height: 138px;
+    }
+    .metric.tooltip-enabled,
+    .skill-card.tooltip-enabled,
+    .quality-card.tooltip-enabled,
+    .report-section-title.tooltip-enabled,
+    .dbacks-row.tooltip-enabled {
+      cursor: help;
+    }
+    .report-story {
+      margin-bottom: 14px;
+    }
+    .story-callout {
+      border-left: 5px solid var(--red);
+      background: #fff8ea;
+      border-radius: 8px;
+      padding: 13px 14px;
+    }
+    .story-callout strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .formula-list {
+      display: grid;
+      gap: 8px;
+    }
+    .key-metrics {
+      margin: 0 0 16px;
+    }
+    .key-metric-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 10px;
+    }
+    .formula-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px 11px;
+      font-size: 13px;
+    }
+    .formula-item strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .skill-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 10px;
+    }
+    .skill-title {
+      font-size: 15px;
+      font-weight: 900;
+    }
+    .grade-mark {
+      min-width: 42px;
+      text-align: center;
+      color: var(--ink);
+      font-weight: 900;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .meter-track {
+      height: 9px;
+      border-radius: 999px;
+      background: #d0d5dd;
+      overflow: hidden;
+      margin: 8px 0 9px;
+    }
+    .meter-fill {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--black), var(--red));
+    }
+    .skill-note {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .quality-card {
+      display: grid;
+      gap: 16px;
+    }
+    .bar-compare {
+      display: grid;
+      gap: 8px;
+    }
+    .bar-line {
+      display: grid;
+      grid-template-columns: 150px minmax(120px, 1fr) 52px;
+      gap: 10px;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .bar-track {
+      height: 10px;
+      border-radius: 999px;
+      background: #ece7dc;
+      overflow: hidden;
+      position: relative;
+    }
+    .bar-fill {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--black);
+    }
+    .bar-fill.expected { background: #98a2b3; }
+    .bar-fill.actual { background: var(--red); }
+    .bar-fill.positive { background: var(--green); }
+    .bar-fill.negative { background: #b42318; }
+    .diverging-track {
+      height: 12px;
+      border-radius: 999px;
+      background: #ece7dc;
+      position: relative;
+      overflow: hidden;
+    }
+    .diverging-track::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(9, 10, 12, 0.34);
+      z-index: 2;
+    }
+    .diverging-fill {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      border-radius: 999px;
+    }
+    .diverging-fill.positive {
+      left: 50%;
+      background: var(--green);
+    }
+    .diverging-fill.negative {
+      right: 50%;
+      background: #b42318;
+    }
+    .quality-note {
+      border-left: 4px solid var(--red);
+      background: #fff8ea;
+      border-radius: 8px;
+      padding: 11px 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .mini-stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .mini-stat {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: #fff;
+    }
+    .mini-stat .label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .mini-stat .value {
+      font-size: 20px;
+      font-weight: 900;
+      margin-top: 3px;
+    }
+    .value-split {
+      display: grid;
+      gap: 9px;
+    }
+    .review-hold-list {
+      display: grid;
+      gap: 8px;
+    }
+    .review-hold {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 9px 10px;
+      background: #fff;
+      font-size: 13px;
+    }
+    .review-hold strong {
+      display: block;
+    }
+    .review-hold .muted {
+      font-size: 12px;
+    }
+    .review-value {
+      color: var(--green);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .split-row {
+      display: grid;
+      grid-template-columns: 92px minmax(120px, 1fr) 56px;
+      gap: 10px;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .dbacks-strip {
+      margin-top: 16px;
+    }
+    .dbacks-bars {
+      display: grid;
+      gap: 10px;
+    }
+    .dbacks-row {
+      display: grid;
+      grid-template-columns: minmax(160px, 0.8fr) minmax(180px, 1fr) 76px;
+      gap: 10px;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .dbacks-row.selected {
+      color: var(--red);
+    }
+    .dbacks-row .muted {
+      font-size: 12px;
+      font-weight: 700;
+    }
     .filters {
       display: flex;
       flex-wrap: wrap;
@@ -338,6 +621,56 @@
       border-top: 1px solid rgba(255,255,255,0.16);
       padding-top: 7px;
       margin-top: 7px;
+    }
+    .tooltip-formula {
+      border-top: 1px solid rgba(255,255,255,0.22);
+      margin-top: 10px;
+      padding-top: 10px;
+      color: #d1d5db;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .tooltip-thresholds {
+      border-top: 1px solid rgba(255,255,255,0.22);
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+    .tooltip-threshold-title {
+      color: var(--sand);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+    .tooltip-threshold-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(58px, 1fr));
+      gap: 5px;
+    }
+    .tooltip-threshold {
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 6px;
+      padding: 6px 5px;
+      text-align: center;
+      background: rgba(255,255,255,0.06);
+    }
+    .tooltip-threshold.active {
+      background: rgba(63, 194, 204, 0.18);
+      border-color: var(--blue);
+      box-shadow: inset 0 0 0 1px rgba(63, 194, 204, 0.45);
+    }
+    .tooltip-threshold strong {
+      display: block;
+      color: #f9fafb;
+      font-size: 13px;
+      line-height: 1.1;
+    }
+    .tooltip-threshold span {
+      color: #d1d5db;
+      display: block;
+      font-size: 10px;
+      margin-top: 3px;
     }
     .zone-legend {
       margin: 18px 0 2px;
@@ -1046,14 +1379,23 @@
       .area-detail { grid-template-columns: 1fr 1fr; }
       .inventory-row { grid-template-columns: 1fr; }
       .light-board { grid-template-columns: 1fr; }
+      .report-metrics { grid-template-columns: repeat(2, minmax(150px, 1fr)); }
+      .report-layout { grid-template-columns: 1fr; }
+      .key-metric-list { grid-template-columns: 1fr; }
+      .skill-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
       header { padding: 18px 16px; }
       .metrics { grid-template-columns: 1fr; }
+      .report-metrics { grid-template-columns: 1fr; }
       select.control,
       input.control { width: 100%; min-width: 0; }
       .field { width: 100%; }
       .area-detail { grid-template-columns: 1fr; }
+      .mini-stat-row { grid-template-columns: 1fr; }
+      .bar-line,
+      .split-row,
+      .dbacks-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1109,7 +1451,7 @@
       <div class="section-head">
         <div>
           <h2>Challenge Report Card</h2>
-          <p class="purpose">Decision feedback without treating success rate as the whole grade.</p>
+          <p class="purpose">Decision feedback without treating Challenge Success Rate as the whole grade.</p>
         </div>
       </div>
       <div class="filters" id="report-filters"></div>
@@ -1139,7 +1481,10 @@
   </main>
 
   <script>
-    const DASHBOARD_DATA = __DASHBOARD_DATA__;
+    window.__DASHBOARD_DATA__ = null;
+  </script>
+  <script>
+    const DASHBOARD_DATA = window.__DASHBOARD_DATA__;
     const state = {
       zone: { team: "All", catcher: "All", pitcher: "All", pitchType: "All", side: "All" },
       overview: { team: "All", catcher: "All" },
@@ -1174,6 +1519,12 @@
       return `${value > 0 ? "+" : ""}${fmtNumber(Number(value || 0) * 100, digits)} pts`;
     }
 
+    function fmtPercentile(value) {
+      const pct = Math.max(0, Math.min(100, Math.round(Number(value || 0) * 100)));
+      const suffix = pct % 10 === 1 && pct % 100 !== 11 ? "st" : pct % 10 === 2 && pct % 100 !== 12 ? "nd" : pct % 10 === 3 && pct % 100 !== 13 ? "rd" : "th";
+      return `${pct}${suffix} pctile`;
+    }
+
     function escapeHtml(value) {
       return String(value ?? "")
         .replaceAll("&", "&amp;")
@@ -1184,9 +1535,9 @@
     }
 
     function tagClass(label) {
-      if (["Positive", "Battery Captain", "Technician", "Balanced", "Green", "Challenge"].includes(label)) return "positive";
-      if (["Negative", "Gambler", "At-Risk Receiver", "Too Aggressive", "Red"].includes(label)) return "negative";
-      if (["Too Passive", "Traditional Receiver", "Passive Receiver", "Watch", "Yellow", "Lean"].includes(label)) return "watch";
+      if (["Positive", "Battery Captain", "Technician", "In Band", "Green", "Challenge"].includes(label)) return "positive";
+      if (["Negative", "Gambler", "At-Risk Receiver", "Very Heavy", "Red"].includes(label)) return "negative";
+      if (["Light", "Very Light", "Heavy", "Traditional Receiver", "Passive Receiver", "Watch", "Yellow", "Lean"].includes(label)) return "watch";
       return "neutral";
     }
 
@@ -1201,6 +1552,152 @@
 
     function buildSelect(label, id, values, current = "All") {
       return `<div class="field"><label for="${id}">${label}</label><select class="control" id="${id}">${options(values, current)}</select></div>`;
+    }
+
+    function optionsExact(values, current = "") {
+      return Array.from(new Set(values.filter(Boolean))).sort()
+        .map(value => `<option value="${escapeHtml(value)}" ${value === current ? "selected" : ""}>${escapeHtml(value)}</option>`)
+        .join("");
+    }
+
+    function buildExactSelect(label, id, values, current = "") {
+      return `<div class="field"><label for="${id}">${label}</label><select class="control" id="${id}">${optionsExact(values, current)}</select></div>`;
+    }
+
+    function diamondbacksCatchers() {
+      return DASHBOARD_DATA.catchers
+        .filter(row => row.team === "AZ" || row.parentOrg === "AZ")
+        .sort((a, b) => Number(b.totalVsExpected || 0) - Number(a.totalVsExpected || 0));
+    }
+
+    function gradeScore(label, fallback = 0.5) {
+      if (label === "A") return 0.92;
+      if (label === "B") return 0.74;
+      if (label === "C") return 0.58;
+      if (label === "D") return 0.42;
+      if (label === "F") return 0.24;
+      if (label === "Positive") return 0.84;
+      if (label === "In Band") return 0.78;
+      if (label === "Light" || label === "Heavy") return 0.58;
+      if (label === "Very Light" || label === "Very Heavy") return 0.44;
+      if (label === "Negative") return 0.34;
+      return fallback;
+    }
+
+    function valueClass(value) {
+      return Number(value || 0) >= 0 ? "positive" : "negative";
+    }
+
+    function reportGrade(score) {
+      if (score >= 0.85) return "A";
+      if (score >= 0.70) return "B";
+      if (score >= 0.55) return "C";
+      if (score >= 0.40) return "D";
+      return "F";
+    }
+
+    function gradeFromThresholds(value, thresholds, fallback = "NA") {
+      if (!thresholds) return fallback;
+      const number = Number(value || 0);
+      if (thresholds.higherIsBetter === false) {
+        if (number <= Number(thresholds.A || 0)) return "A";
+        if (number <= Number(thresholds.B || 0)) return "B";
+        if (number <= Number(thresholds.D || 0)) return "C";
+        if (number <= Number(thresholds.F || 0)) return "D";
+        return "F";
+      }
+      if (number >= Number(thresholds.A || 0)) return "A";
+      if (number >= Number(thresholds.B || 0)) return "B";
+      if (number >= Number(thresholds.D || 0)) return "C";
+      if (number >= Number(thresholds.F || 0)) return "D";
+      return "F";
+    }
+
+    function thresholdRule(label, value, thresholds, formatter) {
+      const shown = formatter(Number(value || 0));
+      if (thresholds && thresholds.higherIsBetter === false) {
+        if (label === "A") return `<=${shown}`;
+        if (label === "F") return `>${shown}`;
+        return `<=${shown}`;
+      }
+      if (label === "F") return `<${shown}`;
+      return `>=${shown}`;
+    }
+
+    function thresholdLine(title, active, thresholds, formatter) {
+      if (!thresholds) return "";
+      return [
+        `THRESHOLD|${title}|${active}`,
+        `A|${thresholdRule("A", thresholds.A, thresholds, formatter)}`,
+        `B|${thresholdRule("B", thresholds.B, thresholds, formatter)}`,
+        `C|IQR`,
+        `D|${thresholdRule("D", thresholds.D, thresholds, formatter)}`,
+        `F|${thresholdRule("F", thresholds.F, thresholds, formatter)}`
+      ].join("|");
+    }
+
+    function archetypeReason(row) {
+      const value = Number(row.totalVsExpected || 0);
+      const success = Number(row.successRate || 0);
+      const aggression = row.aggressionLabel || "In Band";
+      if (value > 5 && aggression === "In Band") return "High value with disciplined challenge volume.";
+      if (value > 2 && ["Light", "Very Light"].includes(aggression)) return "Positive value, but the use rate is lighter than expected.";
+      if (value < -2 && ["Heavy", "Very Heavy"].includes(aggression)) return "Negative value with a heavier-than-expected use rate.";
+      if (success >= 0.7 && value <= 1) return "Strong overturn rate, but the value ledger is flat or negative.";
+      if (value >= 0) return "Positive value without an extreme usage profile.";
+      return "Negative value; review selection and count leverage first.";
+    }
+
+    function reportStory(row) {
+      const value = Number(row.totalVsExpected || 0);
+      const selection = Number(row.selectionValue || 0);
+      const above = Number(row.overturnsAboveExpected || 0);
+      const holds = Number(row.missedOpportunityCount || 0);
+      if (value < -2 && selection < 0) {
+        const aboveText = above < 0 ? ` and ${fmtSignedNumber(above, 1)} overturns versus Savant xWon` : "";
+        return `${row.name} has a negative challenge ledger${aboveText}. Start with selection: which calls were worth spending on, which lower-value spots burned value, and which of the ${holds} one-inch review holds deserve a video audit.`;
+      }
+      if (value > 2 && above >= 0) {
+        return `${row.name} is creating positive ABS value. The first review question is whether this conviction pattern is repeatable in the zones and counts driving the value, then whether any review holds were worth adding.`;
+      }
+      if (above < 0) {
+        return `${row.name} is below expected on overturns. Start with execution and location read before pushing for more challenge volume.`;
+      }
+      return `${row.name} is close to neutral. Treat this as a small-sample read and use the components below to decide whether execution, selection, review holds, or zone read needs attention.`;
+    }
+
+    function observedZoneRead(row) {
+      const observed = (DASHBOARD_DATA.strategy || {}).observed || {};
+      const points = [...(observed.ballChallengePoints || []), ...(observed.strikeChallengePoints || [])];
+      const catcher = String(row.name || "").toLowerCase();
+      const rows = points.filter(point =>
+        String(point.catcher_name || "").toLowerCase() === catcher &&
+        point.challenge_side === "fielding"
+      );
+      const challenges = rows.length;
+      const overturns = rows.filter(point => point.abs_overturned).length;
+      const successRate = challenges ? overturns / challenges : 0;
+      const byArea = new Map();
+      rows.forEach(point => {
+        const key = point.zoneLabel || "Location unavailable";
+        if (!byArea.has(key)) byArea.set(key, { label: key, challenges: 0, overturns: 0 });
+        const item = byArea.get(key);
+        item.challenges += 1;
+        if (point.abs_overturned) item.overturns += 1;
+      });
+      const topArea = [...byArea.values()].sort((a, b) => b.challenges - a.challenges || b.overturns - a.overturns)[0];
+      return {
+        challenges,
+        overturns,
+        successRate,
+        grade: challenges >= 3 ? gradeFromThresholds(successRate, row.gradeThresholds?.successRate, reportGrade(successRate)) : "NA",
+        topArea: topArea || { label: "No linked fielding challenges", challenges: 0, overturns: 0 },
+      };
+    }
+
+    function divergingFill(value, max) {
+      const width = Math.max(2, Math.min(50, Math.abs(Number(value || 0)) / Math.max(max, 1) * 50));
+      return `<span class="diverging-fill ${valueClass(value)}" style="width:${width}%"></span>`;
     }
 
     function initNav() {
@@ -1224,9 +1721,10 @@
       document.getElementById("overview-team").addEventListener("change", renderOverview);
       document.getElementById("overview-catcher").addEventListener("change", renderOverview);
 
-      const firstCatcher = DASHBOARD_DATA.catchers[0] ? DASHBOARD_DATA.catchers[0].name : "";
+      const reportRows = diamondbacksCatchers();
+      const firstCatcher = reportRows[0] ? reportRows[0].name : "";
       state.report.catcher = firstCatcher;
-      setHtml("report-filters", buildSelect("Catcher", "report-catcher", DASHBOARD_DATA.filters.catchers, firstCatcher));
+      setHtml("report-filters", buildExactSelect("Diamondbacks catcher", "report-catcher", reportRows.map(row => row.name), firstCatcher));
       document.getElementById("report-catcher").addEventListener("change", renderReport);
 
       setHtml("evaluation-filters", buildSelect("Team", "evaluation-team", DASHBOARD_DATA.filters.teams, state.evaluation.team));
@@ -1426,13 +1924,17 @@
       if (tooltip) tooltip.classList.remove("active");
     }
 
-    function showStrategyTooltip(event, point) {
-      const tooltip = document.getElementById("strategy-tooltip");
-      if (!tooltip) return;
-      const lines = String(point.dataset.tooltip || "").split("\n").filter(Boolean);
-      const title = lines[0] || "Challenge pitch";
+    function renderStatTooltip(tooltip, source) {
+      const lines = String(source.dataset.tooltip || "").split("\n").filter(Boolean);
+      const title = lines[0] || "Detail";
       const metricRows = lines.slice(1).filter(line => line.startsWith("METRIC|"));
-      const notes = lines.slice(1).filter(line => !line.startsWith("METRIC|"));
+      const formulaRows = lines.slice(1).filter(line => line.startsWith("FORMULA|"));
+      const thresholdRows = lines.slice(1).filter(line => line.startsWith("THRESHOLD|"));
+      const notes = lines.slice(1).filter(line =>
+        !line.startsWith("METRIC|") &&
+        !line.startsWith("FORMULA|") &&
+        !line.startsWith("THRESHOLD|")
+      );
       const metricsHtml = metricRows.map(line => {
         const parts = line.split("|").slice(1);
         const left = { label: parts[0] || "", value: parts[1] || "", note: parts[2] || "" };
@@ -1442,11 +1944,46 @@
           <div class="tooltip-copy"><strong>${escapeHtml(right.label)}</strong><br><span class="tooltip-value" style="font-size:22px">${escapeHtml(right.value)}</span><br>${escapeHtml(right.note)}</div>
         </div>`;
       }).join("");
+      const formulaHtml = formulaRows.map(line => {
+        const parts = line.split("|").slice(1);
+        return `<div class="tooltip-formula"><strong>${escapeHtml(parts[0] || "Formula")}</strong><br>${escapeHtml(parts[1] || "")}</div>`;
+      }).join("");
+      const thresholdHtml = thresholdRows.map(line => {
+        const parts = line.split("|").slice(1);
+        const title = parts[0] || "Grade thresholds";
+        const active = parts[1] || "";
+        const items = [];
+        for (let index = 2; index < parts.length; index += 2) {
+          items.push({ grade: parts[index] || "", rule: parts[index + 1] || "" });
+        }
+        return `<div class="tooltip-thresholds">
+          <div class="tooltip-threshold-title">${escapeHtml(title)}</div>
+          <div class="tooltip-threshold-grid">
+            ${items.map(item => `<div class="tooltip-threshold ${item.grade === active ? "active" : ""}"><strong>${escapeHtml(item.grade)}</strong><span>${escapeHtml(item.rule)}</span></div>`).join("")}
+          </div>
+        </div>`;
+      }).join("");
       tooltip.innerHTML = `
         <div class="tooltip-title">${escapeHtml(title)}</div>
         ${metricsHtml}
+        ${formulaHtml}
+        ${thresholdHtml}
         ${notes.length ? `<ul class="tooltip-list">${notes.map(line => `<li>${escapeHtml(line)}</li>`).join("")}</ul>` : ""}
       `;
+    }
+
+    function showStrategyTooltip(event, point) {
+      const tooltip = document.getElementById("strategy-tooltip");
+      if (!tooltip) return;
+      renderStatTooltip(tooltip, point);
+      tooltip.classList.add("active");
+      moveZoneTooltip(event);
+    }
+
+    function showReportTooltip(event, source) {
+      const tooltip = document.getElementById("report-tooltip");
+      if (!tooltip) return;
+      renderStatTooltip(tooltip, source);
       tooltip.classList.add("active");
       moveZoneTooltip(event);
     }
@@ -2107,8 +2644,8 @@
         <div class="metrics">
           <div class="metric"><div class="label">Catchers Shown</div><div class="value">${fmtInt(rows.length)}</div><div class="note">Workbook rows</div></div>
           <div class="metric"><div class="label">Top Value</div><div class="value">${fmtNumber(top.totalVsExpected || 0, 1)}</div><div class="note">${escapeHtml(top.name || "None")}</div></div>
-          <div class="metric"><div class="label">Top Success Rate</div><div class="value">${fmtPct(Math.max(...rows.map(r => r.successRate), 0))}</div><div class="note">Overturns per challenge</div></div>
-          <div class="metric"><div class="label">Too Passive Flags</div><div class="value">${fmtInt(rows.filter(r => r.aggressionLabel === "Too Passive").length)}</div><div class="note">Expected challenge rate signal</div></div>
+          <div class="metric"><div class="label">Top Challenge Success Rate</div><div class="value">${fmtPct(Math.max(...rows.map(r => r.successRate), 0))}</div><div class="note">Overturns per challenge</div></div>
+          <div class="metric"><div class="label">Light Usage Flags</div><div class="value">${fmtInt(rows.filter(r => ["Light", "Very Light"].includes(r.aggressionLabel)).length)}</div><div class="note">Challenge-volume percentile signal</div></div>
         </div>
         <div class="panel pad">
           <table>
@@ -2127,9 +2664,9 @@
         <div class="panel pad takeaways">
           <h3>Coach Takeaways</h3>
           <ul>
-            <li>Do not grade only by success rate. Pair it with value and aggression.</li>
-            <li>Too Passive catchers may need encouragement even if their success rate is strong.</li>
-            <li>Too Aggressive catchers should review low-value challenge losses first.</li>
+            <li>Do not grade only by Challenge Success Rate. Pair it with value and usage percentile.</li>
+            <li>Light-usage catchers may need encouragement even if their Challenge Success Rate is strong.</li>
+            <li>Heavy-usage catchers should review low-value challenge losses first.</li>
           </ul>
         </div>`);
       document.querySelectorAll("#overview th[data-sort]").forEach(th => {
@@ -2144,55 +2681,235 @@
 
     function renderReport() {
       const selected = document.getElementById("report-catcher").value;
-      const row = DASHBOARD_DATA.catchers.find(item => item.name === selected) || DASHBOARD_DATA.catchers[0];
+      const reportRows = diamondbacksCatchers();
+      const row = reportRows.find(item => item.name === selected) || reportRows[0];
       if (!row) {
-        setHtml("report-content", `<div class="empty">No catcher rows are available.</div>`);
+        setHtml("report-content", `<div class="empty">No Diamondbacks catcher rows are available.</div>`);
         return;
       }
-      const categories = [
-        ["Challenge Execution", row.executionGrade, `${fmtPct(row.successRate)} success rate, ${fmtNumber(row.overturnsAboveExpected, 1)} overturns above expected.`],
-        ["Challenge Selection", row.selectionGrade, `${fmtNumber(row.totalVsExpected, 1)} total value versus expected.`],
-        ["Aggressiveness", row.aggressionLabel, `Expected challenge rate difference is ${fmtPctPoints(row.expectedChallengeDiff)}.`],
-        ["Zone Read", "Data Needed", "Requires pitch-level challenge linkage before grading missed opportunities."],
-        ["Battery Process", "Data Needed", "Requires internal charting fields."],
-        ["Overall ABS Value", row.valueLabel, `${fmtNumber(row.totalVsExpected, 1)} value versus expected.`]
-      ];
+      const expectedRate = Number(row.expectedSuccessRate || 0);
+      const actualRate = Number(row.successRate || 0);
+      const expectedOverturns = Number(row.expectedOverturns || 0);
+      const actualOverturns = Number(row.overturns || 0);
+      const zoneRead = observedZoneRead(row);
+      const thresholds = row.gradeThresholds || {};
+      const selectionGrade = row.selectionGrade || gradeFromThresholds(row.selectionValue, thresholds.selectionValue);
+      const overallGrade = row.overallGrade || gradeFromThresholds(row.totalVsExpected, thresholds.totalVsExpected);
+      const missedGrade = row.missedOpportunityGrade || gradeFromThresholds(row.missedOpportunityValue, thresholds.missedOpportunityValue);
+      const valueScale = Math.max(
+        1,
+        ...reportRows.flatMap(item => [item.executionValue, item.selectionValue, item.totalVsExpected]).map(value => Math.abs(Number(value || 0)))
+      );
+      const skillCard = (title, grade, score, note, detail = "", tooltip = "") => `
+        <div class="skill-card tooltip-enabled" data-tooltip="${escapeHtml(tooltip)}">
+          <div class="skill-head">
+            <div>
+              <div class="skill-title">${escapeHtml(title)}</div>
+              ${detail ? `<div class="muted" style="font-size:12px">${escapeHtml(detail)}</div>` : ""}
+            </div>
+            <div class="grade-mark">${escapeHtml(grade)}</div>
+          </div>
+          <div class="meter-track"><span class="meter-fill" style="width:${Math.round(Math.max(0.05, Math.min(1, score)) * 100)}%"></span></div>
+          <div class="skill-note">${escapeHtml(note)}</div>
+        </div>`;
+      const compareBar = (label, value, max, cls) => `
+        <div class="bar-line">
+          <span>${escapeHtml(label)}</span>
+          <div class="bar-track"><span class="bar-fill ${cls}" style="width:${Math.max(2, Math.min(100, Number(value || 0) / max * 100))}%"></span></div>
+          <span>${label.includes("Rate") ? fmtPct(Number(value || 0)) : label.startsWith("Actual") ? fmtInt(value) : fmtNumber(value, 1)}</span>
+        </div>`;
+      const splitBar = (label, value) => `
+        <div class="split-row">
+          <span>${escapeHtml(label)}</span>
+          <div class="diverging-track">${divergingFill(value, valueScale)}</div>
+          <span>${fmtSignedNumber(value, 1)}</span>
+        </div>`;
+      const dbacksBars = reportRows.map(item => {
+        const selectedClass = item.name === row.name ? "selected" : "";
+        return `<div class="dbacks-row tooltip-enabled ${selectedClass}" data-tooltip="${escapeHtml([
+          `${item.name} net challenge value`,
+          `METRIC|Total|${fmtSignedNumber(item.totalVsExpected, 1)}|runs vs expected|Challenges|${fmtInt(item.challenges)}|${fmtPct(item.successRate)} success`,
+          `METRIC|Won value|${fmtSignedNumber(item.forValue, 1)}|Savant Net Ovr. For|Total value|${fmtSignedNumber(item.selectionValue, 1)}|Savant Total vs. Expected`,
+          `Zero is league-expected value for this challenge mix. Bars extend right for positive value and left for negative value.`
+        ].join("\n"))}">
+          <div><strong>${escapeHtml(item.name)}</strong><div class="muted">${fmtInt(item.challenges)} challenges, ${fmtPct(item.successRate)} success</div></div>
+          <div class="diverging-track">${divergingFill(item.totalVsExpected, valueScale)}</div>
+          <div>${fmtSignedNumber(item.totalVsExpected, 1)}</div>
+        </div>`;
+      }).join("");
+      const reviewHolds = (row.topMissedOpportunities || []).slice(0, 3).map(item => `
+        <div class="review-hold">
+          <div>
+            <strong>${escapeHtml(item.count || "Count")} ${escapeHtml(item.zoneLabel || "zone")} hold</strong>
+            <div class="muted">${escapeHtml(item.gameDate || "")} · ${escapeHtml(item.pitcher || "Pitcher")} · ${escapeHtml(item.pitchType || "")} · ${fmtInt(item.challengesLeft)} left</div>
+          </div>
+          <div class="review-value">${fmtNumber(item.reviewValue, 1)}</div>
+        </div>`).join("") || `<div class="quality-note">No one-inch zone/edge review holds found for this catcher in the current data window.</div>`;
+      const executionTooltip = [
+        "Execution grade",
+        `METRIC|Grade driver|${fmtPct(actualRate)}|challenge success rate|Result|${row.executionGrade}|execution grade`,
+        `METRIC|Actual overturns|${fmtInt(actualOverturns)}|${fmtInt(row.confirms)} confirms|Above expected|${fmtSignedNumber(row.overturnsAboveExpected, 1)}|overturns`,
+        `FORMULA|How it is calculated|Challenge Success Rate = overturns / challenges used. Above expected is shown for context, but the letter grade is driven by the success-rate distribution.`,
+        `FORMULA|Threshold source|A/B/C/D/F use league catcher bands among 5+ challenge catchers: A is top decile, B is the rest of the top quartile, C is the interquartile range, D is down to the bottom decile, and F is the bottom decile.`,
+        thresholdLine("Execution thresholds", row.executionGrade, thresholds.successRate, value => fmtPct(value))
+      ].join("\n");
+      const selectionTooltip = [
+        "Selection grade",
+        `METRIC|Grade driver|${fmtSignedNumber(row.selectionValue, 1)}|challenge-spend value|Result|${selectionGrade}|selection grade`,
+        `METRIC|Won value|${fmtSignedNumber(row.forValue, 1)}|Savant Net Ovr. For|Against value|${fmtSignedNumber(row.againstValue, 1)}|Savant Net Ovr. Against`,
+        `FORMULA|How it is calculated|Selection grades the Savant Total vs. Expected challenge value, so it includes both challenges the catcher won and challenges that went against him. It is read directly from the approved workbook, not from the success-rate grade.`,
+        `FORMULA|Threshold source|A/B/C/D/F use league catcher bands among 5+ challenge catchers: A is top decile, B is the rest of the top quartile, C is the interquartile range, D is down to the bottom decile, and F is the bottom decile.`,
+        thresholdLine("Selection thresholds", selectionGrade, thresholds.selectionValue, value => fmtSignedNumber(value, 1))
+      ].join("\n");
+      const aggressionTooltip = [
+        "Usage shape",
+        `METRIC|Grade driver|${fmtPercentile(row.usagePercentile)}|league challenge-volume percentile|Result|${row.aggressionLabel}|usage label`,
+        `METRIC|Expected use|${fmtPct(row.expectedChallengeRate, 1)}|Savant opportunity model|Actual use|${fmtPct(row.actualChallengeRate, 1)}|estimated challenge rate`,
+        `FORMULA|How it is calculated|Usage Shape converts actual-minus-expected challenge rate into a league percentile among catchers with 5+ challenges. Lower percentiles mean lighter usage; higher percentiles mean heavier usage.`,
+        `THRESHOLD|Usage thresholds|${row.aggressionLabel}|Very Light|<10th|Light|10th-24th|In Band|25th-75th|Heavy|76th-90th|Very Heavy|>90th`
+      ].join("\n");
+      const zoneTooltip = [
+        "Zone read",
+        `METRIC|Linked fielding challenges|${fmtInt(zoneRead.challenges)}|API + Statcast pitch match|Overturned|${fmtInt(zoneRead.overturns)}|${fmtPct(zoneRead.successRate)} success`,
+        `METRIC|Main area|${zoneRead.topArea.label}|${fmtInt(zoneRead.topArea.challenges)} challenges|Grade|${zoneRead.grade}|observed challenge locations`,
+        `FORMULA|How it is calculated|Zone Read grades the success rate of linked fielding-side challenges by catcher-view pitch area. It is separate from unchallenged review holds.`,
+        thresholdLine("Zone thresholds", zoneRead.grade, thresholds.successRate, value => fmtPct(value))
+      ].join("\n");
+      const missedTooltip = [
+        "Missed opportunities",
+        `METRIC|Review holds|${fmtInt(row.missedOpportunityCount)}|zone/edge high-value called balls|Green holds|${fmtInt(row.missedOpportunityGreen)}|clear review spots`,
+        `METRIC|Review value|${fmtNumber(row.missedOpportunityValue, 1)}|run swing to audit|Called-ball pool|${fmtInt(row.calledBallCandidates)}|unchallenged candidates`,
+        `FORMULA|How it is calculated|Review holds are unchallenged called balls with a challenge available, inside the Statcast zone or within 1 inch of an edge, and marked Challenge or Lean by the count/run-value guide. They are candidates for video review, not confirmed missed overturns.`,
+        `FORMULA|Threshold source|A/B/C/D/F use lower-is-better league percentile bands among 5+ challenge catchers. Review holds are not charged to Net Challenge Value yet.`,
+        thresholdLine("Missed opportunity thresholds", missedGrade, thresholds.missedOpportunityValue, value => fmtNumber(value, 1))
+      ].join("\n");
+      const overallTooltip = [
+        "Overall ABS value",
+        `METRIC|Grade driver|${fmtSignedNumber(row.totalVsExpected, 1)}|net runs vs expected|Result|${overallGrade}|overall grade`,
+        `METRIC|Won value|${fmtSignedNumber(row.forValue, 1)}|Savant Net Ovr. For|Against value|${fmtSignedNumber(row.againstValue, 1)}|Savant Net Ovr. Against`,
+        `FORMULA|How it is calculated|Overall ABS Value uses Savant Total vs. Expected from the approved workbook. Review holds are shown separately until unchallenged pitches can be confirmed by video or ABS result.`,
+        `FORMULA|Threshold source|A/B/C/D/F use league catcher bands among 5+ challenge catchers: A is top decile, B is the rest of the top quartile, C is the interquartile range, D is down to the bottom decile, and F is the bottom decile.`,
+        thresholdLine("Overall thresholds", overallGrade, thresholds.totalVsExpected, value => fmtSignedNumber(value, 1)),
+        `Archetype: ${row.archetype}. ${archetypeReason(row)}`
+      ].join("\n");
       setHtml("report-content", `
-        <div class="metrics">
-          <div class="metric"><div class="label">Challenges Used</div><div class="value">${fmtInt(row.challenges)}</div><div class="note">${escapeHtml(row.team)}</div></div>
-          <div class="metric"><div class="label">Successful Challenges</div><div class="value">${fmtInt(row.overturns)}</div><div class="note">${fmtPct(row.successRate)} success</div></div>
-          <div class="metric"><div class="label">Net Challenge Value</div><div class="value">${fmtNumber(row.totalVsExpected, 1)}</div><div class="note">${escapeHtml(row.valueLabel)}</div></div>
-          <div class="metric"><div class="label">Above Expected</div><div class="value">${fmtNumber(row.overturnsAboveExpected, 1)}</div><div class="note">Overturns</div></div>
-        </div>
-        <div class="grid two-col">
-          <div class="panel pad">
-            <h3>${escapeHtml(row.name)} Report Card</h3>
-            <table>
-              <thead><tr><th>Category</th><th>Grade</th><th>Note</th></tr></thead>
-              <tbody>${categories.map(item => `<tr><td>${escapeHtml(item[0])}</td><td><span class="tag ${tagClass(item[1])}">${escapeHtml(item[1])}</span></td><td>${escapeHtml(item[2])}</td></tr>`).join("")}</tbody>
-            </table>
-          </div>
-          <div class="panel pad">
-            <h3>Decision Quality</h3>
-            <table>
-              <tbody>
-                <tr><td>Expected Success Rate</td><td>${fmtPct(row.expectedSuccessRate)}</td></tr>
-                <tr><td>Actual Success Rate</td><td>${fmtPct(row.successRate)}</td></tr>
-                <tr><td>Overturns Above Expected</td><td>${fmtNumber(row.overturnsAboveExpected, 1)}</td></tr>
-                <tr><td>Strikeouts Flipped</td><td>${fmtInt(row.nStrikeoutsFlip)}</td></tr>
-                <tr><td>Walks Flipped</td><td>${fmtInt(row.nWalksFlip)}</td></tr>
-              </tbody>
-            </table>
+        <div class="panel pad report-story">
+          <div class="story-callout">
+            <strong>The coaching read</strong>
+            <p>${escapeHtml(reportStory(row))}</p>
           </div>
         </div>
-        <div class="panel pad takeaways">
-          <h3>Coach Takeaways</h3>
-          <ul>
-            <li>Start the video review with the biggest wins and losses, not the full challenge list.</li>
-            <li>Use the aggression label to separate conviction problems from zone-read problems.</li>
-            <li>Keep zone-specific missed opportunity feedback out until challenge-level pitch linkage is available.</li>
-          </ul>
-        </div>`);
+        <div class="metrics report-metrics">
+          <div class="metric tooltip-enabled" data-tooltip="${escapeHtml([
+            "Challenges used",
+            `METRIC|Challenges|${fmtInt(row.challenges)}|pitching-team spends|Team|${row.team}|Diamondbacks only`,
+            `METRIC|Overturns|${fmtInt(row.overturns)}|successful challenges|Confirms|${fmtInt(row.confirms)}|unsuccessful challenges`,
+            "This page evaluates catcher-facing pitching-team challenge decisions."
+          ].join("\n"))}"><div class="label">Challenges Used</div><div class="value">${fmtInt(row.challenges)}</div><div class="note">${escapeHtml(row.team)} pitching side</div></div>
+          <div class="metric tooltip-enabled" data-tooltip="${escapeHtml(executionTooltip)}"><div class="label">Challenge Success Rate</div><div class="value">${fmtPct(row.successRate)}</div><div class="note">${fmtInt(row.overturns)} overturns / ${fmtInt(row.confirms)} confirms</div></div>
+          <div class="metric tooltip-enabled ${valueClass(row.totalVsExpected)}" data-tooltip="${escapeHtml(overallTooltip)}"><div class="label">Net Challenge Value</div><div class="value">${fmtSignedNumber(row.totalVsExpected, 1)}</div><div class="note">runs vs expected</div></div>
+          <div class="metric tooltip-enabled ${valueClass(row.overturnsAboveExpected)}" data-tooltip="${escapeHtml([
+            "Above expected",
+            `METRIC|Actual overturns|${fmtInt(actualOverturns)}|successful challenges|Expected overturns|${fmtNumber(expectedOverturns, 1)}|Savant xWon`,
+            `METRIC|Difference|${fmtSignedNumber(row.overturnsAboveExpected, 1)}|overturns|Expected success rate|${fmtPct(expectedRate)}|xWon / xChal`,
+            `FORMULA|Expected success rate|Expected Success Rate comes from the approved Baseball Savant workbook: xWon divided by xChal. Expected overturns use Savant xWon directly, not a fixed league constant.`,
+            "Positive means the catcher got more calls overturned than expected for this challenge mix."
+          ].join("\n"))}"><div class="label">Above Expected</div><div class="value">${fmtSignedNumber(row.overturnsAboveExpected, 1)}</div><div class="note">overturns vs expected</div></div>
+          <div class="metric tooltip-enabled" data-tooltip="${escapeHtml(aggressionTooltip)}"><div class="label">Usage Shape</div><div class="value signal">${escapeHtml(row.aggressionLabel)}</div><div class="note">${fmtPercentile(row.usagePercentile)} challenge-volume percentile</div></div>
+          <div class="metric tooltip-enabled ${row.missedOpportunityValue > 0 ? "negative" : "positive"}" data-tooltip="${escapeHtml(missedTooltip)}"><div class="label">Review Holds</div><div class="value">${fmtInt(row.missedOpportunityCount)}</div><div class="note">${fmtInt(row.missedOpportunityGreen)} clear spots, ${fmtNumber(row.missedOpportunityValue, 1)} run audit</div></div>
+        </div>
+        <div class="panel pad key-metrics">
+          <div class="report-section-title">
+            <h3>Key Metrics</h3>
+            <span class="muted">definitions</span>
+          </div>
+          <div class="formula-list key-metric-list">
+            <div class="formula-item"><strong>Challenge Success Rate</strong>Overturns divided by challenges used. This is the result metric, not the whole grade.</div>
+            <div class="formula-item"><strong>Net Challenge Value</strong>Workbook run value from challenge execution plus challenge-spend selection, compared with league expectation.</div>
+            <div class="formula-item"><strong>Selection</strong>Baseball Savant Total vs. Expected challenge value. This includes both won challenges and challenges that went against the catcher.</div>
+            <div class="formula-item"><strong>Usage Shape</strong>League percentile of actual-minus-expected challenge rate. Lower percentiles mean lighter usage; higher percentiles mean heavier usage.</div>
+            <div class="formula-item"><strong>Review Holds</strong>One-inch zone/edge, high-value called balls that were not challenged with inventory available. These are video-review candidates, not confirmed misses.</div>
+            <div class="formula-item"><strong>Grades</strong>A is top decile, B is the rest of the top quartile, C is the interquartile range, D is down to the bottom decile, and F is the bottom decile.</div>
+          </div>
+        </div>
+        <div class="report-layout">
+          <div class="panel pad">
+            <div class="report-section-title tooltip-enabled" data-tooltip="${escapeHtml([
+              "Catcher archetype",
+              `METRIC|Archetype|${row.archetype}|${archetypeReason(row)}|Net value|${fmtSignedNumber(row.totalVsExpected, 1)}|runs`,
+              `METRIC|Options|Battery Captain|high value + balanced use|Technician|positive value|solid use profile`,
+              "Other options: Passive Receiver = positive value with low usage; Gambler = negative value with high usage; Traditional Receiver = high success but flat value; At-Risk Receiver = negative value."
+            ].join("\n"))}">
+              <h3>${escapeHtml(row.name)} Skill Read</h3>
+              <span class="muted">${escapeHtml(row.archetype)}</span>
+            </div>
+            <div class="skill-grid">
+              ${skillCard("Execution", row.executionGrade, gradeScore(row.executionGrade), `${fmtPct(row.successRate)} challenge success rate, ${fmtSignedNumber(row.overturnsAboveExpected, 1)} overturns above expected.`, "Did the calls get overturned?", executionTooltip)}
+              ${skillCard("Selection", selectionGrade, gradeScore(selectionGrade), `${fmtSignedNumber(row.selectionValue, 1)} Savant Total vs. Expected.`, "Were the right calls challenged?", selectionTooltip)}
+              ${skillCard("Usage", row.aggressionLabel, gradeScore(row.aggressionLabel), `${fmtPercentile(row.usagePercentile)} challenge-volume percentile.`, "Is the challenge volume disciplined?", aggressionTooltip)}
+              ${skillCard("Zone Read", zoneRead.grade, gradeScore(zoneRead.grade, zoneRead.successRate), `${fmtInt(zoneRead.overturns)} of ${fmtInt(zoneRead.challenges)} linked fielding challenges overturned; most common area: ${zoneRead.topArea.label}.`, "Where were the challenged pitches?", zoneTooltip)}
+              ${skillCard("Missed Opportunities", missedGrade, gradeScore(missedGrade), `${fmtInt(row.missedOpportunityCount)} review holds; ${fmtInt(row.missedOpportunityGreen)} clear spots for video audit.`, "What did he pass on?", missedTooltip)}
+              ${skillCard("Overall ABS Value", overallGrade, gradeScore(overallGrade), `${fmtSignedNumber(row.totalVsExpected, 1)} runs vs expected across execution and selection. Review holds are separate.`, "Bottom-line challenge value", overallTooltip)}
+            </div>
+          </div>
+          <div class="panel pad quality-card tooltip-enabled" data-tooltip="${escapeHtml([
+            "Decision quality",
+            `METRIC|Expected success|${fmtPct(expectedRate)}|Savant xWon / xChal|Challenge success|${fmtPct(actualRate)}|observed overturn rate`,
+            `METRIC|Expected overturns|${fmtNumber(expectedOverturns, 1)}|Savant xWon|Actual overturns|${fmtInt(actualOverturns)}|calls flipped`,
+            `FORMULA|What expected means|Expected success and expected overturns come from the approved Baseball Savant workbook expected breakdown. They are data-driven Savant baselines, not fixed constants.`,
+            "Use this to separate good results from good decisions. The value split below adds count/run context."
+          ].join("\n"))}">
+            <div>
+              <div class="report-section-title">
+                <h3>Decision Quality</h3>
+                <span class="muted">success vs expected</span>
+              </div>
+              <div class="bar-compare">
+                ${compareBar("Expected Success Rate", expectedRate, 1, "expected")}
+                ${compareBar("Challenge Success Rate", actualRate, 1, "actual")}
+                ${compareBar("Expected Overturns", expectedOverturns, Math.max(actualOverturns, expectedOverturns, 1), "expected")}
+                ${compareBar("Actual Overturns", actualOverturns, Math.max(actualOverturns, expectedOverturns, 1), "actual")}
+              </div>
+            </div>
+            <div class="quality-note">Expected success and expected overturns come from the approved Baseball Savant workbook expected breakdown. Review holds below cover pitches he did not challenge.</div>
+            <div>
+              <div class="report-section-title">
+                <h3>Value Split</h3>
+                <span class="muted">runs vs expected</span>
+              </div>
+              <div class="value-split">
+                ${splitBar("Won Value", row.forValue)}
+                ${splitBar("Against", row.againstValue)}
+                ${splitBar("Total", row.totalVsExpected)}
+              </div>
+            </div>
+            <div>
+              <div class="report-section-title">
+                <h3>Review Holds</h3>
+                <span class="muted">video audit</span>
+              </div>
+              <div class="review-hold-list">${reviewHolds}</div>
+            </div>
+            <div class="mini-stat-row">
+              <div class="mini-stat"><div class="label">Strikeouts Flipped</div><div class="value">${fmtInt(row.nStrikeoutsFlip)}</div></div>
+              <div class="mini-stat"><div class="label">Walks Flipped</div><div class="value">${fmtInt(row.nWalksFlip)}</div></div>
+              <div class="mini-stat"><div class="label">Confirms</div><div class="value">${fmtInt(row.confirms)}</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel pad dbacks-strip">
+          <div class="report-section-title">
+            <h3>Diamondbacks Catcher Comparison</h3>
+            <span class="muted">zero-centered net value</span>
+          </div>
+          <div class="dbacks-bars">${dbacksBars}</div>
+        </div>
+        <div id="report-tooltip" class="zone-tooltip"></div>`);
+      document.querySelectorAll("#report .tooltip-enabled").forEach(item => {
+        item.addEventListener("mouseenter", event => showReportTooltip(event, item));
+        item.addEventListener("mousemove", moveZoneTooltip);
+        item.addEventListener("mouseleave", hideZoneTooltip);
+      });
     }
 
     function renderEvaluation() {
@@ -2212,7 +2929,7 @@
       setHtml("evaluation-content", `
         <div class="insight">
           <strong>Transparent MVP formula</strong>
-          ABS Catcher Value = Challenge Execution Value + Challenge Selection Value + Zone Adaptation Indicator.
+          ABS Catcher Value uses Baseball Savant Total vs. Expected, with Zone Adaptation shown as a separate indicator.
           Receiving value, battery process value, and true missed-opportunity value are held out until the needed data exists.
         </div>
         <div class="panel pad">
@@ -2258,7 +2975,24 @@
         </div>`);
     }
 
+    function renderTemplatePlaceholder() {
+      const message = `
+        <div class="empty">
+          <strong>This is the source template, not the built dashboard.</strong>
+          <p>Open <code>outputs/dashboard/abs_catcher_dashboard.html</code> for the standalone coach-facing dashboard. The template intentionally has no embedded data until the build command replaces it.</p>
+          <p>Build command: <code>python -m src.render_html --config config/dashboard_config.json</code></p>
+        </div>`;
+      ["zone-content", "strategy-content", "overview-content", "report-content", "evaluation-content", "data-content"].forEach(id => {
+        const element = document.getElementById(id);
+        if (element) element.innerHTML = message;
+      });
+    }
+
     function init() {
+      if (!DASHBOARD_DATA) {
+        renderTemplatePlaceholder();
+        return;
+      }
       initNav();
       initFilters();
       renderZone();

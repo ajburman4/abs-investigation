@@ -24,6 +24,10 @@ The primary user is a catching coach. Prioritize clarity, direct baseball langua
 - Keep coach-facing language practical: use terms like called-strike shape, challenge value, selection, aggression, conviction, and catcher view.
 - Avoid front-facing model jargon unless it is clearly separated into data or analyst notes.
 - Do not add a report/export workflow until the user asks for it.
+- Keep metric names consistent across cards, section labels, tooltips, and narrative copy. If one concept appears in multiple places, use one name for it.
+- Make metric provenance clear. Distinguish trusted workbook or Baseball Savant values, pitch-level Statcast or MLB feed observations, league percentile comparisons, and analyst-defined review flags.
+- Use data-driven grade bands and thresholds whenever a metric is being judged. Prefer league percentiles and transparent A/B/C/D/F bands over arbitrary cut points.
+- Do not use plus/minus grades in coach-facing report cards unless the user explicitly asks for them; use A, B, C, D, and F.
 
 ## Product Process
 
@@ -34,6 +38,10 @@ The primary user is a catching coach. Prioritize clarity, direct baseball langua
 - When the user gives screenshot feedback, reassess the information architecture before polishing local styling. The issue is often story structure, not just spacing.
 - Treat user-approved patterns as reusable only after they serve a broader dashboard purpose. Do not turn one-off comments into permanent rules unless they generalize.
 - Keep coach-facing sections practical and concise; move data caveats and methodology detail into tooltips, compact notes, or Data Check.
+- Put core metric definitions where the coach can see them without hunting. Use tooltips for formula detail, source context, and caveats, not as the only explanation for a key concept.
+- When a section compares actual performance to expected performance, explain what expected means and where it comes from. Do not imply a data-driven baseline when the value is analyst-defined or assumption-based.
+- Keep adjacent metric concepts distinct. A metric's name, definition, and calculation should match the actual evidence source, and summary metrics should not blur observed results, expected baselines, and analyst review flags.
+- Thresholds for edge or review windows should be justified by baseball/ABS context, data precision, or league distribution. Avoid unexplained inch or percentage-point cutoffs.
 
 ## Visual And Interaction Standards
 
@@ -42,6 +50,8 @@ The primary user is a catching coach. Prioritize clarity, direct baseball langua
 - Default views must be understandable without hover. Hover and click should add detail, not rescue an unclear chart.
 - Interactive controls must update all related visuals, legends, counts, and summary stats together.
 - Strike-zone visuals should use a consistent catcher-view orientation and proportions that preserve baseball intuition.
+- Percentile-based labels should say percentile or percentile band rather than raw points when the comparison is distributional.
+- Use direct unit labels for deltas, such as percentage points, overturns, runs, inches, or percentile, so small numbers are not ambiguous.
 
 ## Build And Validation
 
