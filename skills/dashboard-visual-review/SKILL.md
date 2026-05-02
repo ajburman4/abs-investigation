@@ -30,10 +30,11 @@ Evaluate in this order:
 1. What is the page trying to say, and is that story obvious within a few seconds?
 2. Does the visual hierarchy guide the coach from thesis to evidence to detail?
 3. Are the visuals simple enough to read without explanation?
-4. Do cards, tables, legends, and tooltips add interpretation rather than clutter?
-5. Are labels and baseball terms concrete, coach-facing, and consistent?
-6. Does the layout feel polished at desktop and narrow widths?
-7. Does the page use Arizona Diamondbacks-inspired styling consistently without overwhelming the data?
+4. Does each page, section, and panel have a distinct job, or is it duplicating another view?
+5. Do cards, tables, legends, and tooltips add interpretation rather than clutter?
+6. Are labels and baseball terms concrete, coach-facing, and consistent?
+7. Does the layout feel polished at desktop and narrow widths?
+8. Does the page use Arizona Diamondbacks-inspired styling consistently without overwhelming the data?
 
 ## Analysis Review
 
@@ -50,18 +51,21 @@ Checklist:
 - Confirm the data supports the claim being made.
 - Treat noisy or non-decisive splits as filters, drill-downs, or cuts.
 - Prefer visuals that answer one decision quickly over tables that require the coach to assemble the story.
+- Remove or merge views that answer the same question with weaker evidence or less direct coaching value.
 - Make constraints explicit when they change the recommendation.
 - Avoid adding situational language unless the visual shows where and why the situation matters.
 
 ## Story Review
 
 - Identify the page thesis before critiquing components.
+- Check whether headings and subtitles sound like coach-facing decisions or questions. Rewrite internal labels that only describe the page type.
 - Prefer one strong thesis with a few supporting metrics over scattered observations.
 - Remove or rewrite copy that repeats numbers already shown in cards or tables.
 - Make supporting cards visually distinct and useful; avoid bland metric blocks that only restate labels.
 - Keep coach-facing wording direct. Prefer `Top-zone calls are expanding` over abstract descriptions.
 - Do not add explanatory text that describes obvious UI mechanics.
 - Cut sections that are technically interesting but do not change the coach's decision.
+- When a formula or method is central to the section, prefer compact source, formula, and example blocks over dense explanatory prose.
 
 ## Visual Simplicity
 
@@ -79,6 +83,8 @@ Checklist:
 
 - Use tooltips for detail-on-demand: before/after rates, deltas, sample context, and secondary metrics.
 - Keep tooltip text short, scannable, and formatted like a small stat panel.
+- Only include metrics that add information beyond the visible mark. Avoid repeating the visible label, recommendation, or color state unless it prevents misinterpretation.
+- Keep tooltip metric formatting consistent across comparable marks, and do not leave low-value or empty metric slots just to preserve a two-column layout.
 - Keep key values on one line when possible.
 - Make hover/click states visually distinct from permanent chart outlines.
 - Default views should be understandable without requiring interaction.
@@ -97,6 +103,7 @@ When layout or interaction changed:
 - Select and unselect an area in the Area Guide if that interaction is present.
 - On any interactive page, hover the main chart marks, click selectable groups, and test filters/toggles.
 - Confirm visible counts, plots, legends, and summaries update together.
+- Confirm rates with count-plus-percent labels identify the outcome, such as successful, overturned, selected, or expected.
 - Confirm text does not overlap, truncate awkwardly, or wrap important values.
 - Confirm the page still reads as a finished coaching product, not a data dump.
 

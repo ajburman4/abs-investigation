@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The ABS Edge Map</title>
+  <title>The ABS Effect</title>
   <style>
     :root {
       --bg: #f7f4ed;
@@ -598,6 +598,9 @@
       padding-top: 10px;
       margin-top: 10px;
     }
+    .tooltip-row.single {
+      grid-template-columns: 1fr;
+    }
     .tooltip-value {
       color: var(--blue);
       font-size: 24px;
@@ -793,6 +796,12 @@
     .area-detail .value {
       font-weight: 900;
       font-size: 18px;
+    }
+    #strategy-area-detail {
+      grid-template-columns: minmax(180px, 1fr) repeat(2, minmax(170px, 0.55fr));
+    }
+    #strategy-area-detail .value {
+      font-size: 16px;
     }
     .area-row {
       cursor: pointer;
@@ -1081,7 +1090,7 @@
     }
     .confidence-row {
       display: grid;
-      grid-template-columns: 46px minmax(0, 1fr) 46px 46px;
+      grid-template-columns: 56px minmax(0, 1fr) 64px 64px;
       gap: 10px;
       align-items: center;
       justify-items: stretch;
@@ -1089,6 +1098,9 @@
       margin: 9px 0;
       font-size: 13px;
       font-weight: 800;
+    }
+    .confidence-row > span {
+      white-space: nowrap;
     }
     .confidence-row > span:nth-last-child(-n+2) {
       justify-self: end;
@@ -1208,6 +1220,27 @@
     .light-toggle button.active {
       background: var(--red);
       color: #fff;
+    }
+    .math-note-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .math-note {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+      min-width: 0;
+    }
+    .math-note strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .math-note a {
+      color: var(--red);
+      font-weight: 800;
     }
     .strategy-filter-row {
       display: flex;
@@ -1373,6 +1406,7 @@
       .two-col { grid-template-columns: 1fr; }
       .metrics { grid-template-columns: repeat(2, minmax(150px, 1fr)); }
       .strategy-grid { grid-template-columns: 1fr; }
+      .math-note-grid { grid-template-columns: 1fr; }
       .section-head { grid-template-columns: 1fr; }
       .status-grid { grid-template-columns: 1fr; }
       .trend-row { grid-template-columns: 1fr; }
@@ -1401,25 +1435,22 @@
 </head>
 <body>
   <header>
-    <h1>The ABS Edge Map</h1>
-    <p>Where the new zone is giving catchers strikes, taking them away, and changing the conversation behind the plate.</p>
+    <h1>The ABS Effect</h1>
+    <p>How the strike zone has changed, emerging challenge strategies, and how catchers are performing.</p>
   </header>
 
   <main class="shell">
     <nav class="nav" aria-label="Dashboard sections">
-      <button class="active" data-view="zone">Zone Change</button>
+      <button class="active" data-view="zone">Strike Zone Change</button>
       <button data-view="strategy">Challenge Strategy</button>
-      <button data-view="overview">Catcher Overview</button>
       <button data-view="report">Challenge Report Card</button>
-      <button data-view="evaluation">Catcher Evaluation</button>
-      <button data-view="data">Data Check</button>
     </nav>
 
     <section id="zone" class="view active">
       <div class="section-head">
         <div>
-          <h2>Zone Change</h2>
-          <p class="purpose">League view: what the ABS-era called-strike shape looks like compared with the prior human-zone window.</p>
+          <h2>Strike Zone Change</h2>
+          <p class="purpose">How is the strike zone changing across MLB?</p>
         </div>
       </div>
       <div class="filters" id="zone-filters"></div>
@@ -1429,22 +1460,11 @@
     <section id="strategy" class="view">
       <div class="section-head">
         <div>
-          <h2>Challenge Strategy Guide</h2>
-          <p class="purpose">A practical guide for when catcher conviction is worth spending a pitching-team challenge.</p>
+          <h2>Challenge Strategy</h2>
+          <p class="purpose">When should catchers use challenges?</p>
         </div>
       </div>
       <div id="strategy-content"></div>
-    </section>
-
-    <section id="overview" class="view">
-      <div class="section-head">
-        <div>
-          <h2>Catcher Overview</h2>
-          <p class="purpose">Which catchers are creating or losing ABS challenge value from the pitching-team perspective.</p>
-        </div>
-      </div>
-      <div class="filters" id="overview-filters"></div>
-      <div id="overview-content"></div>
     </section>
 
     <section id="report" class="view">
@@ -1457,27 +1477,6 @@
       <div class="filters" id="report-filters"></div>
       <div id="report-content"></div>
     </section>
-
-    <section id="evaluation" class="view">
-      <div class="section-head">
-        <div>
-          <h2>Catcher Evaluation</h2>
-          <p class="purpose">A transparent ABS-era value summary using only the approved data sources.</p>
-        </div>
-      </div>
-      <div class="filters" id="evaluation-filters"></div>
-      <div id="evaluation-content"></div>
-    </section>
-
-    <section id="data" class="view">
-      <div class="section-head">
-        <div>
-          <h2>Data Check</h2>
-          <p class="purpose">Source, schema, and join checks used to build this file.</p>
-        </div>
-      </div>
-      <div id="data-content"></div>
-    </section>
   </main>
 
   <script>
@@ -1487,10 +1486,7 @@
     const DASHBOARD_DATA = window.__DASHBOARD_DATA__;
     const state = {
       zone: { team: "All", catcher: "All", pitcher: "All", pitchType: "All", side: "All" },
-      overview: { team: "All", catcher: "All" },
       report: { catcher: "" },
-      evaluation: { team: "All" },
-      sort: { key: "totalVsExpected", dir: -1 },
       selectedAreas: new Set(),
       selectedStrategyAreas: new Set(),
       selectedStrategyLeft: 2,
@@ -1714,21 +1710,11 @@
     function initFilters() {
       setHtml("zone-filters", "");
 
-      setHtml("overview-filters", [
-        buildSelect("Team", "overview-team", DASHBOARD_DATA.filters.teams, state.overview.team),
-        buildSelect("Catcher", "overview-catcher", DASHBOARD_DATA.filters.catchers, state.overview.catcher)
-      ].join(""));
-      document.getElementById("overview-team").addEventListener("change", renderOverview);
-      document.getElementById("overview-catcher").addEventListener("change", renderOverview);
-
       const reportRows = diamondbacksCatchers();
       const firstCatcher = reportRows[0] ? reportRows[0].name : "";
       state.report.catcher = firstCatcher;
       setHtml("report-filters", buildExactSelect("Diamondbacks catcher", "report-catcher", reportRows.map(row => row.name), firstCatcher));
       document.getElementById("report-catcher").addEventListener("change", renderReport);
-
-      setHtml("evaluation-filters", buildSelect("Team", "evaluation-team", DASHBOARD_DATA.filters.teams, state.evaluation.team));
-      document.getElementById("evaluation-team").addEventListener("change", renderEvaluation);
     }
 
     function filterZoneRows() {
@@ -1812,7 +1798,7 @@
     }
 
     function thesisStatement(areaMap) {
-      return "The early ABS zone is not just a cleaner version of the old human zone. It is rewarding vertical command more clearly, while the side edges are becoming less of a place to steal strikes and more of a place where catchers need conviction before asking for a challenge.";
+      return "The strike zone is getting more vertical, with more called strikes above and below the historical zone. Umpire biases or leniency on the edges is being removed by challenges.";
     }
 
     function areaCells(areaKey) {
@@ -1939,9 +1925,10 @@
         const parts = line.split("|").slice(1);
         const left = { label: parts[0] || "", value: parts[1] || "", note: parts[2] || "" };
         const right = { label: parts[3] || "", value: parts[4] || "", note: parts[5] || "" };
-        return `<div class="tooltip-row">
+        const hasRight = Boolean(right.label || right.value || right.note);
+        return `<div class="tooltip-row${hasRight ? "" : " single"}">
           <div><div class="tooltip-value">${escapeHtml(left.value)}</div><div class="muted">${escapeHtml(left.label)}</div><div class="muted">${escapeHtml(left.note)}</div></div>
-          <div class="tooltip-copy"><strong>${escapeHtml(right.label)}</strong><br><span class="tooltip-value" style="font-size:22px">${escapeHtml(right.value)}</span><br>${escapeHtml(right.note)}</div>
+          ${hasRight ? `<div><div class="tooltip-value">${escapeHtml(right.value)}</div><div class="muted">${escapeHtml(right.label)}</div><div class="muted">${escapeHtml(right.note)}</div></div>` : ""}
         </div>`;
       }).join("");
       const formulaHtml = formulaRows.map(line => {
@@ -1997,7 +1984,7 @@
           </div>`).join("");
         setHtml("zone-content", `
           <div class="empty">
-            <strong>Zone Change needs cached or pulled Statcast data.</strong>
+            <strong>Strike Zone Change needs cached or pulled Statcast data.</strong>
             <p>The workbook loaded, but no pitch-level Statcast cache is available yet. Install requirements, set <code>refresh_statcast</code> to <code>true</code>, and rebuild. The coach-facing dashboard will not show mock zone data.</p>
             <div class="status-grid">${statusItems}</div>
           </div>`);
@@ -2050,7 +2037,7 @@
 
       setHtml("zone-content", `
         <div class="insight">
-          <strong>What this page is saying</strong>
+          <strong>Takeaway</strong>
           <p>${escapeHtml(thesisStatement(areaMap))}</p>
         </div>
         <div class="trend-row">
@@ -2097,20 +2084,6 @@
       clearZoneArea();
     }
 
-    function currentCatcherRows() {
-      const team = document.getElementById("overview-team") ? document.getElementById("overview-team").value : "All";
-      const catcher = document.getElementById("overview-catcher") ? document.getElementById("overview-catcher").value : "All";
-      return DASHBOARD_DATA.catchers.filter(row => {
-        if (team !== "All" && row.team !== team) return false;
-        if (catcher !== "All" && row.name !== catcher) return false;
-        return true;
-      });
-    }
-
-    function sortableHeader(label, key) {
-      return `<th data-sort="${key}">${label}</th>`;
-    }
-
     function recommendationClass(label) {
       return String(label || "").toLowerCase();
     }
@@ -2129,8 +2102,8 @@
     function confidenceTooltip(row, two, one) {
       return [
         `${row.count} conviction bar`,
-        `METRIC|2 left|${fmtPct(two.confidenceRequired)}|breakeven conviction|1 left|${fmtPct(one.confidenceRequired)}|last miss costs more`,
-        `METRIC|Run swing|${fmtSignedNumber(two.runValue, 2)}|successful overturn value|Count|${row.count}|called-pitch state`,
+        `METRIC|Run swing|${fmtSignedNumber(two.runValue, 2)}|runs if the call flips|Challenge cost|${fmtNumber(two.challengeCost, 2)} / ${fmtNumber(one.challengeCost, 2)}|runs for 2 left / 1 left`,
+        `METRIC|2 left conviction|${fmtPct(two.confidenceRequired)}|successful needed|1 left conviction|${fmtPct(one.confidenceRequired)}|successful needed`,
         `Catchers must be right at least this often for the challenge to break even.`
       ].join("\n");
     }
@@ -2183,14 +2156,13 @@
         </svg>`;
     }
 
-    function renderConceptView(rows, inventoryCosts) {
-      const examples = ["3-2", "2-2", "1-2", "0-2", "2-0", "1-0", "0-0"]
-        .map(count => rows.find(row => row.count === count))
-        .filter(Boolean)
+    function renderConceptView(rows) {
+      const examples = [...rows]
+        .filter(row => primaryCell(row, "all", 2) && primaryCell(row, "all", 1))
+        .sort((a, b) => Number(primaryCell(b, "all", 2).runValue || 0) - Number(primaryCell(a, "all", 2).runValue || 0))
         .map(row => {
           const two = primaryCell(row, "all", 2);
           const one = primaryCell(row, "all", 1);
-          if (!two || !one) return "";
           const leftPct = Math.min(100, Math.max(0, Number(two.confidenceRequired || 0) * 100));
           const onePct = Math.min(100, Math.max(0, Number(one.confidenceRequired || 0) * 100));
           return `<div class="confidence-row strategy-cell" data-tooltip="${escapeHtml(confidenceTooltip(row, two, one))}">
@@ -2200,30 +2172,15 @@
             <span>${fmtPct(one.confidenceRequired)}</span>
           </div>`;
         }).join("");
-      const fullCost = inventoryCosts["2"] || { cost: 0.20 };
-      const lastCost = inventoryCosts["1"] || { cost: 0.31, premium: 0.11, sample: 0 };
       return `
         <div class="strategy-concept">
-          <div class="inventory-row">
-            <div class="inventory-card">
-              <div class="label">2 challenges left</div>
-              <div class="big">${fmtNumber(fullCost.cost, 2)} runs</div>
-              <div class="muted">Baseline cost of spending one.</div>
-            </div>
-            <div class="inventory-card">
-              <div class="label">1 challenge left</div>
-              <div class="big">${fmtNumber(lastCost.cost, 2)} runs</div>
-              <div class="muted">Adds a ${fmtNumber(lastCost.premium, 2)} run premium from observed future overturned challenge value.</div>
-            </div>
-          </div>
           <div class="conviction-panel">
-            <h3>How The Conviction Bar Moves</h3>
-            <p class="muted">Lower percentages are easier spends. The red marker is stricter because missing with one challenge left costs more than missing with two.</p>
-            <div class="confidence-row" style="color:var(--muted); text-transform:uppercase; letter-spacing:.04em">
-              <span>Count</span><span>Lower is easier to challenge</span><span>2 left</span><span>1 left</span>
+            <h3>How the Conviction Bar Moves</h3>
+            <p class="muted">How often does a challenge need to succeed to break even?</p>
+            <div class="confidence-row" style="color:var(--muted); letter-spacing:.04em">
+              <span>Count</span><span>Conviction needed</span><span>2 left</span><span>1 left</span>
             </div>
             ${examples}
-            <p class="muted" style="font-size:13px; margin-top:10px">Why 2-0 and 0-2 are close here: a 2-0 strike prevents a dangerous 3-0 count, while many 0-2 balls are low-cost chase or waste pitches. The average run swing is similar in this 2026 sample, even though the baseball feel is different.</p>
           </div>
         </div>`;
     }
@@ -2234,9 +2191,9 @@
     }
 
     function lightCopy(label) {
-      if (label === "Challenge") return "Think challenge when the location read is real. Game-state rows appear only when runners or leverage move a count up.";
-      if (label === "Lean") return "Playable with a strong location tell. Game-state rows here are spots where context raises the baseline.";
-      return "Save it unless the location evidence is overwhelming.";
+      if (label === "Challenge") return "Challenges that flip the PA from a negative to positive result bring the most value.";
+      if (label === "Lean") return "Other opportunities that create a strikeout, prevent a walk, or impact count leverage can be valuable, but need to succeed more often.";
+      return "Save early-count challenges for egregious misses.";
     }
 
     function recommendationRank(label) {
@@ -2249,8 +2206,8 @@
         : "Count-only baseline.";
       return [
         compactSituationLabel(cell),
-        `METRIC|Conviction|${fmtPct(cell.confidenceRequired)}|needed|Run swing|${fmtSignedNumber(cell.runValue, 2)}|runs`,
-        `METRIC|Light|${cell.recommendation}|${cell.challengesLeft} left|State|${cell.gameState === "all" ? "Baseline" : cell.gameStateLabel}|${cell.baselineRecommendation ? "moved up" : "count only"}`,
+        `METRIC|Run swing|${fmtSignedNumber(cell.runValue, 2)}|runs if the call flips|Conviction|${fmtPct(cell.confidenceRequired)}|successful needed`,
+        `METRIC|Challenge cost|${fmtNumber(cell.challengeCost, 2)}|runs for a miss`,
         moved
       ].join("\n");
     }
@@ -2313,7 +2270,7 @@
             <button type="button" class="${selectedLeft === 2 ? "active" : ""}" data-left="2">2 left</button>
             <button type="button" class="${selectedLeft === 1 ? "active" : ""}" data-left="1">1 left</button>
           </div>
-          <p class="muted" style="font-size:13px; margin:0 0 12px">Plain count rows are the baseline. RISP and Late close rows only appear when that game state changes the light.</p>
+          <p class="muted" style="font-size:13px; margin:0 0 12px">Use this as a guide. These are averages, and the catcher still needs to consider the leverage of where he is in the game.</p>
           <div class="light-board">${cards}</div>
         </div>`;
     }
@@ -2342,16 +2299,13 @@
       const selected = area ? points.filter(point => pointInArea(point, area.key)) : points;
       const challenges = selected.length;
       const overturns = selected.filter(point => point.abs_overturned).length;
-      const runValues = selected.map(point => Number(point.runValue)).filter(Number.isFinite);
-      const avgRunValue = runValues.length ? runValues.reduce((sum, value) => sum + value, 0) / runValues.length : null;
       return {
         key: area ? area.key : "all",
         label: area ? area.label : "All challenge locations",
         color: area ? area.color : "var(--red)",
         challenges,
         overturns,
-        successRate: challenges ? overturns / challenges : 0,
-        avgRunValue
+        successRate: challenges ? overturns / challenges : 0
       };
     }
 
@@ -2367,15 +2321,12 @@
       const strikes = filterPoints(strikePoints);
       const ballOverturns = balls.filter(point => point.abs_overturned).length;
       const strikeOverturns = strikes.filter(point => point.abs_overturned).length;
-      const selected = [...balls, ...strikes];
-      const runValues = selected.map(point => Number(point.runValue)).filter(Number.isFinite);
       return {
         areaLabel,
         ballChallenges: balls.length,
         ballOverturnRate: balls.length ? ballOverturns / balls.length : null,
         strikeChallenges: strikes.length,
         strikeOverturnRate: strikes.length ? strikeOverturns / strikes.length : null,
-        avgRunValue: runValues.length ? runValues.reduce((sum, value) => sum + value, 0) / runValues.length : null,
       };
     }
 
@@ -2384,25 +2335,22 @@
       const rows = AREA_DEFS.map(area => {
         const balls = summarizeChallengeArea(ballPoints, area);
         const strikes = summarizeChallengeArea(strikePoints, area);
-        const combined = summarizeChallengeArea([...ballPoints, ...strikePoints], area);
-        return { ...balls, strikeChallenges: strikes.challenges, strikeOverturnRate: strikes.successRate, avgRunValue: combined.avgRunValue };
+        return { ...balls, strikeChallenges: strikes.challenges, strikeOverturnRate: strikes.successRate };
       }).filter(row => row.challenges || row.strikeChallenges);
       return `
         <div id="strategy-area-detail" class="area-detail">
           <div><div class="label">Selected Area</div><div class="value">${escapeHtml(selected.areaLabel)}</div></div>
-          <div><div class="label">Ball Challenges</div><div class="value">${selected.ballOverturnRate === null ? "--" : `${fmtInt(selected.ballChallenges)} / ${fmtPct(selected.ballOverturnRate)}`}</div></div>
-          <div><div class="label">Strike Challenges</div><div class="value">${selected.strikeOverturnRate === null ? "--" : `${fmtInt(selected.strikeChallenges)} / ${fmtPct(selected.strikeOverturnRate)}`}</div></div>
-          <div><div class="label">Avg Run Swing</div><div class="value">${selected.avgRunValue === null ? "--" : fmtSignedNumber(selected.avgRunValue, 2)}</div></div>
+          <div><div class="label">Ball Challenges Successful</div><div class="value">${selected.ballOverturnRate === null ? "--" : `${fmtInt(selected.ballChallenges)} / ${fmtPct(selected.ballOverturnRate)} successful`}</div></div>
+          <div><div class="label">Strike Challenges Successful</div><div class="value">${selected.strikeOverturnRate === null ? "--" : `${fmtInt(selected.strikeChallenges)} / ${fmtPct(selected.strikeOverturnRate)} successful`}</div></div>
         </div>
         <table class="strategy-area-table">
-          <thead><tr><th>Area</th><th>Ball Challenges</th><th>Strike Challenges</th><th>Avg Run Swing</th></tr></thead>
+          <thead><tr><th>Area</th><th>Ball Challenges Successful</th><th>Strike Challenges Successful</th></tr></thead>
           <tbody>
           ${rows.map(row => `
             <tr class="area-row ${state.selectedStrategyAreas.has(row.key) ? "selected" : ""}" data-area="${escapeHtml(row.key)}">
               <td><span class="area-chip" style="background:${row.color}"></span><strong>${escapeHtml(row.label)}</strong></td>
-              <td>${fmtInt(row.challenges)} / ${fmtPct(row.successRate)}</td>
-              <td>${fmtInt(row.strikeChallenges)} / ${fmtPct(row.strikeOverturnRate)}</td>
-              <td>${row.avgRunValue === null ? "--" : fmtSignedNumber(row.avgRunValue, 2)}</td>
+              <td>${fmtInt(row.challenges)} / ${fmtPct(row.successRate)} successful</td>
+              <td>${fmtInt(row.strikeChallenges)} / ${fmtPct(row.strikeOverturnRate)} successful</td>
             </tr>`).join("")}
           </tbody>
         </table>`;
@@ -2454,7 +2402,6 @@
             <option value="All"${selected === "All" ? " selected" : ""}>All pitch types (${fmtInt(allCount)})</option>
             ${options.map(option => `<option value="${escapeHtml(option.key)}"${selected === option.key ? " selected" : ""}>${escapeHtml(option.label)} (${fmtInt(option.count)})</option>`).join("")}
           </select>
-          <span class="muted">Use this to inspect pitch-type patterns in the same location view.</span>
         </div>`;
     }
 
@@ -2506,7 +2453,7 @@
             ${[-1.25, -0.83, 0, 0.83, 1.25].map(value => `<line class="plot-grid" x1="${x(value)}" y1="${margin.top}" x2="${x(value)}" y2="${height - margin.bottom}"></line>`).join("")}
             ${[0, 0.5, 1].map(value => `<line class="plot-grid" x1="${margin.left}" y1="${y(value)}" x2="${width - margin.right}" y2="${y(value)}"></line>`).join("")}
             ${dots}
-            <text class="plot-label" x="${width / 2 - 46}" y="${height - 20}">Catcher view, raw plate_x</text>
+            <text class="plot-label" x="${width / 2 - 34}" y="${height - 20}">Catcher View</text>
             <text class="plot-label" transform="translate(22 ${height / 2 + 86}) rotate(-90)">Normalized height</text>
             <text class="plot-note" x="${x(-1.72)}" y="${height - 40}">Third-base side</text>
             <text class="plot-note" x="${x(1.2)}" y="${height - 40}">First-base side</text>
@@ -2534,9 +2481,7 @@
       const strikeOverturnRate = strikePoints.length ? strikePoints.filter(point => point.abs_overturned).length / strikePoints.length : 0;
       const observedBlock = Number(observed.usablePitchReviews || 0)
         ? `<div class="panel pad area-panel">
-            <h3>Observed Challenge Results By Location</h3>
-            <p class="muted">Use this as the confidence input. These views start with the original call: challenged balls on the left, challenged strikes on the right. Green means ABS overturned the call; red means the original call stood. Hover a dot to connect location to the count-level run swing.</p>
-            <p class="muted" style="font-size:13px">The box is a generic normalized strike zone. Because each pitch is normalized to that hitter's tracked top and bottom, dots just above the drawn box can still be close to the actual ABS top edge for that pitch.</p>
+            <h3>Actual Results</h3>
             ${renderStrategyPitchFilter(observed)}
             <div class="legend-row">
               <span><span class="legend-dot" style="background:var(--green)"></span>Overturned</span>
@@ -2567,22 +2512,32 @@
 
       setHtml("strategy-content", `
         <div class="insight">
-          <strong>The strategy story</strong>
-          <p>There are three questions in order. Is the count/game state worth enough? How many misses can we still absorb? Does the pitch location look like calls ABS is actually overturning? A challenge should pass all three, not just feel close.</p>
+          <strong>Takeaway</strong>
+          <p>Challenges are best used late in counts when a successful result changes the end of the PA. Early count challenges don't have enough upside if the call is not egregious.</p>
         </div>
         <div class="panel pad">
-          <h3>The Math In Plain English</h3>
-          <p>No, this is not assuming a ball-to-strike change is always worth 0.20 runs. The <strong>0.20</strong> number is the estimated cost of losing a challenge. The <strong>run swing</strong> changes by count and situation. On 0-0, it is essentially the run expectancy gap between moving to 1-0 versus 0-1. On 3-2, it is much larger because the call can flip a walk into a strikeout.</p>
-          <p><strong>Conviction needed</strong> is the breakeven probability: <code>challenge cost / (challenge cost + run swing)</code>. With two left, this uses ${fmtNumber(fullCost.cost, 2)} runs. With one left, this build uses ${fmtNumber(lastCost.cost, 2)} runs by adding a ${fmtNumber(lastCost.premium, 2)} run last-challenge premium estimated from observed future overturned challenge value (${fmtInt(lastCost.sample)} sequences).</p>
+          <h3>How do we know when a challenge is worth it?</h3>
+          <div class="math-note-grid">
+            <div class="math-note">
+              <strong>Challenge Cost</strong>
+              Baseball Savant / MLB determined that losing a challenge is worth ${fmtNumber(fullCost.cost, 2)} runs with 2 remaining, and ${fmtNumber(lastCost.cost, 2)} runs with only one challenge remaining.
+            </div>
+            <div class="math-note">
+              <strong>Run Swing</strong>
+              We also know the value of changing from one count to another using the <a href="https://blogs.fangraphs.com/the-run-expectancy-matrix-reloaded-for-the-2020s/" target="_blank" rel="noopener noreferrer">Run Expectancy Matrix</a>. We call this the run swing.
+            </div>
+            <div class="math-note">
+              <strong>Conviction</strong>
+              Conviction tells us how often challenges need to be successful to impact a game. Formula: <code>Challenge Cost / (Challenge Cost + Run Swing)</code>.
+            </div>
+          </div>
+          <p class="muted" style="margin-top:12px"><strong>Example:</strong> In a 3-2 count, the run swing from changing a walk to a strikeout is 0.61 runs. With 2 challenges remaining, catchers need to succeed 25% of the time to break even. Being right more often means he is adding value to the game through challenges.</p>
         </div>
         <div class="panel pad area-panel">
-          <h3>Concept: Why The Bar Moves</h3>
-          <p class="muted">This is the math view. It shows why the same pitch becomes harder to spend on when the team is down to its last challenge.</p>
-          ${renderConceptView(strategy.strategyMatrixRows || [], strategy.inventoryCosts || {})}
+          ${renderConceptView(strategy.strategyMatrixRows || [])}
         </div>
         <div class="panel pad area-panel">
-          <h3>Catcher Cheat Card: When To Think Challenge</h3>
-          <p class="muted">This is the strategy view. Start in the green-light box, use the yellow-light box when the location read is strong, and treat red-light spots as save-it calls.</p>
+          <h3>Cheat Sheet: When Should We Challenge?</h3>
           ${renderCheatCard(strategy.strategyMatrixRows || [])}
         </div>
         ${observedBlock}
@@ -2619,62 +2574,6 @@
             state.selectedStrategyAreas.add(row.dataset.area);
           }
           renderStrategy();
-        });
-      });
-    }
-
-    function renderOverview() {
-      const rows = currentCatcherRows().sort((a, b) => {
-        const dir = state.sort.dir;
-        const key = state.sort.key;
-        return (Number(a[key]) > Number(b[key]) ? 1 : -1) * dir;
-      });
-      const top = rows[0] || {};
-      const tableRows = rows.map(row => `
-        <tr>
-          <td><strong>${escapeHtml(row.name)}</strong><div class="muted">${escapeHtml(row.team)}</div></td>
-          <td>${fmtInt(row.challenges)}</td>
-          <td>${fmtInt(row.overturns)}</td>
-          <td>${fmtPct(row.successRate)}</td>
-          <td>${fmtNumber(row.totalVsExpected, 1)}</td>
-          <td>${fmtNumber(row.overturnsAboveExpected, 1)}</td>
-          <td><span class="tag ${tagClass(row.aggressionLabel)}">${escapeHtml(row.aggressionLabel)}</span></td>
-        </tr>`).join("");
-      setHtml("overview-content", `
-        <div class="metrics">
-          <div class="metric"><div class="label">Catchers Shown</div><div class="value">${fmtInt(rows.length)}</div><div class="note">Workbook rows</div></div>
-          <div class="metric"><div class="label">Top Value</div><div class="value">${fmtNumber(top.totalVsExpected || 0, 1)}</div><div class="note">${escapeHtml(top.name || "None")}</div></div>
-          <div class="metric"><div class="label">Top Challenge Success Rate</div><div class="value">${fmtPct(Math.max(...rows.map(r => r.successRate), 0))}</div><div class="note">Overturns per challenge</div></div>
-          <div class="metric"><div class="label">Light Usage Flags</div><div class="value">${fmtInt(rows.filter(r => ["Light", "Very Light"].includes(r.aggressionLabel)).length)}</div><div class="note">Challenge-volume percentile signal</div></div>
-        </div>
-        <div class="panel pad">
-          <table>
-            <thead><tr>
-              ${sortableHeader("Catcher", "name")}
-              ${sortableHeader("Challenges", "challenges")}
-              ${sortableHeader("Overturns", "overturns")}
-              ${sortableHeader("Success", "successRate")}
-              ${sortableHeader("Value", "totalVsExpected")}
-              ${sortableHeader("Above Expected", "overturnsAboveExpected")}
-              <th>Aggression</th>
-            </tr></thead>
-            <tbody>${tableRows}</tbody>
-          </table>
-        </div>
-        <div class="panel pad takeaways">
-          <h3>Coach Takeaways</h3>
-          <ul>
-            <li>Do not grade only by Challenge Success Rate. Pair it with value and usage percentile.</li>
-            <li>Light-usage catchers may need encouragement even if their Challenge Success Rate is strong.</li>
-            <li>Heavy-usage catchers should review low-value challenge losses first.</li>
-          </ul>
-        </div>`);
-      document.querySelectorAll("#overview th[data-sort]").forEach(th => {
-        th.addEventListener("click", () => {
-          const key = th.dataset.sort;
-          state.sort.dir = state.sort.key === key ? state.sort.dir * -1 : -1;
-          state.sort.key = key;
-          renderOverview();
         });
       });
     }
@@ -2912,69 +2811,6 @@
       });
     }
 
-    function renderEvaluation() {
-      const team = document.getElementById("evaluation-team").value;
-      const rows = DASHBOARD_DATA.catchers
-        .filter(row => team === "All" || row.team === team)
-        .sort((a, b) => b.overallValue - a.overallValue);
-      const tableRows = rows.map(row => `
-        <tr>
-          <td><strong>${escapeHtml(row.name)}</strong><div class="muted">${escapeHtml(row.team)}</div></td>
-          <td>${fmtNumber(row.executionValue, 1)}</td>
-          <td>${fmtNumber(row.selectionValue, 1)}</td>
-          <td>${fmtNumber(row.zoneAdaptation, 1)}</td>
-          <td>${fmtNumber(row.overallValue, 1)}</td>
-          <td><span class="tag ${tagClass(row.archetype)}">${escapeHtml(row.archetype)}</span></td>
-        </tr>`).join("");
-      setHtml("evaluation-content", `
-        <div class="insight">
-          <strong>Transparent MVP formula</strong>
-          ABS Catcher Value uses Baseball Savant Total vs. Expected, with Zone Adaptation shown as a separate indicator.
-          Receiving value, battery process value, and true missed-opportunity value are held out until the needed data exists.
-        </div>
-        <div class="panel pad">
-          <table>
-            <thead><tr><th>Catcher</th><th>Execution</th><th>Selection</th><th>Zone Adaptation</th><th>Overall</th><th>Archetype</th></tr></thead>
-            <tbody>${tableRows}</tbody>
-          </table>
-        </div>
-        <div class="panel pad takeaways">
-          <h3>Coach Takeaways</h3>
-          <ul>
-            <li>Use the component table before debating the overall number.</li>
-            <li>Archetypes are coaching labels, not final player grades.</li>
-            <li>Zone adaptation is neutral until the Statcast zone-change cache is available.</li>
-          </ul>
-        </div>`);
-    }
-
-    function renderDataCheck() {
-      const validationRows = DASHBOARD_DATA.validations.map(item => `
-        <div class="status ${item.ok ? "ok" : "warn"}">
-          <div class="name">${escapeHtml(item.name)}</div>
-          <div class="message">${escapeHtml(item.message)}</div>
-        </div>`).join("");
-      const sourceRows = Object.entries(DASHBOARD_DATA.sourceStatus).map(([name, item]) => `
-        <tr><td>${escapeHtml(name)}</td><td>${escapeHtml(item.source)}</td><td>${fmtInt(item.rows)}</td><td>${escapeHtml(item.message)}</td></tr>`).join("");
-      setHtml("data-content", `
-        <div class="metrics">
-          <div class="metric"><div class="label">Generated</div><div class="value" style="font-size:18px">${escapeHtml(DASHBOARD_DATA.generatedAt)}</div><div class="note">Local build time</div></div>
-          <div class="metric"><div class="label">Catcher Rows</div><div class="value">${fmtInt(DASHBOARD_DATA.catchers.length)}</div><div class="note">Workbook</div></div>
-          <div class="metric"><div class="label">Zone Rows</div><div class="value">${fmtInt(DASHBOARD_DATA.zoneRows.length)}</div><div class="note">Aggregated Statcast</div></div>
-          <div class="metric"><div class="label">Statcast Refresh</div><div class="value">${DASHBOARD_DATA.config.refreshStatcast ? "On" : "Off"}</div><div class="note">Config setting</div></div>
-        </div>
-        <div class="grid two-col">
-          <div class="panel pad">
-            <h3>Validation</h3>
-            <div class="status-grid">${validationRows}</div>
-          </div>
-          <div class="panel pad">
-            <h3>Sources</h3>
-            <table><thead><tr><th>Source</th><th>Status</th><th>Rows</th><th>Message</th></tr></thead><tbody>${sourceRows}</tbody></table>
-          </div>
-        </div>`);
-    }
-
     function renderTemplatePlaceholder() {
       const message = `
         <div class="empty">
@@ -2982,7 +2818,7 @@
           <p>Open <code>outputs/dashboard/abs_catcher_dashboard.html</code> for the standalone coach-facing dashboard. The template intentionally has no embedded data until the build command replaces it.</p>
           <p>Build command: <code>python -m src.render_html --config config/dashboard_config.json</code></p>
         </div>`;
-      ["zone-content", "strategy-content", "overview-content", "report-content", "evaluation-content", "data-content"].forEach(id => {
+      ["zone-content", "strategy-content", "report-content"].forEach(id => {
         const element = document.getElementById(id);
         if (element) element.innerHTML = message;
       });
@@ -2997,10 +2833,7 @@
       initFilters();
       renderZone();
       renderStrategy();
-      renderOverview();
       renderReport();
-      renderEvaluation();
-      renderDataCheck();
     }
 
     init();

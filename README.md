@@ -12,7 +12,7 @@ Approved inputs:
 - Pitch-level Statcast data pulled with `pybaseball.statcast`
 - MLB Stats API game feeds for pitch-level ABS challenge events
 
-The workbook drives catcher-level challenge baselines. Statcast drives the Zone Change and strategy context sections once cached or pulled. MLB Stats API feeds provide pitch-level ABS challenge events, cached locally for reproducibility.
+The workbook drives catcher-level challenge baselines. Statcast drives the Strike Zone Change and strategy context sections once cached or pulled. MLB Stats API feeds provide pitch-level ABS challenge events, cached locally for reproducibility.
 
 ## Setup
 
@@ -74,12 +74,9 @@ That file is the coach-shareable deliverable.
 
 ## Dashboard Sections
 
-1. **Zone Change**: first visible section. Shows 2026 called-strike rate changes versus a comparable 2025 window when Statcast cache is available.
+1. **Strike Zone Change**: first visible section. Shows 2026 called-strike rate changes versus a comparable 2025 window when Statcast cache is available.
 2. **Challenge Strategy**: count, situation, location, and observed pitch-level challenge guide for when to spend a pitching-team challenge.
-3. **Catcher Overview**: ranks catchers from the workbook by challenge value, success, and aggression signal.
-4. **Challenge Report Card**: gives catcher-level challenge feedback without grading only by success rate.
-5. **Catcher Evaluation**: transparent MVP value formula using available challenge components.
-6. **Data Check**: source, schema, and join-readiness checks.
+3. **Challenge Report Card**: gives catcher-level challenge feedback without grading only by success rate.
 
 ## Metric Notes
 
@@ -97,4 +94,4 @@ That file is the coach-shareable deliverable.
 - Pitch-level challenge events are extracted from MLB Stats API review details and should be reconciled against Baseball Savant aggregate totals before being used as a final grading source.
 - Battery process value is not shown because internal charting fields are outside the approved data scope.
 - Receiving value is held out until a separate framing or receiving model is approved.
-- If Statcast cache is unavailable, Zone Change shows a data-needed state instead of mock data.
+- If Statcast cache is unavailable, Strike Zone Change shows a data-needed state instead of mock data.

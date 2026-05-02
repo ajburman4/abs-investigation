@@ -15,8 +15,8 @@ The primary user is a catching coach. Prioritize clarity, direct baseball langua
   - MLB Stats API game feeds for pitch-level ABS challenge events, after validating totals against trusted aggregates
 - Keep the dashboard catcher-focused. Treat catchers as the primary decision-makers for pitching-team challenges.
 - Do not show mock data in coach-facing views.
-- Keep Zone Change as the first visible dashboard section.
-- Keep Zone Change as a league-wide educational page. Do not add team or catcher filters back to that section unless the user explicitly changes direction.
+- Keep Strike Zone Change as the first visible dashboard section.
+- Keep Strike Zone Change as a league-wide educational page. Do not add team or catcher filters back to that section unless the user explicitly changes direction.
 - Use a single catcher-view strike zone. Do not flip horizontal pitch location by pitcher hand or batter side.
 - Use raw Statcast `plate_x` for horizontal bins and normalize only vertical pitch location by `sz_top` / `sz_bot`.
 - Use Arizona Diamondbacks-inspired styling throughout the dashboard.
@@ -34,10 +34,13 @@ The primary user is a catching coach. Prioritize clarity, direct baseball langua
 - Start each material dashboard change by identifying the coach-facing question the page or section should answer.
 - Before building visuals, confirm the data supports the claim. If a split is noisy, incomplete, or not decision-useful, make it a filter/drill-down or cut it.
 - Separate concept, evidence, and recommendation. A good section should make clear what is theory/math, what is observed data, and what action the coach should take.
+- Treat every page, nav item, and major panel as needing its own job. If two views answer the same coach-facing question, combine them or remove the weaker one.
 - Prefer one cohesive story over several disconnected tables. Combine related views when they answer the same decision.
 - When the user gives screenshot feedback, reassess the information architecture before polishing local styling. The issue is often story structure, not just spacing.
 - Treat user-approved patterns as reusable only after they serve a broader dashboard purpose. Do not turn one-off comments into permanent rules unless they generalize.
-- Keep coach-facing sections practical and concise; move data caveats and methodology detail into tooltips, compact notes, or Data Check.
+- Prefer headings, subtitles, and section purposes that read like coach-facing decisions or questions. Avoid internal labels such as "story," "guide," or "overview" unless they add meaning for the coach.
+- Keep coach-facing sections practical and concise; move data caveats and methodology detail into tooltips, compact notes, or analyst notes.
+- When methodology matters to interpretation, format it as compact source, formula, and example blocks rather than a long explanatory paragraph.
 - Put core metric definitions where the coach can see them without hunting. Use tooltips for formula detail, source context, and caveats, not as the only explanation for a key concept.
 - When a section compares actual performance to expected performance, explain what expected means and where it comes from. Do not imply a data-driven baseline when the value is analyst-defined or assumption-based.
 - Keep adjacent metric concepts distinct. A metric's name, definition, and calculation should match the actual evidence source, and summary metrics should not blur observed results, expected baselines, and analyst review flags.
@@ -47,11 +50,14 @@ The primary user is a catching coach. Prioritize clarity, direct baseball langua
 
 - Use compact visual encodings such as bars, small multiples, selectable areas, and direct labels when they reduce table-reading burden.
 - Tooltips should be short stat panels with differentiated metrics and minimal prose.
+- Every tooltip metric should earn its space. Do not repeat the visible label, recommendation, or color state unless it adds context the coach cannot already see.
+- Keep tooltip formatting consistent across similar marks. If a tooltip row has one metric, render it as one metric rather than leaving an empty or low-value second slot.
 - Default views must be understandable without hover. Hover and click should add detail, not rescue an unclear chart.
 - Interactive controls must update all related visuals, legends, counts, and summary stats together.
 - Strike-zone visuals should use a consistent catcher-view orientation and proportions that preserve baseball intuition.
 - Percentile-based labels should say percentile or percentile band rather than raw points when the comparison is distributional.
 - Use direct unit labels for deltas, such as percentage points, overturns, runs, inches, or percentile, so small numbers are not ambiguous.
+- Rate labels should make the outcome and denominator clear, especially when a count and a percentage appear together.
 
 ## Build And Validation
 

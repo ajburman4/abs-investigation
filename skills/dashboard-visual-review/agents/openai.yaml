@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dashboard Visual Review"
+  short_description: "Review ABS dashboard visuals and UX"
+  default_prompt: "Use $dashboard-visual-review to review the ABS Edge Map dashboard visuals and coach-facing story."

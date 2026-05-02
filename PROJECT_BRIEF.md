@@ -47,12 +47,9 @@ Current output:
 
 Current sections:
 
-1. Zone Change
+1. Strike Zone Change
 2. Challenge Strategy
-3. Catcher Overview
-4. Challenge Report Card
-5. Catcher Evaluation
-6. Data Check
+3. Challenge Report Card
 
 Out of scope for now:
 
@@ -65,7 +62,7 @@ Out of scope for now:
 
 ## Data Model
 
-The workbook drives catcher-level challenge sections. Statcast drives the Zone Change section and the run-value context for challenge strategy. MLB Stats API review details drive observed pitch-level challenge summaries.
+The workbook drives catcher-level challenge sections. Statcast drives the Strike Zone Change section and the run-value context for challenge strategy. MLB Stats API review details drive observed pitch-level challenge summaries.
 
 The Statcast zone view is intentionally static from the catcher perspective:
 
@@ -80,7 +77,7 @@ Pitch-level ABS challenge events from MLB Stats API are useful but should be tre
 
 ## Page Intent
 
-### 1. Zone Change
+### 1. Strike Zone Change
 
 Purpose: teach the league-wide called-strike shape under ABS compared with a comparable prior human-zone window.
 
@@ -96,7 +93,7 @@ Durable requirements:
 
 Current thesis:
 
-> The early ABS zone is not just a cleaner version of the old human zone. It is rewarding vertical command more clearly, while the side edges are becoming less of a place to steal strikes and more of a place where catchers need conviction before asking for a challenge.
+> The strike zone is getting more vertical, with more called strikes above and below the historical zone. Umpire biases or leniency on the edges is being removed by challenges.
 
 ### 2. Challenge Strategy
 
@@ -133,21 +130,7 @@ In the current dashboard, `0.20` is the estimated cost of losing a challenge whe
 
 Do not turn this into a black-box optimizer. Keep the page focused on selection, aggression, conviction, game situation, and the location evidence that creates confidence.
 
-### 3. Catcher Overview
-
-Purpose: summarize which catchers are creating or losing ABS challenge value using workbook fields.
-
-Include:
-
-- challenges
-- overturns
-- confirms
-- success rate
-- net value
-- total versus expected
-- aggression label when workbook fields support it
-
-### 4. Challenge Report Card
+### 3. Challenge Report Card
 
 Purpose: evaluate catcher challenge quality without grading only by success rate.
 
@@ -163,41 +146,23 @@ Use workbook fields for:
 
 Do not include zone-specific missed opportunities until pitch-level challenge linkage exists.
 
-### 5. Catcher Evaluation
-
-Purpose: provide a transparent ABS-era catcher value summary.
-
-Current MVP formula:
-
-```text
-ABS Catcher Value =
-Challenge Execution Value
-+ Challenge Selection Value
-```
-
-Hold out:
-
-- Receiving value
-- Battery process value
-- True missed-opportunity value
-- Zone adaptation value unless a clear definition is added later
-
-### 6. Data Check
-
-Purpose: make source status, schema validation, and join readiness visible without cluttering coach-facing sections.
-
 ## Visual And Language Guidance
 
 - Use direct baseball language.
+- Frame page and section titles around the decision or question the coach needs answered, not around internal report structure.
 - Prefer one clear thesis per page over many small observations.
+- Keep repeated insight labels short and consistent so coaches can scan the same pattern across sections.
 - Do not overexplain obvious UI mechanics in the page copy.
 - Avoid statistical jargon in coach-facing text.
 - Keep tables and metrics short enough to scan.
+- Label rates so the outcome is explicit. When showing `count / percentage`, make clear whether the percentage is successful, overturned, selected, expected, or another denominator.
 - Use color to support interpretation, not as decoration.
 - Use Arizona Diamondbacks-inspired styling throughout.
 - If area names are shown on a catcher-view zone, prefer field-orientation language such as `Third-base side` and `First-base side`.
 - Use compact visual encodings when the task is comparison. Avoid large tables unless they are the clearest way to answer the coach's question.
 - Tooltips should behave like small stat panels: large differentiated values, short labels, and only the key context needed to interpret the hover target.
+- Do not use tooltips to restate labels, colors, or recommendations already visible on the mark. Tooltips should add useful context or a second-level metric.
+- When explaining a calculation, prefer a compact source/formula/example structure over a dense prose paragraph.
 - Cut sections that do not add a decision insight. If a split does not show a clear signal, make it a filter or remove it from the coach-facing story.
 - Keep concept, observed evidence, and recommendation connected but visually distinct.
 
@@ -212,6 +177,8 @@ When evolving the dashboard, use this loop:
 5. Rebuild and review the generated HTML in the browser.
 
 If feedback says a section is confusing, first revisit the story and grouping. Avoid responding with isolated copy or styling changes when the underlying issue is that the view mixes concepts, duplicates another section, or makes a weak data claim.
+
+When feedback removes or simplifies a section, look for the broader pattern before updating durable guidance. Promote only reusable preferences such as clearer denominators, shorter tooltip panels, better section jobs, or less UI-instruction copy.
 
 ## Implementation Shape
 
