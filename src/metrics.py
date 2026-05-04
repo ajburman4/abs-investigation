@@ -1128,7 +1128,7 @@ def enrich_catcher_report_metrics(
             rows,
             "strategyAdherenceRate",
             min_sample_key="strategyActionableDecisions",
-            source="Strategy adherence among catchers with 5+ actionable strategy decisions",
+            source="Count Strategy among catchers with 5+ actionable strategy decisions",
         ),
         "usage": _usage_thresholds(rows),
     }

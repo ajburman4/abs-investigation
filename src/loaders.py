@@ -4,10 +4,83 @@ import json
 import time
 import urllib.error
 import urllib.request
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 import pandas as pd
+
+
+def _parse_date(value: str) -> date:
+    return datetime.strptime(value, "%Y-%m-%d").date()
+
+
+def _date_string(value: date) -> str:
+    return value.isoformat()
+
+
+def _today(config: dict[str, Any]) -> date:
+    timezone = str(config.get("data_timezone", "America/Phoenix"))
+    return datetime.now(ZoneInfo(timezone)).date()
+
+
+def _resolve_date_token(config: dict[str, Any], value: str) -> str:
+    token = value.strip().lower()
+    if token in {"latest_complete_day", "yesterday"}:
+        return _date_string(_today(config) - timedelta(days=1))
+    if token == "today":
+        return _date_string(_today(config))
+    return value
+
+
+def resolve_date_config(config: dict[str, Any]) -> dict[str, Any]:
+    resolved = dict(config)
+    raw_dates = {
+        key: resolved.get(key)
+        for key in [
+            "statcast_2026_start_date",
+            "statcast_2026_end_date",
+            "statcast_2025_start_date",
+            "statcast_2025_end_date",
+        ]
+    }
+
+    for key in ["statcast_2026_start_date", "statcast_2026_end_date", "statcast_2025_start_date"]:
+        resolved[key] = _resolve_date_token(resolved, str(resolved[key]))
+
+    comparison_end = str(resolved["statcast_2025_end_date"]).strip().lower()
+    if comparison_end in {"match_2026_window", "match_current_window", "same_elapsed_days"}:
+        current_days = _parse_date(resolved["statcast_2026_end_date"]) - _parse_date(
+            resolved["statcast_2026_start_date"]
+        )
+        resolved["statcast_2025_end_date"] = _date_string(
+            _parse_date(resolved["statcast_2025_start_date"]) + current_days
+        )
+    else:
+        resolved["statcast_2025_end_date"] = _resolve_date_token(
+            resolved, str(resolved["statcast_2025_end_date"])
+        )
+
+    for season in [2026, 2025]:
+        start = _parse_date(resolved[f"statcast_{season}_start_date"])
+        end = _parse_date(resolved[f"statcast_{season}_end_date"])
+        if end < start:
+            raise ValueError(f"statcast_{season}_end_date must be on or after statcast_{season}_start_date")
+
+    comparison_window = (
+        "2025 uses a fixed full prior-season regular-season baseline."
+        if str(raw_dates["statcast_2025_end_date"]).strip().lower()
+        not in {"match_2026_window", "match_current_window", "same_elapsed_days"}
+        else "2025 end date matches the elapsed days in the 2026 window."
+    )
+    resolved["_raw_dates"] = raw_dates
+    resolved["_date_policy"] = {
+        "timezone": str(resolved.get("data_timezone", "America/Phoenix")),
+        "latest_complete_day": _date_string(_today(resolved) - timedelta(days=1)),
+        "comparison_window": comparison_window,
+    }
+    return resolved
 
 
 def load_config(config_path: str | Path) -> dict[str, Any]:
@@ -16,7 +89,7 @@ def load_config(config_path: str | Path) -> dict[str, Any]:
         config = json.load(handle)
     config["_config_path"] = str(path)
     config["_project_root"] = str(path.resolve().parents[1])
-    return config
+    return resolve_date_config(config)
 
 
 def project_path(config: dict[str, Any], key: str) -> Path:
@@ -50,6 +123,9 @@ def abs_challenge_cache_path(config: dict[str, Any], season: int) -> Path:
 def load_or_pull_statcast(config: dict[str, Any], season: int) -> tuple[pd.DataFrame, dict[str, Any]]:
     cache_path = statcast_cache_path(config, season)
     cache_path.parent.mkdir(parents=True, exist_ok=True)
+    refresh_requested = bool(config.get("refresh_statcast", False))
+    current_season = int(config.get("current_statcast_season", 2026))
+    historical_refresh = str(config.get("historical_statcast_refresh", "missing_only")).strip().lower()
     status: dict[str, Any] = {
         "season": season,
         "start_date": config[f"statcast_{season}_start_date"],
@@ -59,17 +135,30 @@ def load_or_pull_statcast(config: dict[str, Any], season: int) -> tuple[pd.DataF
         "message": "",
     }
 
-    if cache_path.exists() and not config.get("refresh_statcast", False):
+    should_pull = refresh_requested and (
+        season == current_season
+        or historical_refresh == "always"
+        or (historical_refresh == "missing_only" and not cache_path.exists())
+    )
+
+    if cache_path.exists() and not should_pull:
         df = pd.read_csv(cache_path, low_memory=False)
         status["source"] = "cache"
-        status["message"] = f"Loaded cached Statcast data for {season}."
+        if refresh_requested and season != current_season:
+            status["message"] = (
+                f"Loaded cached historical Statcast data for {season}; "
+                f"historical_statcast_refresh={historical_refresh}."
+            )
+        else:
+            status["message"] = f"Loaded cached Statcast data for {season}."
         status["rows"] = int(len(df))
         return df, status
 
-    if not config.get("refresh_statcast", False):
+    if not should_pull:
         status["message"] = (
-            "No cached Statcast file found. Set refresh_statcast to true after "
-            "installing pybaseball, or place a matching cache file in data/cache."
+            "No cached Statcast file found for this resolved date window. Set "
+            "refresh_statcast to true after installing pybaseball, allow historical "
+            "missing-only refreshes, or place a matching cache file in data/cache."
         )
         status["rows"] = 0
         return pd.DataFrame(), status

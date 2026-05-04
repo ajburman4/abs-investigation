@@ -833,7 +833,7 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824370,5,6,0,1.0,4d706810-fa27-342b-9808-f91ae654558b,Called Strike,0,1,0,True,False,MJ,119.0,115,119,fielding,669257.0,Will Smith
 824370,52,53,1,2.0,00bbbb0d-9440-36a5-8a38-7573a50e52e1,Called Strike,0,2,1,False,False,MJ,115.0,115,119,batting,678662.0,Ezequiel Tovar
 824370,67,68,1,2.0,d95e87c1-6579-3713-a520-42b39c8d7e1d,Called Strike,1,1,1,True,False,MJ,115.0,119,115,fielding,664954.0,Brett Sullivan
-824371,6,7,1,2.0,59e2be9a-e0af-3e82-8d13-d34009402d04,Called Strike,0,2,0,True,False,MJ,115.0,119,115,fielding,696100.0,Hunter Goodman
+824371,6,7,1,2.0,59e2be9a-e0af-3e82-8d13-d34009402d04,Called Strike,0,2,0,True,False,MJ,115.0,119,115,fielding,547179.0,Michael Lorenzen
 824371,14,15,0,1.0,f1686d11-5c56-3d93-b4db-f9a020761315,Ball,1,0,1,False,False,MJ,115.0,119,115,fielding,547179.0,Michael Lorenzen
 824371,14,15,1,2.0,1b7f9f8e-9c55-38c4-a654-851980b46352,Called Strike,1,1,1,True,False,MJ,115.0,119,115,fielding,696100.0,Hunter Goodman
 824371,52,53,3,4.0,a9ddc193-c660-38c2-96a3-89731b8f446f,Called Strike,2,2,0,True,False,MJ,119.0,115,119,fielding,669257.0,Will Smith
@@ -1033,7 +1033,7 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824770,59,60,0,1.0,92db558f-4aa0-332b-bd88-5660137f4207,Called Strike,0,1,2,False,False,MJ,147.0,147,111,batting,676609.0,José Caballero
 824773,37,38,1,2.0,aa8215ab-b945-3c27-814f-b3ce84391647,Called Strike,0,2,0,False,False,MJ,147.0,147,111,batting,592450.0,Aaron Judge
 824773,55,56,1,2.0,e208244b-bf9f-3743-97aa-261aeb6a3442,Ball,1,1,2,True,False,MJ,111.0,111,147,batting,702332.0,Caleb Durbin
-824774,47,48,2,3.0,641e0972-29d4-3db4-adf7-9d918702a1ac,Called Strike,2,1,2,True,False,MJ,147.0,111,147,fielding,608331.0,Max Fried
+824774,47,48,2,3.0,641e0972-29d4-3db4-adf7-9d918702a1ac,Called Strike,2,1,2,True,False,MJ,147.0,111,147,fielding,669224.0,Austin Wells
 824774,48,49,3,4.0,ea59c283-46cc-3687-80c6-41897f6a3ad2,Ball,3,1,0,True,False,MJ,147.0,147,111,batting,676609.0,José Caballero
 824775,38,39,0,1.0,48cf7162-4279-30d2-b0ae-445ff9205e15,Ball,1,0,0,True,False,MJ,111.0,111,116,batting,678882.0,Ceddanne Rafaela
 824775,53,54,2,3.0,f20ba3bb-6c76-3bdc-b181-16ac6548f010,Called Strike,2,1,2,True,False,MJ,111.0,116,111,fielding,657136.0,Connor Wong

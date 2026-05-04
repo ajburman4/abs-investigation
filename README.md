@@ -33,14 +33,21 @@ Edit `config/dashboard_config.json`:
   "workbook_path": "abs-challenges-2026-catcher.xlsx",
   "cache_dir": "data/cache",
   "output_html": "outputs/dashboard/abs_catcher_dashboard.html",
+  "data_timezone": "America/Phoenix",
+  "current_statcast_season": 2026,
+  "historical_statcast_refresh": "missing_only",
   "refresh_statcast": false,
   "refresh_abs_challenges": false,
   "statcast_2026_start_date": "2026-03-26",
-  "statcast_2026_end_date": "2026-04-24",
+  "statcast_2026_end_date": "latest_complete_day",
   "statcast_2025_start_date": "2025-03-27",
-  "statcast_2025_end_date": "2025-04-25"
+  "statcast_2025_end_date": "2025-09-28"
 }
 ```
+
+`latest_complete_day` resolves to yesterday in `data_timezone`, which avoids partial same-day Statcast or review-feed data. The 2025 dates are a fixed full prior-season regular-season called-strike baseline.
+
+`current_statcast_season` is the season refreshed by `--refresh-statcast`. Historical Statcast, such as the 2025 baseline, defaults to `missing_only`: the pipeline creates the missing full-season cache once, then reuses it because the completed-season data should not change.
 
 Use `refresh_statcast: true` only when `pybaseball` is installed and you want to pull fresh Statcast data. Otherwise the generator looks for matching cached files in `data/cache`.
 
@@ -62,6 +69,12 @@ To refresh pitch-level ABS challenge events from MLB Stats API:
 
 ```bash
 python -m src.render_html --config config/dashboard_config.json --refresh-abs-challenges
+```
+
+To update the dashboard with the latest complete current-season data in one run:
+
+```bash
+python -m src.render_html --config config/dashboard_config.json --refresh-statcast --refresh-abs-challenges
 ```
 
 Open:

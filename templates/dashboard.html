@@ -1664,9 +1664,9 @@
           <div class="formula-item"><strong>Net Overturns vs. Expected</strong>The difference between the number of overturns and challenge failures Baseball Savant expected and the actual results. This rewards both successfully challenging more often than average and avoiding bad challenge decisions.</div>
           <div class="formula-item"><strong>ABS Value+</strong>Net overturns vs. expected per 1,000 pitches seen. 100 is average, and higher is better. Think OPS+.</div>
           <div class="formula-item"><strong>Challenge Results</strong>Combines the number of overturns and challenge success rate compared to expected results to evaluate how successful the catcher is when they use a challenge.</div>
-          <div class="formula-item"><strong>Selection</strong>Blends reasonable challenges made with the share of reasonable opportunities taken.</div>
+          <div class="formula-item"><strong>Selection</strong>Blends reasonable challenges made with the share of reasonable opportunities taken. This is more about location than situation.</div>
           <div class="formula-item"><strong>Challenge Volume</strong>Evaluates how often catchers are using challenges, relative to how others would with the same set of pitches.</div>
-          <div class="formula-item"><strong>Strategy Adherence</strong>Percentage of actionable Green / Yellow / Red Light decisions that followed the challenge plan.</div>
+          <div class="formula-item"><strong>Count Strategy</strong>Percentage of actionable Green / Yellow / Red Light decisions that followed the challenge plan. This is more about the count, looking only at pitches close enough to challenge.</div>
         </div>
       </div>
       <div class="filters" id="report-filters"></div>
@@ -1883,7 +1883,7 @@
       if (above < 0) {
         return `${row.name} is below expected on overturns. Start with execution and location read before pushing for more challenge volume.`;
       }
-      return `${row.name} is close to neutral. Treat this as a small-sample read and use the components below to decide whether challenge results, selection, volume, or strategy adherence needs attention.`;
+      return `${row.name} is close to neutral. Treat this as a small-sample read and use the components below to decide whether challenge results, selection, volume, or count strategy needs attention.`;
     }
 
     function observedZoneRead(row) {
@@ -2936,11 +2936,11 @@
         challengeVolumeBandLine(row.aggressionLabel, thresholds.usage)
       ].join("\n");
       const strategyTooltip = [
-        "Strategy adherence",
-        `METRIC|Adherence rate|${fmtPct(row.strategyAdherenceRate, 1)}|drives grade|Grade|${strategyGrade}|current`,
+        "Count strategy",
+        `METRIC|Count Strategy rate|${fmtPct(row.strategyAdherenceRate, 1)}|drives grade|Grade|${strategyGrade}|current`,
         `METRIC|Followed plan|${fmtInt(row.strategyFollowedCount)}|matched the call plan|Actionable decisions|${fmtInt(row.strategyActionableDecisions)}|denominator`,
         `METRIC|Missed Green/Yellow Light|${fmtInt(row.strategyMissedRecommendedCount)}|passed chances|Red Light challenges|${fmtInt(row.strategyOutsidePlanChallengeCount)}|${fmtPct(redLightChallengeRate)} of challenges`,
-        `FORMULA|Calculation|Adherence Rate = Followed Plan / Actionable Decisions`,
+        `FORMULA|Calculation|Count Strategy Rate = Followed Plan / Actionable Decisions`,
         thresholdLine("Grade cutoffs", strategyGrade, thresholds.strategyAdherenceRate, fmtPct)
       ].join("\n");
       setHtml("report-content", `
@@ -2949,7 +2949,7 @@
           <div class="metric"><div class="label">Total Challenges</div><div class="value">${fmtInt(row.challenges)}</div></div>
           <div class="metric"><div class="label">Reasonable Challenge Rate</div><div class="value">${fmtPct(row.selectionReasonableRate, 1)}</div></div>
           <div class="metric"><div class="label">Reasonable Opps Taken</div><div class="value">${fmtPct(row.selectionTakenRate, 1)}</div></div>
-          <div class="metric"><div class="label">Strategy Adherence</div><div class="value">${fmtPct(row.strategyAdherenceRate, 1)}</div></div>
+          <div class="metric"><div class="label">Count Strategy</div><div class="value">${fmtPct(row.strategyAdherenceRate, 1)}</div></div>
           <div class="metric negative"><div class="label">Red Light Challenges</div><div class="value">${fmtInt(row.strategyOutsidePlanChallengeCount)} (${fmtPct(redLightChallengeRate)})</div></div>
         </div>
         <div class="report-layout">
@@ -2963,7 +2963,7 @@
               ${skillCard("Challenge Results", resultsGrade, gradeScore(resultsGrade), `${fmtPct(row.successRate)} success (${fmtPctPoints(row.successRateAboveExpected)} vs. expected); ${fmtSignedNumber(row.overturnsAboveExpected, 1)} overturns vs. expected.`, "When he challenges, is he getting positive results?", resultsTooltip)}
               ${skillCard("Selection", selectionGrade, gradeScore(selectionGrade), `${fmtPct(row.selectionReasonableRate, 1)} reasonable; ${fmtPct(row.selectionTakenRate, 1)} reasonable opps taken.`, "Are his challenges reasonable?", selectionTooltip)}
               ${skillCard("Challenge Volume", row.aggressionLabel, gradeScore(row.aggressionLabel), `${fmtPct(row.expectedChallengeRate, 1)} expected, ${fmtPct(row.actualChallengeRate, 1)} actual.`, "How often is he challenging?", aggressionTooltip)}
-              ${skillCard("Strategy Adherence", strategyGrade, gradeScore(strategyGrade, row.strategyAdherenceRate), `${fmtPct(row.strategyAdherenceRate, 1)} followed plan (${fmtInt(row.strategyFollowedCount)} of ${fmtInt(row.strategyActionableDecisions)}); ${fmtInt(row.strategyRedLightHoldCount)} Red Light holds, ${fmtInt(row.strategyMissedRecommendedCount)} missed Green/Yellow Light, ${fmtInt(row.strategyOutsidePlanChallengeCount)} Red Light challenges.`, "Is he following the plan?", strategyTooltip)}
+              ${skillCard("Count Strategy", strategyGrade, gradeScore(strategyGrade, row.strategyAdherenceRate), `${fmtPct(row.strategyAdherenceRate, 1)} followed plan (${fmtInt(row.strategyFollowedCount)} of ${fmtInt(row.strategyActionableDecisions)}); ${fmtInt(row.strategyRedLightHoldCount)} Red Light holds, ${fmtInt(row.strategyMissedRecommendedCount)} missed Green/Yellow Light, ${fmtInt(row.strategyOutsidePlanChallengeCount)} Red Light challenges.`, "Is he following the plan?", strategyTooltip)}
             </div>
           </div>
           <div class="panel pad quality-card">
