@@ -2924,8 +2924,8 @@
         "Selection grade",
         `METRIC|Selection score|${fmtPct(row.selectionScore, 0)}|drives grade|Grade|${selectionGrade}|current`,
         `METRIC|Reasonable challenge rate|${fmtPct(row.selectionReasonableRate, 1)}|${fmtInt(row.reasonableChallenges)} of ${fmtInt(row.challenges)} challenges|Reasonable opps taken|${fmtPct(row.selectionTakenRate, 1)}|${fmtInt(row.reasonableChallenges)} of ${fmtInt(row.reasonableOpportunities)} opps`,
-        `METRIC|Reasonable challenges percentile|${fmtPct(row.selectionReasonableChallengePercentile, 0)}|component|Reasonable opps taken percentile|${fmtPct(row.selectionTakenPercentile, 0)}|component`,
-        `FORMULA|Calculation|Selection Score = (Reasonable Challenges Percentile + Reasonable Opps Taken Percentile) / 2`,
+        `METRIC|Reasonable rate percentile|${fmtPct(row.selectionReasonableRatePercentile ?? row.selectionReasonableChallengePercentile, 0)}|component|Reasonable opps taken percentile|${fmtPct(row.selectionTakenPercentile, 0)}|component`,
+        `FORMULA|Calculation|Selection Score = (Reasonable Rate Percentile + Reasonable Opps Taken Percentile) / 2`,
         thresholdLine("Grade cutoffs", selectionGrade, thresholds.selectionScore, fmtPct)
       ].join("\n");
       const aggressionTooltip = [

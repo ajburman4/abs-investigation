@@ -1030,11 +1030,11 @@ def enrich_catcher_report_metrics(
         if safe_float(row.get("challenges")) >= 5
         and not math.isnan(safe_float(row.get("successRateAboveExpected"), math.nan))
     ]
-    reasonable_challenge_values = [
-        safe_float(row.get("reasonableChallenges"), math.nan)
+    reasonable_rate_values = [
+        safe_float(row.get("selectionReasonableRate"), math.nan)
         for row in rows
         if safe_float(row.get("challenges")) >= 5
-        and not math.isnan(safe_float(row.get("reasonableChallenges"), math.nan))
+        and not math.isnan(safe_float(row.get("selectionReasonableRate"), math.nan))
     ]
     reasonable_taken_values = [
         safe_float(row.get("selectionTakenRate"), math.nan)
@@ -1062,10 +1062,11 @@ def enrich_catcher_report_metrics(
         row["resultsScore"] = 0.5 * safe_float(row.get("successRatePercentile")) + 0.5 * safe_float(
             row.get("successRateAboveExpectedPercentile")
         )
-        row["selectionReasonableChallengePercentile"] = _percentile_rank(
-            safe_float(row.get("reasonableChallenges")),
-            reasonable_challenge_values,
+        row["selectionReasonableRatePercentile"] = _percentile_rank(
+            safe_float(row.get("selectionReasonableRate")),
+            reasonable_rate_values,
         )
+        row["selectionReasonableChallengePercentile"] = row["selectionReasonableRatePercentile"]
         row["selectionTakenPercentile"] = _percentile_rank(
             safe_float(row.get("selectionTakenRate")),
             reasonable_taken_values,
@@ -1115,7 +1116,7 @@ def enrich_catcher_report_metrics(
         "selectionScore": _grade_thresholds(
             rows,
             "selectionScore",
-            source="Blended reasonable-challenge count and reasonable-opportunity take rate, 5+ challenge catchers",
+            source="Blended reasonable-challenge rate and reasonable-opportunity take rate, 5+ challenge catchers",
         ),
         "totalVsExpected": _grade_thresholds(rows, "totalVsExpected", source="League catchers with 5+ challenges"),
         "missedOpportunityValue": _grade_thresholds(
