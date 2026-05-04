@@ -20,6 +20,10 @@ WORKBOOK_REQUIRED_COLUMNS = {
     "exp_chal",
     "exp_rate_overturns",
     "exp_rate_challenges_diff",
+    "rsn_opp",
+    "rsn_chal",
+    "perc_chal_rsn",
+    "perc_rsn_taken",
 }
 
 STATCAST_REQUIRED_COLUMNS = {

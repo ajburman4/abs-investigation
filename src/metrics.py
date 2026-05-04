@@ -26,7 +26,7 @@ def aggression_label(rate_diff: float) -> str:
         return "Light"
     if rate_diff > 0.005:
         return "Heavy"
-    return "In Band"
+    return "Average"
 
 
 def value_label(value: float) -> str:
@@ -57,7 +57,7 @@ def letter_grade(score: float) -> str:
 
 
 def archetype_from_values(total: float, success: float, aggression: str) -> str:
-    if total > 5 and aggression == "In Band":
+    if total > 5 and aggression == "Average":
         return "Battery Captain"
     if total > 2 and aggression in {"Light", "Very Light"}:
         return "Passive Receiver"
@@ -85,12 +85,13 @@ def _grade_thresholds(
     *,
     higher_is_better: bool = True,
     min_challenges: int = 5,
+    min_sample_key: str = "challenges",
     source: str = "League catchers with 5+ challenges",
 ) -> dict[str, Any]:
     values = [
         safe_float(row.get(key), math.nan)
         for row in rows
-        if safe_float(row.get("challenges")) >= min_challenges
+        if safe_float(row.get(min_sample_key)) >= min_challenges
         and not math.isnan(safe_float(row.get(key), math.nan))
     ]
     if len(values) < 5:
@@ -178,13 +179,22 @@ def _usage_thresholds(rows: list[dict[str, Any]], min_challenges: int = 5) -> di
         return {
             "light": 0.25,
             "heavy": 0.75,
+            "veryLightMax": -0.02,
+            "lightMax": -0.01,
+            "heavyMin": 0.01,
+            "veryHeavyMin": 0.02,
             "source": "Fallback usage percentile band",
             "values": [],
         }
     series = pd.Series(values, dtype="float64")
+    cutoffs = series.quantile([0.10, 0.25, 0.75, 0.90]).to_dict()
     return {
         "light": 0.25,
         "heavy": 0.75,
+        "veryLightMax": float(cutoffs.get(0.10, -0.02)),
+        "lightMax": float(cutoffs.get(0.25, -0.01)),
+        "heavyMin": float(cutoffs.get(0.75, 0.01)),
+        "veryHeavyMin": float(cutoffs.get(0.90, 0.02)),
         "source": "League usage percentile by expected challenge-rate difference, 5+ challenge catchers",
         "values": [float(value) for value in values],
     }
@@ -200,7 +210,7 @@ def _usage_label_from_percentile(percentile: float) -> str:
     if percentile < 0.25:
         return "Light"
     if percentile <= 0.75:
-        return "In Band"
+        return "Average"
     if percentile <= 0.90:
         return "Heavy"
     return "Very Heavy"
@@ -223,6 +233,9 @@ def build_catcher_rows(catcher_df: pd.DataFrame) -> list[dict[str, Any]]:
         rate_diff = safe_float(row.get("exp_rate_challenges_diff"))
         expected_challenge_rate = safe_float(row.get("exp_rate_challenges"))
         actual_challenge_rate = expected_challenge_rate + rate_diff
+        expected_success_rate = safe_float(row.get("exp_rate_overturns"))
+        selection_reasonable_rate = safe_float(row.get("perc_chal_rsn"))
+        selection_taken_rate = safe_float(row.get("perc_rsn_taken"))
         rows.append(
             {
                 "name": str(row.get("entity_name", "Unknown")),
@@ -235,8 +248,9 @@ def build_catcher_rows(catcher_df: pd.DataFrame) -> list[dict[str, Any]]:
                 "confirms": int(safe_float(row.get("n_confirms"))),
                 "successRate": success_rate,
                 "successPct": pct(success_rate),
-                "expectedSuccessRate": safe_float(row.get("exp_rate_overturns")),
+                "expectedSuccessRate": expected_success_rate,
                 "expectedSuccessPct": pct(row.get("exp_rate_overturns")),
+                "successRateAboveExpected": success_rate - expected_success_rate,
                 "expectedOverturns": expected_overturns,
                 "overturnsAboveExpected": overturns_above_expected,
                 "expectedChallenges": safe_float(row.get("exp_chal")),
@@ -252,6 +266,10 @@ def build_catcher_rows(catcher_df: pd.DataFrame) -> list[dict[str, Any]]:
                 "valueLabel": value_label(safe_float(row.get("total_vs_expected"))),
                 "executionValue": execution_value,
                 "selectionValue": selection_value,
+                "selectionReasonableRate": selection_reasonable_rate,
+                "selectionTakenRate": selection_taken_rate,
+                "reasonableOpportunities": int(safe_float(row.get("rsn_opp"))),
+                "reasonableChallenges": int(safe_float(row.get("rsn_chal"))),
                 "forValue": execution_value,
                 "againstValue": -safe_float(row.get("net_against")),
                 "zoneAdaptation": zone_indicator,
@@ -781,7 +799,7 @@ def _missed_opportunity_rows(
             run_value = safe_float(pitch.get("runValue"))
             cost_meta = inventory_costs[str(int(min(challenges_left, 2)))]
             confidence, recommendation = _recommendation_from_cost(run_value, safe_float(cost_meta.get("cost")))
-            near_edge = safe_float(pitch.get("edgeDistanceInches")) <= 1.0
+            near_edge = safe_float(pitch.get("edgeDistanceInches")) <= 3.0
             if not near_edge or recommendation not in {"Challenge", "Lean"}:
                 continue
             review_value = max(0.0, run_value - safe_float(cost_meta.get("cost")))
@@ -829,23 +847,276 @@ def _missed_opportunity_rows(
     return summaries
 
 
+def _empty_strategy_summary() -> dict[str, Any]:
+    return {
+        "actionableDecisions": 0,
+        "followedPlanCount": 0,
+        "missedRecommendedCount": 0,
+        "outsidePlanChallengeCount": 0,
+        "redLightHoldCount": 0,
+        "actualStrategyChallenges": 0,
+        "strategyAdherenceRate": 0.0,
+    }
+
+
+def _recommendation_for_decision(
+    count: object,
+    challenges_left: object,
+    count_values: dict[str, dict[str, Any]],
+    inventory_costs: dict[str, Any],
+) -> tuple[float, float, str]:
+    run_value = safe_float((count_values.get(str(count)) or {}).get("runValue"))
+    left_key = str(int(min(max(safe_float(challenges_left, 2.0), 1.0), 2.0)))
+    cost = safe_float((inventory_costs.get(left_key) or inventory_costs.get("2") or {}).get("cost"), 0.20)
+    _, recommendation = _recommendation_from_cost(run_value, cost)
+    return run_value, cost, recommendation
+
+
+def _strategy_adherence_rows(
+    statcast_2026: pd.DataFrame, abs_challenges: pd.DataFrame
+) -> dict[str, dict[str, Any]]:
+    if statcast_2026.empty or abs_challenges.empty:
+        return {}
+    called = _called_pitch_frame(statcast_2026)
+    count_values = _count_run_values(called)
+    if called.empty or not count_values:
+        return {}
+    inventory_costs = _inventory_costs(statcast_2026, abs_challenges, count_values)
+    key_cols = ["game_pk", "at_bat_number", "pitch_number"]
+    events = _add_challenge_inventory(abs_challenges.copy())
+    pitches = statcast_2026.copy()
+    for frame in [events, pitches]:
+        for column in key_cols:
+            frame[column] = pd.to_numeric(frame[column], errors="coerce")
+
+    pitch_context_cols = key_cols + [
+        "pitching_team",
+        "catcher_name",
+        "count",
+        "description",
+        "plate_x",
+        "plate_z",
+        "sz_top",
+        "sz_bot",
+        "game_date",
+        "inning",
+        "inning_topbot",
+        "pitch_type",
+        "pitcher_name",
+    ]
+    available_cols = [column for column in pitch_context_cols if column in pitches.columns]
+    joined_events = events.merge(pitches[available_cols], on=key_cols, how="left")
+    fielding_events = joined_events[
+        joined_events["challenge_side"].eq("fielding")
+        & joined_events["pitching_team"].notna()
+        & joined_events["catcher_name"].notna()
+    ].copy()
+
+    summaries: dict[str, dict[str, Any]] = {}
+    if not fielding_events.empty:
+        fielding_events = fielding_events.dropna(subset=key_cols + ["plate_x", "plate_z", "sz_top", "sz_bot"])
+        if not fielding_events.empty:
+            fielding_events["edgeDistanceInches"] = _edge_distance_inches(fielding_events)
+            fielding_events["normalizedCatcher"] = fielding_events["catcher_name"].map(_normalize_name)
+            for _, event in fielding_events.iterrows():
+                normalized_name = str(event.get("normalizedCatcher", ""))
+                if not normalized_name:
+                    continue
+                summary = summaries.setdefault(normalized_name, _empty_strategy_summary())
+                _, _, recommendation = _recommendation_for_decision(
+                    event.get("count"),
+                    event.get("challengesLeft"),
+                    count_values,
+                    inventory_costs,
+                )
+                near_edge = safe_float(event.get("edgeDistanceInches")) <= 3.0
+                follows_plan = near_edge and recommendation in {"Challenge", "Lean"}
+                summary["actionableDecisions"] += 1
+                summary["actualStrategyChallenges"] += 1
+                if follows_plan:
+                    summary["followedPlanCount"] += 1
+                else:
+                    summary["outsidePlanChallengeCount"] += 1
+
+    challenged_keys = {
+        (int(row.game_pk), int(row.at_bat_number), int(row.pitch_number))
+        for row in fielding_events.dropna(subset=key_cols).itertuples()
+    }
+    called_balls = called[called["is_called_ball"]].copy()
+    called_balls = called_balls.dropna(subset=key_cols + ["pitching_team", "catcher_name"])
+    called_balls = called_balls.dropna(subset=["plate_x", "plate_z", "sz_top", "sz_bot"])
+    if called_balls.empty:
+        for summary in summaries.values():
+            actions = int(summary["actionableDecisions"])
+            summary["strategyAdherenceRate"] = safe_float(summary["followedPlanCount"]) / actions if actions else 0.0
+        return summaries
+
+    called_balls["edgeDistanceInches"] = _edge_distance_inches(called_balls)
+    called_balls["normalizedCatcher"] = called_balls["catcher_name"].map(_normalize_name)
+    called_balls["wasFieldingChallenge"] = called_balls.apply(
+        lambda row: (
+            int(row["game_pk"]),
+            int(row["at_bat_number"]),
+            int(row["pitch_number"]),
+        )
+        in challenged_keys,
+        axis=1,
+    )
+
+    fielding_events = fielding_events.sort_values(key_cols + ["event_index"], na_position="last")
+    for (game_pk, pitching_team), group in called_balls.sort_values(key_cols).groupby(
+        ["game_pk", "pitching_team"], dropna=False
+    ):
+        event_group = fielding_events[
+            fielding_events["game_pk"].eq(game_pk) & fielding_events["pitching_team"].eq(pitching_team)
+        ].copy()
+        event_records = [row for _, row in event_group.iterrows()]
+        for _, pitch in group.iterrows():
+            normalized_name = str(pitch.get("normalizedCatcher", ""))
+            if not normalized_name or bool(pitch.get("wasFieldingChallenge")):
+                continue
+            prior_losses = sum(
+                1
+                for event in event_records
+                if _before_pitch(event, pitch) and not bool(event.get("abs_overturned"))
+            )
+            challenges_left = max(0, 2 - prior_losses)
+            if challenges_left <= 0 or safe_float(pitch.get("edgeDistanceInches")) > 3.0:
+                continue
+            _, _, recommendation = _recommendation_for_decision(
+                pitch.get("count"),
+                challenges_left,
+                count_values,
+                inventory_costs,
+            )
+            summary = summaries.setdefault(normalized_name, _empty_strategy_summary())
+            summary["actionableDecisions"] += 1
+            if recommendation in {"Challenge", "Lean"}:
+                summary["missedRecommendedCount"] += 1
+            else:
+                summary["followedPlanCount"] += 1
+                summary["redLightHoldCount"] += 1
+
+    for summary in summaries.values():
+        actions = int(summary["actionableDecisions"])
+        summary["strategyAdherenceRate"] = safe_float(summary["followedPlanCount"]) / actions if actions else 0.0
+    return summaries
+
+
 def enrich_catcher_report_metrics(
     catcher_rows: list[dict[str, Any]], statcast_2026: pd.DataFrame, abs_challenges: pd.DataFrame
 ) -> list[dict[str, Any]]:
     rows = [dict(row) for row in catcher_rows]
     missed = _missed_opportunity_rows(statcast_2026, abs_challenges)
+    strategy = _strategy_adherence_rows(statcast_2026, abs_challenges)
+    pitch_counts: dict[str, int] = {}
+    if not statcast_2026.empty and "catcher_name" in statcast_2026.columns:
+        pitch_counts = (
+            statcast_2026.assign(normalizedCatcher=statcast_2026["catcher_name"].map(_normalize_name))
+            .groupby("normalizedCatcher", dropna=False)
+            .size()
+            .astype(int)
+            .to_dict()
+        )
+    success_values = [
+        safe_float(row.get("successRate"), math.nan)
+        for row in rows
+        if safe_float(row.get("challenges")) >= 5
+        and not math.isnan(safe_float(row.get("successRate"), math.nan))
+    ]
+    above_expected_values = [
+        safe_float(row.get("successRateAboveExpected"), math.nan)
+        for row in rows
+        if safe_float(row.get("challenges")) >= 5
+        and not math.isnan(safe_float(row.get("successRateAboveExpected"), math.nan))
+    ]
+    reasonable_challenge_values = [
+        safe_float(row.get("reasonableChallenges"), math.nan)
+        for row in rows
+        if safe_float(row.get("challenges")) >= 5
+        and not math.isnan(safe_float(row.get("reasonableChallenges"), math.nan))
+    ]
+    reasonable_taken_values = [
+        safe_float(row.get("selectionTakenRate"), math.nan)
+        for row in rows
+        if safe_float(row.get("challenges")) >= 5
+        and not math.isnan(safe_float(row.get("selectionTakenRate"), math.nan))
+    ]
     for row in rows:
         missed_row = missed.get(row.get("normalizedName", ""), {})
+        strategy_row = strategy.get(row.get("normalizedName", ""), {})
         row["missedOpportunityCount"] = int(safe_float(missed_row.get("reviewHoldCount")))
         row["missedOpportunityGreen"] = int(safe_float(missed_row.get("greenHoldCount")))
         row["missedOpportunityLean"] = int(safe_float(missed_row.get("leanHoldCount")))
         row["missedOpportunityValue"] = safe_float(missed_row.get("reviewHoldValue"))
         row["calledBallCandidates"] = int(safe_float(missed_row.get("calledBallCandidates")))
+        row["catcherPitchCount"] = int(pitch_counts.get(str(row.get("normalizedName", "")), 0))
+        denominator = row["catcherPitchCount"] or row["calledBallCandidates"]
+        row["missedOpportunityRate"] = row["missedOpportunityCount"] / denominator if denominator else 0.0
         row["topMissedOpportunities"] = missed_row.get("topReviewHolds", [])
+        row["successRatePercentile"] = _percentile_rank(safe_float(row.get("successRate")), success_values)
+        row["successRateAboveExpectedPercentile"] = _percentile_rank(
+            safe_float(row.get("successRateAboveExpected")),
+            above_expected_values,
+        )
+        row["resultsScore"] = 0.5 * safe_float(row.get("successRatePercentile")) + 0.5 * safe_float(
+            row.get("successRateAboveExpectedPercentile")
+        )
+        row["selectionReasonableChallengePercentile"] = _percentile_rank(
+            safe_float(row.get("reasonableChallenges")),
+            reasonable_challenge_values,
+        )
+        row["selectionTakenPercentile"] = _percentile_rank(
+            safe_float(row.get("selectionTakenRate")),
+            reasonable_taken_values,
+        )
+        row["selectionScore"] = 0.5 * safe_float(
+            row.get("selectionReasonableChallengePercentile")
+        ) + 0.5 * safe_float(row.get("selectionTakenPercentile"))
+        row["strategyActionableDecisions"] = int(safe_float(strategy_row.get("actionableDecisions")))
+        row["strategyFollowedCount"] = int(safe_float(strategy_row.get("followedPlanCount")))
+        row["strategyMissedRecommendedCount"] = int(safe_float(strategy_row.get("missedRecommendedCount")))
+        row["strategyOutsidePlanChallengeCount"] = int(safe_float(strategy_row.get("outsidePlanChallengeCount")))
+        row["strategyRedLightHoldCount"] = int(safe_float(strategy_row.get("redLightHoldCount")))
+        row["actualStrategyChallenges"] = int(safe_float(strategy_row.get("actualStrategyChallenges")))
+        row["strategyAdherenceRate"] = safe_float(strategy_row.get("strategyAdherenceRate"))
+
+    value_rates = [
+        safe_float(row.get("totalVsExpected")) / safe_float(row.get("catcherPitchCount")) * 1000.0
+        for row in rows
+        if safe_float(row.get("challenges")) >= 5 and safe_float(row.get("catcherPitchCount")) > 0
+    ]
+    league_value_per_1000 = float(np.nanmean(value_rates)) if value_rates else 0.0
+    league_value_per_1000_std = float(np.nanstd(value_rates)) if len(value_rates) > 1 else 0.0
+    for row in rows:
+        pitch_count = safe_float(row.get("catcherPitchCount"))
+        row["netOverturnsPer1000"] = (
+            safe_float(row.get("totalVsExpected")) / pitch_count * 1000.0 if pitch_count > 0 else 0.0
+        )
+        row["absValuePlusLeagueAverage"] = league_value_per_1000
+        row["absValuePlusLeagueStdDev"] = league_value_per_1000_std
+        row["absValuePlus"] = (
+            100.0 + 15.0 * (row["netOverturnsPer1000"] - league_value_per_1000) / league_value_per_1000_std
+            if league_value_per_1000_std > 0
+            else 100.0
+        )
 
     thresholds = {
-        "successRate": _grade_thresholds(rows, "successRate", source="League catchers with 5+ challenges"),
-        "selectionValue": _grade_thresholds(rows, "selectionValue", source="League catchers with 5+ challenges"),
+        "absValuePlus": _grade_thresholds(
+            rows,
+            "absValuePlus",
+            source="ABS Value+ among workbook catchers with 5+ challenges",
+        ),
+        "resultsScore": _grade_thresholds(
+            rows,
+            "resultsScore",
+            source="Blended success and expected-adjusted result score, 5+ challenge catchers",
+        ),
+        "selectionScore": _grade_thresholds(
+            rows,
+            "selectionScore",
+            source="Blended reasonable-challenge count and reasonable-opportunity take rate, 5+ challenge catchers",
+        ),
         "totalVsExpected": _grade_thresholds(rows, "totalVsExpected", source="League catchers with 5+ challenges"),
         "missedOpportunityValue": _grade_thresholds(
             rows,
@@ -853,12 +1124,22 @@ def enrich_catcher_report_metrics(
             higher_is_better=False,
             source="Review-hold value from Statcast called balls, 5+ challenge catchers",
         ),
+        "strategyAdherenceRate": _grade_thresholds(
+            rows,
+            "strategyAdherenceRate",
+            min_sample_key="strategyActionableDecisions",
+            source="Strategy adherence among catchers with 5+ actionable strategy decisions",
+        ),
         "usage": _usage_thresholds(rows),
     }
     for row in rows:
-        row["executionGrade"] = _grade_from_thresholds(safe_float(row.get("successRate")), thresholds["successRate"])
+        row["absValuePlusGrade"] = _grade_from_thresholds(
+            safe_float(row.get("absValuePlus")), thresholds["absValuePlus"]
+        )
+        row["resultsGrade"] = _grade_from_thresholds(safe_float(row.get("resultsScore")), thresholds["resultsScore"])
+        row["executionGrade"] = row["resultsGrade"]
         row["selectionGrade"] = _grade_from_thresholds(
-            safe_float(row.get("selectionValue")), thresholds["selectionValue"]
+            safe_float(row.get("selectionScore")), thresholds["selectionScore"]
         )
         row["overallGrade"] = _grade_from_thresholds(
             safe_float(row.get("totalVsExpected")), thresholds["totalVsExpected"]
@@ -866,13 +1147,18 @@ def enrich_catcher_report_metrics(
         row["missedOpportunityGrade"] = _grade_from_thresholds(
             safe_float(row.get("missedOpportunityValue")), thresholds["missedOpportunityValue"]
         )
+        row["strategyAdherenceGrade"] = (
+            _grade_from_thresholds(safe_float(row.get("strategyAdherenceRate")), thresholds["strategyAdherenceRate"])
+            if safe_float(row.get("strategyActionableDecisions")) >= 5
+            else "NA"
+        )
         usage_percentile = _usage_percentile(safe_float(row.get("expectedChallengeDiff")), thresholds["usage"])
         row["usagePercentile"] = usage_percentile
         row["aggressionLabel"] = _usage_label_from_percentile(usage_percentile)
         row["archetype"] = archetype_from_values(
             safe_float(row.get("totalVsExpected")),
             safe_float(row.get("successRate")),
-            str(row.get("aggressionLabel", "In Band")),
+            str(row.get("aggressionLabel", "Average")),
         )
         row["gradeThresholds"] = thresholds
     return sorted(rows, key=lambda item: item["totalVsExpected"], reverse=True)

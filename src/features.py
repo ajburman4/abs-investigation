@@ -67,6 +67,10 @@ def prepare_workbook(df: pd.DataFrame) -> pd.DataFrame:
         "n_walks_flip",
         "exp_rate_challenges",
         "exp_rate_challenges_diff",
+        "rsn_opp",
+        "rsn_chal",
+        "perc_chal_rsn",
+        "perc_rsn_taken",
     ]
     out = coerce_numeric(df, numeric_columns)
     out["normalized_name"] = out["entity_name"].map(normalize_name)
