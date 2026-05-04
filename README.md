@@ -85,6 +85,24 @@ outputs/dashboard/abs_catcher_dashboard.html
 
 That file is the coach-shareable deliverable.
 
+## GitHub Pages
+
+This repository includes a GitHub Actions workflow that publishes the committed dashboard HTML to GitHub Pages.
+
+Before pushing, rebuild and commit the dashboard:
+
+```bash
+python -m src.render_html --config config/dashboard_config.json
+```
+
+The workflow copies `outputs/dashboard/abs_catcher_dashboard.html` to both `index.html` and
+`abs_catcher_dashboard.html` in the Pages artifact, so the deployed site opens directly at the
+repository Pages URL and also preserves the named dashboard path.
+
+In GitHub, go to **Settings -> Pages** and set **Build and deployment -> Source** to
+**GitHub Actions**. After the next push to `main`, the dashboard will deploy from
+`.github/workflows/deploy-dashboard-pages.yml`.
+
 ## Dashboard Sections
 
 1. **Strike Zone Change**: first visible section. Shows 2026 called-strike rate changes versus a comparable 2025 window when Statcast cache is available.
