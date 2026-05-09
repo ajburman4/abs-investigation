@@ -16,13 +16,14 @@ The workbook drives catcher-level challenge baselines. Statcast drives the Strik
 
 ## Setup
 
-Install dependencies in the environment you use to build the file:
+Use the repo-local virtual environment for builds and refreshes:
 
 ```bash
-pip install -r requirements.txt
+/opt/homebrew/bin/python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
 ```
 
-The current local bundled runtime already includes `pandas` and `openpyxl`, so the workbook-backed sections can be built without pulling Statcast.
+After that, run project commands with `.venv/bin/python` so the same environment has `pandas`, `openpyxl`, and `pybaseball`.
 
 ## Configuration
 
@@ -56,25 +57,25 @@ Use `refresh_abs_challenges: true` or `--refresh-abs-challenges` only when inten
 ## Build
 
 ```bash
-python -m src.render_html --config config/dashboard_config.json
+.venv/bin/python -m src.render_html --config config/dashboard_config.json
 ```
 
 To pull fresh Statcast data and refresh the cache:
 
 ```bash
-python -m src.render_html --config config/dashboard_config.json --refresh-statcast
+.venv/bin/python -m src.render_html --config config/dashboard_config.json --refresh-statcast
 ```
 
 To refresh pitch-level ABS challenge events from MLB Stats API:
 
 ```bash
-python -m src.render_html --config config/dashboard_config.json --refresh-abs-challenges
+.venv/bin/python -m src.render_html --config config/dashboard_config.json --refresh-abs-challenges
 ```
 
 To update the dashboard with the latest complete current-season data in one run:
 
 ```bash
-python -m src.render_html --config config/dashboard_config.json --refresh-statcast --refresh-abs-challenges
+.venv/bin/python -m src.render_html --config config/dashboard_config.json --refresh-statcast --refresh-abs-challenges
 ```
 
 Open:
@@ -92,7 +93,7 @@ This repository includes a GitHub Actions workflow that publishes the committed 
 Before pushing, rebuild and commit the dashboard:
 
 ```bash
-python -m src.render_html --config config/dashboard_config.json
+.venv/bin/python -m src.render_html --config config/dashboard_config.json
 ```
 
 The workflow copies `outputs/dashboard/abs_catcher_dashboard.html` to both `index.html` and
