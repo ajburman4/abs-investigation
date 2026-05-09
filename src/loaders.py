@@ -252,6 +252,14 @@ def _challenge_rows_from_game(game_pk: int, payload: dict[str, Any]) -> list[dic
     return rows
 
 
+def _filter_abs_challenge_rows(df: pd.DataFrame) -> tuple[pd.DataFrame, int]:
+    if df.empty or "review_type" not in df.columns:
+        return df.copy(), 0
+    before = len(df)
+    out = df[df["review_type"].eq("MJ")].copy()
+    return out, before - len(out)
+
+
 def load_or_pull_abs_challenges(
     config: dict[str, Any], season: int, game_ids: list[int]
 ) -> tuple[pd.DataFrame, dict[str, Any]]:
@@ -267,9 +275,11 @@ def load_or_pull_abs_challenges(
     }
     if cache_path.exists() and not config.get("refresh_abs_challenges", False):
         df = pd.read_csv(cache_path)
+        df, dropped = _filter_abs_challenge_rows(df)
+        drop_message = f" Filtered out {dropped:,} non-ABS review rows." if dropped else ""
         status.update(
             source="cache",
-            message=f"Loaded cached MLB Stats API ABS challenge events for {season}.",
+            message=f"Loaded cached MLB Stats API ABS challenge events for {season}.{drop_message}",
             rows=int(len(df)),
             games=int(df["game_pk"].nunique()) if "game_pk" in df.columns and not df.empty else 0,
         )
@@ -319,12 +329,14 @@ def load_or_pull_abs_challenges(
         "abs_player_name",
     ]
     df = pd.DataFrame(rows, columns=columns)
+    df, dropped = _filter_abs_challenge_rows(df)
     df.to_csv(cache_path, index=False)
     status.update(
         source="mlb_stats_api",
         message=(
             f"Pulled ABS challenge events from {len(ids) - failures:,} MLB game feeds"
             + (f"; {failures:,} feeds failed." if failures else ".")
+            + (f" Filtered out {dropped:,} non-ABS review rows." if dropped else "")
         ),
         rows=int(len(df)),
         games=int(df["game_pk"].nunique()) if not df.empty else 0,

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from pathlib import Path
 from typing import Any
 
@@ -27,6 +28,16 @@ from .validation import (
     validate_statcast,
     validate_workbook,
 )
+
+
+def _json_safe(value: Any) -> Any:
+    if isinstance(value, float):
+        return value if math.isfinite(value) else None
+    if isinstance(value, dict):
+        return {key: _json_safe(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_json_safe(item) for item in value]
+    return value
 
 
 def build_payload(config: dict[str, Any]) -> dict[str, Any]:
@@ -104,7 +115,7 @@ def render(
     payload = build_payload(config)
     template_path = Path(config["_project_root"]) / "templates" / "dashboard.html"
     template = template_path.read_text(encoding="utf-8")
-    data_json = json.dumps(payload, ensure_ascii=True, allow_nan=False)
+    data_json = json.dumps(_json_safe(payload), ensure_ascii=True, allow_nan=False)
     html = template.replace("window.__DASHBOARD_DATA__ = null;", f"window.__DASHBOARD_DATA__ = {data_json};")
     output_path = project_path(config, "output_html")
     output_path.parent.mkdir(parents=True, exist_ok=True)

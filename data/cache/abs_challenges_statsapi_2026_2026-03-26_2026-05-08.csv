@@ -1,7 +1,6 @@
 game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_description,balls_after_pitch,strikes_after_pitch,outs_after_pitch,abs_overturned,abs_in_progress,review_type,challenge_team_id,batting_team_id,fielding_team_id,challenge_side,abs_player_id,abs_player_name
 822740,38,39,5,4.0,03da93c1-36c1-38dd-8f51-4478500a5309,Called Strike,2,2,2,False,False,MJ,120.0,120,142,batting,678554.0,Curtis Mead
 822741,17,18,1,2.0,caa76ebf-7fe4-37ac-9b40-4dbb1e789ace,Ball,2,0,2,True,False,MJ,142.0,142,120,batting,668885.0,Austin Martin
-822741,54,55,1,2.0,7a84ed6a-dd36-3f64-8202-7939f9aadb82,Foul,1,1,1,False,False,MI,142.0,142,120,batting,,
 822741,61,62,1,2.0,f382e7b4-b73a-38a2-a484-bd3136a9bb93,Called Strike,1,1,1,False,False,MJ,120.0,120,142,batting,695578.0,James Wood
 822741,64,65,1,2.0,7a46b963-e32d-3520-a1ed-7e5451552e89,Called Strike,0,2,1,True,False,MJ,142.0,120,142,fielding,680777.0,Ryan Jeffers
 822741,74,75,1,2.0,46b54605-42d8-3c17-b626-a7da7694ac04,Ball,1,1,1,True,False,MJ,142.0,142,120,batting,680777.0,Ryan Jeffers
@@ -44,7 +43,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 822755,37,38,2,2.0,c6446d40-43d6-37de-97b8-94ba4f370a85,Ball,2,0,1,True,False,MJ,138.0,138,120,batting,671056.0,Iván Herrera
 822755,64,65,0,1.0,6a598cdc-6397-3572-a798-6e24bd8c1bcd,Called Strike,0,1,0,True,False,MJ,120.0,138,120,fielding,686452.0,Drew Millas
 822755,74,75,3,3.0,66234850-f309-3af4-8afc-9578d06c671b,Called Strike,1,2,1,True,False,MJ,138.0,120,138,fielding,671056.0,Iván Herrera
-822756,32,33,1,,,"Nationals challenged (tag play), call on the field was overturned: CJ Abrams steals (2) 2nd base.",0,1,1,True,False,MA,120.0,120,119,batting,,
 822756,63,64,0,1.0,f9c303fa-8e8e-33fa-90d9-13dcbe3d2533,Called Strike,0,1,0,False,False,MJ,119.0,119,120,batting,681624.0,Andy Pages
 822756,77,78,4,4.0,80380b48-8238-3281-a805-27bcdec5c695,Called Strike,2,2,2,True,False,MJ,120.0,119,120,fielding,686452.0,Drew Millas
 822757,19,20,1,2.0,9e00ad90-98ab-3364-8e04-ed87721cf41f,Called Strike,0,2,1,True,False,MJ,119.0,120,119,fielding,669257.0,Will Smith
@@ -90,7 +88,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 822831,52,53,3,4.0,4e17a8a1-63b1-38e1-b280-d0f4623bfd7e,Ball,2,2,0,True,False,MJ,141.0,141,119,batting,672960.0,Kazuma Okamoto
 822831,63,64,2,2.0,628726d0-bd08-38b4-8068-359efb9f66be,Ball,1,1,2,False,False,MJ,119.0,141,119,fielding,669257.0,Will Smith
 822832,34,35,2,2.0,684678cf-09df-3df9-84f2-e2bb1fdf0227,Ball,2,0,2,False,False,MJ,141.0,119,141,fielding,623168.0,Tyler Heineman
-822832,53,54,6,,,"Blue Jays challenged (tag play), call on the field was upheld: Kyle Tucker steals (3) 3rd base. Teoscar Hernández steals (1) 2nd base.",3,1,2,False,False,MA,141.0,119,141,fielding,,
 822832,58,59,4,5.0,f146eb57-e5f0-38fb-aabc-4b0f53120e53,Ball,3,2,2,False,False,MJ,119.0,141,119,fielding,687221.0,Dalton Rushing
 822833,4,5,0,1.0,b5e86f2a-356a-3ea3-a3ef-beb67e364960,Ball,1,0,0,False,False,MJ,119.0,141,119,fielding,669257.0,Will Smith
 822833,57,58,5,3.0,7bc606d4-d352-3d11-bbbc-06586070c6a1,Ball,2,1,0,True,False,MJ,141.0,141,119,batting,676914.0,Davis Schneider
@@ -119,8 +116,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 822906,24,25,3,4.0,1fcacec9-5ac0-308d-9d05-0a57f5fe01ee,Ball,2,2,0,False,False,MJ,140.0,147,140,fielding,543309.0,Kyle Higashioka
 822906,27,28,0,1.0,e50a7ec4-6a5d-3932-9d43-e40d38ab6a0a,Ball,1,0,2,True,False,MJ,147.0,147,140,batting,676609.0,José Caballero
 822906,66,67,3,3.0,ea125b0e-ddad-3458-a788-40f0fcf28ff2,Called Strike,2,1,0,False,False,MJ,147.0,147,140,batting,663757.0,Trent Grisham
-822906,66,67,5,,,"Rangers challenged (tag play), call on the field was overturned: José Caballero caught stealing 2nd base, catcher Kyle Higashioka to shortstop Corey Seager.",2,2,1,True,False,MA,140.0,147,140,fielding,,
-822907,15,16,1,2.0,e92cfd4d-8970-377c-b3d6-b2d1376874de,Ball,2,0,2,False,False,MI,140.0,140,147,batting,,
 822907,30,31,0,1.0,28a6d1db-52ec-3585-9dbc-1ecf9bdc7e58,Called Strike,0,1,1,True,False,MJ,147.0,140,147,fielding,641555.0,J.C. Escarra
 822907,63,64,1,2.0,b8c2b6a2-e0f0-3547-a1a1-31add9a80b2b,Called Strike,1,1,2,True,False,MJ,147.0,140,147,fielding,641555.0,J.C. Escarra
 822908,23,24,4,5.0,8f4eac2b-f5cd-33f7-8665-1861036f84fd,Called Strike,3,2,1,False,False,MJ,147.0,147,140,batting,641355.0,Cody Bellinger
@@ -142,8 +137,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 822914,8,9,1,2.0,b03f86ec-a12b-3c3a-a5e9-de0612add50b,Ball,2,0,2,True,False,MJ,140.0,140,134,batting,669394.0,Jake Burger
 822915,13,14,1,2.0,58e68cc2-20fd-3f37-be66-1081f10c4fd3,Called Strike,0,2,1,True,False,MJ,136.0,140,136,fielding,641598.0,Mitch Garver
 822915,29,30,3,4.0,2d41e85c-06cf-35e6-8a36-cb0dc2d21627,Called Strike,2,2,0,True,False,MJ,140.0,136,140,fielding,643376.0,Danny Jansen
-822916,7,8,3,4.0,6e6e872e-ca65-3d13-966b-5fe644c8e00d,Ball,2,2,0,False,False,MI,136.0,136,140,batting,,
-822916,55,56,3,4.0,c9a943ff-49f8-3fe5-9cc9-c9d46d16e3fb,Foul,1,2,1,True,False,NI,,136,140,unknown,,
 822917,21,22,2,3.0,e0bd98fe-8210-396e-b4b8-b4b5a92e944f,Ball,2,1,2,True,False,MJ,140.0,140,113,batting,694671.0,Wyatt Langford
 822918,46,47,3,4.0,874aac0a-5a38-3cab-974a-6b38fda5e825,Called Strike,2,2,1,True,False,MJ,140.0,136,140,fielding,643376.0,Danny Jansen
 822919,58,59,0,1.0,540bdf8b-0953-3692-a56a-f1eae60faacd,Called Strike,0,1,1,True,False,MJ,113.0,140,113,fielding,663886.0,Tyler Stephenson
@@ -197,8 +190,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 822999,40,41,0,1.0,7fa5894b-0c15-35a1-a360-0741570af82f,Called Strike,0,1,0,True,False,MJ,139.0,112,139,fielding,663743.0,Nick Fortes
 822999,76,77,3,4.0,0eb59000-ae0a-3796-b534-acc26ba9b4b7,Ball,2,2,2,False,False,MJ,139.0,112,139,fielding,663743.0,Nick Fortes
 823000,28,29,2,3.0,99f5b1a1-bb70-3281-94d4-c7bbdf4a9cb3,Ball,2,1,1,True,False,MJ,139.0,139,112,batting,810938.0,Ben Williamson
-823000,31,32,3,4.0,81e48810-7bc8-355c-acb9-325ce54d9068,Foul,2,2,0,True,False,MI,139.0,112,139,fielding,,
-823000,70,71,4,,,"Rays challenged (tag play), call on the field was upheld: Chandler Simpson caught stealing 3rd base, catcher Carson Kelly to third baseman Alex Bregman.",1,2,1,False,False,MA,139.0,139,112,batting,,
 823002,51,52,4,3.0,a5e06a1e-088e-3cc5-ae65-5c48a26ed654,Called Strike,1,2,1,True,False,MJ,139.0,112,139,fielding,663743.0,Nick Fortes
 823002,58,59,1,2.0,f213bf69-94aa-3c53-b8b4-b6e12386bef5,Called Strike,1,1,0,False,False,MJ,112.0,112,139,batting,608324.0,Alex Bregman
 823002,60,61,1,2.0,2836cb7c-35ff-31d7-9b91-2d22ea758466,Ball,1,1,2,True,False,MJ,112.0,112,139,batting,608348.0,Carson Kelly
@@ -231,7 +222,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823069,57,58,1,1.0,739c8617-d031-387e-a6d5-cf86e6e0f7e0,Called Strike,0,1,0,False,False,MJ,136.0,136,138,batting,647304.0,Josh Naylor
 823070,63,64,2,2.0,a5940fa4-2762-3be5-9bd9-3826592e4e97,Ball,2,0,1,True,False,MJ,136.0,136,138,batting,668227.0,Randy Arozarena
 823070,84,85,5,4.0,9dee3c45-da65-3576-aed4-680a32f4ea4c,Ball,3,1,1,False,False,MJ,138.0,136,138,fielding,650968.0,Yohel Pozo
-823071,6,7,3,4.0,eb8b96b6-f441-3e3c-9cb7-d1c8d5dd4b51,Swinging Strike,2,2,1,True,False,MI,138.0,138,114,batting,,
 823071,30,31,3,3.0,52976eb8-03fd-38db-9720-f34d4bbec888,Called Strike,1,2,2,False,False,MJ,114.0,114,138,batting,682877.0,Juan Brito
 823071,73,74,2,3.0,84409405-63cd-3164-a553-e0e9155ef538,Called Strike,1,2,1,False,False,MJ,114.0,114,138,batting,656555.0,Rhys Hoskins
 823072,46,47,3,2.0,5421a366-cd3d-3756-8386-49fd42ec7d01,Called Strike,0,2,0,True,False,MJ,138.0,114,138,fielding,671056.0,Iván Herrera
@@ -255,7 +245,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823078,41,42,5,4.0,5c761593-b5b8-3acc-8f85-1bf2942a0506,Ball,3,1,0,False,False,MJ,121.0,138,121,fielding,682626.0,Francisco Alvarez
 823078,66,67,4,4.0,b3dd0a7d-7660-3b16-8587-e8f1c98886be,Called Strike,2,2,1,False,False,MJ,138.0,138,121,batting,695336.0,Thomas Saggese
 823079,29,30,3,4.0,23fbea3c-a720-394b-a5b1-8bd3168e95a4,Called Strike,2,2,2,False,False,MJ,139.0,139,138,batting,676439.0,Hunter Feduccia
-823081,30,31,0,1.0,b883d3ee-f4e4-3470-9e7e-8c6efd0bddea,Foul,0,1,2,True,False,NH,,139,138,unknown,,
 823081,57,58,1,1.0,0fbde82a-5972-333a-a2ee-2d24e31246df,Called Strike,0,1,0,True,False,MJ,139.0,138,139,fielding,663743.0,Nick Fortes
 823081,87,88,0,1.0,77c3406f-ebad-3060-9d95-fd0cae7a5173,Ball,1,0,2,True,False,MJ,139.0,139,138,batting,666018.0,Jonathan Aranda
 823082,58,59,0,1.0,8f231311-8aaf-3e31-98de-3c2dfa62aee7,Ball,1,0,2,False,False,MJ,139.0,138,139,fielding,663743.0,Nick Fortes
@@ -263,7 +252,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823141,13,14,0,1.0,4ba595ed-5ffb-33e2-ac4e-81a8e88365c2,Called Strike,0,1,2,True,False,MJ,144.0,136,144,fielding,669221.0,Sean Murphy
 823141,33,34,3,4.0,196df64a-10e0-3718-9a7b-06cdf69f8258,Called Strike,2,2,0,True,False,MJ,144.0,136,144,fielding,669221.0,Sean Murphy
 823141,48,49,5,5.0,9519ea59-b276-3581-a3dc-efe4cb54d635,Ball,2,2,2,False,False,MJ,136.0,144,136,fielding,640902.0,Jhonny Pereda
-823141,56,57,2,,,"Mariners challenged (tag play), call on the field was overturned: pitcher Eduard Bazardo picks off Jorge Mateo at 1st on throw to first baseman Josh Naylor.",0,0,2,True,False,MA,136.0,144,136,fielding,,
 823142,10,11,1,2.0,0281820c-b213-3634-9859-69f1b1b40169,Called Strike,1,1,0,True,False,MJ,144.0,136,144,fielding,686948.0,Drake Baldwin
 823142,35,36,0,1.0,105f0c67-8181-3cde-8bc8-cd899409e6ab,Ball,1,0,2,False,False,MJ,136.0,144,136,fielding,641598.0,Mitch Garver
 823143,5,6,4,5.0,d1db8c08-54f9-3f9d-9a29-ce5427735aa9,Ball,3,2,0,False,False,MJ,144.0,136,144,fielding,669221.0,Sean Murphy
@@ -278,15 +266,12 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823145,55,56,0,1.0,9dacfe44-11ea-3223-8f3f-dcfecfb3ee38,Called Strike,0,1,2,True,False,MJ,118.0,136,118,fielding,695600.0,Carter Jensen
 823145,61,62,4,3.0,de4272b2-67ed-3996-be4e-a77b796a0071,Called Strike,1,2,0,True,False,MJ,118.0,136,118,fielding,695600.0,Carter Jensen
 823145,64,65,4,3.0,35f6b39a-a637-318c-9e61-244ae79da231,Called Strike,1,2,2,False,False,MJ,136.0,136,118,batting,647304.0,Josh Naylor
-823145,68,69,3,,13a44d9a-7faf-3b5b-b58c-4206e9d7b7a6,Pickoff Attempt 1B,0,2,2,False,False,MA,136.0,118,136,fielding,,
 823146,37,38,4,5.0,58ea91b4-b003-34bc-a85d-57f13a07acfe,Called Strike,3,2,0,True,False,MJ,118.0,136,118,fielding,521692.0,Salvador Perez
 823146,67,68,3,2.0,c5d92043-9f43-33bb-956a-554ef9bf9b6b,Ball,2,0,0,False,False,MJ,118.0,136,118,fielding,521692.0,Salvador Perez
 823147,15,16,1,1.0,459ac2bf-5008-300a-9480-7da5c0ac09f0,Called Strike,0,1,0,True,False,MJ,136.0,133,136,fielding,663728.0,Cal Raleigh
 823147,21,22,1,2.0,a6ff7ee7-643a-3110-bb58-6639468f6060,Called Strike,1,1,2,True,False,MJ,133.0,136,133,fielding,642851.0,Austin Wynns
 823147,34,35,0,1.0,4281437e-edd8-34fb-b84b-535cdd85ef87,Ball,1,0,0,False,False,MJ,136.0,133,136,fielding,663728.0,Cal Raleigh
-823147,35,36,4,5.0,35e5d7d0-266e-3fd9-8825-9ae65c1c4871,Foul,3,2,1,True,False,MI,136.0,133,136,fielding,,
 823147,43,44,1,1.0,ae21910c-90a7-31f5-b707-1291593dbb6a,Called Strike,0,1,2,True,False,MJ,136.0,133,136,fielding,663728.0,Cal Raleigh
-823147,63,64,1,,,"Mariners challenged (tag play), call on the field was overturned: Cal Raleigh steals (2) 3rd base.",0,1,2,True,False,MA,136.0,136,133,batting,,
 823147,66,67,3,4.0,fc095846-e0bf-3eb7-ad87-b981b4498952,Called Strike,2,2,2,False,False,MJ,133.0,133,136,batting,671732.0,Lawrence Butler
 823148,43,44,4,4.0,b98ad49c-10a8-3aa6-8cd0-29550fd048f7,Called Strike,2,2,1,False,False,MJ,136.0,136,133,batting,647304.0,Josh Naylor
 823148,45,46,3,3.0,563195b0-7714-3a2d-a5f6-5e04c9241379,Called Strike,1,2,0,True,False,MJ,136.0,133,136,fielding,641598.0,Mitch Garver
@@ -373,14 +358,12 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823236,67,68,6,6.0,ba03ef0d-74c4-394d-92ae-dda567510d4e,Ball,3,2,2,False,False,MJ,137.0,119,137,fielding,672275.0,Patrick Bailey
 823237,18,19,5,6.0,f462ddd2-4c3f-34dc-bc81-bef08a2f6ae4,Ball,2,2,0,False,False,MJ,137.0,143,137,fielding,672275.0,Patrick Bailey
 823237,50,51,3,3.0,f26a6d1d-63f3-3981-8e2d-1fb3526195d6,Called Strike,1,2,0,True,False,MJ,143.0,137,143,fielding,592663.0,J.T. Realmuto
-823237,77,78,1,,,"Umpire reviewed (tag play), call on the field was upheld: Adolis García steals (1) 2nd base.",1,0,2,False,False,NA,,143,137,unknown,,
 823238,38,39,0,1.0,f06fcad9-7874-3a53-842c-9bdd02835b5e,Ball,1,0,2,False,False,MJ,137.0,121,137,fielding,672275.0,Patrick Bailey
 823238,64,65,1,2.0,eeea0b82-2051-3e69-ad4a-e4dea43f59ed,Called Strike,0,2,2,False,False,MJ,137.0,137,121,batting,650333.0,Luis Arraez
 823239,10,11,1,2.0,0af378b9-8674-312d-9c79-859c5b1436f0,Called Strike,1,1,1,True,False,MJ,137.0,121,137,fielding,672275.0,Patrick Bailey
 823239,38,39,0,1.0,74b8a01b-78fa-3116-bdb6-ebc562f2271b,Ball,1,0,2,True,False,MJ,121.0,121,137,batting,668901.0,Mark Vientos
 823240,3,4,1,2.0,9eb2cebb-048c-3f90-821f-cae7218d7100,Called Strike,1,1,0,True,False,MJ,137.0,121,137,fielding,672275.0,Patrick Bailey
 823240,55,56,3,3.0,a39a9b5e-92e1-3296-a133-74310f427682,Called Strike,1,2,0,False,False,MJ,137.0,137,121,batting,656305.0,Matt Chapman
-823240,58,59,4,5.0,5018507f-eb88-3b64-9d30-808c0db4ef90,Foul,2,2,2,False,False,MI,137.0,137,121,batting,,
 823240,72,73,2,3.0,1263722d-de01-3b1f-a223-e7f0600340cc,Ball,2,1,0,True,False,MJ,121.0,121,137,batting,668901.0,Mark Vientos
 823241,18,19,5,5.0,b8edcd01-2307-3d9b-98a2-875fe9b7e34b,Ball,3,2,1,True,False,MJ,147.0,147,137,batting,663757.0,Trent Grisham
 823241,27,28,6,7.0,a2ff2bc3-16eb-3504-8aa4-412001d072e0,Ball,3,2,2,True,False,MJ,137.0,137,147,batting,671218.0,Heliot Ramos
@@ -393,8 +376,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823303,2,3,0,1.0,1ea95003-5d61-39dc-bb52-8fb573d76bfb,Called Strike,0,1,1,True,False,MJ,135.0,138,135,fielding,666023.0,Freddy Fermin
 823303,5,6,2,3.0,ae98d9ce-1fdb-39be-b503-933ec3d81677,Called Strike,1,2,1,True,False,MJ,138.0,135,138,fielding,671056.0,Iván Herrera
 823303,32,33,4,4.0,7335e420-92f2-313f-a31c-72023f7bd1fe,Ball,3,1,1,True,False,MJ,138.0,138,135,batting,687363.0,Victor Scott II
-823306,49,50,3,,,"Padres challenged (tag play), call on the field was upheld: Fernando Tatis Jr. caught stealing 2nd base, catcher Pedro Pagés to second baseman JJ Wetherholt.",1,2,1,False,False,MA,135.0,135,138,batting,,
-823306,52,53,4,,,"Umpire reviewed (tag play), call on the field was overturned: Victor Scott II caught stealing 2nd base, catcher Rodolfo Durán to shortstop Xander Bogaerts.",2,1,1,True,False,NA,,138,135,unknown,,
 823307,14,15,0,1.0,1f11d5c7-b270-3a23-89c5-26025d91026d,Ball,1,0,2,False,False,MJ,145.0,135,145,fielding,691011.0,Drew Romo
 823307,59,60,4,2.0,18da0103-8441-3bef-92b2-43b0ae5eff28,Called Strike,1,1,0,False,False,MJ,135.0,135,145,batting,609280.0,Miguel Andujar
 823307,64,65,4,4.0,50542151-15d8-30e9-8e39-2e359eee661d,Called Strike,2,2,0,False,False,MJ,145.0,145,135,batting,805367.0,Chase Meidroth
@@ -429,7 +410,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823314,35,36,1,2.0,2f72d6c9-a3ac-3440-8f4e-8902265f6d37,Called Strike,1,1,1,False,False,MJ,136.0,136,135,batting,668227.0,Randy Arozarena
 823314,61,62,2,2.0,ad6aae9e-28a3-3da5-81da-cdda6aa09920,Called Strike,1,1,0,True,False,MJ,135.0,136,135,fielding,669134.0,Luis Campusano
 823315,68,69,1,2.0,0150041f-587d-374d-87aa-abd4d59c3658,Ball,1,1,2,False,False,MJ,135.0,136,135,fielding,669134.0,Luis Campusano
-823316,1,2,6,,,"Rockies challenged (tag play), call on the field was overturned: Edouard Julien steals (2) 2nd base.",1,2,0,True,False,MA,115.0,115,135,batting,,
 823316,49,50,0,1.0,6c3e5f30-b8b6-3cac-8a54-e08f2c619e04,Ball,1,0,1,False,False,MJ,115.0,135,115,fielding,664954.0,Brett Sullivan
 823317,22,23,3,4.0,7590d080-2d32-3270-b75e-4b696746b721,Ball,3,1,2,True,False,MJ,135.0,135,115,batting,593428.0,Xander Bogaerts
 823317,50,51,4,5.0,940a014e-fe0d-3aab-84a6-af99506e3305,Called Strike,3,2,0,False,False,MJ,115.0,115,135,batting,696100.0,Hunter Goodman
@@ -448,7 +428,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823319,30,31,0,1.0,daa7e19f-6d88-3d08-a803-3e755d6b9a5d,Called Strike,0,1,1,True,False,MJ,115.0,135,115,fielding,696100.0,Hunter Goodman
 823319,41,42,5,4.0,1f75f9b7-d5b8-3868-a6e3-4bdd4a90cd5a,Called Strike,2,2,0,False,False,MJ,115.0,115,135,batting,687859.0,Troy Johnston
 823319,49,50,1,2.0,266d5b03-21a4-3fe4-848c-7dec7ea35780,Called Strike,1,1,0,False,False,MJ,115.0,115,135,batting,650489.0,Willi Castro
-823319,61,62,2,,,"Padres challenged (tag play), call on the field was upheld: pitcher Juan Mejia picks off Fernando Tatis Jr. at 2nd on throw to second baseman Willi Castro.",0,1,2,False,False,MA,135.0,135,115,batting,,
 823319,79,80,2,2.0,9eba288e-9f5f-3942-9ab9-99bcc60ba4af,Called Strike,1,1,0,True,False,MJ,135.0,115,135,fielding,669134.0,Luis Campusano
 823319,83,84,3,4.0,63169f0f-501f-3f67-a0f2-c59a75f59f2e,Ball,3,1,2,False,False,MJ,135.0,115,135,fielding,669134.0,Luis Campusano
 823319,88,89,0,1.0,b1af166d-121a-3c6f-b2e7-1409692348a4,Called Strike,0,1,2,True,False,MJ,115.0,135,115,fielding,664954.0,Brett Sullivan
@@ -484,17 +463,14 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823392,30,31,2,3.0,e046932f-9a51-3b8d-a44b-4694f74f2654,Ball,3,0,1,False,False,MJ,138.0,134,138,fielding,671056.0,Iván Herrera
 823392,72,73,1,2.0,b0ea900c-343b-3459-b9a7-3ab53737c788,Ball,2,0,2,False,False,MJ,138.0,134,138,fielding,671056.0,Iván Herrera
 823393,25,26,1,2.0,4756c922-3a32-333f-9de2-f26c9ffd7d52,Called Strike,0,2,0,True,False,MJ,139.0,134,139,fielding,676439.0,Hunter Feduccia
-823393,63,64,1,,,"Umpire reviewed (tag play), call on the field was upheld: Konnor Griffin steals (4) 2nd base.",0,1,1,False,False,NA,,134,139,unknown,,
 823394,8,9,0,1.0,b4de4aa1-cbc2-3f33-a3e1-7f7bbb477e4b,Called Strike,0,1,2,False,False,MJ,134.0,134,139,batting,542303.0,Marcell Ozuna
 823394,8,9,1,2.0,e038ecf6-73ae-3ac6-a566-f7f2b9048c34,Called Strike,0,2,2,True,False,MJ,139.0,134,139,fielding,676439.0,Hunter Feduccia
 823395,37,38,0,1.0,9564b7d5-d7c2-3d80-9f47-1a4fe0b8ce26,Ball,1,0,1,True,False,MJ,138.0,138,134,batting,695336.0,Thomas Saggese
-823395,64,65,2,1.0,7c3d4f0f-97d2-355c-a588-212ecb37272f,Foul,0,1,2,False,False,NH,,138,134,unknown,,
 823395,67,68,0,1.0,52e2d74e-89a5-3ea8-9172-d32a23a3a73b,Called Strike,0,1,2,False,False,MJ,134.0,134,138,batting,693304.0,Nick Gonzales
 823396,27,28,2,3.0,d2a5c8f2-d5c4-3ca0-a858-1c9700eaf4bb,Ball,2,1,0,True,False,MJ,134.0,134,120,batting,542303.0,Marcell Ozuna
 823396,42,43,0,1.0,69c3068a-5807-32e7-b966-2b549edfcc9b,Called Strike,0,1,2,True,False,MJ,120.0,134,120,fielding,686452.0,Drew Millas
 823396,42,43,1,2.0,2e772a8c-7264-3766-b3d7-7da215eca7c6,Ball,1,1,2,False,False,MJ,120.0,134,120,fielding,686452.0,Drew Millas
 823396,80,81,1,1.0,f2ddc57e-efcb-3575-b075-c6bddf912514,Called Strike,0,1,0,True,False,MJ,120.0,134,120,fielding,690925.0,Clayton Beeter
-823396,80,81,2,,,"Nationals challenged (tag play), call on the field was upheld: Clayton Beeter challenged (pitch result), call on the field was overturned: Jake Mangum steals (2) 2nd base.",0,1,0,False,False,MA,120.0,134,120,fielding,,
 823397,8,9,1,2.0,d5464207-1f67-3818-baea-00ef458ce76d,Ball,1,1,1,True,False,MJ,139.0,139,134,batting,641584.0,Jake Fraley
 823397,12,13,0,1.0,763665dd-4588-3a2d-902d-82dd1d7c877c,Called Strike,0,1,1,True,False,MJ,139.0,134,139,fielding,663743.0,Nick Fortes
 823397,21,22,4,5.0,94677434-d259-3cb1-b33a-4e20eedbb89c,Called Strike,3,2,1,False,False,MJ,134.0,134,139,batting,668804.0,Bryan Reynolds
@@ -522,8 +498,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823403,49,50,1,2.0,e20a7c1c-65e1-33e4-8e58-fb000390dce7,Called Strike,1,1,1,False,False,MJ,135.0,135,134,batting,657656.0,Ramón Laureano
 823403,53,54,4,2.0,27a87c05-17ee-396b-8b83-1102681d039c,Called Strike,1,1,0,True,False,MJ,135.0,134,135,fielding,669134.0,Luis Campusano
 823403,60,61,0,1.0,b3f79237-d56a-3b0c-aafd-676b9b58a17b,Called Strike,0,1,2,True,False,MJ,134.0,135,134,fielding,663698.0,Joey Bart
-823403,61,62,1,,1bccc2db-1819-3e32-bb84-3a55fad7ebb7,Pickoff Attempt 1B,0,1,2,False,False,MA,134.0,135,134,fielding,,
-823404,64,65,2,,,"Orioles challenged (tag play), call on the field was upheld: pitcher Isaac Mattson picks off Coby Mayo at 1st on throw to first baseman Spencer Horwitz.",0,1,2,False,False,MA,110.0,110,134,batting,,
 823405,17,18,0,1.0,0b07fe07-3c08-3fbd-a133-2f5d518b3855,Called Strike,0,1,1,False,False,MJ,134.0,134,110,batting,668804.0,Bryan Reynolds
 823405,66,67,1,2.0,6efd85de-a774-3f42-80c6-2a1c7fe929c9,Ball,1,1,0,False,False,MJ,110.0,134,110,fielding,694212.0,Samuel Basallo
 823406,6,7,1,2.0,92ffc469-6830-30af-bb48-ca5890745199,Called Strike,1,1,1,False,False,MJ,134.0,134,110,batting,668804.0,Bryan Reynolds
@@ -574,7 +548,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823479,23,24,3,4.0,219c5373-dc77-3aac-aea6-a90f4dda606d,Ball,3,1,0,False,False,MJ,143.0,109,143,fielding,665561.0,Rafael Marchán
 823479,37,38,0,1.0,dd53f9eb-fe29-3841-bcb6-8957d55ef8b4,Called Strike,0,1,0,False,False,MJ,109.0,109,143,batting,672695.0,Geraldo Perdomo
 823480,57,58,0,1.0,d32f359e-9084-323f-a785-bbc03268f9ca,Called Strike,0,1,1,True,False,MJ,109.0,143,109,fielding,680728.0,Adrian Del Castillo
-823481,22,23,0,1.0,ae964ea4-0938-339d-90a6-5ed977742003,Foul,0,1,0,False,False,NH,,143,112,unknown,,
 823481,74,75,3,4.0,124a06c2-9858-3b01-b585-a3263a404866,Called Strike,3,1,0,True,False,MJ,143.0,112,143,fielding,592663.0,J.T. Realmuto
 823482,58,59,4,3.0,9e108b7a-1e8c-39f1-b9df-a16f25797c13,Called Strike,1,2,2,False,False,MJ,143.0,143,109,batting,656941.0,Kyle Schwarber
 823483,12,13,2,2.0,a362634d-71e4-345b-912f-fef5931a8f5d,Ball,1,1,1,False,False,MJ,143.0,120,143,fielding,650911.0,Cristopher Sánchez
@@ -599,13 +572,11 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823550,43,44,1,2.0,a19a3953-694d-3630-b132-09adc1a2c9a5,Called Strike,1,1,0,True,False,MJ,147.0,140,147,fielding,669224.0,Austin Wells
 823550,58,59,3,2.0,4062876c-5f50-33c4-8bdf-b515baba6e89,Called Strike,0,2,1,False,False,MJ,140.0,140,147,batting,696030.0,Alejandro Osuna
 823552,48,49,0,1.0,1a36cf83-5691-353a-bbd3-76e8b62c4142,Ball,1,0,1,True,False,MJ,147.0,147,110,batting,665862.0,Jazz Chisholm Jr.
-823552,50,51,6,,,"Yankees challenged (tag play), call on the field was overturned: Wild pitch by pitcher Shane Baz. Jasson Domínguez scores. Jazz Chisholm Jr. to 3rd.",3,1,2,True,False,MA,147.0,147,110,batting,,
 823552,70,71,4,4.0,4886a395-ddda-3266-aa8c-901ca75624f2,Ball,3,1,2,True,False,MJ,147.0,147,110,batting,663757.0,Trent Grisham
 823553,1,2,1,2.0,120cdd2b-5209-3f9a-b641-c6fa0cff7398,Ball,1,1,0,True,False,MJ,140.0,140,147,batting,608369.0,Corey Seager
 823553,48,49,0,1.0,44921aa5-51a2-3996-9834-ae2ae3f41031,Called Strike,0,1,0,True,False,MJ,140.0,147,140,fielding,643376.0,Danny Jansen
 823553,73,74,1,2.0,41199e2e-950b-3405-9224-31714ea9627b,Called Strike,0,2,1,True,False,MJ,140.0,147,140,fielding,643376.0,Danny Jansen
 823554,15,16,5,5.0,51e0fbec-1d10-385a-856f-3554f2917df9,Ball,3,2,0,False,False,MJ,147.0,110,147,fielding,641555.0,J.C. Escarra
-823555,1,2,1,,01847353-56b8-3997-a355-ac41911bf639,Pickoff Attempt 1B,1,0,0,False,False,MF,147.0,110,147,fielding,,
 823555,27,28,0,1.0,c4ab2650-f5d8-32f2-a6eb-db523cdff0c9,Ball,1,0,0,False,False,MJ,147.0,110,147,fielding,669224.0,Austin Wells
 823555,53,54,3,3.0,69f90107-f544-38bb-979d-ecde3c1b2c5c,Ball,3,0,0,True,False,MJ,110.0,110,147,batting,694212.0,Samuel Basallo
 823555,58,59,0,1.0,1dc49a02-06de-3d8e-94e7-046721bb77f2,Ball,1,0,1,False,False,MJ,110.0,147,110,fielding,668939.0,Adley Rutschman
@@ -615,7 +586,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823556,11,12,3,4.0,0ade8c6b-6844-3493-93cb-0e8eb0bbc0c1,Ball,3,1,2,False,False,MJ,118.0,147,118,fielding,553869.0,Elias Díaz
 823556,21,22,5,6.0,1d00543f-471c-34db-9b15-8783ea227a75,Ball,3,2,2,True,False,MJ,118.0,118,147,batting,672580.0,Maikel Garcia
 823556,74,75,0,1.0,dca07a02-57d7-32d6-a3c3-86f4ae0018d6,Ball,1,0,2,False,False,MJ,147.0,118,147,fielding,669224.0,Austin Wells
-823557,14,15,4,5.0,61f58f11-03d6-37eb-b703-631c0126d08a,Foul,2,2,1,True,False,MI,110.0,147,110,fielding,,
 823557,49,50,1,2.0,aec623f1-616a-32a7-9679-e88eb127c2a7,Ball,2,0,1,True,False,MJ,110.0,110,147,batting,694212.0,Samuel Basallo
 823557,68,69,1,1.0,865aa880-78fd-35ce-b26d-e0414daeeb66,Called Strike,0,1,0,True,False,MJ,147.0,110,147,fielding,669224.0,Austin Wells
 823558,2,3,4,4.0,fbc8e51e-3cb5-3b84-98bb-9ee9f2c634b2,Ball,3,1,1,True,False,MJ,118.0,118,147,batting,686469.0,Vinnie Pasquantino
@@ -634,7 +604,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823561,30,31,8,6.0,1561d452-df10-34d6-a3af-fbb13497bebc,Ball,3,2,2,False,False,MJ,147.0,108,147,fielding,669224.0,Austin Wells
 823561,36,37,2,3.0,14c114e8-877d-37a7-8b03-5212a73a9576,Ball,3,0,1,True,False,MJ,108.0,108,147,batting,687263.0,Zach Neto
 823561,51,52,2,2.0,9c5f7909-6c77-3edf-ae1d-28635bfc9c74,Called Strike,0,2,2,True,False,MJ,147.0,108,147,fielding,669224.0,Austin Wells
-823562,19,20,0,1.0,f5df848f-9f9b-39bc-b81b-12854301a9e3,Foul,0,1,2,False,False,NH,,108,147,unknown,,
 823562,40,41,3,4.0,a32141b0-1fd7-3da9-b24f-98504bb09a1e,Called Strike,3,1,0,True,False,MJ,147.0,108,147,fielding,669224.0,Austin Wells
 823562,51,52,1,2.0,e58eb9c0-a1db-3641-a4cf-31099521473a,Called Strike,1,1,2,True,False,MJ,147.0,108,147,fielding,669224.0,Austin Wells
 823562,57,58,5,6.0,3c2f0144-af49-38cb-b543-ea290c91bda4,Ball,3,2,0,True,False,MJ,108.0,108,147,batting,672724.0,Oswald Peraza
@@ -652,7 +621,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823565,48,49,4,5.0,01bf1578-8301-3c30-9846-2e45a174d188,Ball,3,2,1,False,False,MJ,133.0,147,133,fielding,642851.0,Austin Wynns
 823566,2,3,3,4.0,304912ea-b90a-301f-b027-7e086d717c20,Ball,2,2,1,False,False,MJ,147.0,146,147,fielding,669224.0,Austin Wells
 823566,6,7,2,3.0,3f065197-bb4f-3ee3-8fa1-2c699ada3607,Called Strike,2,1,0,True,False,MJ,146.0,147,146,fielding,689414.0,Liam Hicks
-823566,47,48,1,,,"Yankees challenged (tag play), call on the field was overturned: pitcher Max Fried picks off Heriberto Hernández at 1st on throw to first baseman Ben Rice.",0,0,1,True,False,MA,147.0,146,147,fielding,,
 823566,59,60,0,1.0,9581cdeb-b55a-36a6-870a-04fc40c2253d,Called Strike,0,1,2,True,False,MJ,146.0,147,146,fielding,689414.0,Liam Hicks
 823566,77,78,2,3.0,d53c1e3f-37bc-3f86-8ccc-c8b3a465b769,Ball,3,0,1,False,False,MJ,146.0,147,146,fielding,689414.0,Liam Hicks
 823566,78,79,2,3.0,a50a2a86-c741-38a6-b025-589ba108f9ff,Ball,1,2,1,False,False,MJ,146.0,147,146,fielding,689414.0,Liam Hicks
@@ -661,7 +629,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823567,39,40,2,2.0,77d10b79-5fda-3051-949a-a1b804f8d977,Ball,2,0,1,True,False,MJ,147.0,147,133,batting,592450.0,Aaron Judge
 823567,61,62,2,3.0,ee42d3a0-9635-3643-a962-63a41842a0ea,Called Strike,1,2,2,False,False,MJ,133.0,133,147,batting,671732.0,Lawrence Butler
 823567,66,67,1,1.0,6aff379f-a271-30aa-9780-89c8e378e1d1,Called Strike,0,1,0,False,False,MJ,147.0,147,133,batting,665862.0,Jazz Chisholm Jr.
-823567,70,71,6,,,"Athletics challenged (tag play), call on the field was upheld: José Caballero steals (4) 2nd base.",2,1,2,False,False,MA,133.0,147,133,fielding,,
 823568,4,5,3,4.0,eed3c2b1-c9e9-33fe-aa48-97df0cec19c0,Ball,3,1,0,False,False,MJ,146.0,147,146,fielding,689414.0,Liam Hicks
 823568,19,20,2,3.0,3a3de494-22a8-363d-bed5-c20e5f86d2a2,Called Strike,1,2,2,False,False,MJ,147.0,147,146,batting,700250.0,Ben Rice
 823568,33,34,0,1.0,2818d002-18ab-3cc2-889a-da05cfcec4fd,Ball,1,0,0,True,False,MJ,146.0,146,147,batting,672640.0,Otto Lopez
@@ -759,7 +726,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823719,60,61,2,1.0,896498a8-395b-35c0-80dd-0e6b752cc8df,Called Strike,0,1,1,False,False,MJ,142.0,142,136,batting,670242.0,Matt Wallner
 823720,20,21,6,6.0,a699d359-8d89-306d-af26-025b8d07ccdd,Ball,3,2,2,False,False,MJ,113.0,142,113,fielding,663886.0,Tyler Stephenson
 823720,56,57,0,1.0,c34d6406-ec6f-3b37-909d-3a71bdf0f34a,Called Strike,0,1,1,True,False,MJ,142.0,113,142,fielding,605170.0,Victor Caratini
-823721,26,27,1,,,"Twins challenged (tag play), call on the field was overturned: Luke Keaschall steals (4) 2nd base.",0,0,2,True,False,MA,142.0,142,113,batting,,
 823721,40,41,2,3.0,eecd1ba8-6202-3931-b62c-856a756570c2,Ball,2,1,2,False,False,MJ,142.0,113,142,fielding,680777.0,Ryan Jeffers
 823721,65,66,0,1.0,7b38494c-ba17-3311-8110-86ea7c797643,Called Strike,0,1,1,True,False,MJ,113.0,142,113,fielding,663886.0,Tyler Stephenson
 823721,80,81,2,3.0,13d780f2-f17c-33ee-a699-c98d066baefe,Called Strike,1,2,1,False,False,MJ,142.0,142,113,batting,807712.0,Luke Keaschall
@@ -827,7 +793,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823802,2,3,2,3.0,be9ed5f9-d6d9-3c02-9a6d-f5ecd6a7064c,Ball,2,1,2,False,False,MJ,158.0,141,158,fielding,661388.0,William Contreras
 823802,6,7,3,4.0,4b614044-940f-3a84-8611-18b1fb657074,Ball,2,2,2,False,False,MJ,141.0,158,141,fielding,678218.0,Brandon Valenzuela
 823802,76,77,0,1.0,eec748c7-cc95-30f4-b5a5-85f3dac79f3e,Called Strike,0,1,1,False,False,MJ,158.0,158,141,batting,596142.0,Gary Sánchez
-823802,85,86,1,,,"Umpire reviewed (tag play), call on the field was overturned: Myles Straw caught stealing 3rd base, catcher William Contreras to third baseman Luis Rengifo.",1,0,2,True,False,NA,,141,158,unknown,,
 823802,90,91,1,1.0,45fbd561-dc11-38f9-a3d1-8ba90a2ca6d6,Ball,1,0,2,False,False,MJ,141.0,158,141,fielding,623168.0,Tyler Heineman
 823803,26,27,1,2.0,c9eb8e8d-af6d-3506-8c56-584101e5d44a,Ball,2,0,1,True,False,MJ,158.0,158,141,batting,596142.0,Gary Sánchez
 823803,47,48,1,2.0,c1e3c46f-f3c5-3e5d-9da7-1f6e9a23956f,Called Strike,1,1,2,True,False,MJ,158.0,141,158,fielding,596142.0,Gary Sánchez
@@ -836,7 +801,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823804,9,10,0,1.0,9ba92ee0-cc15-3f79-beb0-461fdb45e314,Called Strike,0,1,2,True,False,MJ,158.0,120,158,fielding,661388.0,William Contreras
 823804,14,15,2,3.0,7aed7152-0032-331e-a88d-960b534ab6b9,Called Strike,1,2,1,True,False,MJ,158.0,120,158,fielding,661388.0,William Contreras
 823804,53,54,3,2.0,ab24de7a-4bf9-3620-b2f4-d1b9ab2c4279,Called Strike,0,2,2,True,False,MJ,158.0,120,158,fielding,661388.0,William Contreras
-823804,54,55,3,,,"Nationals challenged (tag play), call on the field was overturned: Curtis Mead steals (2) 2nd base. James Wood steals (2) home.",1,2,2,True,False,MA,120.0,120,158,batting,,
 823804,60,61,2,2.0,6c75030d-7bcd-3d19-82fd-5232742aa8ed,Ball,2,0,2,True,False,MJ,158.0,158,120,batting,596142.0,Gary Sánchez
 823805,11,12,2,3.0,9b5dc4ed-eba9-3488-904d-c4f0977c6f79,Ball,1,2,1,True,False,MJ,158.0,158,120,batting,596142.0,Gary Sánchez
 823805,51,52,0,1.0,7d228cba-3244-3804-b9fb-6f0494e0d506,Called Strike,0,1,2,False,False,MJ,120.0,120,158,batting,695578.0,James Wood
@@ -901,7 +865,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823880,40,41,2,1.0,bc48aaa2-ca91-3a84-94c6-45569f5b15eb,Called Strike,0,1,2,True,False,MJ,146.0,138,146,fielding,689414.0,Liam Hicks
 823880,42,43,2,3.0,02c9440a-9a3d-3a60-8152-42431d6708a0,Called Strike,1,2,0,True,False,MJ,138.0,146,138,fielding,686780.0,Pedro Pagés
 823880,52,53,4,3.0,75512511-7866-3b4f-80d8-cbc0f4e23239,Called Strike,1,2,0,False,False,MJ,138.0,138,146,batting,671056.0,Iván Herrera
-823880,63,64,1,,,"Cardinals challenged (tag play), call on the field was overturned: Nathan Church steals (3) 2nd base.",0,1,2,True,False,MA,138.0,138,146,batting,,
 823880,67,68,4,4.0,f082a3f3-06ae-3693-85aa-e7c8daca0b63,Called Strike,2,2,1,False,False,MJ,146.0,146,138,batting,682663.0,Agustín Ramírez
 823880,77,78,1,2.0,1b68c8e5-9c48-3201-8eef-056c08ff23e0,Called Strike,0,2,2,True,False,MJ,138.0,146,138,fielding,686780.0,Pedro Pagés
 823880,77,78,5,5.0,59d2535d-4b58-334c-92a1-4c3864c026e4,Ball,2,2,2,False,False,MJ,138.0,146,138,fielding,686780.0,Pedro Pagés
@@ -919,7 +882,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823883,85,86,1,2.0,b7f633b6-ba93-3e1d-a188-8a40d5ea7ecb,Ball,1,1,1,False,False,MJ,158.0,146,158,fielding,661388.0,William Contreras
 823884,11,12,1,2.0,ed090635-2d76-3d67-b4f2-22fb43186f72,Ball,2,0,0,False,False,MJ,146.0,113,146,fielding,682663.0,Agustín Ramírez
 823884,24,25,4,5.0,802276c5-fc60-3e9a-9da5-e4419c0aab6d,Called Strike,3,2,1,True,False,MJ,113.0,146,113,fielding,664731.0,P.J. Higgins
-823884,36,37,3,,44c7fe9f-5d03-3376-875b-eef2ea3aeb9b,Pickoff Attempt 1B,1,2,1,False,False,MA,113.0,146,113,fielding,,
 823884,42,43,0,1.0,0d480bc5-bec7-3cb7-aed8-417c98d13380,Ball,1,0,0,True,False,MJ,146.0,146,113,batting,669364.0,Xavier Edwards
 823884,76,77,0,1.0,1590a4ee-af93-358a-9ac4-79d5987dba50,Called Strike,0,1,0,True,False,MJ,146.0,113,146,fielding,682663.0,Agustín Ramírez
 823885,10,11,2,2.0,3f0c31f5-a454-36d6-b400-245b61dbdac1,Called Strike,0,2,1,False,False,MJ,146.0,146,113,batting,681393.0,Connor Norby
@@ -946,7 +908,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823892,10,11,0,1.0,1424c41e-bd4f-3bc0-8960-80143ee2ce82,Called Strike,0,1,2,True,False,MJ,146.0,115,146,fielding,689414.0,Liam Hicks
 823892,37,38,5,4.0,e77d1b8a-bdfd-3987-a932-7e343654ee8b,Ball,3,1,1,False,False,MJ,146.0,115,146,fielding,689414.0,Liam Hicks
 823893,30,31,2,2.0,a8bed893-a785-3a2b-8cfa-41cb832cd605,Ball,1,1,2,False,False,MJ,146.0,115,146,fielding,682663.0,Agustín Ramírez
-823893,34,35,2,,fbfa891e-88fa-3b62-8e85-bd0697b83102,Pickoff Attempt 1B,1,1,1,False,False,MA,115.0,146,115,fielding,,
 823893,60,61,0,1.0,9a9a409f-f567-35e8-8658-cf9fe97182f1,Called Strike,0,1,2,True,False,MJ,146.0,115,146,fielding,682663.0,Agustín Ramírez
 823893,65,66,6,3.0,0a835341-bfed-3372-bcf1-65bd9b7f44a1,Called Strike,1,2,0,True,False,MJ,146.0,115,146,fielding,682663.0,Agustín Ramírez
 823956,28,29,0,1.0,8e8065e4-5d65-38af-ba43-7f33c54e0347,Called Strike,0,1,2,True,False,MJ,119.0,146,119,fielding,669257.0,Will Smith
@@ -985,7 +946,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823966,59,60,2,2.0,dd1a45ae-3ef4-382e-b004-281bc59e3745,Called Strike,0,2,0,True,False,MJ,140.0,119,140,fielding,643376.0,Danny Jansen
 823967,26,27,1,2.0,cd53859b-f0f4-3dec-8a03-98613e812794,Called Strike,0,2,2,True,False,MJ,140.0,119,140,fielding,543309.0,Kyle Higashioka
 823967,54,55,7,7.0,8326f4cf-7ccf-3897-933a-0ad15b8e05ef,Ball,3,2,1,False,False,MJ,140.0,119,140,fielding,676395.0,Robert Garcia
-823967,62,63,0,,ac467363-6c7e-3e4d-9ae4-fd5313df7f75,Pickoff Attempt 1B,0,0,0,False,False,MA,140.0,119,140,fielding,,
 823967,62,63,3,2.0,0ee7de59-acf3-3937-b930-b99214f51ed5,Ball,2,0,1,False,False,MJ,140.0,119,140,fielding,543309.0,Kyle Higashioka
 823968,2,3,1,2.0,ce3647ac-e5ff-359c-99cd-104ff31650fd,Called Strike,1,1,2,True,False,MJ,119.0,140,119,fielding,669257.0,Will Smith
 823968,63,64,4,4.0,ac76eec8-ccf7-3266-9847-4ff077db6b20,Ball,3,1,0,True,False,MJ,119.0,119,140,batting,606192.0,Teoscar Hernández
@@ -998,7 +958,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 823971,22,23,3,4.0,0dc9d67d-1b85-3a39-8a0c-b6ff908a55c3,Called Strike,2,2,1,True,False,MJ,109.0,119,109,fielding,672515.0,Gabriel Moreno
 823971,37,38,4,5.0,fc5befa7-1373-3259-8024-a9a3187f97ea,Called Strike,3,2,2,True,False,MJ,119.0,109,119,fielding,669257.0,Will Smith
 823972,0,1,5,3.0,354f37fd-93ab-3505-855d-67d06f14f347,Ball,2,1,0,True,False,MJ,114.0,114,119,batting,680757.0,Steven Kwan
-823972,22,23,8,,,"Guardians challenged (tag play), call on the field was overturned: pitcher Parker Messick picks off Miguel Rojas at 2nd on throw to shortstop Gabriel Arias.",3,2,1,True,False,MA,114.0,119,114,fielding,,
 823972,54,55,3,4.0,27ee8d60-c02f-32fa-91af-592ce9c1967b,Ball,2,2,1,True,False,MJ,119.0,119,114,batting,606192.0,Teoscar Hernández
 823972,69,70,0,1.0,8468a77d-b7cf-3c42-9471-0fd238847166,Ball,1,0,0,True,False,MJ,119.0,119,114,batting,606192.0,Teoscar Hernández
 823972,71,72,2,2.0,e67ee720-dc00-37fd-9715-969f504dc4d0,Ball,2,0,2,False,False,MJ,114.0,119,114,fielding,595978.0,Austin Hedges
@@ -1061,29 +1020,22 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824054,48,49,3,3.0,0c6ebdd5-215b-3ab0-aeea-cdaab503d0f3,Called Strike,1,2,0,True,False,MJ,108.0,136,108,fielding,681351.0,Logan O'Hoppe
 824054,63,64,3,3.0,5c21545d-02e1-3440-8dbc-c7e17ab72736,Called Strike,2,1,0,True,False,MJ,108.0,136,108,fielding,681351.0,Logan O'Hoppe
 824056,17,18,4,4.0,57f85fda-98f6-3b30-99e3-8746beda7316,Called Strike,2,2,2,True,False,MJ,108.0,136,108,fielding,681351.0,Logan O'Hoppe
-824056,20,21,1,,,"Mariners challenged (tag play), call on the field was overturned: pitcher Bryan Woo picks off Oswald Peraza at 1st on throw to first baseman Josh Naylor.",0,0,2,True,False,MA,136.0,108,136,fielding,,
 824056,36,37,3,4.0,534a287c-c8e6-3820-9cbe-744030762de4,Ball,3,1,2,False,False,MJ,136.0,108,136,fielding,663728.0,Cal Raleigh
 824056,44,45,1,2.0,e416b653-e620-353c-88d9-6b9f30e99d5f,Called Strike,1,1,1,True,False,MJ,108.0,136,108,fielding,681351.0,Logan O'Hoppe
-824056,58,59,5,4.0,69e85a7d-f04f-3efa-9c2c-d59f68bc46dc,Foul,1,2,0,True,False,MI,108.0,136,108,fielding,,
 824056,68,69,0,1.0,1bd2245e-7469-3eb9-b7aa-585be5285274,Called Strike,0,1,2,False,False,MJ,136.0,136,108,batting,647304.0,Josh Naylor
 824056,71,72,2,1.0,11de99bd-2d7d-3d1e-bb5f-9f56b799a0cc,Called Strike,0,1,0,False,False,MJ,108.0,108,136,batting,694384.0,Nolan Schanuel
 824116,74,75,0,1.0,2a3470c3-9872-3dd9-8094-e14db141c821,Ball,1,0,2,False,False,MJ,116.0,118,116,fielding,693307.0,Dillon Dingler
 824117,14,15,2,3.0,c30be3aa-8d65-310d-8683-2e3ac6470914,Ball,2,1,0,False,False,MJ,118.0,114,118,fielding,695600.0,Carter Jensen
 824117,22,23,3,4.0,8fec142b-6b76-32cc-9783-d8967a670e01,Called Strike,2,2,2,False,False,MJ,118.0,118,114,batting,672580.0,Maikel Garcia
 824117,26,27,2,3.0,9613be64-7e53-3dd0-894c-95634f8fdc0e,Called Strike,1,2,1,False,False,MJ,114.0,114,118,batting,666310.0,Bo Naylor
-824117,29,30,4,5.0,f04f6b26-a5e1-36e5-b0a8-f168be36898f,Foul,3,2,0,False,False,NH,,118,114,unknown,,
-824117,82,83,3,,,"Guardians challenged (tag play), call on the field was upheld: Brayan Rocchio caught stealing 2nd base, catcher Carter Jensen to shortstop Bobby Witt Jr.",0,2,2,False,False,MA,114.0,114,118,batting,,
 824118,0,1,3,1.0,1ad701cd-e3de-3c48-98b1-c5ede6cd5c81,Called Strike,0,1,0,True,False,MJ,118.0,114,118,fielding,553869.0,Elias Díaz
 824118,6,7,1,2.0,7a15c1c0-7b6c-39a1-abf5-f36f9aa688fe,Called Strike,1,1,0,True,False,MJ,114.0,118,114,fielding,595978.0,Austin Hedges
 824118,15,16,0,1.0,4181f09d-e083-3412-ab69-2bb7f9a3ec20,Called Strike,0,1,2,True,False,MJ,114.0,118,114,fielding,595978.0,Austin Hedges
 824118,28,29,0,1.0,2c56480b-49fe-32cb-b05e-41fec87335d6,Ball,1,0,1,True,False,MJ,114.0,114,118,batting,682177.0,Daniel Schneemann
-824118,35,36,2,,,Pickoff Attempt 2B,0,1,0,False,False,MA,118.0,114,118,fielding,,
-824118,66,67,3,,,Pickoff Attempt 3B,1,1,0,True,False,NA,,114,118,unknown,,
 824119,20,21,0,1.0,01842deb-51a4-3d09-ade0-42382047ddd1,Called Strike,0,1,2,True,False,MJ,118.0,114,118,fielding,695600.0,Carter Jensen
 824119,20,21,3,4.0,0e5b391b-0723-3651-a526-8482915d0a29,Ball,3,1,2,True,False,MJ,114.0,114,118,batting,680757.0,Steven Kwan
 824119,32,33,7,7.0,0fd68cc1-00e8-3031-83bb-a841418856a5,Ball,2,2,1,False,False,MJ,114.0,118,114,fielding,666310.0,Bo Naylor
 824119,42,43,0,1.0,1962cc02-b60a-3f0c-8e1f-c240aaed2e7e,Called Strike,0,1,1,True,False,MJ,118.0,114,118,fielding,695600.0,Carter Jensen
-824119,61,62,1,2.0,735584c6-cf46-3d1e-b740-b3a5687447b4,Ball,1,1,2,True,False,MI,114.0,118,114,fielding,,
 824121,13,14,3,4.0,8d4a46ce-89c9-3801-8ae7-0234982858c1,Ball,2,2,0,True,False,MJ,118.0,118,108,batting,686555.0,Isaac Collins
 824121,36,37,4,5.0,5c514732-d70c-3c1a-93e6-77a4005dbc90,Ball,3,2,2,False,False,MJ,108.0,118,108,fielding,681351.0,Logan O'Hoppe
 824121,60,61,1,2.0,a8550e92-095c-3200-b552-10f42f984494,Called Strike,1,1,0,False,False,MJ,118.0,118,108,batting,679845.0,Nick Loftin
@@ -1100,9 +1052,7 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824124,68,69,3,3.0,d169c977-fa13-38c0-8ba8-0ce075ee5e7f,Called Strike,2,1,2,False,False,MJ,118.0,118,108,batting,686555.0,Isaac Collins
 824124,71,72,4,1.0,3ee81e81-8825-3274-9f2f-8b884990a461,Ball,1,0,0,False,False,MJ,118.0,108,118,fielding,553869.0,Elias Díaz
 824125,20,21,2,2.0,40685295-e699-3972-b095-af17696eeb8a,Called Strike,0,2,2,True,False,MJ,118.0,110,118,fielding,695600.0,Carter Jensen
-824125,44,45,2,,,Pickoff Attempt 1B,1,1,0,False,False,MA,110.0,118,110,fielding,,
 824125,60,61,2,3.0,94eccf6e-704d-3342-a968-20a55e1fc01e,Called Strike,1,2,1,True,False,MJ,118.0,110,118,fielding,695600.0,Carter Jensen
-824125,66,67,1,,,"Umpire reviewed (tag play), call on the field was upheld: pitcher Lucas Erceg picks off Gunnar Henderson at 1st on throw to first baseman Vinnie Pasquantino.",0,0,1,False,False,NA,,110,118,unknown,,
 824125,66,67,4,3.0,d7945a52-229e-3eec-af6b-111054f58166,Called Strike,2,1,1,False,False,MJ,110.0,110,118,batting,621493.0,Taylor Ward
 824125,69,70,4,3.0,48c5ae9b-897a-365b-936a-826288ddc2f2,Ball,1,2,2,False,False,MJ,118.0,110,118,fielding,695600.0,Carter Jensen
 824126,54,55,3,2.0,29f564fc-53e8-3666-a4c6-535eedb69afc,Ball,1,1,2,True,False,MJ,118.0,118,145,batting,672580.0,Maikel Garcia
@@ -1157,7 +1107,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824202,39,40,4,3.0,468b8afb-cec6-3954-ae66-437aa36c3902,Ball,3,0,0,True,False,MJ,117.0,117,147,batting,670623.0,Isaac Paredes
 824203,1,2,0,1.0,9a7fd83d-43e1-33e6-8eb2-6b749a66cf49,Called Strike,0,1,1,True,False,MJ,117.0,147,117,fielding,543877.0,Christian Vázquez
 824203,13,14,1,2.0,470f72ba-46e2-39ac-8c93-e26175d3df62,Called Strike,1,1,0,True,False,MJ,147.0,117,147,fielding,669224.0,Austin Wells
-824203,17,18,6,,,"Astros challenged (tag play), call on the field was overturned: José Caballero caught stealing 3rd base, catcher Christian Vázquez to third baseman Isaac Paredes.",2,2,1,True,False,MA,117.0,147,117,fielding,,
 824203,28,29,0,1.0,b8fc0fa6-14ee-3030-a724-9865ba1e4ba4,Called Strike,0,1,1,False,False,MJ,117.0,117,147,batting,514888.0,Jose Altuve
 824203,36,37,4,4.0,6f2daa45-76e1-39cd-81f3-5e157e9f5fa4,Ball,2,2,0,True,False,MJ,117.0,117,147,batting,701358.0,Cam Smith
 824203,37,38,1,2.0,cfec51bf-c8f4-358c-9c04-1324968c4820,Ball,2,0,2,False,False,MJ,147.0,117,147,fielding,669224.0,Austin Wells
@@ -1202,7 +1151,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824215,82,83,7,8.0,2c2c0f41-d17a-396b-ac75-a4e413c87e1d,Ball,2,2,2,False,False,MJ,117.0,108,117,fielding,543877.0,Christian Vázquez
 824216,3,4,0,1.0,ff58659f-e466-3d04-9ab9-123e7c4efaa4,Ball,1,0,2,False,False,MJ,117.0,108,117,fielding,673237.0,Yainer Diaz
 824216,17,18,0,1.0,be052085-a815-3663-9af5-00f92faa0154,Called Strike,0,1,1,True,False,MJ,108.0,117,108,fielding,681351.0,Logan O'Hoppe
-824218,5,6,1,2.0,c59e587f-f83b-3fd6-b91e-768177f8b8f5,Foul,0,2,1,False,False,NH,,117,108,unknown,,
 824218,50,51,2,2.0,423e35f3-2231-3aa6-b64b-db0ef5f7085e,Called Strike,0,2,2,True,False,MJ,108.0,117,108,fielding,681351.0,Logan O'Hoppe
 824218,74,75,1,2.0,de240292-09d8-315f-bdc3-eb0f7d657ddc,Called Strike,1,1,2,False,False,MJ,108.0,108,117,batting,669326.0,Bryce Teodosio
 824281,38,39,0,1.0,a1c6e288-0fac-3ab3-b13c-e31fd1aaf20e,Called Strike,0,1,2,True,False,MJ,116.0,111,116,fielding,693307.0,Dillon Dingler
@@ -1227,7 +1175,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824290,16,17,1,2.0,9fcaff6b-2078-3c48-9b84-e882393d6c22,Ball,1,1,1,False,False,MJ,158.0,116,158,fielding,661388.0,William Contreras
 824291,5,6,4,5.0,8fa41b08-ed5b-39ff-9c0b-a0b566ad2454,Called Strike,3,2,1,True,False,MJ,118.0,116,118,fielding,521692.0,Salvador Perez
 824291,63,64,1,2.0,64c99154-25ab-311f-a53a-619e3899d77d,Called Strike,0,2,2,False,False,MJ,118.0,118,116,batting,695506.0,Jac Caglianone
-824291,64,65,2,,926988cc-6482-35eb-95b0-bccbb0ada7e5,Pickoff Attempt 1B,0,0,2,True,False,MA,118.0,118,116,batting,,
 824292,25,26,0,1.0,6be464ab-7c52-3942-bbea-de36c7026dfc,Ball,1,0,2,False,False,MJ,116.0,118,116,fielding,693307.0,Dillon Dingler
 824292,34,35,4,5.0,2630c31b-5c84-38f8-967a-3669d66ded92,Called Strike,3,2,0,True,False,MJ,118.0,116,118,fielding,521692.0,Salvador Perez
 824293,4,5,0,1.0,3d8ec139-5a50-3381-a55f-cc09c0147d71,Ball,1,0,1,False,False,MJ,146.0,116,146,fielding,682663.0,Agustín Ramírez
@@ -1247,7 +1194,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824297,36,37,1,2.0,e4894d5b-7aab-36a8-83ec-665c65db8f30,Called Strike,1,1,0,True,False,MJ,146.0,116,146,fielding,689414.0,Liam Hicks
 824299,67,68,4,4.0,d61ed7d0-a5bb-3843-a02c-22fa9da2e899,Ball,2,2,2,False,False,MJ,138.0,116,138,fielding,671056.0,Iván Herrera
 824361,9,10,4,5.0,f4160aac-bd91-31c6-87ec-3e725aa9045f,Ball,1,2,0,False,False,MJ,115.0,121,115,fielding,696100.0,Hunter Goodman
-824361,39,40,4,,,"Mets challenged (tag play), call on the field was upheld: Tyrone Taylor caught stealing 2nd base, catcher Hunter Goodman to second baseman Edouard Julien.",1,0,2,False,False,MA,121.0,121,115,batting,,
 824361,81,82,3,4.0,27b1810f-3f39-30f4-a6e7-ca191e7625ff,Called Strike,2,2,1,True,False,MJ,121.0,115,121,fielding,620443.0,Luis Torrens
 824361,84,85,0,1.0,87d0328f-a6d0-3d1f-9a29-44956eaacebf,Ball,1,0,1,False,False,MJ,121.0,115,121,fielding,620443.0,Luis Torrens
 824361,84,85,1,2.0,3de849fd-04bb-397a-b0ca-70cf066d40fb,Ball,2,0,1,True,False,MJ,115.0,115,121,batting,671289.0,Tyler Freeman
@@ -1308,7 +1254,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824443,1,2,0,1.0,3cda9b00-f623-39e6-bea8-b90c4fa0e640,Ball,1,0,0,True,False,MJ,142.0,142,114,batting,668885.0,Austin Martin
 824443,39,40,3,4.0,6b6a2d1f-685a-3146-8227-7c46c667440d,Ball,3,1,2,True,False,MJ,114.0,114,142,batting,656555.0,Rhys Hoskins
 824445,31,32,1,2.0,d36d6c12-9d9e-3157-a68a-4e4485774b48,Called Strike,0,2,2,True,False,MJ,139.0,114,139,fielding,676439.0,Hunter Feduccia
-824445,67,68,1,,d5042d15-e199-4152-97d3-b8b47beb6215,Pickoff Attempt 1B,1,0,2,False,False,MA,139.0,114,139,fielding,,
 824446,28,29,2,3.0,f9e8bf63-2e6d-30ce-9ccc-40d332e90ecf,Ball,3,0,0,False,False,MJ,114.0,139,114,fielding,595978.0,Austin Hedges
 824446,38,39,0,1.0,f7558a75-a3e7-3630-98ef-32fc9c49dd8b,Called Strike,0,1,1,True,False,MJ,114.0,139,114,fielding,595978.0,Austin Hedges
 824446,41,42,0,1.0,6fec35ec-4c5f-3155-a9e4-1c44dd0d14fa,Called Strike,0,1,0,True,False,MJ,139.0,114,139,fielding,663743.0,Nick Fortes
@@ -1333,16 +1278,13 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824452,72,73,2,1.0,6357d8fb-c369-3c86-96a7-aa4fdcf29a9d,Ball,1,0,0,True,False,MJ,110.0,110,114,batting,681297.0,Colton Cowser
 824452,74,75,0,1.0,ab6c8cce-ecf8-352b-95f8-a5ee763f49c6,Called Strike,0,1,2,False,False,MJ,110.0,110,114,batting,683002.0,Gunnar Henderson
 824453,62,63,3,2.0,3d63d39a-e70a-303d-a49f-1b0cd166bd64,Called Strike,0,2,0,False,False,MJ,110.0,110,114,batting,621493.0,Taylor Ward
-824454,29,30,0,1.0,827bc8e6-697b-3241-96b1-432e9f6f2f43,Foul,0,1,2,False,False,NH,,110,114,unknown,,
 824455,50,51,0,1.0,b58d54a2-ab8e-3222-9642-0cb4b07f79ee,Ball,1,0,2,True,False,MJ,114.0,114,118,batting,682657.0,Angel Martínez
 824455,56,57,2,1.0,f8db8c8c-26c2-3c30-bba8-3bf8f6fa26ad,Ball,1,0,0,True,False,MJ,114.0,114,118,batting,700932.0,Kyle Manzardo
 824456,5,6,3,4.0,85401203-7616-3336-8c36-516c1828dbfe,Called Strike,2,2,0,True,False,MJ,118.0,114,118,fielding,521692.0,Salvador Perez
 824456,47,48,0,1.0,e226d080-a8f2-393c-ab06-2cc1d01d21e6,Ball,1,0,1,False,False,MJ,118.0,114,118,fielding,521692.0,Salvador Perez
-824457,15,16,4,,,"Guardians challenged (play at 1st), call on the field was overturned: pitcher Gavin Williams picks off Isaac Collins at 1st on throw to first baseman Rhys Hoskins.",2,1,1,True,False,MF,114.0,118,114,fielding,,
 824457,29,30,5,4.0,c2df87d8-31c0-30f4-8e4b-391caf282b10,Ball,2,2,1,True,False,MJ,114.0,114,118,batting,656555.0,Rhys Hoskins
 824457,34,35,4,4.0,60f6924f-9e9b-32c3-9728-23e4a7e45977,Ball,2,2,2,True,False,MJ,118.0,118,114,batting,677951.0,Bobby Witt Jr.
 824457,58,59,2,1.0,6414f7e8-a2a8-39e6-9ba8-d7a4b4e91b73,Called Strike,0,1,1,False,False,MJ,118.0,118,114,batting,521692.0,Salvador Perez
-824457,59,60,2,,,"Royals challenged (tag play), call on the field was overturned: Bobby Witt Jr. steals (7) 3rd base. Lane Thomas steals (1) 2nd base.",0,1,2,True,False,MA,118.0,118,114,batting,,
 824458,52,53,1,2.0,3a96523c-17f0-3db8-97b8-0059506418aa,Called Strike,1,1,1,False,False,MJ,114.0,114,112,batting,677587.0,Brayan Rocchio
 824458,57,58,4,3.0,f87acba4-21b6-3bb0-b9e3-1d2b10dbd897,Ball,2,1,0,True,False,MJ,112.0,112,114,batting,694208.0,Moisés Ballesteros
 824459,7,8,0,1.0,85d56b59-6eaa-3e37-a07b-4d8f2cfe5ff8,Called Strike,0,1,1,True,False,MJ,114.0,112,114,fielding,666310.0,Bo Naylor
@@ -1361,7 +1303,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824524,66,67,0,1.0,e8a35383-5177-3cf7-9c1d-89f927597d51,Called Strike,0,1,1,False,False,MJ,113.0,113,115,batting,667472.0,Dane Myers
 824525,10,11,3,4.0,e0a9dd7f-566d-3234-8f15-456a31806611,Called Strike,2,2,2,False,False,MJ,113.0,113,115,batting,701398.0,Sal Stewart
 824525,14,15,3,4.0,5bd807ad-d09f-36ea-bfae-1f2b527b7301,Ball,3,1,0,False,False,MJ,115.0,113,115,fielding,664954.0,Brett Sullivan
-824525,50,51,6,,,"Rockies challenged (tag play), call on the field was overturned: Elly De La Cruz caught stealing 2nd base, catcher Brett Sullivan to shortstop Ezequiel Tovar.",2,1,2,True,False,MA,115.0,113,115,fielding,,
 824526,49,50,3,3.0,ee9e30a5-da19-364d-a429-666c89e6b9ea,Called Strike,1,2,0,True,False,MJ,113.0,115,113,fielding,663886.0,Tyler Stephenson
 824527,21,22,9,8.0,be6d47b0-a3c7-3a2b-903f-01ad11024541,Ball,2,2,2,True,False,MJ,113.0,113,116,batting,701398.0,Sal Stewart
 824527,24,25,1,2.0,d0d3e528-1ffe-3cf7-962e-0809d1c96f56,Called Strike,1,1,0,False,False,MJ,116.0,116,113,batting,663837.0,Matt Vierling
@@ -1380,7 +1321,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824532,63,64,0,1.0,fde2b9a3-b056-3a50-a4b5-d7afc9d4270c,Ball,1,0,0,True,False,MJ,137.0,137,113,batting,669477.0,Casey Schmitt
 824532,74,75,0,1.0,7140bd0d-91b6-33c1-984d-b52387afd0b0,Called Strike,0,1,2,True,False,MJ,113.0,137,113,fielding,663886.0,Tyler Stephenson
 824533,20,21,1,2.0,e3687838-1edb-3f5d-9caf-0f62bc34dba7,Called Strike,0,2,0,True,False,MJ,113.0,108,113,fielding,664731.0,P.J. Higgins
-824533,28,29,3,,,"Angels challenged (tag play), call on the field was overturned: Bryce Teodosio steals (1) 2nd base.",1,0,0,True,False,MA,108.0,108,113,batting,,
 824533,59,60,7,6.0,b15b4e82-4779-32b6-a1de-51bf631963bb,Ball,3,2,1,False,False,MJ,108.0,113,108,fielding,681351.0,Logan O'Hoppe
 824534,5,6,1,1.0,6d75f601-dbb8-3840-93ad-7760b7020d11,Ball,1,0,2,False,False,MJ,108.0,113,108,fielding,681351.0,Logan O'Hoppe
 824534,65,66,1,1.0,0c81ce4e-acb8-3837-b758-8541ec1561f9,Called Strike,0,1,1,False,False,MJ,108.0,108,113,batting,694384.0,Nolan Schanuel
@@ -1406,7 +1346,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824540,67,68,1,2.0,9a990b8c-e524-386f-a052-6bb8a00137aa,Ball,2,0,1,True,False,MJ,113.0,113,111,batting,666181.0,Will Benson
 824541,53,54,3,2.0,15dcffa2-071f-370a-ad62-e203793ef06c,Ball,1,1,0,False,False,MJ,111.0,113,111,fielding,665966.0,Carlos Narváez
 824541,53,54,4,3.0,2428b94a-31f7-3570-ac9b-a7d1e1c6f3f9,Ball,2,1,0,True,False,MJ,113.0,113,111,batting,663886.0,Tyler Stephenson
-824607,63,64,7,,,"Mariners challenged (tag play), call on the field was overturned: pitcher Eduard Bazardo picks off Sam Antonacci at 1st on throw to first baseman Josh Naylor.",2,2,2,True,False,MA,136.0,145,136,fielding,,
 824608,3,4,1,1.0,ae4374e8-11f9-3d53-b1cf-e870ccb2000c,Called Strike,0,1,0,True,False,MJ,108.0,145,108,fielding,518595.0,Travis d'Arnaud
 824608,19,20,2,1.0,eb14652e-c3f1-3eb1-8767-67f049851162,Called Strike,0,1,0,True,False,MJ,108.0,145,108,fielding,518595.0,Travis d'Arnaud
 824608,33,34,0,1.0,3a75e5c9-9dc0-3a83-b3a1-d4c49c550d03,Called Strike,0,1,0,True,False,MJ,145.0,108,145,fielding,700337.0,Edgar Quero
@@ -1425,7 +1364,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824610,40,41,3,4.0,df358be5-f6d8-3a70-82b6-3ce9d3121cbf,Ball,3,1,2,False,False,MJ,145.0,108,145,fielding,691011.0,Drew Romo
 824610,59,60,3,3.0,7585238f-87dd-3963-a205-86fc69fa1963,Called Strike,1,2,2,False,False,MJ,108.0,108,145,batting,694384.0,Nolan Schanuel
 824610,61,62,5,4.0,38371f81-caf8-3bb5-8643-4ca41a7f2e45,Called Strike,2,2,0,True,False,MJ,108.0,145,108,fielding,665861.0,Sebastián Rivero
-824610,70,71,1,2.0,39f01906-ad48-3be5-855a-795846df7cf0,Foul,1,1,2,False,False,NO,,108,145,unknown,,
 824611,45,46,0,1.0,4fe286ff-4202-3ce7-a131-874d22c3aff2,Ball,1,0,0,True,False,MJ,145.0,145,120,batting,805367.0,Chase Meidroth
 824611,46,47,4,3.0,1993d1f5-261a-37e5-9e58-3aba52c4e5f4,Ball,3,0,1,True,False,MJ,145.0,145,120,batting,808959.0,Munetaka Murakami
 824611,48,49,2,3.0,56811439-c11b-3baf-9480-5bf752542d4b,Called Strike,1,2,2,False,False,MJ,145.0,145,120,batting,695657.0,Colson Montgomery
@@ -1435,7 +1373,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824612,7,8,3,3.0,93a30143-5c84-3a2a-aeb1-3b0c398a94b6,Ball,1,2,0,True,False,MJ,120.0,120,145,batting,691781.0,Brady House
 824612,54,55,1,2.0,4dd78542-c4a1-3223-8578-0da20a74eb93,Called Strike,1,1,2,True,False,MJ,120.0,145,120,fielding,686452.0,Drew Millas
 824612,57,58,3,2.0,d20182a4-bfa0-3e00-be78-ecd34dc10cfe,Ball,2,0,1,False,False,MJ,145.0,120,145,fielding,691011.0,Drew Romo
-824612,58,59,2,3.0,96e64610-d600-33fe-bd4e-b97e7650b988,Ball,2,1,1,False,False,MI,120.0,120,145,batting,,
 824612,60,61,1,1.0,4bfbaa45-ff75-3330-9fba-36c172b7edfe,Called Strike,0,1,0,False,False,MJ,145.0,145,120,batting,808959.0,Munetaka Murakami
 824612,63,64,2,2.0,88f49fd0-203c-38be-a5c0-e1c405a020be,Ball,2,0,2,False,False,MJ,120.0,145,120,fielding,686452.0,Drew Millas
 824612,66,67,0,1.0,cd19ffba-030f-3202-831b-c2f0ced0bab6,Called Strike,0,1,1,True,False,MJ,145.0,120,145,fielding,691011.0,Drew Romo
@@ -1446,7 +1383,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824613,69,70,2,2.0,d5b5af14-6b86-3ba6-a31e-eb6b41727816,Called Strike,0,2,0,False,False,MJ,120.0,120,145,batting,683083.0,Nasim Nuñez
 824613,77,78,3,2.0,59cce20c-76c0-3e7a-8fad-3de2e0e314bd,Ball,2,0,0,True,False,MJ,120.0,120,145,batting,678554.0,Curtis Mead
 824613,82,83,3,4.0,598f2e26-be65-3acd-b2a4-b3358a2771f8,Called Strike,2,2,2,False,False,MJ,120.0,120,145,batting,686894.0,Joey Wiemer
-824614,9,10,8,,,"White Sox challenged (tag play), call on the field was upheld: Ryan Vilade steals (1) 2nd base.",3,2,1,False,False,MA,145.0,139,145,fielding,,
 824614,16,17,1,2.0,a090e202-1aa7-3a97-a8c7-0b201d508d2d,Ball,2,0,0,True,False,MJ,139.0,139,145,batting,670764.0,Taylor Walls
 824614,20,21,2,3.0,51047d66-09f4-3604-9c2a-845bdc13e1ef,Called Strike,2,1,2,True,False,MJ,145.0,139,145,fielding,700337.0,Edgar Quero
 824614,20,21,3,4.0,aab28c51-55a8-3367-b043-8a3ad6889858,Called Strike,2,2,2,True,False,MJ,145.0,139,145,fielding,700337.0,Edgar Quero
@@ -1464,7 +1400,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824616,74,75,3,3.0,6b40b252-5c91-3e3d-a293-46438ce97e01,Ball,2,1,2,False,False,MJ,139.0,145,139,fielding,663743.0,Nick Fortes
 824617,35,36,2,3.0,26b8435c-dd1c-37ee-9550-d81756b62de9,Called Strike,1,2,1,False,False,MJ,110.0,110,145,batting,683002.0,Gunnar Henderson
 824617,48,49,1,2.0,aa65d966-690e-3920-8a71-dc50273908c1,Called Strike,0,2,2,False,False,MJ,110.0,110,145,batting,691723.0,Coby Mayo
-824617,50,51,5,,,"Orioles challenged (tag play), call on the field was upheld: Dustin Harris steals (2) 2nd base.",2,2,0,False,False,MA,110.0,145,110,fielding,,
 824617,57,58,0,1.0,7f726ccf-127a-3008-b4c5-a4f7a499d763,Called Strike,0,1,2,True,False,MJ,145.0,110,145,fielding,624512.0,Reese McGuire
 824617,65,66,6,5.0,f2fea4a8-b6ba-3035-ab3b-26049c71d1bb,Called Strike,3,2,2,True,False,MJ,145.0,110,145,fielding,624512.0,Reese McGuire
 824618,20,21,3,4.0,646b93fc-e59b-3a73-bfbe-c94880ac098b,Ball,1,2,2,False,False,MJ,145.0,110,145,fielding,700337.0,Edgar Quero
@@ -1488,7 +1423,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824683,1,2,3,4.0,5ad83410-5cb9-3b58-a6e1-e1d734815176,Called Strike,3,1,0,False,False,MJ,113.0,113,112,batting,668709.0,JJ Bleday
 824683,49,50,3,3.0,c4433693-3128-3843-add2-605ba0605291,Ball,2,1,1,True,False,MJ,112.0,112,113,batting,683737.0,Michael Busch
 824683,59,60,0,1.0,789ed4c7-3519-3944-8a86-5c022e46d5c1,Called Strike,0,1,1,True,False,MJ,112.0,113,112,fielding,608348.0,Carson Kelly
-824684,38,39,1,,,"Cubs challenged (tag play), call on the field was overturned: pitcher Edward Cabrera picks off Elly De La Cruz at 1st on throw to first baseman Michael Busch.",0,0,2,True,False,MA,112.0,113,112,fielding,,
 824684,54,55,3,2.0,868299ea-82d5-356b-a879-0915029167e6,Ball,2,0,2,True,False,MJ,113.0,113,112,batting,701398.0,Sal Stewart
 824684,59,60,4,4.0,ab5035e7-ab9a-39eb-afb1-d17ef507eed8,Called Strike,3,1,0,True,False,MJ,112.0,113,112,fielding,608348.0,Carson Kelly
 824684,64,65,5,2.0,65468d5b-e4f0-3734-9a94-27fe9ad6d540,Called Strike,1,1,0,False,False,MJ,112.0,112,113,batting,694208.0,Moisés Ballesteros
@@ -1504,7 +1438,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824687,40,41,7,7.0,483db6bc-61f0-3b92-ba23-0ca687b290ce,Ball,3,2,0,True,False,MJ,112.0,112,109,batting,664023.0,Ian Happ
 824688,14,15,3,3.0,c288f102-60ce-32f3-97ae-90b35ded41b0,Ball,3,0,0,False,False,MJ,143.0,112,143,fielding,665561.0,Rafael Marchán
 824688,21,22,1,2.0,85e60361-1149-3de1-9659-b4909c12b83e,Called Strike,1,1,1,False,False,MJ,143.0,143,112,batting,547180.0,Bryce Harper
-824688,28,29,1,2.0,968e3f20-1e89-31ec-b26b-d756f8fdc2a9,Foul,0,2,0,True,False,NH,,143,112,unknown,,
 824688,50,51,3,3.0,54cc2150-8c91-3268-875f-57e933ee61dd,Called Strike,1,2,2,True,False,MJ,112.0,143,112,fielding,665804.0,Miguel Amaya
 824688,56,57,0,1.0,e3b7637b-fe8e-304c-87c8-1d861b4b56ed,Called Strike,0,1,1,True,False,MJ,112.0,143,112,fielding,665804.0,Miguel Amaya
 824689,13,14,0,1.0,ecad16fa-9077-3183-aae5-0308d8ac0680,Called Strike,0,1,0,True,False,MJ,143.0,112,143,fielding,596117.0,Garrett Stubbs
@@ -1531,7 +1464,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824696,46,47,0,1.0,d7dd4889-13d6-3c70-a82a-59ba0956d8fd,Called Strike,0,1,1,True,False,MJ,112.0,134,112,fielding,608348.0,Carson Kelly
 824696,51,52,1,1.0,b12be093-d00d-3864-ac98-eb2a855b2ab9,Called Strike,0,1,0,False,False,MJ,134.0,134,112,batting,663698.0,Joey Bart
 824696,58,59,4,4.0,b109b6f1-2503-3532-8a2d-3f720221a600,Called Strike,2,2,1,False,False,MJ,112.0,112,134,batting,608324.0,Alex Bregman
-824696,74,75,3,,,"Cubs challenged (tag play), call on the field was upheld: Oneil Cruz steals (6) 2nd base.",1,2,2,False,False,MA,112.0,134,112,fielding,,
 824697,30,31,3,4.0,5df60c03-ddc3-3733-94f6-896a2be31a85,Called Strike,2,2,2,True,False,MJ,112.0,134,112,fielding,665795.0,Edward Cabrera
 824697,54,55,2,3.0,4f8ecb91-6f20-389e-8d64-30890a3e83fe,Called Strike,2,1,0,True,False,MJ,112.0,134,112,fielding,665804.0,Miguel Amaya
 824697,62,63,3,2.0,c0e08ce1-1ad5-3c35-a2fd-ac9903984216,Called Strike,0,2,0,False,False,MJ,134.0,134,112,batting,687462.0,Spencer Horwitz
@@ -1540,7 +1472,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824697,97,98,3,3.0,7ad5dfc6-a0e2-3c23-aa03-b195c1b7279f,Ball,3,0,2,False,False,MJ,134.0,112,134,fielding,663698.0,Joey Bart
 824698,11,12,0,1.0,193dde67-2f67-3d08-a178-e2d2ca76ef78,Called Strike,0,1,0,False,False,MJ,112.0,112,108,batting,621020.0,Dansby Swanson
 824698,29,30,0,1.0,1ae0532b-d4c3-3da9-b88d-37c58bc9d506,Called Strike,0,1,1,True,False,MJ,112.0,108,112,fielding,608348.0,Carson Kelly
-824698,51,52,7,,,"Angels challenged (tag play), call on the field was upheld: Nico Hoerner steals (4) 2nd base.",3,2,2,False,False,MA,108.0,112,108,fielding,,
 824699,13,14,3,3.0,56fea40c-272c-315d-bf15-caa9952cf721,Called Strike,1,2,0,True,False,MJ,108.0,112,108,fielding,681351.0,Logan O'Hoppe
 824699,44,45,6,6.0,d778bd6c-d750-3c7f-96aa-8b89a27e3d94,Ball,3,2,2,False,False,MJ,112.0,108,112,fielding,665804.0,Miguel Amaya
 824699,63,64,0,1.0,d9368e63-7046-344e-8c77-29364057bc9c,Ball,1,0,1,False,False,MJ,108.0,112,108,fielding,681351.0,Logan O'Hoppe
@@ -1548,7 +1479,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824700,43,44,1,2.0,bea9b3fd-0e17-3c20-af97-48feab2c6885,Called Strike,0,2,0,True,False,MJ,112.0,120,112,fielding,608348.0,Carson Kelly
 824700,44,45,2,3.0,39cd0366-0aa0-30b6-a1a4-3c5c62ba6a74,Called Strike,1,2,0,False,False,MJ,120.0,120,112,batting,683083.0,Nasim Nuñez
 824700,46,47,1,2.0,c9d26624-069b-302d-816f-bb3e608f3bf7,Ball,1,1,2,False,False,MJ,112.0,120,112,fielding,608348.0,Carson Kelly
-824700,61,62,0,,a800d0e5-e7e5-3b3e-b89e-f4c4c75677fc,Pickoff Attempt 1B,0,0,2,False,False,MA,112.0,120,112,fielding,,
 824701,15,16,0,1.0,d543c6b2-8f66-3e28-a295-fb023713cd90,Called Strike,0,1,2,True,False,MJ,120.0,112,120,fielding,686452.0,Drew Millas
 824701,29,30,2,3.0,b9f08a94-024b-3ecb-830c-92499aa26202,Ball,2,1,1,True,False,MJ,112.0,112,120,batting,807713.0,Matt Shaw
 824701,48,49,4,4.0,b6b49bca-b856-380b-a6b8-4d0e4a378c14,Ball,3,1,1,True,False,MJ,112.0,112,120,batting,608324.0,Alex Bregman
@@ -1585,7 +1515,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824777,59,60,1,1.0,8369bfdc-8ba2-3323-b43a-719edd094ab4,Called Strike,0,1,0,False,False,MJ,116.0,116,111,batting,672761.0,Wenceel Pérez
 824777,66,67,2,3.0,2058374d-65dd-36a9-84de-7c12248ba4e4,Called Strike,2,1,0,False,False,MJ,116.0,116,111,batting,681481.0,Kerry Carpenter
 824778,54,55,1,1.0,59042789-a7b1-3ca1-a297-65fc4d518d35,Ball,1,0,0,False,False,MJ,111.0,116,111,fielding,657136.0,Connor Wong
-824778,55,56,4,,,"Red Sox challenged (tag play), call on the field was overturned: Javier Báez caught stealing 2nd base, catcher Connor Wong to second baseman Marcelo Mayer.",3,1,1,True,False,MA,111.0,116,111,fielding,,
 824779,22,23,3,4.0,9cfb7b69-b813-3845-aa30-5f7c56a0a1c0,Called Strike,2,2,0,True,False,MJ,158.0,111,158,fielding,596142.0,Gary Sánchez
 824779,24,25,4,4.0,63939b51-fea6-393c-9963-cc2e91766781,Ball,3,1,1,False,False,MJ,158.0,111,158,fielding,596142.0,Gary Sánchez
 824780,62,63,3,4.0,386c730a-48c6-3ea3-99db-26062888e0f0,Ball,1,2,1,False,False,MJ,158.0,111,158,fielding,661388.0,William Contreras
@@ -1627,10 +1556,8 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824855,14,15,3,4.0,efa0a59c-30f2-3f98-8b40-3ae8b712b913,Called Strike,3,1,2,False,False,MJ,110.0,110,109,batting,691723.0,Coby Mayo
 824855,26,27,2,3.0,50b4ca1e-f77d-318d-8435-e1f8b8624632,Ball,2,1,1,True,False,MJ,110.0,110,109,batting,671286.0,Johnathan Rodríguez
 824855,34,35,1,1.0,77069b01-9619-3c0b-b3b9-bca7507b7562,Called Strike,0,1,2,False,False,MJ,109.0,109,110,batting,606466.0,Ketel Marte
-824856,20,21,8,8.0,e1341c78-424b-3a29-8140-3f0dbf47f598,Foul,3,2,1,False,False,MO,110.0,110,109,batting,,
 824856,34,35,1,2.0,d7be7170-1ce7-36d0-acff-2e76da2db2eb,Called Strike,1,1,1,True,False,MJ,110.0,109,110,fielding,694212.0,Samuel Basallo
 824856,49,50,3,3.0,ad24455c-1746-3c5a-aa96-fb27b266d8fb,Called Strike,1,2,0,True,False,MJ,109.0,110,109,fielding,680728.0,Adrian Del Castillo
-824856,58,59,4,,,"Diamondbacks challenged (tag play), call on the field was upheld: Geraldo Perdomo caught stealing 2nd base, catcher Samuel Basallo to shortstop Gunnar Henderson.",2,2,2,False,False,MA,109.0,109,110,batting,,
 824856,59,60,3,3.0,85586249-f9df-32e7-bc29-f64de2eb5a6f,Called Strike,1,2,0,True,False,MJ,109.0,110,109,fielding,680728.0,Adrian Del Castillo
 824856,67,68,2,3.0,59861173-d269-3a0e-881c-e664c958775c,Ball,2,1,2,False,False,MJ,110.0,109,110,fielding,694212.0,Samuel Basallo
 824856,73,74,1,2.0,b92d8b49-1d79-35fb-8a62-6cb0f75f362c,Ball,2,0,1,True,False,MJ,109.0,109,110,batting,678489.0,Jorge Barrosa
@@ -1656,12 +1583,10 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 824864,55,56,5,4.0,253959c9-481b-3873-90b3-7bbed57747ae,Ball,2,2,2,False,False,MJ,110.0,142,110,fielding,694212.0,Samuel Basallo
 824864,57,58,4,3.0,308dc603-b023-3967-9425-cbf912cd7e58,Called Strike,1,2,2,True,False,MJ,110.0,142,110,fielding,694212.0,Samuel Basallo
 824864,60,61,3,4.0,4cfc4f28-7929-383b-8684-582388bddb24,Ball,3,1,0,True,False,MJ,110.0,110,142,batting,624413.0,Pete Alonso
-824864,74,75,5,,,"Orioles challenged (tag play), call on the field was upheld: Blaze Alexander caught stealing 2nd base, catcher Victor Caratini to second baseman Luke Keaschall.",2,2,1,False,False,MA,110.0,110,142,batting,,
 824864,79,80,3,4.0,b4f6a91f-c01b-3269-aaf0-385d2ba54ce3,Called Strike,3,1,1,True,False,MJ,110.0,142,110,fielding,668939.0,Adley Rutschman
 824865,7,8,0,1.0,e4fd7020-5f39-381d-8142-79841e1a5f24,Ball,1,0,0,True,False,MJ,142.0,142,110,batting,670242.0,Matt Wallner
 824865,54,55,5,5.0,e296d626-b006-3e3e-b664-54c656d406c6,Ball,3,2,2,False,False,MJ,142.0,110,142,fielding,680777.0,Ryan Jeffers
 824865,58,59,2,3.0,8a5c75f5-3ee4-3d76-9026-e27a31f15af9,Ball,1,2,2,True,False,MJ,142.0,142,110,batting,680777.0,Ryan Jeffers
-824929,17,18,3,4.0,877db35a-31d6-35a0-ac83-1cc0199c6094,Ball,2,2,1,False,False,MI,144.0,144,116,batting,,
 824929,53,54,0,1.0,84ee42f3-6ae2-33a4-8d39-2e7dce83426b,Ball,1,0,1,True,False,MJ,116.0,116,144,batting,650402.0,Gleyber Torres
 824929,72,73,1,1.0,12e592e2-9811-3a56-8735-4ebbd79e5cef,Called Strike,0,1,0,True,False,MJ,144.0,116,144,fielding,686948.0,Drake Baldwin
 824930,21,22,0,1.0,1df383d8-2591-395d-acbb-db061e5811f7,Ball,1,0,1,False,False,MJ,144.0,116,144,fielding,641680.0,Jonah Heim
@@ -1729,12 +1654,10 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 825014,35,36,1,2.0,9c695cb9-d36a-3b25-833f-d14050d93e75,Ball,1,1,0,True,False,MJ,114.0,114,133,batting,677587.0,Brayan Rocchio
 825014,43,44,3,4.0,c9d8c686-dbfc-3537-9121-365bdbf13959,Called Strike,2,2,1,True,False,MJ,114.0,133,114,fielding,595978.0,Austin Hedges
 825014,69,70,2,3.0,a94f2ae7-779a-3dcc-97cb-8a59a6c3eff3,Called Strike,1,2,0,False,False,MJ,114.0,114,133,batting,682657.0,Angel Martínez
-825015,15,16,1,,,"Royals challenged (tag play), call on the field was overturned: Jeff McNeil caught stealing 3rd base, catcher Carter Jensen to third baseman Maikel Garcia.",1,0,1,True,False,MA,118.0,133,118,fielding,,
 825015,73,74,0,1.0,07907088-c47b-3cdb-98d9-2603fa73ded4,Ball,1,0,2,False,False,MJ,133.0,118,133,fielding,669127.0,Shea Langeliers
 825016,5,6,1,1.0,291d3b63-4c1c-3d7e-b5d8-914fdcff7131,Called Strike,0,1,2,True,False,MJ,133.0,118,133,fielding,642851.0,Austin Wynns
 825016,47,48,3,4.0,621b155e-41b6-3d3f-91bd-4ba19a0841c1,Ball,2,2,0,True,False,MJ,133.0,133,118,batting,687515.0,Colby Thomas
 825017,57,58,1,1.0,79f0cf00-9c11-3802-9d95-385bfc3d1eda,Called Strike,0,1,0,False,False,MJ,133.0,133,118,batting,643446.0,Jeff McNeil
-825017,64,65,1,1.0,1b897c3c-043d-3c7d-8ea0-433abcdeab51,Foul,0,1,0,False,False,NH,,133,118,unknown,,
 825017,82,83,5,5.0,0ba338db-a6d1-3e2e-86c6-6c7489475d4b,Ball,3,2,1,True,False,MJ,133.0,133,118,batting,671732.0,Lawrence Butler
 825018,12,13,3,4.0,cd047a61-0d5b-3f44-820f-7509c737dfcf,Ball,2,2,1,False,False,MJ,133.0,145,133,fielding,669127.0,Shea Langeliers
 825018,19,20,0,1.0,5203971e-ecf9-3469-afb0-24a12eebfbdb,Called Strike,0,1,2,True,False,MJ,145.0,133,145,fielding,700337.0,Edgar Quero
@@ -1755,7 +1678,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 825020,77,78,1,2.0,8b3bce5c-33f0-3266-9323-af4219a9931a,Ball,2,0,1,True,False,MJ,145.0,145,133,batting,808959.0,Munetaka Murakami
 825020,77,78,2,3.0,d3be7a5b-1acd-33ee-b24b-4e3d8659c446,Ball,3,0,1,True,False,MJ,145.0,145,133,batting,808959.0,Munetaka Murakami
 825020,87,88,6,5.0,1bed9cb1-c838-37cc-acbd-fbce819392ac,Called Strike,3,2,0,False,False,MJ,145.0,145,133,batting,805367.0,Chase Meidroth
-825021,11,12,3,3.0,1a9a4b6e-19c0-38bb-ac71-a284058c09b8,Foul,2,1,1,False,False,NH,,140,133,unknown,,
 825021,17,18,5,5.0,6348cc72-4e62-322e-8115-5616ac4f03a4,Ball,3,2,2,False,False,MJ,140.0,133,140,fielding,643376.0,Danny Jansen
 825022,27,28,5,4.0,f3d5b871-fd79-3296-8d2d-91a742b28e58,Ball,2,2,1,True,False,MJ,140.0,140,133,batting,673962.0,Josh Jung
 825022,50,51,2,3.0,fb882b66-819a-3794-a186-60d250261548,Called Strike,1,2,1,True,False,MJ,133.0,140,133,fielding,642851.0,Austin Wynns
@@ -1791,8 +1713,6 @@ game_pk,at_bat_index,at_bat_number,event_index,pitch_number,play_id,call_descrip
 825091,58,59,0,1.0,a057d76c-5ca4-39ae-a40d-5ea1260239b7,Called Strike,0,1,2,False,False,MJ,109.0,109,134,batting,672515.0,Gabriel Moreno
 825092,65,66,2,3.0,c624956f-edc7-3c22-9ba7-a2ab415b1c03,Called Strike,1,2,0,False,False,MJ,109.0,109,134,batting,672695.0,Geraldo Perdomo
 825092,72,73,1,2.0,2a241e95-4598-308b-b982-b110cd79c047,Ball,1,1,2,True,False,MJ,134.0,134,109,batting,542303.0,Marcell Ozuna
-825093,70,71,6,,,"Umpire reviewed (tag play), call on the field was upheld: Freddy Fermin caught stealing 2nd base, catcher Adrian Del Castillo to shortstop Ildemaro Vargas.",3,2,1,False,False,NA,,135,109,unknown,,
-825094,61,62,0,1.0,1b045300-901d-4341-8c19-096d72749e59,Foul,0,1,2,False,False,NH,,109,135,unknown,,
 825096,38,39,0,1.0,a43d5879-2f83-3a7e-85f0-5035f5861bf7,Ball,1,0,1,True,False,MJ,109.0,109,145,batting,677950.0,Alek Thomas
 825096,38,39,2,3.0,8f66a7f4-609e-3faa-b40a-d5420a0050cf,Ball,3,0,1,False,False,MJ,145.0,109,145,fielding,624512.0,Reese McGuire
 825096,51,52,0,1.0,717af300-9a54-3a95-bb7a-c6c43b9e4031,Ball,1,0,0,True,False,MJ,109.0,109,145,batting,545121.0,Ildemaro Vargas
