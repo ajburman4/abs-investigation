@@ -74,7 +74,7 @@ def archetype_from_values(total: float, success: float, aggression: str) -> str:
 
 def archetype(row: pd.Series) -> str:
     aggression = aggression_label(safe_float(row.get("exp_rate_challenges_diff")))
-    total = safe_float(row.get("total_vs_expected"))
+    total = safe_float(row.get("net_for"))
     success = safe_float(row.get("rate_overturns"))
     return archetype_from_values(total, success, aggression)
 
@@ -226,8 +226,11 @@ def build_catcher_rows(catcher_df: pd.DataFrame) -> list[dict[str, Any]]:
             success_rate = overturns / challenges
         expected_overturns = safe_float(row.get("exp_chal_gained"))
         overturns_above_expected = overturns - expected_overturns
-        execution_value = safe_float(row.get("net_for"))
-        selection_value = safe_float(row.get("total_vs_expected"))
+        challenge_value_for = safe_float(row.get("net_for"))
+        savant_net_vs_expected = safe_float(row.get("total_vs_expected"))
+        opponent_challenge_value = safe_float(row.get("net_against"))
+        execution_value = challenge_value_for
+        selection_value = challenge_value_for
         zone_indicator = 0.0
         total_value = selection_value + zone_indicator
         rate_diff = safe_float(row.get("exp_rate_challenges_diff"))
@@ -258,12 +261,15 @@ def build_catcher_rows(catcher_df: pd.DataFrame) -> list[dict[str, Any]]:
                 "confirmsAboveExpected": safe_float(row.get("n_confirms")) - safe_float(row.get("exp_chal_lost")),
                 "expectedChallengeRate": expected_challenge_rate,
                 "actualChallengeRate": actual_challenge_rate,
-                "netFor": safe_float(row.get("net_for")),
-                "netAgainst": safe_float(row.get("net_against")),
-                "totalVsExpected": safe_float(row.get("total_vs_expected")),
+                "netFor": challenge_value_for,
+                "netAgainst": opponent_challenge_value,
+                "savantNetVsExpected": savant_net_vs_expected,
+                "totalVsExpected": challenge_value_for,
+                "challengeValueFor": challenge_value_for,
+                "opponentChallengeValue": opponent_challenge_value,
                 "expectedChallengeDiff": rate_diff,
                 "aggressionLabel": aggression_label(rate_diff),
-                "valueLabel": value_label(safe_float(row.get("total_vs_expected"))),
+                "valueLabel": value_label(challenge_value_for),
                 "executionValue": execution_value,
                 "selectionValue": selection_value,
                 "selectionReasonableRate": selection_reasonable_rate,
@@ -271,7 +277,7 @@ def build_catcher_rows(catcher_df: pd.DataFrame) -> list[dict[str, Any]]:
                 "reasonableOpportunities": int(safe_float(row.get("rsn_opp"))),
                 "reasonableChallenges": int(safe_float(row.get("rsn_chal"))),
                 "forValue": execution_value,
-                "againstValue": -safe_float(row.get("net_against")),
+                "againstValue": opponent_challenge_value,
                 "zoneAdaptation": zone_indicator,
                 "overallValue": total_value,
                 "archetype": archetype(row),
@@ -1106,7 +1112,7 @@ def enrich_catcher_report_metrics(
         "absValuePlus": _grade_thresholds(
             rows,
             "absValuePlus",
-            source="ABS Value+ among workbook catchers with 5+ challenges",
+            source="ABS Value+ from Savant net_for among workbook catchers with 5+ challenges",
         ),
         "resultsScore": _grade_thresholds(
             rows,
@@ -1118,7 +1124,11 @@ def enrich_catcher_report_metrics(
             "selectionScore",
             source="Blended reasonable-challenge rate and reasonable-opportunity take rate, 5+ challenge catchers",
         ),
-        "totalVsExpected": _grade_thresholds(rows, "totalVsExpected", source="League catchers with 5+ challenges"),
+        "totalVsExpected": _grade_thresholds(
+            rows,
+            "totalVsExpected",
+            source="Savant net_for among league catchers with 5+ challenges",
+        ),
         "missedOpportunityValue": _grade_thresholds(
             rows,
             "missedOpportunityValue",

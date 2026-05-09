@@ -1661,8 +1661,8 @@
           </ul>
         </div>
         <div class="formula-list key-metric-list">
-          <div class="formula-item"><strong>Net Overturns vs. Expected</strong>The difference between the number of overturns and challenge failures Baseball Savant expected and the actual results. This rewards both successfully challenging more often than average and avoiding bad challenge decisions.</div>
-          <div class="formula-item"><strong>ABS Value+</strong>Net overturns vs. expected per 1,000 pitches seen. 100 is average, and higher is better. Think OPS+.</div>
+          <div class="formula-item"><strong>Catcher Challenge Value</strong>Baseball Savant's net_for value for fielding-side challenges credited to the catcher view. This excludes net_against, which comes from opponent batter challenges while the catcher is behind the plate.</div>
+          <div class="formula-item"><strong>ABS Value+</strong>Catcher Challenge Value per 1,000 pitches seen. 100 is average, and higher is better. Think OPS+.</div>
           <div class="formula-item"><strong>Challenge Results</strong>Combines the number of overturns and challenge success rate compared to expected results to evaluate how successful the catcher is when they use a challenge.</div>
           <div class="formula-item"><strong>Selection</strong>Blends reasonable challenges made with the share of reasonable opportunities taken. This is more about location than situation.</div>
           <div class="formula-item"><strong>Challenge Volume</strong>Evaluates how often catchers are using challenges, relative to how others would with the same set of pitches.</div>
@@ -1860,7 +1860,7 @@
       const value = Number(row.totalVsExpected || 0);
       const success = Number(row.successRate || 0);
       const aggression = row.aggressionLabel || "Average";
-      if (value > 5 && aggression === "Average") return "High value with disciplined challenge volume.";
+      if (value > 5 && aggression === "Average") return "High catcher-side challenge value with disciplined challenge volume.";
       if (value > 2 && ["Light", "Very Light"].includes(aggression)) return "Positive value, but the use rate is lighter than expected.";
       if (value < -2 && ["Heavy", "Very Heavy"].includes(aggression)) return "Negative value with a heavier-than-expected use rate.";
       if (success >= 0.7 && value <= 1) return "Strong overturn rate, but the value ledger is flat or negative.";
@@ -1875,7 +1875,7 @@
       const holds = Number(row.missedOpportunityCount || 0);
       if (value < -2 && selection < 0) {
         const aboveText = above < 0 ? ` and ${fmtSignedNumber(above, 1)} overturns versus Savant xWon` : "";
-        return `${row.name} has a negative challenge ledger${aboveText}. Start with selection: which calls were worth spending on, which lower-value spots burned value, and which of the ${holds} missed chances deserve a video audit.`;
+        return `${row.name} has a negative catcher-side challenge ledger${aboveText}. Start with selection: which calls were worth spending on, which lower-value spots burned value, and which of the ${holds} missed chances deserve a video audit.`;
       }
       if (value > 2 && above >= 0) {
         return `${row.name} is creating positive ABS value. The first review question is whether this conviction pattern is repeatable in the zones and counts driving the value, then whether any missed chances were worth adding.`;
@@ -2862,7 +2862,7 @@
           <div class="skill-head">
             <div>
               <div class="skill-title">ABS Value+</div>
-              <div class="muted" style="font-size:12px">Overall challenge value, normalized for pitch volume</div>
+              <div class="muted" style="font-size:12px">Catcher-side challenge value, normalized for pitch volume</div>
             </div>
             <div class="grade-stack">
               <div class="grade-mark">${escapeHtml(absValueGrade)}</div>
@@ -2870,7 +2870,7 @@
             </div>
           </div>
           <div class="diverging-track">${divergingFill(Number(row.absValuePlus || 100) - 100, absValueScale)}</div>
-          <div class="skill-note">${fmtSignedNumber(row.totalVsExpected, 1)} net overturns vs. expected; ${fmtNumber(row.netOverturnsPer1000, 2)} per 1,000 pitches.</div>
+          <div class="skill-note">${fmtSignedNumber(row.totalVsExpected, 1)} catcher challenge value; ${fmtNumber(row.netOverturnsPer1000, 2)} per 1,000 pitches.</div>
         </div>`;
       const detailCell = (label, value, note = "") => `
         <div class="detail-cell">
@@ -2895,10 +2895,10 @@
         const selectedClass = item.name === row.name ? "selected" : "";
         return `<div class="dbacks-row tooltip-enabled ${selectedClass}" data-tooltip="${escapeHtml([
           `${item.name} ABS Value+`,
-          `METRIC|ABS Value+|${fmtNumber(item.absValuePlus, 0)}|100 is average|Net Ovr. vs Expected|${fmtSignedNumber(item.totalVsExpected, 1)}|Savant value`,
-          `METRIC|Per 1,000 pitches|${fmtNumber(item.netOverturnsPer1000, 2)}|net overturns vs expected|Challenges|${fmtInt(item.challenges)}|${fmtPct(item.successRate)} success`
+          `METRIC|ABS Value+|${fmtNumber(item.absValuePlus, 0)}|100 is average|Catcher value|${fmtSignedNumber(item.totalVsExpected, 1)}|Savant net_for`,
+          `METRIC|Per 1,000 pitches|${fmtNumber(item.netOverturnsPer1000, 2)}|catcher value|Challenges|${fmtInt(item.challenges)}|${fmtPct(item.successRate)} success`
         ].join("\n"))}">
-          <div><strong>${escapeHtml(item.name)}</strong><div class="muted">${fmtNumber(item.netOverturnsPer1000, 2)} net overturns / 1,000 pitches</div></div>
+          <div><strong>${escapeHtml(item.name)}</strong><div class="muted">${fmtNumber(item.netOverturnsPer1000, 2)} catcher value / 1,000 pitches</div></div>
           <div class="diverging-track">${divergingFill(Number(item.absValuePlus || 100) - 100, absValueScale)}</div>
           <div>${fmtNumber(item.absValuePlus, 0)}</div>
         </div>`;
@@ -2906,8 +2906,9 @@
       const valueTooltip = [
         "ABS Value+",
         `METRIC|ABS Value+|${fmtNumber(row.absValuePlus, 0)}|drives grade|Grade|${absValueGrade}|current`,
-        `METRIC|Per 1,000 pitches|${fmtNumber(row.netOverturnsPer1000, 2)}|net overturns|Net Ovr. vs Expected|${fmtSignedNumber(row.totalVsExpected, 1)}|Savant value`,
-        `FORMULA|Calculation|ABS Value+ = Net Overturns vs. Expected per 1,000 pitches, scaled so 100 = average`,
+        `METRIC|Per 1,000 pitches|${fmtNumber(row.netOverturnsPer1000, 2)}|catcher value|Catcher Value|${fmtSignedNumber(row.totalVsExpected, 1)}|Savant net_for`,
+        `METRIC|Excluded opponent value|${fmtSignedNumber(row.opponentChallengeValue, 1)}|Savant net_against|Combined Savant net|${fmtSignedNumber(row.savantNetVsExpected, 1)}|not graded`,
+        `FORMULA|Calculation|ABS Value+ = Savant net_for per 1,000 pitches, scaled so 100 = average`,
         thresholdLine("Grade cutoffs", absValueGrade, thresholds.absValuePlus, value => fmtNumber(value, 0))
       ].join("\n");
       const resultsTooltip = [
@@ -2945,7 +2946,7 @@
       ].join("\n");
       setHtml("report-content", `
         <div class="metrics report-metrics overall-band">
-          <div class="metric ${valueClass(row.totalVsExpected)}"><div class="label">Net Overturns vs. Expected</div><div class="value">${fmtSignedNumber(row.totalVsExpected, 1)}</div></div>
+          <div class="metric ${valueClass(row.totalVsExpected)}"><div class="label">Catcher Challenge Value</div><div class="value">${fmtSignedNumber(row.totalVsExpected, 1)}</div></div>
           <div class="metric"><div class="label">Total Challenges</div><div class="value">${fmtInt(row.challenges)}</div></div>
           <div class="metric"><div class="label">Reasonable Challenge Rate</div><div class="value">${fmtPct(row.selectionReasonableRate, 1)}</div></div>
           <div class="metric"><div class="label">Reasonable Opps Taken</div><div class="value">${fmtPct(row.selectionTakenRate, 1)}</div></div>
