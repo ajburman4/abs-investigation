@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import signal
 import time
 import urllib.error
 import urllib.request
@@ -10,6 +11,13 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 import pandas as pd
+
+MLB_FEED_TIMEOUT_SECONDS = 8
+MLB_FEED_MAX_ATTEMPTS = 3
+
+
+def _raise_timeout(_signum: int, _frame: Any) -> None:
+    raise TimeoutError("MLB Stats API feed request timed out")
 
 
 def _parse_date(value: str) -> date:
@@ -197,8 +205,29 @@ def _team_ids_from_game(payload: dict[str, Any]) -> dict[str, int | None]:
 def _fetch_game_feed(game_pk: int) -> dict[str, Any]:
     url = f"https://statsapi.mlb.com/api/v1.1/game/{game_pk}/feed/live"
     request = urllib.request.Request(url, headers={"User-Agent": "abs-edge-map/1.0"})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return json.loads(response.read().decode("utf-8"))
+    last_error: Exception | None = None
+    for attempt in range(MLB_FEED_MAX_ATTEMPTS):
+        try:
+            previous_handler = signal.signal(signal.SIGALRM, _raise_timeout)
+            signal.setitimer(signal.ITIMER_REAL, MLB_FEED_TIMEOUT_SECONDS)
+            try:
+                with urllib.request.urlopen(
+                    request, timeout=MLB_FEED_TIMEOUT_SECONDS
+                ) as response:
+                    return json.loads(response.read().decode("utf-8"))
+            finally:
+                signal.setitimer(signal.ITIMER_REAL, 0)
+                signal.signal(signal.SIGALRM, previous_handler)
+        except (
+            TimeoutError,
+            urllib.error.URLError,
+            json.JSONDecodeError,
+            OSError,
+        ) as exc:
+            last_error = exc
+            if attempt < MLB_FEED_MAX_ATTEMPTS - 1:
+                time.sleep(0.5 * (attempt + 1))
+    raise RuntimeError(f"MLB Stats API feed failed for game {game_pk}: {last_error}")
 
 
 def _challenge_rows_from_game(game_pk: int, payload: dict[str, Any]) -> list[dict[str, Any]]:
@@ -302,9 +331,16 @@ def load_or_pull_abs_challenges(
     for index, game_pk in enumerate(ids):
         try:
             rows.extend(_challenge_rows_from_game(game_pk, _fetch_game_feed(game_pk)))
-        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError):
+        except (
+            RuntimeError,
+            TimeoutError,
+            urllib.error.URLError,
+            json.JSONDecodeError,
+            OSError,
+        ):
             failures += 1
         if index and index % 25 == 0:
+            print(f"Fetched {index:,} of {len(ids):,} MLB game feeds...", flush=True)
             time.sleep(0.2)
 
     columns = [
